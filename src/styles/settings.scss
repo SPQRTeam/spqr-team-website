@@ -8,3 +8,12 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+// Global styles
+body {
+  background-color: #f1f4f3;
+}
+
+.v-application {
+  background-color: #f1f4f3 !important;
+}

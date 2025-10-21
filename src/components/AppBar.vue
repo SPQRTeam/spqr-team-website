@@ -11,11 +11,7 @@
     </template>
 
     <v-app-bar-title>
-        <v-btn 
-        :style="{ 'font-weight': 'bold', 'font-size': '23px' }"
-        to="/">
-            SPQR Team
-        </v-btn>
+        <v-btn size="x-large" variant="text" to="/"> SPQR Team </v-btn>
     </v-app-bar-title>
 
     <template v-slot:append>
