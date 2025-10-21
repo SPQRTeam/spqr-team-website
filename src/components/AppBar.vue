@@ -10,18 +10,24 @@
         ></v-app-bar-nav-icon>
     </template>
 
-    <v-app-bar-title>SPQR Team</v-app-bar-title>
+    <v-app-bar-title>
+        <v-btn 
+        :style="{ 'font-weight': 'bold', 'font-size': '23px' }"
+        to="/">
+            SPQR Team
+        </v-btn>
+    </v-app-bar-title>
 
     <template v-slot:append>
         <template v-if="!mobile">
-            <v-btn>Team</v-btn>
-            <v-btn>Events</v-btn>
-            <v-btn>Research</v-btn>
-            <v-btn>Code Releases</v-btn>
-            <v-btn>Media</v-btn>
-            <v-btn>Students</v-btn>
-            <v-btn>Sponsors</v-btn>
-            <v-btn>Contacts</v-btn>
+            <v-btn to="/team">Team</v-btn>
+            <v-btn to="/events">Events</v-btn>
+            <v-btn to="/research">Research</v-btn>
+            <v-btn to="/code-releases">Code Releases</v-btn>
+            <v-btn to="/media">Media</v-btn>
+            <v-btn to="/students">Students</v-btn>
+            <v-btn to="/sponsors">Sponsors</v-btn>
+            <v-btn to="/contacts">Contacts</v-btn>
         </template>
     </template>
     </v-app-bar>
@@ -34,8 +40,9 @@
         <v-list>
             <v-list-item 
                 v-for="item in menuItems" 
-                :key="item"
-                :title="item"
+                :key="item.title"
+                :title="item.title"
+                :to="item.path"
                 link
             ></v-list-item>
         </v-list>
@@ -50,13 +57,13 @@ const { mobile } = useDisplay()
 const drawer = ref(false)
 
 const menuItems = [
-    'Team',
-    'Events',
-    'Research',
-    'Code Releases',
-    'Media',
-    'Students',
-    'Sponsors',
-    'Contacts'
+    { title: 'Team', path: '/team' },
+    { title: 'Events', path: '/events' },
+    { title: 'Research', path: '/research' },
+    { title: 'Code Releases', path: '/code-releases' },
+    { title: 'Media', path: '/media' },
+    { title: 'Students', path: '/students' },
+    { title: 'Sponsors', path: '/sponsors' },
+    { title: 'Contacts', path: '/contacts' }
 ]
 </script>

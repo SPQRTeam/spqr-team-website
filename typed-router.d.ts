@@ -19,6 +19,14 @@ declare module 'vue-router/auto-routes' {
    */
   export interface RouteNamedMap {
     '/': RouteRecordInfo<'/', '/', Record<never, never>, Record<never, never>>,
+    '/code-releases': RouteRecordInfo<'/code-releases', '/code-releases', Record<never, never>, Record<never, never>>,
+    '/contacts': RouteRecordInfo<'/contacts', '/contacts', Record<never, never>, Record<never, never>>,
+    '/events': RouteRecordInfo<'/events', '/events', Record<never, never>, Record<never, never>>,
+    '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
+    '/research': RouteRecordInfo<'/research', '/research', Record<never, never>, Record<never, never>>,
+    '/sponsors': RouteRecordInfo<'/sponsors', '/sponsors', Record<never, never>, Record<never, never>>,
+    '/students': RouteRecordInfo<'/students', '/students', Record<never, never>, Record<never, never>>,
+    '/team': RouteRecordInfo<'/team', '/team', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -34,6 +42,38 @@ declare module 'vue-router/auto-routes' {
   export interface _RouteFileInfoMap {
     'src/pages/index.vue': {
       routes: '/'
+      views: never
+    }
+    'src/pages/code-releases.vue': {
+      routes: '/code-releases'
+      views: never
+    }
+    'src/pages/contacts.vue': {
+      routes: '/contacts'
+      views: never
+    }
+    'src/pages/events.vue': {
+      routes: '/events'
+      views: never
+    }
+    'src/pages/media.vue': {
+      routes: '/media'
+      views: never
+    }
+    'src/pages/research.vue': {
+      routes: '/research'
+      views: never
+    }
+    'src/pages/sponsors.vue': {
+      routes: '/sponsors'
+      views: never
+    }
+    'src/pages/students.vue': {
+      routes: '/students'
+      views: never
+    }
+    'src/pages/team.vue': {
+      routes: '/team'
       views: never
     }
   }
