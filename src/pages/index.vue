@@ -1,7 +1,13 @@
 <template>
-  <HelloWorld />
+  <AppBar/>
+
 </template>
 
+
+
+
+
 <script setup>
-  //
+
+
 </script>
