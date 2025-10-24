@@ -95,7 +95,7 @@ const events = [
         year: 2025,
         month: 'October',
         days: '17-19',
-        description: 'The SPQR team participated in friendly tournament during the Maker Faire in Rome (Italy), 17-19 October 2025, with HTWK (Leipzig University), and Tech United (Eindhoven University). This was the first eurpean tournament with Booster Robotics robots!',
+        description: 'The SPQR team hosted a friendly tournament during the Maker Faire in Rome (Italy), with HTWK (Leipzig University), and Tech United (Eindhoven University). The first eurpean tournament with Booster Robotics robots!',
         cover: '@/assets/events/cover-mf2025.png',
         links: [
             {
@@ -160,7 +160,7 @@ const events = [
         year: 2024,
         month: 'October',
         days: '25-27',
-        description: 'The SPQR team participated in friendly tournament during the Maker Faire in Rome (Italy), 25-27 October 2024, with HTWK (Leipzig University).',
+        description: 'The SPQR team hosted a friendly tournament during the Maker Faire in Rome (Italy), 25-27 October 2024, with HTWK (Leipzig University).',
         cover: '@/assets/events/cover-mf2024.png',
         links: [
             {
@@ -193,7 +193,7 @@ const events = [
         year: 2023,
         month: 'October',
         days: '20-22', 
-        description: 'The SPQR team participated in a triangular friendly tournament during the Maker Faire in Rome (Italy), 20-22 October 2023, with NaoDevis (Dortmunt Univesity) and Hulks (Hamburg Univesity).',
+        description: 'The SPQR team hosted in a triangular friendly tournament during the Maker Faire in Rome (Italy), 20-22 October 2023, with NaoDevis (Dortmunt Univesity) and Hulks (Hamburg Univesity).',
         cover: '@/assets/events/cover-mf2024.png',
         links: [
             {
@@ -209,7 +209,7 @@ const events = [
         year: 2023,
         month: 'July',
         days: '4-10',
-        description: 'The RoboCup 2023 took place in Bourdeax (France) from 4 to 10 July 2023. The SPQR team competed in the Champions Cup winning the seventh place and the quarter-finals. At the symposium, held in University of Bordeaux, the SPQR team won the Best Paper Award.',
+        description: 'The RoboCup 2023 took place in Bourdeax (France). The SPQR team competed in the Champions Cup winning the seventh place and the quarter-finals. We also won the Best Paper Award!',
         cover: '@/assets/events/cover-rc2023.png',
         links: [
             {
@@ -226,7 +226,7 @@ const events = [
         year: 2022,
         month: 'October',
         days: '7-9',
-        description: 'The SPQR team participated in a friendly series of matches against Nao Devils team during the Maker Faire in Rome (Italy), 7-9 October 2022.',
+        description: 'The SPQR team hosted in a friendly series of matches against Nao Devils team during the Maker Faire in Rome (Italy), 7-9 October 2022.',
         cover: '@/assets/events/cover-mf2022.png',
         links: [
             {
@@ -253,89 +253,89 @@ const events = [
         ],
     },
 
-    // //* --- 2019 --- *//
-    // {
-    //     name: 'Maker Faire 2019 - Rome, Italy',
-    //     year: 2019,
-    //     month: 'October',
-    //     days: '18-20',
-    //     description: 'The SPQR team participated in a triangular friendly tournament during the Maker Faire in Rome (Italy), 18-20 October 2019.',
-    //     cover: '',
-    //     links: [
-    //         {
-    //             site: 'https://makerfairerome.eu/it/',
-    //             video: '',
-    //             results: '',
-    //         },
-    //     ],
-    // },
+    //* --- 2019 --- *//
+    {
+        name: 'Maker Faire 2019 - Rome, Italy',
+        year: 2019,
+        month: 'October',
+        days: '18-20',
+        description: 'The SPQR team hosted a triangular friendly tournament during the Maker Faire in Rome (Italy), 18-20 October 2019.',
+        cover: '@/assets/events/cover-mf2019.png',
+        links: [
+            {
+                site: 'https://makerfairerome.eu/it/',
+                video: '',
+                results: '',
+            },
+        ],
+    },
 
-    // {
-    //     name: 'RoboCup 2019 - Sydney, Australia',
-    //     year: 2019,
-    //     month: 'July',
-    //     days: '2-8',
-    //     description: 'The RoboCup 2019 was held in Sydney (Australia), 2-8 July 2019. SPQR Team reconfirmed itself in the Champions Cup including the best 12 teams in the world.',
-    //     cover: '',
-    //     links: [
-    //         {
-    //             site: 'https://2019.robocup.org/',
-    //             video: '',
-    //             results: 'https://spl.robocup.org/results-2019/',
-    //         },
-    //     ],
-    // },
+    {
+        name: 'RoboCup 2019 - Sydney, Australia',
+        year: 2019,
+        month: 'July',
+        days: '2-8',
+        description: 'The RoboCup 2019 was held in Sydney (Australia), 2-8 July 2019. SPQR Team reconfirmed itself in the Champions Cup including the best 12 teams in the world.',
+        cover: '@/assets/events/cover-rc2019.png',
+        links: [
+            {
+                site: 'https://2019.robocup.org/',
+                video: '',
+                results: 'https://spl.robocup.org/results-2019/',
+            },
+        ],
+    },
 
-    // //* --- 2018 ---*//
-    // {
-    //     name: 'RoboCup 2018 - Montereal, Canada',
-    //     year: 2018,
-    //     month: 'June',
-    //     days: '18-22',
-    //     description: 'The RoboCup 2018 was held in Montreal (Canada), 18-22 June 2018. SPQR Team achieved the semifinals in the penalty kick competition and entered the Champions Cup including the best 12 teams in the world.',
-    //     cover: '',
-    //     links: [
-    //         {
-    //             site: 'https://2018.robocup.org/',
-    //             video: '',
-    //             results: 'https://spl.robocup.org/results-2018/',
-    //         },
-    //     ],
-    // },
+    //* --- 2018 ---*//
+    {
+        name: 'RoboCup 2018 - Montereal, Canada',
+        year: 2018,
+        month: 'June',
+        days: '18-22',
+        description: 'The RoboCup 2018 was held in Montreal (Canada), 18-22 June 2018. SPQR Team achieved the semifinals in the penalty kick competition and entered the Champions Cup including the best 12 teams in the world.',
+        cover: '@/assets/events/cover-rc2018.png',
+        links: [
+            {
+                site: 'https://2018.robocup.org/',
+                video: '',
+                results: 'https://spl.robocup.org/results-2018/',
+            },
+        ],
+    },
 
-    // //* --- 2017 ---*//
-    // {
-    //     name: 'RoboCup German Open 2017 - Magdeburg, Germany',
-    //     year: 2017,
-    //     month: 'March',
-    //     days: '5-7',
-    //     description: 'The RoboCup German Open 2017 was held in Magdeburg (Germany), 5-7 May 2017. SPQR Team achieved the 2nd Place in the Challenge Shield.',
-    //     cover: '',
-    //     links: [
-    //         {
-    //             site: 'https://robocup.de/',
-    //             video: '',
-    //             results: 'https://spl.robocup.org/results-2017/',
-    //         },
-    //     ],
-    // },
+    //* --- 2017 ---*//
+    {
+        name: 'RoboCup German Open 2017 - Magdeburg, Germany',
+        year: 2017,
+        month: 'March',
+        days: '5-7',
+        description: 'The RoboCup German Open 2017 was held in Magdeburg (Germany), 5-7 May 2017. SPQR Team achieved the 2nd Place in the Challenge Shield.',
+        cover: '@/assets/events/cover-go2017.png',
+        links: [
+            {
+                site: 'https://robocup.de/',
+                video: '',
+                results: 'https://spl.robocup.org/results-2017/',
+            },
+        ],
+    },
 
-    // //* --- 2016 ---*//
-    // {
-    //     name: 'RoboCup 2016 - Leipzig, Germany',
-    //     year: 2016,
-    //     month: 'July',
-    //     days: '1-5',
-    //     description: 'The RoboCup 2016 was held in Leipzig (Germany), 1-5 July 2016.',
-    //     cover: '',
-    //     links: [
-    //         {
-    //             site: 'https://2016.robocup.org/web/index-2.html',
-    //             video: '',
-    //             results: 'https://spl.robocup.org/history/results-2016/',
-    //         },
-    //     ],
-    // },
+    //* --- 2016 ---*//
+    {
+        name: 'RoboCup 2016 - Leipzig, Germany',
+        year: 2016,
+        month: 'July',
+        days: '1-5',
+        description: 'The RoboCup 2016 was held in Leipzig (Germany), 1-5 July 2016.',
+        cover: '@/assets/events/cover-rc2016.png',
+        links: [
+            {
+                site: 'https://2016.robocup.org/web/index-2.html',
+                video: '',
+                results: 'https://spl.robocup.org/history/results-2016/',
+            },
+        ],
+    },
 ]
 
 
