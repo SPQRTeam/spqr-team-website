@@ -15,15 +15,30 @@
 
     <v-container>
     
-        <div class="section-title">RoboCup 2025 - Salvador (Brazil)</div>
+        <div class="section-title">Team Photos</div>
 
-        <v-img
-        class="team-photo"
-        :style="{ height: '800px', width: '1000px', margin: 'auto', borderRadius: '10px' }"
-        src="@/assets/team/team-2025.jpg"
-        alt="SPQR Team Cover"
-        cover
-        ></v-img>
+        <v-carousel
+            cycle
+            :interval="5000"
+            hide-delimiter-background
+            show-arrows="hover"
+            height="920"
+            class="team-carousel"
+        >
+            <v-carousel-item
+                v-for="(photo, i) in team_photos"
+                :key="i"
+            >
+            <v-img
+            :src="photo.image"
+            :alt="photo.title"
+            class="team-photo"
+            height="800"
+            contain
+            ></v-img>
+            <div class="photo-title">{{ photo.title }}</div>
+            </v-carousel-item>
+        </v-carousel>
 
         <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider>
 
@@ -159,6 +174,38 @@
 </template>
 
 <script setup>
+
+const team_photos = [
+    {
+        image: new URL('@/assets/team/team-mf2025.jpg', import.meta.url).href,
+        title: 'Maker Faire 2025 - Rome, Italy'
+    },
+    {
+        image: new URL('@/assets/team/team-whrg2025.jpg', import.meta.url).href,
+        title: 'World Humanoid Robot Games 2025 - Beijing, China'
+    },
+    {
+        image: new URL('@/assets/team/team-rc2025.jpg', import.meta.url).href,
+        title: 'RoboCup 2025 - Salvador, Brazil'
+    },
+    {
+        image: new URL('@/assets/team/team-go2025.png', import.meta.url).href,
+        title: 'RoboCup German Open 2025 - Nuremberg, Germany'
+    },
+    {
+        image: new URL('@/assets/team/team-rc2024.png', import.meta.url).href,
+        title: 'RoboCup 2024 - Eindhoven, Netherlands'
+    },
+    {
+        image: new URL('@/assets/team/team-rc2023.jpeg', import.meta.url).href,
+        title: 'RoboCup 2023 - Bordeaux, France'
+    },
+    {
+        image: new URL('@/assets/team/team-rc2022.jpg', import.meta.url).href,
+        title: 'RoboCup 2022 - Bangkok, Thailand'
+    },
+]
+
 const row_1 = [
     {
         name: 'Prof. Daniele Nardi',
@@ -240,15 +287,36 @@ const row_4 = [
 .section-title {
     text-align: center;
     margin-top: 2rem;
-    margin-bottom: 2rem;
     font-weight: 500;
     font-size: 3rem;
     color: rgb(30, 30, 30);
 }
 
-.team-photo :deep(img) {
-    object-fit: cover;
-    object-position: center 40%;
+.team-carousel {
+    max-width: 1000px;
+    margin: 0 auto 2rem;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.team-carousel :deep(.v-carousel-item) {
+    align-items: center;
+    justify-content: center;
+}
+
+.team-photo {
+    border-radius: 10px;
+    width: 100%;
+}
+
+.photo-title {
+    text-align: center;
+    padding: 1rem;
+    font-weight: 500;
+    font-size: 1.9rem;
+    color: rgb(30, 30, 30);
+    background-color: #f1f4f3;
+    width: 100%;
 }
 
 .members-grid {
@@ -274,7 +342,7 @@ const row_4 = [
 }
 
 .member-name {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 500;
     color: rgb(30, 30, 30);
 }
@@ -298,7 +366,7 @@ const row_4 = [
 .past-members-list {
     list-style-type: disc;
     padding-left: 2rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     color: rgb(50, 50, 50);
 }
