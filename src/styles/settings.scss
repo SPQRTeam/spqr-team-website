@@ -17,3 +17,33 @@ body {
 .v-application {
   background-color: #f1f4f3 !important;
 }
+
+.cover-section {
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    width: 100vw;
+}
+
+.cover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-title {
+    color: white;
+    font-size: 10rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 100px rgba(0, 0, 0, 0.8);
+}
+@media (max-width: 600px) {
+    .cover-title {
+        font-size: 2.5rem;
+    }
+}

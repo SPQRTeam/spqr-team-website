@@ -15,7 +15,7 @@
 
     <v-container>
     
-        <div class="section-title">Team picture RoboCup 2025 - Salvador (Brazil)</div>
+        <div class="section-title">RoboCup 2025 - Salvador (Brazil)</div>
 
         <v-img
         class="team-photo"
@@ -233,35 +233,9 @@ const row_4 = [
 </script>
 
 <style scoped>
-.cover-section {
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
-}
-
-.cover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.cover-title {
-    color: white;
-    font-size: 10rem;
-    font-weight: bold;
-    text-shadow: 2px 2px 100px rgba(0, 0, 0, 0.8);
-}
-
 .cover-image :deep(img) {
-    object-position: center 30%;
+    object-position: center 30% !important;
 }
-
 
 .section-title {
     text-align: center;
@@ -331,11 +305,5 @@ const row_4 = [
 
 .past-members-list li {
     margin-bottom: 0.5rem;
-}
-
-@media (max-width: 600px) {
-    .cover-title {
-        font-size: 2.5rem;
-    }
 }
 </style>
