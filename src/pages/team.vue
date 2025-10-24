@@ -13,39 +13,50 @@
         </v-img>
     </div>
 
-    <v-container>
-    
-        <div class="section-title">Team Photos</div>
+    <div class="carousel-background-section">
+        <div 
+            class="carousel-background-blur"
+            :style="{ backgroundImage: `url(${currentPhoto})` }"
+        ></div>
+        <div class="carousel-background-gradient"></div>
+        
+        <v-container>
+            <!-- <div class="section-title">Teams</div> -->
 
-        <v-carousel
-            cycle
-            :interval="5000"
-            hide-delimiter-background
-            show-arrows="hover"
-            height="920"
-            class="team-carousel"
-        >
-            <v-carousel-item
-                v-for="(photo, i) in team_photos"
-                :key="i"
+            <v-carousel
+                cycle
+                :interval="7000"
+                hide-delimiter-background
+                show-arrows="hover"
+                height="970"
+                class="team-carousel"
+                @update:model-value="updateBackground"
             >
-            <v-img
-            :src="photo.image"
-            :alt="photo.title"
-            class="team-photo"
-            height="800"
-            contain
-            ></v-img>
-            <div class="photo-title">{{ photo.title }}</div>
-            </v-carousel-item>
-        </v-carousel>
+                <v-carousel-item
+                    v-for="(photo, i) in team_photos"
+                    :key="i"
+                >
+                <div class="photo-title">{{ photo.title }}</div>
+                <v-img
+                :src="photo.image"
+                :alt="photo.title"
+                class="team-photo"
+                height="800"
+                contain
+                ></v-img>
+                </v-carousel-item>
+            </v-carousel>
+        </v-container>
+    </div>
 
-        <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider>
+    <v-container>
+
+        <!-- <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider> -->
 
         <div class="section-title">Members</div>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="2" v-for="member in row_1" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" v-for="member in row_1" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -60,7 +71,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="2" v-for="member in row_2" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" v-for="member in row_2" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -75,7 +86,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="2" v-for="member in row_3" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" v-for="member in row_3" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -90,7 +101,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="2" v-for="member in row_4" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" v-for="member in row_4" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -174,6 +185,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 
 const team_photos = [
     {
@@ -277,6 +289,12 @@ const row_4 = [
         image: new URL('@/assets/team/DamianoImola.jpg', import.meta.url).href
     }
 ]
+
+const currentPhoto = ref(team_photos[0].image)
+
+const updateBackground = (index) => {
+    currentPhoto.value = team_photos[index].image
+}
 </script>
 
 <style scoped>
@@ -284,16 +302,53 @@ const row_4 = [
     object-position: center 30% !important;
 }
 
+.carousel-background-section {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2rem;
+    overflow: hidden;
+}
+
+.carousel-background-blur {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    right: -50px;
+    bottom: -50px;
+    background-size: cover;
+    background-position: center;
+    filter: blur(25px);
+    transform: scale(1.2);
+    z-index: 0;
+    transition: background-image 0.8s ease-in-out;
+}
+
+.carousel-background-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(241, 244, 243, 0.2) 60%, rgba(241, 244, 243, 0.7) 90%, #f1f4f3 100%);
+    z-index: 1;
+}
+
+.carousel-background-section .v-container {
+    position: relative;
+    z-index: 2;
+}
+
 .section-title {
     text-align: center;
     margin-top: 2rem;
+    margin-bottom: 2rem;
     font-weight: 500;
-    font-size: 3rem;
+    font-size: 4rem;
     color: rgb(30, 30, 30);
 }
 
 .team-carousel {
-    max-width: 1000px;
+    max-width: 1500px;
     margin: 0 auto 2rem;
     border-radius: 10px;
     overflow: hidden;
@@ -313,16 +368,17 @@ const row_4 = [
     text-align: center;
     padding: 1rem;
     font-weight: 500;
-    font-size: 1.9rem;
-    color: rgb(30, 30, 30);
-    background-color: #f1f4f3;
+    font-size: 2.5rem;
+    color: rgb(255, 255, 255);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     width: 100%;
 }
 
 .members-grid {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    max-width: 1800px;
+    max-width: 1900px;
     margin-left: auto;
     margin-right: auto;
 }
