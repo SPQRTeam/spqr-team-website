@@ -28,7 +28,7 @@
                 :interval="5000"
                 hide-delimiter-background
                 show-arrows="hover"
-                height="970"
+                height="1000"
                 class="team-carousel"
                 @update:model-value="updateBackground"
             >
