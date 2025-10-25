@@ -24,7 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/events': RouteRecordInfo<'/events', '/events', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
     '/press': RouteRecordInfo<'/press', '/press', Record<never, never>, Record<never, never>>,
-    '/research': RouteRecordInfo<'/research', '/research', Record<never, never>, Record<never, never>>,
+    '/publications': RouteRecordInfo<'/publications', '/publications', Record<never, never>, Record<never, never>>,
     '/sponsors': RouteRecordInfo<'/sponsors', '/sponsors', Record<never, never>, Record<never, never>>,
     '/students': RouteRecordInfo<'/students', '/students', Record<never, never>, Record<never, never>>,
     '/team': RouteRecordInfo<'/team', '/team', Record<never, never>, Record<never, never>>,
@@ -65,8 +65,8 @@ declare module 'vue-router/auto-routes' {
       routes: '/press'
       views: never
     }
-    'src/pages/research.vue': {
-      routes: '/research'
+    'src/pages/publications.vue': {
+      routes: '/publications'
       views: never
     }
     'src/pages/sponsors.vue': {

@@ -11,7 +11,15 @@
     </template>
 
     <v-app-bar-title>
-        <v-btn size="x-large" variant="text" to="/"> SPQR Team </v-btn>
+        <router-link to="/" class="logo-link">
+            <v-img
+                src="/logos/logo-text.png"
+                alt="SPQR Team Logo"
+                max-height="30"
+                max-width="200"
+                contain
+            ></v-img>
+        </router-link>
     </v-app-bar-title>
 
     <template v-slot:append>
@@ -19,7 +27,7 @@
             <v-btn to="/team">Team</v-btn>
             <v-btn to="/events">Events</v-btn>
             <v-btn to="/press">Press</v-btn>
-            <v-btn to="/research">Research</v-btn>
+            <v-btn to="/publications">publications</v-btn>
             <v-btn to="/code-releases">Code Releases</v-btn>
             <v-btn to="/media">Media</v-btn>
             <v-btn to="/students">Students</v-btn>
@@ -57,7 +65,7 @@ const menuItems = [
     { title: 'Team', path: '/team' },
     { title: 'Events', path: '/events' },
     { title: 'Press', path: '/press' },
-    { title: 'Research', path: '/research' },
+    { title: 'publications', path: '/publications' },
     { title: 'Code Releases', path: '/code-releases' },
     { title: 'Media', path: '/media' },
     { title: 'Students', path: '/students' },
@@ -65,3 +73,17 @@ const menuItems = [
     { title: 'Contacts', path: '/contacts' }
 ]
 </script>
+
+<style scoped>
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.logo-link:hover {
+    opacity: 0.85;
+}
+</style>
