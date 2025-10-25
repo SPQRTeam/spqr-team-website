@@ -84,28 +84,28 @@ import { ref, reactive } from 'vue'
 import leftreel from '@/assets/home/ig/igreel-mf2025.mp4'
 import centerreel from '@/assets/home/ig/igreel-whrg2025.mp4'
 import rightreel from '@/assets/home/ig/igreel-ukvisit2025.mp4'
-import mfcover from '@/assets/home/ig/igreel-mf2025-cover.png'
-import whrgcover from '@/assets/home/ig/igreel-whrg2025-cover.png'
-import ukcover from '@/assets/home/ig/igreel-ukvisit2025-cover.png'
+import leftcover from '@/assets/home/ig/igreel-mf2025-cover.png'
+import centercover from '@/assets/home/ig/igreel-whrg2025-cover.png'
+import rightcover from '@/assets/home/ig/igreel-ukvisit2025-cover.png'
 
 const instagramPosts = [
   {
     name: 'Maker Faire 2025',
     link: 'https://www.instagram.com/reel/DQJm6d4igGw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     videoSrc: leftreel,
-    coverSrc: mfcover
+    coverSrc: leftcover
   },
   {
     name: 'World Humanoid Robot Games 2025',
     link: 'https://www.instagram.com/reel/DNilL0cCyBG/?utm_source=ig_web_copy_link',
     videoSrc: centerreel,
-    coverSrc: whrgcover
+    coverSrc: centercover
   },
   {
     name: 'UK Foreign Secretary Visit',
     link: 'https://www.instagram.com/reel/DIRNGR5twDn/?utm_source=ig_web_copy_link',
     videoSrc: rightreel,
-    coverSrc: ukcover
+    coverSrc: rightcover
   },
 ]
 
