@@ -25,7 +25,7 @@
 
             <v-carousel
                 cycle
-                :interval="7000"
+                :interval="5000"
                 hide-delimiter-background
                 show-arrows="hover"
                 height="970"
@@ -56,7 +56,7 @@
         <div class="section-title">Members</div>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" v-for="member in row_1" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_1" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -71,7 +71,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" v-for="member in row_2" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_2" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -86,7 +86,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" v-for="member in row_3" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_3" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
@@ -101,7 +101,7 @@
         </v-row>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" v-for="member in row_4" :key="member.name" class="member-col">
+            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_4" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
