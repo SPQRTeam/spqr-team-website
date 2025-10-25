@@ -21,9 +21,12 @@
       </p>
     </div>
 
-    <!-- Instagram Reels Section -->
-    <div style="margin-top: 4rem; margin-bottom: 4rem;">
-      <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 3rem;">
+  </v-container>
+
+  <!-- Instagram Reels Section -->
+  <div class="instagram-section">
+    <v-container>
+      <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 1rem;">
         Latest from Instagram
       </h2>
       
@@ -74,9 +77,9 @@
           </div>
         </v-col>
       </v-row>
-    </div>
+    </v-container>
+  </div>
 
-  </v-container>
 </template>
 
 <script setup>
@@ -136,6 +139,13 @@ const handleMouseLeave = (index) => {
 
 
 <style scoped>
+.instagram-section {
+  padding: 3rem 0;
+  background: radial-gradient(ellipse at center, rgba(131, 58, 180, 0.1) 0%, rgba(253, 29, 29, 0.15) 10%, rgba(252, 176, 69, 0.03) 80%, #f1f4f3 100%);
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
 .instagram-reels-row {
   max-width: 1000px;
   margin: 0 auto;
