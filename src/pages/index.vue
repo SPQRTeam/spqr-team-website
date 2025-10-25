@@ -30,15 +30,18 @@
         Latest from Instagram
       </h2>
 
-      <div style="text-align: center; margin-bottom: 2rem;">
-        <v-btn
+      <div style="text-align: center; margin-bottom: 0.5rem;">
+        <a 
           href="https://www.instagram.com/spqrteam/"
           target="_blank"
-          class="instagram-button"
-          prepend-icon="mdi-instagram"
+          class="instagram-icon-link"
         >
-          Follow Us
-        </v-btn>
+          <img 
+            src="/icons/icon-instagram.png" 
+            alt="Follow us on Instagram"
+            class="instagram-icon"
+          />
+        </a>
       </div>
       
       <v-row justify="center" class="instagram-reels-row">
@@ -151,26 +154,29 @@ const handleMouseLeave = (index) => {
 <style scoped>
 .instagram-section {
   padding: 3rem 0;
-  background: radial-gradient(ellipse at center, rgba(131, 58, 180, 0.1) 0%, rgba(253, 29, 29, 0.15) 10%, rgba(252, 176, 69, 0.03) 80%, #f1f4f3 100%);
+  background: radial-gradient(ellipse at center, rgba(180, 130, 213, 0.1) 0%, rgba(189, 18, 18, 0.127) 10%, rgba(211, 176, 127, 0.111) 40%, #f1f4f3 100%);
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
-.instagram-button {
-  background: linear-gradient(135deg, #a257d4a5 0%, #aa3838da 50%, #f7c47bd3 100%) !important;
-  color: rgb(255, 255, 255) !important;
-  font-weight: 700;
-  text-transform: none;
-  font-size: 1rem;
-  padding: 0.5rem 2rem;
-  border-radius: 25px;
-  box-shadow: 0 4px 15px rgba(131, 58, 180, 0.2);
-  transition: all 0.3s ease;
+.instagram-icon-link {
+  display: inline-block;
+  transition: transform 0.3s ease;
 }
 
-.instagram-button:hover {
-  box-shadow: 0 6px 20px rgba(131, 58, 180, 0.3);
-  transform: translateY(-1px);
+.instagram-icon-link:hover {
+  transform: translateY(-3px);
+}
+
+.instagram-icon {
+  width: 50px;
+  height: 50px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 8px rgb(219, 202, 167));
+}
+
+.instagram-icon:hover {
+  filter: drop-shadow(0 6px 12px rgb(255, 255, 255));
 }
 
 .instagram-reels-row {
