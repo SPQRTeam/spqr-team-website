@@ -5,7 +5,7 @@
             class="cover-image"
             :style="{ height: '350px' }"            
             src="@/assets/publications/cover.png"
-            alt="publications Header Cover"
+            alt="Publications Header Cover"
             cover
         >
             <div class="cover-overlay">

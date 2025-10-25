@@ -28,7 +28,7 @@
             <v-btn to="/events">Events</v-btn>
             <v-btn to="/press">Press</v-btn>
             <v-btn to="/publications">publications</v-btn>
-            <v-btn to="/code-releases">Code Releases</v-btn>
+            <v-btn to="/codebase">Codebase</v-btn>
             <v-btn to="/media">Media</v-btn>
             <v-btn to="/students">Students</v-btn>
             <v-btn to="/sponsors">Sponsors</v-btn>
@@ -66,7 +66,7 @@ const menuItems = [
     { title: 'Events', path: '/events' },
     { title: 'Press', path: '/press' },
     { title: 'publications', path: '/publications' },
-    { title: 'Code Releases', path: '/code-releases' },
+    { title: 'Codebase', path: '/codebase' },
     { title: 'Media', path: '/media' },
     { title: 'Students', path: '/students' },
     { title: 'Sponsors', path: '/sponsors' },
