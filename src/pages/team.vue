@@ -3,7 +3,7 @@
         <v-img
             class="cover-image"
             :style="{ height: '350px' }"
-            src="/spqr-team-website/assets/team/cover.png"
+            src="/assets/team/cover.png"
             alt="Team Header Cover"
             cover
         >
@@ -187,33 +187,35 @@
 <script setup>
 import { ref } from 'vue'
 
+const baseUrl = import.meta.env.BASE_URL
+
 const team_photos = [
     {
-        image: '/spqr-team-website/assets/team/team-mf2025.jpg',
+        image: baseUrl + 'assets/team/team-mf2025.jpg',
         title: 'Maker Faire 2025 - Rome, Italy'
     },
     {
-        image: '/spqr-team-website/assets/team/team-whrg2025.jpg',
+        image: baseUrl + 'assets/team/team-whrg2025.jpg',
         title: 'World Humanoid Robot Games 2025 - Beijing, China'
     },
     {
-        image: '/spqr-team-website/assets/team/team-rc2025.jpg',
+        image: baseUrl + 'assets/team/team-rc2025.jpg',
         title: 'RoboCup 2025 - Salvador, Brazil'
     },
     {
-        image: '/spqr-team-website/assets/team/team-go2025.png',
+        image: baseUrl + 'assets/team/team-go2025.png',
         title: 'RoboCup German Open 2025 - Nuremberg, Germany'
     },
     {
-        image: '/spqr-team-website/assets/team/team-rc2024.png',
+        image: baseUrl + 'assets/team/team-rc2024.png',
         title: 'RoboCup 2024 - Eindhoven, Netherlands'
     },
     {
-        image: '/spqr-team-website/assets/team/team-rc2023.jpeg',
+        image: baseUrl + 'assets/team/team-rc2023.jpeg',
         title: 'RoboCup 2023 - Bordeaux, France'
     },
     {
-        image: '/spqr-team-website/assets/team/team-rc2022.jpg',
+        image: baseUrl + 'assets/team/team-rc2022.jpg',
         title: 'RoboCup 2022 - Bangkok, Thailand'
     },
 ]
@@ -221,72 +223,72 @@ const team_photos = [
 const row_1 = [
     {
         name: 'Prof. Daniele Nardi',
-        image: '/spqr-team-website/assets/team/Nardi.jpg'
+        image: baseUrl + 'assets/team/Nardi.jpg'
     },
     {
         name: 'Prof. Luca Iocchi',
-        image: '/spqr-team-website/assets/team/Iocchi.jpg'
+        image: baseUrl + 'assets/team/Iocchi.jpg'
     },
     {
         name: 'Dr. Vincenzo Suriani - Team Leader',
-        image: '/spqr-team-website/assets/team/Suriani.jpg'
+        image: baseUrl + 'assets/team/Suriani.jpg'
     },
     {
         name: 'Prof. Domenico Bloisi',
-        image: '/spqr-team-website/assets/team/Bloisi.jpg'
+        image: baseUrl + 'assets/team/Bloisi.jpg'
     }
 ]
 
 const row_2 = [
     {
         name: 'Daniele Affinita',
-        image: '/spqr-team-website/assets/team/DanieleAffinita.jpg'
+        image: baseUrl + 'assets/team/DanieleAffinita.jpg'
     },
     {
         name: 'Flavio Maiorana',
-        image: '/spqr-team-website/assets/team/FlavioMaiorana.jpg'
+        image: baseUrl + 'assets/team/FlavioMaiorana.jpg'
     },
     {
         name: 'Flavio Volpi',
-        image: '/spqr-team-website/assets/team/FlavioVolpi.jpg'
+        image: baseUrl + 'assets/team/FlavioVolpi.jpg'
     },
     {
         name: 'Francesco Petri',
-        image: '/spqr-team-website/assets/team/FrancescoPetri.jpg'
+        image: baseUrl + 'assets/team/FrancescoPetri.jpg'
     }
 ]
 
 const row_3 = [
     {
         name: 'Valerio Spagnoli',
-        image: '/spqr-team-website/assets/team/ValerioSpagnoli.jpg'
+        image: baseUrl + 'assets/team/ValerioSpagnoli.jpg'
     },
     {
         name: 'Michele Brienza',
-        image: '/spqr-team-website/assets/team/MicheleBrienza.jpg'
+        image: baseUrl + 'assets/team/MicheleBrienza.jpg'
     },
     {
         name: 'Eugenio Bugli',
-        image: '/spqr-team-website/assets/team/EugenioBugli.jpg'
+        image: baseUrl + 'assets/team/EugenioBugli.jpg'
     },
     {
         name: 'Filippo Ansalone',
-        image: '/spqr-team-website/assets/team/FilippoAnsalone.jpg'
+        image: baseUrl + 'assets/team/FilippoAnsalone.jpg'
     }
 ]
 
 const row_4 = [
     {
         name: 'Can Lin',
-        image: '/spqr-team-website/assets/team/CanLin.jpg'
+        image: baseUrl + 'assets/team/CanLin.jpg'
     },
     {
         name: 'Jacopo Tedeschi',
-        image: '/spqr-team-website/assets/team/JacopoTedeschi.jpg'
+        image: baseUrl + 'assets/team/JacopoTedeschi.jpg'
     },
     {
         name: 'Damniano Imola',
-        image: '/spqr-team-website/assets/team/DamianoImola.jpg'
+        image: baseUrl + 'assets/team/DamianoImola.jpg'
     }
 ]
 

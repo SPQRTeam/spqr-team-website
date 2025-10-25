@@ -58,8 +58,9 @@
   import { useDisplay } from 'vuetify';
 
   const display = useDisplay();
-  const logoSapienza = '/spqr-team-website/assets/sapienza_logos/logo_sapienza_white.png';
-  const logoSapienzaSmall = '/spqr-team-website/assets/sapienza_logos/logo_sapienza_white_small.png';
+  const baseUrl = import.meta.env.BASE_URL;
+  const logoSapienza = baseUrl + 'assets/sapienza_logos/logo_sapienza_white.png';
+  const logoSapienzaSmall = baseUrl + 'assets/sapienza_logos/logo_sapienza_white_small.png';
   
   const currentLogo = computed(() => {
     return display.smAndDown.value ? logoSapienzaSmall : logoSapienza;

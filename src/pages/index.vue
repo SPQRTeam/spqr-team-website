@@ -2,7 +2,7 @@
   <v-container>
     <v-img
       :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
-      src="/spqr-team-website/assets/home/cover.png"
+      src="/assets/home/cover.png"
       alt="SPQR Team Cover"
     ></v-img>
 
@@ -176,15 +176,15 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
-import leftreel from '/spqr-team-website/assets/home/ig/igreel-mf2025.mp4'
-import centerreel from '/spqr-team-website/assets/home/ig/igreel-whrg2025.mp4'
-import rightreel from '/spqr-team-website/assets/home/ig/igreel-ukvisit2025.mp4'
-import leftcover from '/spqr-team-website/assets/home/ig/igreel-mf2025-cover.png'
-import centercover from '/spqr-team-website/assets/home/ig/igreel-whrg2025-cover.png'
-import rightcover from '/spqr-team-website/assets/home/ig/igreel-ukvisit2025-cover.png'
-import boosterLogo from '/spqr-team-website/assets/sponsor/current/booster.png'
-import prismaLogo from '/spqr-team-website/assets/sponsor/current/prisma.png'
-import seewebLogo from '/spqr-team-website/assets/sponsor/current/seeweb.png'
+import leftreel from '/assets/home/ig/igreel-mf2025.mp4'
+import centerreel from '/assets/home/ig/igreel-whrg2025.mp4'
+import rightreel from '/assets/home/ig/igreel-ukvisit2025.mp4'
+import leftcover from '/assets/home/ig/igreel-mf2025-cover.png'
+import centercover from '/assets/home/ig/igreel-whrg2025-cover.png'
+import rightcover from '/assets/home/ig/igreel-ukvisit2025-cover.png'
+import boosterLogo from '/assets/sponsor/current/booster.png'
+import prismaLogo from '/assets/sponsor/current/prisma.png'
+import seewebLogo from '/assets/sponsor/current/seeweb.png'
 
 const instagramPosts = [
   {
@@ -254,7 +254,7 @@ const handleImageError = (event) => {
 
 const loadPressData = async () => {
   try {
-    const response = await fetch('/spqr-team-website/assets/press/press.csv')
+    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.csv')
     const csvText = await response.text()
     const lines = csvText.split('\n').slice(1) // Skip header
     

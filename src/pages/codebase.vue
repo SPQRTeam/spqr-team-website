@@ -3,7 +3,7 @@
         <v-img
             class="cover-image"
             :style="{ height: '350px' }"
-            src="/spqr-team-website/assets/codebase/cover.png"
+            src="/assets/codebase/cover.png"
             alt="Codebase Header Cover"
             cover
         >
@@ -83,26 +83,28 @@
 
 <script setup>
 
+const baseUrl = import.meta.env.BASE_URL
+
 const booster_repositories = [
     {
         name: 'Circus',
         description: 'SPQR simulator for Booster Robotics robots.',
         link: 'https://github.com/DaniAffCH/circus',
-        cover: '/spqr-team-website/assets/codebase/circus-maximus-left.jpg'
+        cover: baseUrl + 'assets/codebase/circus-maximus-left.jpg'
     },
 
     {
         name: 'Maximus',
         description: 'SPQR Framework for Booster Robotics robots.',
         link: 'https://github.com/SPQRTeam/spqrbooster2026.git',
-        cover: '/spqr-team-website/assets/codebase/circus-maximus-right.jpg'
+        cover: baseUrl + 'assets/codebase/circus-maximus-right.jpg'
     },
 
     {
         name: 'Colosseum',
         description: 'SPQR enviroment for Reinforcement Learning.',
         link: 'https://github.com/neverorfrog/colosseum.git',
-        cover: '/spqr-team-website/assets/codebase/colosseum.jpg'
+        cover: baseUrl + 'assets/codebase/colosseum.jpg'
     }
 ]
 
