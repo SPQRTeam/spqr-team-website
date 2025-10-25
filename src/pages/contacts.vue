@@ -4,7 +4,7 @@
         <v-img
             class="cover-image"
             :style="{ height: '350px' }"            
-            src="@/assets/contacts/cover.jpg"
+            src="/spqr-team-website/assets/contacts/cover.jpg"
             alt="Contacts Header Cover"
             cover
         >

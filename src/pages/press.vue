@@ -3,7 +3,7 @@
         <v-img
             class="cover-image"
             :style="{ height: '350px' }"            
-            src="@/assets/press/cover.png"
+            src="/spqr-team-website/assets/press/cover.png"
             alt="Press Header Cover"
             cover
         >
@@ -81,7 +81,7 @@ const handleImageError = (event) => {
 
 const loadPressData = async () => {
     try {
-        const response = await fetch('/spqr-team-website/press.csv')
+        const response = await fetch('/spqr-team-website/assets/press/press.csv')
         const csvText = await response.text()
         const lines = csvText.split('\n').slice(1) // Skip header
         

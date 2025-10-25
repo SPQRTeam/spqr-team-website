@@ -2,8 +2,8 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            :style="{ height: '350px' }"            
-            src="@/assets/codebase/cover.png"
+            :style="{ height: '350px' }"
+            src="/spqr-team-website/assets/codebase/cover.png"
             alt="Codebase Header Cover"
             cover
         >
@@ -15,7 +15,7 @@
 
     <v-container class="py-8">
         
-        <div class="section-title">Code base @ Booster Robots</div>
+        <div class="section-title">Codebase @ Booster Robots</div>
 
         <v-row justify="center" class="mb-8">
             <v-col
@@ -48,7 +48,7 @@
         <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider>
 
         <!-- NAO Repositories Section -->
-        <div class="section-title">Code base @ Nao Robots</div>
+        <div class="section-title">Codebase @ Nao Robots</div>
         
         <v-row justify="center" class="nao-grid">
             <v-col
@@ -88,21 +88,21 @@ const booster_repositories = [
         name: 'Circus',
         description: 'SPQR simulator for Booster Robotics robots.',
         link: 'https://github.com/DaniAffCH/circus',
-        cover: new URL('@/assets/codebase/circus-maximus-left.jpg', import.meta.url).href
+        cover: '/spqr-team-website/assets/codebase/circus-maximus-left.jpg'
     },
 
     {
         name: 'Maximus',
         description: 'SPQR Framework for Booster Robotics robots.',
         link: 'https://github.com/SPQRTeam/spqrbooster2026.git',
-        cover: new URL('@/assets/codebase/circus-maximus-right.jpg', import.meta.url).href
+        cover: '/spqr-team-website/assets/codebase/circus-maximus-right.jpg'
     },
 
     {
         name: 'Colosseum',
         description: 'SPQR enviroment for Reinforcement Learning.',
         link: 'https://github.com/neverorfrog/colosseum.git',
-        cover: new URL('@/assets/codebase/colosseum.jpg', import.meta.url).href
+        cover: '/spqr-team-website/assets/codebase/colosseum.jpg'
     }
 ]
 
