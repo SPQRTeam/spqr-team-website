@@ -94,6 +94,21 @@
 const papers = [
 
     {
+        title: 'Self-supervised Feature Extraction for Enhanced Ball Detection on Soccer Robots',
+        year: 2025,
+        authors: 'C. Lin, D. Affinita, M. Zimmatore, D. Nardi, D. D. Bloisi, V. Suriani',
+        abstract: 'Robust and accurate ball detection is a critical component for autonomous humanoid soccer robots, particularly in dynamic and challenging environments such as RoboCup outdoor fields. However, traditional supervised approaches require extensive manual annotation, which is costly and time-intensive. To overcome this problem, we present a self-supervised learning framework for domain-adaptive feature extraction to enhance ball detection performance. The proposed approach leverages a general-purpose pretrained model to generate pseudo-labels, which are then used in a suite of self-supervised pretext tasks -- including colorization, edge detection, and triplet loss -- to learn robust visual features without relying on manual annotations. Additionally, a model-agnostic meta-learning (MAML) strategy is incorporated to ensure rapid adaptation to new deployment scenarios with minimal supervision. A new dataset comprising 10,000 labeled images from outdoor RoboCup SPL matches is introduced, used to validate the method, and made available to the community. Experimental results demonstrate that the proposed pipeline outperforms baseline models in terms of accuracy, F1 score, and IoU, while also exhibiting faster convergence.',
+        cover: new URL('@/assets/publications/BallDetection.png', import.meta.url).href,
+        extras: 'RoboCup Symposium Best Paper Award 2025',
+        links: [
+            {
+                link: 'https://arxiv.org/abs/2506.16821',
+                site: '',
+            },
+        ],
+    },
+
+    {
         title: 'LLCoach: Generating Robot Soccer Behaviors using Multi-Role Large Language Models',
         year: 2024,
         authors: 'M. Brienza, E. Musumeci, V. Suriani, D. Affinita, A. Pennisi, D. Nardi, D. D. Bloisi',
@@ -170,7 +185,7 @@ const papers = [
 
 .paper-cover {
     border-radius: 8px;
-    margin-top: auto;
+    margin: auto;
 }
 
 .paper-title {
