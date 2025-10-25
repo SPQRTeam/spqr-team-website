@@ -18,7 +18,8 @@
             <v-col 
                 cols="12" 
                 sm="6" 
-                md="4" 
+                md="4"
+                lg="3" 
                 v-for="event in events" 
                 :key="event.name"
                 class="event-col"
