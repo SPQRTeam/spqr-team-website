@@ -94,10 +94,54 @@
     </v-container>
   </div>
 
+  <!-- Press Section -->
+  <div class="press-section">
+    <v-container>
+      <div>
+        <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
+          Latest Press Coverage
+        </h2>
+        
+        <v-row justify="center" style="max-width: 1000px; margin: 0 auto;">
+        <v-col 
+          v-for="(article, index) in pressArticles" 
+          :key="index"
+          cols="12" 
+          sm="6" 
+          md="4"
+        >
+          <v-card 
+            :href="article.link"
+            target="_blank"
+            class="press-card"
+            elevation="3"
+          >
+            <div class="press-card-layout">
+              <div class="press-preview">
+                <img 
+                  :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
+                  :alt="`${article.source} preview`"
+                  class="press-preview-img"
+                  @error="handleImageError"
+                />
+              </div>
+              <v-card-text class="press-card-content">
+                <div class="press-date">{{ article.date }}</div>
+                <div class="press-source">{{ article.source }}</div>
+                <v-icon class="press-icon">mdi-open-in-new</v-icon>
+              </v-card-text>
+            </div>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
+    </v-container>
+  </div>
+
 </template>
 
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted } from 'vue'
 import leftreel from '@/assets/home/ig/igreel-mf2025.mp4'
 import centerreel from '@/assets/home/ig/igreel-whrg2025.mp4'
 import rightreel from '@/assets/home/ig/igreel-ukvisit2025.mp4'
@@ -128,6 +172,7 @@ const instagramPosts = [
 
 const hoveredIndex = reactive({})
 const videoRefs = ref([])
+const pressArticles = ref([])
 
 const handleMouseEnter = (index) => {
   hoveredIndex[index] = true
@@ -147,6 +192,34 @@ const handleMouseLeave = (index) => {
     video.muted = true
   }
 }
+
+const handleImageError = (event) => {
+  event.target.style.display = 'none'
+}
+
+const loadPressData = async () => {
+  try {
+    const response = await fetch('/src/assets/press/press.csv')
+    const csvText = await response.text()
+    const lines = csvText.split('\n').slice(1) // Skip header
+    
+    const articles = lines
+      .filter(line => line.trim())
+      .map(line => {
+        const [date, source, link] = line.split(',')
+        return { date: date.trim(), source: source.trim(), link: link.trim() }
+      })
+      .slice(0, 6) // Get top 6
+    
+    pressArticles.value = articles
+  } catch (error) {
+    console.error('Error loading press data:', error)
+  }
+}
+
+onMounted(() => {
+  loadPressData()
+})
 </script>
 
 
@@ -156,7 +229,11 @@ const handleMouseLeave = (index) => {
   padding: 3rem 0;
   background: radial-gradient(ellipse at center, rgba(180, 130, 213, 0.1) 0%, rgba(189, 18, 18, 0.127) 10%, rgba(211, 176, 127, 0.111) 40%, #f1f4f3 100%);
   margin-top: 4rem;
-  margin-bottom: 4rem;
+}
+
+.press-section {
+  padding: 3rem 0;
+  background: radial-gradient(ellipse at center, rgba(100, 150, 220, 0.12) 0%, rgba(50, 120, 200, 0.08) 30%, rgba(80, 140, 210, 0.05) 60%, transparent 100%);
 }
 
 .instagram-icon-link {
@@ -273,5 +350,104 @@ const handleMouseLeave = (index) => {
   font-size: 1rem;
   font-weight: 600;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.press-card {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-left: 3px solid #822433;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.press-card-layout {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+
+.press-preview {
+  width: 120px;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.press-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.press-card:hover .press-preview-img {
+  opacity: 1;
+}
+
+.press-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 120px;
+  width: calc(100% - 120px);
+  height: 100%;
+  background: linear-gradient(135deg, rgba(130, 36, 51, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.press-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px #202f5e44 !important;
+  border-left-width: 4px;
+}
+
+.press-card-content {
+  position: relative;
+  z-index: 1;
+  padding: 12px 16px !important;
+  flex: 1;
+}
+
+.press-date {
+  font-size: 0.75rem;
+  color: #666;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.press-source {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #822433;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 0.3rem;
+}
+
+.press-icon {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  color: #822433;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.press-card:hover .press-icon {
+  opacity: 1;
+  transform: translate(3px, -3px);
 }
 </style>
