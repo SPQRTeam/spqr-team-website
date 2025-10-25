@@ -15,46 +15,65 @@
 
     <v-container>
         <div style="margin-top: 4rem; margin-bottom: 4rem;">
-            <v-row justify="center" style="max-width: 1400px; margin: 0 auto;">
-                <v-col 
-                    v-for="(article, index) in pressArticles" 
-                    :key="index"
-                    cols="12" 
-                    sm="6" 
-                    md="4"
-                >
-                    <v-card 
-                        :href="article.link"
-                        target="_blank"
-                        class="press-card"
-                        elevation="3"
+            <div v-for="year in sortedYears" :key="year" class="year-section">
+                <h2 class="year-title">{{ year }}</h2>
+                <v-row justify="center" style="max-width: 1400px; margin: 0 auto;">
+                    <v-col 
+                        v-for="(article, index) in articlesByYear[year]" 
+                        :key="index"
+                        cols="12" 
+                        sm="6" 
+                        md="4"
                     >
-                        <div class="press-card-layout">
-                            <div class="press-preview">
-                                <img 
-                                    :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
-                                    :alt="`${article.source} preview`"
-                                    class="press-preview-img"
-                                    @error="handleImageError"
-                                />
+                        <v-card 
+                            :href="article.link"
+                            target="_blank"
+                            class="press-card"
+                            elevation="3"
+                        >
+                            <div class="press-card-layout">
+                                <div class="press-preview">
+                                    <img 
+                                        :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
+                                        :alt="`${article.source} preview`"
+                                        class="press-preview-img"
+                                        @error="handleImageError"
+                                    />
+                                </div>
+                                <v-card-text class="press-card-content">
+                                    <div class="press-date">{{ article.date }}</div>
+                                    <div class="press-source">{{ article.source }}</div>
+                                    <v-icon class="press-icon">mdi-open-in-new</v-icon>
+                                </v-card-text>
                             </div>
-                            <v-card-text class="press-card-content">
-                                <div class="press-date">{{ article.date }}</div>
-                                <div class="press-source">{{ article.source }}</div>
-                                <v-icon class="press-icon">mdi-open-in-new</v-icon>
-                            </v-card-text>
-                        </div>
-                    </v-card>
-                </v-col>
-            </v-row>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </div>
         </div>
     </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const pressArticles = ref([])
+
+const articlesByYear = computed(() => {
+    const grouped = {}
+    pressArticles.value.forEach(article => {
+        const year = article.year
+        if (!grouped[year]) {
+            grouped[year] = []
+        }
+        grouped[year].push(article)
+    })
+    return grouped
+})
+
+const sortedYears = computed(() => {
+    return Object.keys(articlesByYear.value).sort((a, b) => b - a)
+})
 
 const handleImageError = (event) => {
     event.target.style.display = 'none'
@@ -70,7 +89,15 @@ const loadPressData = async () => {
             .filter(line => line.trim())
             .map(line => {
                 const [date, source, link] = line.split(',')
-                return { date: date.trim(), source: source.trim(), link: link.trim() }
+                const dateStr = date.trim()
+                // Extract year from date format DD/MM/YYYY
+                const year = dateStr.split('/')[2]
+                return { 
+                    date: dateStr, 
+                    source: source.trim(), 
+                    link: link.trim(),
+                    year: year
+                }
             })
         
         pressArticles.value = articles
@@ -87,6 +114,23 @@ onMounted(() => {
 <style scoped>
 .cover-image :deep(img) {
     object-position: center 90% !important;
+}
+
+.year-section {
+    margin-bottom: 4rem;
+}
+
+.year-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #822433;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #822433;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .press-card {

@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-img
-      :style="{ 'max-height': '250px' }"
+      :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
       src="@/assets/home/cover.png"
       alt="SPQR Team Cover"
     ></v-img>
@@ -138,6 +138,40 @@
     </v-container>
   </div>
 
+  <!-- Sponsor & Partners Section -->
+  <div class="sponsor-section">
+    <v-container>
+      <div>
+        <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem; font-style: italic;">
+          Our Sponsors & Partners
+        </h2>
+        
+        <v-row justify="center" align="center" class="sponsors-row">
+          <v-col
+            v-for="sponsor in sponsors"
+            :key="sponsor.name"
+            cols="12"
+            sm="7"
+            md="4"
+            class="d-flex justify-center"
+          >
+            <a 
+              :href="sponsor.link"
+              target="_blank"
+              class="sponsor-logo-wrapper"
+            >
+              <img
+                :src="sponsor.logo"
+                :alt="sponsor.name"
+                class="sponsor-logo"
+              />
+            </a>
+          </v-col>
+        </v-row>
+    </div>
+    </v-container>
+  </div>
+
 </template>
 
 <script setup>
@@ -148,6 +182,9 @@ import rightreel from '@/assets/home/ig/igreel-ukvisit2025.mp4'
 import leftcover from '@/assets/home/ig/igreel-mf2025-cover.png'
 import centercover from '@/assets/home/ig/igreel-whrg2025-cover.png'
 import rightcover from '@/assets/home/ig/igreel-ukvisit2025-cover.png'
+import boosterLogo from '@/assets/sponsor/current/booster.png'
+import prismaLogo from '@/assets/sponsor/current/prisma.png'
+import seewebLogo from '@/assets/sponsor/current/seeweb.png'
 
 const instagramPosts = [
   {
@@ -168,6 +205,24 @@ const instagramPosts = [
     videoSrc: rightreel,
     coverSrc: rightcover
   },
+]
+
+const sponsors = [
+  {
+    name: 'Booster',
+    logo: boosterLogo,
+    link: 'https://www.booster.tech/'
+  },
+  {
+    name: 'Prisma',
+    logo: prismaLogo,
+    link: 'https://www.prismacompany.it/'
+  },
+  {
+    name: 'Seeweb',
+    logo: seewebLogo,
+    link: 'https://www.seeweb.it/'
+  }
 ]
 
 const hoveredIndex = reactive({})
@@ -221,8 +276,6 @@ onMounted(() => {
   loadPressData()
 })
 </script>
-
-
 
 <style scoped>
 .instagram-section {
@@ -449,5 +502,44 @@ onMounted(() => {
 .press-card:hover .press-icon {
   opacity: 1;
   transform: translate(3px, -3px);
+}
+
+.sponsor-section {
+  padding: 3rem 0;
+  background: linear-gradient(180deg, rgba(17, 124, 62, 0.03) 0%, rgba(105, 208, 74, 0.08) 10%, rgba(130, 124, 36, 0.03) 100%);
+}
+
+.sponsors-row {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.sponsor-logo-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.sponsor-logo-wrapper:hover {
+  transform: translateY(-5px);
+}
+
+.sponsor-logo {
+  max-width: 300px;
+  max-height: 120px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: grayscale(20%);
+  transition: all 0.3s ease;
+}
+
+.sponsor-logo:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 </style>
