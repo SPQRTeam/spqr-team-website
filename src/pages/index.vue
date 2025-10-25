@@ -254,7 +254,7 @@ const handleImageError = (event) => {
 
 const loadPressData = async () => {
   try {
-    const response = await fetch('/src/assets/press/press.csv')
+    const response = await fetch('/spqr-team-website/press.csv')
     const csvText = await response.text()
     const lines = csvText.split('\n').slice(1) // Skip header
     
