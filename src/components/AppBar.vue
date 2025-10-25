@@ -67,9 +67,9 @@ const menuItems = [
     { title: 'Press', path: '/press' },
     { title: 'publications', path: '/publications' },
     { title: 'Codebase', path: '/codebase' },
-    { title: 'Media', path: '/media' },
-    { title: 'Students', path: '/students' },
-    { title: 'Sponsors', path: '/sponsors' },
+    // { title: 'Media', path: '/media' },
+    // { title: 'Students', path: '/students' },
+    // { title: 'Sponsors', path: '/sponsors' },
     { title: 'Contacts', path: '/contacts' }
 ]
 </script>
