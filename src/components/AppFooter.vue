@@ -22,9 +22,9 @@
           />
         </a>
 
-        <div class="text-body-3 text-disabled">
+        <div :class="['text-disabled', display.xs ? 'text-caption' : 'text-body-3']">
           {{ (new Date()).getFullYear() }} 
-          — 
+          <span class="d-none d-sm-inline-block">— </span>
           <span class="d-none d-md-inline-block">Università degli Studi di Roma "La Sapienza" — </span>
           <a
             class="text-decoration-none on-surface"

@@ -65,7 +65,7 @@ const menuItems = [
     { title: 'Team', path: '/team' },
     { title: 'Events', path: '/events' },
     { title: 'Press', path: '/press' },
-    { title: 'publications', path: '/publications' },
+    { title: 'Publications', path: '/publications' },
     { title: 'Codebase', path: '/codebase' },
     // { title: 'Media', path: '/media' },
     // { title: 'Students', path: '/students' },
