@@ -3,7 +3,7 @@
         <v-img
             class="cover-image"
             :style="{ height: '350px' }"
-            src="/assets/codebase/cover.png"
+            src="/assets/codebase/cover.jpg"
             alt="Codebase Header Cover"
             cover
         >
@@ -140,7 +140,7 @@ const nao_repositories = [
 
 <style scoped>
 .cover-image :deep(img) {
-    object-position: center 30% !important;
+    object-position: center 60% !important;
 }
 
 .section-title {
