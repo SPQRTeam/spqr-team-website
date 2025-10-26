@@ -84,58 +84,48 @@
 </template>
 
 <script setup>
+import { ref, onMounted, computed } from 'vue'
 
 const baseUrl = import.meta.env.BASE_URL
 
-const booster_repositories = [
-    {
-        name: 'Circus',
-        description: 'SPQR simulator for Booster Robotics robots.',
-        link: 'https://github.com/DaniAffCH/circus',
-        cover: baseUrl + 'assets/codebase/circus-maximus-left.jpg'
-    },
+const repositories = ref([])
 
-    {
-        name: 'Maximus',
-        description: 'SPQR Framework for Booster Robotics robots.',
-        link: 'https://github.com/SPQRTeam/spqrbooster2026.git',
-        cover: baseUrl + 'assets/codebase/circus-maximus-right.jpg'
-    },
-
-    {
-        name: 'Colosseum',
-        description: 'SPQR enviroment for Reinforcement Learning.',
-        link: 'https://github.com/neverorfrog/colosseum.git',
-        cover: baseUrl + 'assets/codebase/colosseum.jpg'
+const loadRepositories = async () => {
+    try {
+        const response = await fetch(baseUrl + 'assets/codebase/codebase.csv')
+        const csvText = await response.text()
+        const lines = csvText.split('\n').filter(line => line.trim())
+        
+        // Skip header row
+        const dataLines = lines.slice(1)
+        
+        repositories.value = dataLines.map(line => {
+            const [name, description, link, cover, platform] = line.split(',').map(field => field.trim())
+            
+            return {
+                name,
+                description,
+                link: link || '',
+                cover: cover ? baseUrl + 'assets/codebase/' + cover : '',
+                platform
+            }
+        })
+    } catch (error) {
+        console.error('Error loading repositories:', error)
     }
-]
+}
 
+const booster_repositories = computed(() => {
+    return repositories.value.filter(repo => repo.platform === 'Booster')
+})
 
-const nao_repositories = [
-    {
-        name: 'spqr2025',
-        description: 'SPQR Codebase used in RoboCup 2025 main competition.',
-        link: ''
-    },
+const nao_repositories = computed(() => {
+    return repositories.value.filter(repo => repo.platform === 'Nao')
+})
 
-    {
-        name: 'spqr2024',
-        description: 'SPQR Codebase used in RoboCup 2024 main competition.',
-        link: 'https://github.com/SPQRTeam/spqr2024.git'
-    },
-
-    {
-        name: 'spqr2024@challenge',
-        description: 'SPQR Codebase used in RoboCup 2024 Shared Autonomy Challenge.',
-        link: 'https://github.com/SPQRTeam/spqr2024/tree/challenge'
-    },
-
-    {
-        name: 'spqr2023',
-        description: 'SPQR Codebase used in RoboCup 2023 main competition.',
-        link: 'https://github.com/SPQRTeam/spqr2023'
-    },
-]
+onMounted(() => {
+    loadRepositories()
+})
 
 
 </script>
