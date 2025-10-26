@@ -57,61 +57,16 @@
         <div class="section-title">Members</div>
 
         <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_1" :key="member.name" class="member-col">
+            <v-col cols="12" sm="6" md="6" lg="3" v-for="member in teamMembers" :key="member.name" class="member-col">
                 <div class="member-card">
                     <v-img
                         :src="member.image"
                         :alt="member.name"
                         class="member-photo"
-                        aspect-ratio="1"
                         cover
                     ></v-img>
                     <div class="member-name">{{ member.name }}</div>
-                </div>
-            </v-col>
-        </v-row>
-
-        <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_2" :key="member.name" class="member-col">
-                <div class="member-card">
-                    <v-img
-                        :src="member.image"
-                        :alt="member.name"
-                        class="member-photo"
-                        aspect-ratio="0"
-                        cover
-                    ></v-img>
-                    <div class="member-name">{{ member.name }}</div>
-                </div>
-            </v-col>
-        </v-row>
-
-        <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_3" :key="member.name" class="member-col">
-                <div class="member-card">
-                    <v-img
-                        :src="member.image"
-                        :alt="member.name"
-                        class="member-photo"
-                        aspect-ratio="0"
-                        cover
-                    ></v-img>
-                    <div class="member-name">{{ member.name }}</div>
-                </div>
-            </v-col>
-        </v-row>
-
-        <v-row class="members-grid" justify="center">
-            <v-col cols="6" sm="3" md="3" lg="2" xl="2" v-for="member in row_4" :key="member.name" class="member-col">
-                <div class="member-card">
-                    <v-img
-                        :src="member.image"
-                        :alt="member.name"
-                        class="member-photo"
-                        aspect-ratio="0"
-                        cover
-                    ></v-img>
-                    <div class="member-name">{{ member.name }}</div>
+                    <div class="member-role">{{ member.role }}</div>
                 </div>
             </v-col>
         </v-row>
@@ -186,7 +141,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const baseUrl = import.meta.env.BASE_URL
 
@@ -221,83 +176,40 @@ const team_photos = [
     },
 ]
 
-const row_1 = [
-    {
-        name: 'Prof. Daniele Nardi',
-        image: baseUrl + 'assets/team/Nardi.jpg'
-    },
-    {
-        name: 'Prof. Luca Iocchi',
-        image: baseUrl + 'assets/team/Iocchi.jpg'
-    },
-    {
-        name: 'Dr. Vincenzo Suriani - Team Leader',
-        image: baseUrl + 'assets/team/Suriani.jpg'
-    },
-    {
-        name: 'Prof. Domenico Bloisi',
-        image: baseUrl + 'assets/team/Bloisi.jpg'
-    }
-]
+const teamMembers = ref([])
 
-const row_2 = [
-    {
-        name: 'Daniele Affinita',
-        image: baseUrl + 'assets/team/DanieleAffinita.jpg'
-    },
-    {
-        name: 'Flavio Maiorana',
-        image: baseUrl + 'assets/team/FlavioMaiorana.jpg'
-    },
-    {
-        name: 'Flavio Volpi',
-        image: baseUrl + 'assets/team/FlavioVolpi.jpg'
-    },
-    {
-        name: 'Francesco Petri',
-        image: baseUrl + 'assets/team/FrancescoPetri.jpg'
+const loadTeamMembers = async () => {
+    try {
+        const response = await fetch(baseUrl + 'assets/team/team.csv')
+        const csvText = await response.text()
+        const lines = csvText.split('\n').filter(line => line.trim())
+        
+        // Skip header row
+        const dataLines = lines.slice(1)
+        
+        teamMembers.value = dataLines.map(line => {
+            const [name, role, image] = line.split(',').map(field => field.trim())
+            
+            return {
+                name,
+                role,
+                image: baseUrl + 'assets/team/' + image
+            }
+        })
+    } catch (error) {
+        console.error('Error loading team members:', error)
     }
-]
-
-const row_3 = [
-    {
-        name: 'Valerio Spagnoli',
-        image: baseUrl + 'assets/team/ValerioSpagnoli.jpg'
-    },
-    {
-        name: 'Michele Brienza',
-        image: baseUrl + 'assets/team/MicheleBrienza.jpg'
-    },
-    {
-        name: 'Eugenio Bugli',
-        image: baseUrl + 'assets/team/EugenioBugli.jpg'
-    },
-    {
-        name: 'Filippo Ansalone',
-        image: baseUrl + 'assets/team/FilippoAnsalone.jpg'
-    }
-]
-
-const row_4 = [
-    {
-        name: 'Can Lin',
-        image: baseUrl + 'assets/team/CanLin.jpg'
-    },
-    {
-        name: 'Jacopo Tedeschi',
-        image: baseUrl + 'assets/team/JacopoTedeschi.jpg'
-    },
-    {
-        name: 'Damiano Imola',
-        image: baseUrl + 'assets/team/DamianoImola.jpg'
-    }
-]
+}
 
 const currentPhoto = ref(team_photos[0].image)
 
 const updateBackground = (index) => {
     currentPhoto.value = team_photos[index].image
 }
+
+onMounted(() => {
+    loadTeamMembers()
+})
 </script>
 
 <style scoped>
@@ -400,7 +312,7 @@ const updateBackground = (index) => {
 .members-grid {
     margin-top: 2rem;
     margin-bottom: 2rem;
-    max-width: 1900px;
+    max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -423,6 +335,13 @@ const updateBackground = (index) => {
     font-size: 1.3rem;
     font-weight: 500;
     color: rgb(30, 30, 30);
+}
+
+.member-role {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: rgb(100, 100, 100);
+    margin-top: 0.25rem;
 }
 
 .past-members-section {
