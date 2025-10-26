@@ -12,6 +12,64 @@
         </v-img>
     </div>
 
+    <!-- Video Player Section -->
+    <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
+        <div class="video-player-container">
+            <div class="video-main">
+                <video 
+                    ref="videoPlayer"
+                    :key="selectedVideo.path"
+                    :src="selectedVideo.path" 
+                    controls 
+                    controlsList="nodownload"
+                    class="video-player"
+                    preload="metadata"
+                    @loadedmetadata="handleVideoLoad"
+                >
+                    Your browser does not support the video tag.
+                </video>
+                <div class="video-info">
+                    <div class="video-info-header">
+                        <div>
+                            <h3 class="video-title">{{ selectedVideo.source }} - {{ selectedVideo.event }}</h3>
+                            <p class="video-date">{{ selectedVideo.date }}</p>
+                            <!-- <p class="video-event">{{ selectedVideo.event }}</p> -->
+                        </div>
+                        <v-btn
+                            v-if="selectedVideo.minute > 0 || selectedVideo.second > 0"
+                            color="#822433"
+                            variant="elevated"
+                            @click="skipToTimestamp"
+                            class="skip-button"
+                        >
+                            <v-icon left>mdi-skip-forward</v-icon>
+                            Skip to {{ formatTime(selectedVideo.minute, selectedVideo.second) }}
+                        </v-btn>
+                    </div>
+                </div>
+            </div>
+            <div class="video-list-sidebar">
+                <h3 class="sidebar-title">All Videos</h3>
+                <div class="video-list-scroll">
+                    <div 
+                        v-for="(video, index) in tvVideos" 
+                        :key="index"
+                        class="video-list-item"
+                        :class="{ active: selectedVideo && selectedVideo.path === video.path }"
+                        @click="selectVideo(video)"
+                    >
+                        <div class="video-list-item-content">
+                            <div class="video-list-source">{{ video.source }}</div>
+                            <div class="video-list-date">{{ video.date }}</div>
+                            <div class="video-list-event">{{ video.event }}</div>
+                        </div>
+                        <v-icon class="video-list-icon">mdi-play-circle</v-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </v-container>
+
     <v-container>
         <div style="margin-top: 4rem; margin-bottom: 4rem;">
             <div v-for="year in sortedYears" :key="year" class="year-section">
@@ -55,6 +113,79 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+
+// TV Videos from CSV
+const tvVideos = ref([])
+
+// Video player reference
+const videoPlayer = ref(null)
+
+// Selected video state
+const selectedVideo = ref(null)
+
+// Load TV videos from CSV
+const loadTVVideos = async () => {
+    try {
+        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.csv')
+        const csvText = await response.text()
+        const lines = csvText.split('\n').slice(1) // Skip header
+        
+        const videos = lines
+            .filter(line => line.trim())
+            .map(line => {
+                const [date, event, source, name, minute, second] = line.split(',')
+                return {
+                    date: date.trim(),
+                    event: event.trim(),
+                    source: source.trim(),
+                    name: name.trim(),
+                    minute: parseInt(minute.trim()) || 0,
+                    second: parseInt(second.trim()) || 0,
+                    path: `${import.meta.env.BASE_URL}assets/press/${name.trim()}.mp4`
+                }
+            })
+        
+        // Sort by date (newest first)
+        tvVideos.value = videos.sort((a, b) => {
+            const dateA = new Date(a.date.split('/').reverse().join('-'))
+            const dateB = new Date(b.date.split('/').reverse().join('-'))
+            return dateB - dateA
+        })
+        
+        // Initialize selected video with the first one
+        if (tvVideos.value.length > 0) {
+            selectedVideo.value = tvVideos.value[0]
+        }
+    } catch (error) {
+        console.error('Error loading TV videos:', error)
+    }
+}
+
+// Select a video
+const selectVideo = (video) => {
+    selectedVideo.value = video
+}
+
+// Skip to timestamp
+const skipToTimestamp = () => {
+    if (videoPlayer.value && selectedVideo.value) {
+        const totalSeconds = selectedVideo.value.minute * 60 + selectedVideo.value.second
+        videoPlayer.value.currentTime = totalSeconds
+        videoPlayer.value.play()
+    }
+}
+
+// Format time for display
+const formatTime = (minute, second) => {
+    const mm = String(minute).padStart(2, '0')
+    const ss = String(second).padStart(2, '0')
+    return `${mm}:${ss}`
+}
+
+// Handle video load
+const handleVideoLoad = () => {
+    // Optional: Add any logic when video loads
+}
 
 const pressArticles = ref([])
 
@@ -106,6 +237,7 @@ const loadPressData = async () => {
 }
 
 onMounted(() => {
+    loadTVVideos()
     loadPressData()
 })
 </script>
@@ -229,5 +361,186 @@ onMounted(() => {
 .press-card:hover .press-icon {
     opacity: 1;
     transform: translate(3px, -3px);
+}
+
+/* Video Player Section Styles */
+.video-section {
+    margin-top: 3rem;
+    max-width: 1400px;
+}
+
+.video-player-container {
+    display: flex;
+    gap: 1.5rem;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.video-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.video-player {
+    width: 100%;
+    border-radius: 8px;
+    background: #000;
+    max-height: 500px;
+}
+
+.video-info {
+    padding: 0.5rem 0;
+}
+
+.video-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.video-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #822433;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+}
+
+.video-date {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0 0 0.25rem 0;
+}
+
+.video-event {
+    font-size: 0.9rem;
+    color: #555;
+    font-style: italic;
+    margin: 0;
+}
+
+.skip-button {
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.video-list-sidebar {
+    width: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #822433;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #822433;
+}
+
+.video-list-scroll {
+    overflow-y: auto;
+    max-height: 500px;
+    padding-right: 0.5rem;
+}
+
+.video-list-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.video-list-scroll::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.video-list-scroll::-webkit-scrollbar-thumb {
+    background: #822433;
+    border-radius: 3px;
+}
+
+.video-list-scroll::-webkit-scrollbar-thumb:hover {
+    background: #6a1d2a;
+}
+
+.video-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    background: #f8f9fa;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 3px solid transparent;
+}
+
+.video-list-item:hover {
+    background: #e9ecef;
+    border-left-color: #822433;
+    transform: translateX(3px);
+}
+
+.video-list-item.active {
+    background: linear-gradient(135deg, rgba(130, 36, 51, 0.1) 0%, rgba(130, 36, 51, 0.05) 100%);
+    border-left-color: #822433;
+    border-left-width: 4px;
+}
+
+.video-list-item-content {
+    flex: 1;
+}
+
+.video-list-source {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #822433;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
+.video-list-date {
+    font-size: 0.8rem;
+    color: #666;
+    margin-bottom: 0.15rem;
+}
+
+.video-list-event {
+    font-size: 0.75rem;
+    color: #888;
+    font-style: italic;
+}
+
+.video-list-icon {
+    color: #822433;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+.video-list-item:hover .video-list-icon,
+.video-list-item.active .video-list-icon {
+    opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 960px) {
+    .video-player-container {
+        flex-direction: column;
+    }
+    
+    .video-list-sidebar {
+        width: 100%;
+    }
+    
+    .video-list-scroll {
+        max-height: 300px;
+    }
 }
 </style>
