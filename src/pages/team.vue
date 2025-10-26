@@ -21,29 +21,31 @@
         <div class="carousel-background-gradient"></div>
         
         <v-container>
-            <!-- <div class="section-title">Teams</div> -->
 
             <v-carousel
                 cycle
                 :interval="5000"
-                hide-delimiter-background
+                hide-delimiters
                 show-arrows="hover"
-                height="1000"
+                height="auto"
                 class="team-carousel"
                 @update:model-value="updateBackground"
             >
                 <v-carousel-item
                     v-for="(photo, i) in team_photos"
                     :key="i"
+                    class="carousel-item-wrapper"
                 >
-                <div class="photo-title">{{ photo.title }}</div>
-                <v-img
-                :src="photo.image"
-                :alt="photo.title"
-                class="team-photo"
-                height="800"
-                contain
-                ></v-img>
+                    <div class="carousel-content">
+                        <div class="photo-title">{{ photo.title }}</div>
+                        <v-img
+                            :src="photo.image"
+                            :alt="photo.title"
+                            class="team-photo"
+                            aspect-ratio="16/9"
+                            contain
+                        ></v-img>
+                    </div>
                 </v-carousel-item>
             </v-carousel>
         </v-container>
@@ -357,8 +359,27 @@ const updateBackground = (index) => {
 }
 
 .team-carousel :deep(.v-carousel-item) {
+    display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.carousel-item-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100;
+}
+
+.carousel-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1500px;
+    gap: 2rem;
 }
 
 .team-photo {
@@ -368,13 +389,13 @@ const updateBackground = (index) => {
 
 .photo-title {
     text-align: center;
-    padding: 1rem;
     font-weight: 500;
-    font-size: 2.5rem;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
     color: rgb(255, 255, 255);
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
     width: 100%;
+    flex-shrink: 0;
+    margin-top: 2rem;
+    padding: 0 1rem;
 }
 
 .members-grid {
