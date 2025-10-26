@@ -14,6 +14,7 @@
 
     <!-- Video Player Section -->
     <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
+        <h2 class="section-title">TV Appearances</h2>
         <div class="video-player-container">
             <div class="video-main">
                 <video 
@@ -113,6 +114,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 // TV Videos from CSV
 const tvVideos = ref([])
@@ -152,8 +156,24 @@ const loadTVVideos = async () => {
             return dateB - dateA
         })
         
-        // Initialize selected video with the first one
-        if (tvVideos.value.length > 0) {
+        // Check if there's a video query parameter
+        const videoName = route.query.video
+        if (videoName) {
+            const foundVideo = tvVideos.value.find(v => v.name === videoName)
+            if (foundVideo) {
+                selectedVideo.value = foundVideo
+                // Scroll to video section after a short delay
+                setTimeout(() => {
+                    const videoSection = document.querySelector('.video-section')
+                    if (videoSection) {
+                        videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                    }
+                }, 300)
+            } else if (tvVideos.value.length > 0) {
+                selectedVideo.value = tvVideos.value[0]
+            }
+        } else if (tvVideos.value.length > 0) {
+            // Initialize selected video with the first one if no query param
             selectedVideo.value = tvVideos.value[0]
         }
     } catch (error) {
@@ -366,7 +386,21 @@ onMounted(() => {
 /* Video Player Section Styles */
 .video-section {
     margin-top: 3rem;
+    margin-bottom: 3rem;
     max-width: 1400px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #822433;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #822433;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .video-player-container {
@@ -541,6 +575,18 @@ onMounted(() => {
     
     .video-list-scroll {
         max-height: 300px;
+    }
+}
+
+@media (max-width: 600px) {
+    .video-info-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .skip-button {
+        width: 100%;
+        margin-top: 0.75rem;
     }
 }
 </style>

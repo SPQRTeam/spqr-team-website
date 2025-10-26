@@ -125,9 +125,54 @@
   <!-- Press Section -->
   <div class="press-section">
     <v-container>
-      <div>
+      <!-- TV Appearances Section -->
+      <div class="tv-appearances-subsection">
         <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
-          Latest Press Coverage
+          Latest TV Appearances
+        </h2>
+        
+        <v-row justify="center" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem;">
+          <v-col 
+            v-for="(video, index) in tvVideos" 
+            :key="index"
+            cols="12" 
+            sm="6" 
+            md="4"
+          >
+            <router-link 
+              :to="{ path: '/press', query: { video: video.name } }"
+              class="tv-card-link"
+            >
+              <v-card 
+                class="tv-card"
+                elevation="3"
+              >
+                <div class="tv-thumbnail-wrapper">
+                  <video
+                    :src="video.path"
+                    class="tv-thumbnail"
+                    muted
+                    preload="metadata"
+                  ></video>
+                  <div class="tv-play-overlay">
+                    <v-icon class="play-icon" size="60">mdi-play-circle</v-icon>
+                  </div>
+                </div>
+                <v-card-text class="tv-card-content">
+                  <div class="tv-source">{{ video.source }}</div>
+                  <div class="tv-event">{{ video.event }}</div>
+                  <div class="tv-date">{{ video.date }}</div>
+                </v-card-text>
+              </v-card>
+            </router-link>
+          </v-col>
+        </v-row>
+      </div>
+
+      <!-- Articles Section -->
+      <div class="articles-subsection">
+        <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
+          Latest News
         </h2>
         
         <v-row justify="center" style="max-width: 1000px; margin: 0 auto;">
@@ -162,7 +207,7 @@
           </v-card>
         </v-col>
       </v-row>
-    </div>
+      </div>
     </v-container>
   </div>
 
@@ -295,6 +340,7 @@ const researchFields = [
 const hoveredIndex = reactive({})
 const videoRefs = ref([])
 const pressArticles = ref([])
+const tvVideos = ref([])
 
 const handleMouseEnter = (index) => {
   hoveredIndex[index] = true
@@ -339,8 +385,41 @@ const loadPressData = async () => {
   }
 }
 
+const loadTVVideos = async () => {
+  try {
+    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.csv')
+    const csvText = await response.text()
+    const lines = csvText.split('\n').slice(1) // Skip header
+    
+    const videos = lines
+      .filter(line => line.trim())
+      .map(line => {
+        const [date, event, source, name, minute, second] = line.split(',')
+        return {
+          date: date.trim(),
+          event: event.trim(),
+          source: source.trim(),
+          name: name.trim(),
+          minute: parseInt(minute.trim()) || 0,
+          second: parseInt(second.trim()) || 0,
+          path: `${import.meta.env.BASE_URL}assets/press/${name.trim()}.mp4`
+        }
+      })
+    
+    // Sort by date (newest first) and get top 3
+    tvVideos.value = videos.sort((a, b) => {
+      const dateA = new Date(a.date.split('/').reverse().join('-'))
+      const dateB = new Date(b.date.split('/').reverse().join('-'))
+      return dateB - dateA
+    }).slice(0, 3)
+  } catch (error) {
+    console.error('Error loading TV videos:', error)
+  }
+}
+
 onMounted(() => {
   loadPressData()
+  loadTVVideos()
 })
 </script>
 
@@ -734,5 +813,99 @@ onMounted(() => {
 .sponsor-logo:hover {
   filter: grayscale(0%);
   transform: scale(1.05);
+}
+
+/* TV Appearances Cards */
+.tv-appearances-subsection {
+  margin-bottom: 4rem;
+}
+
+.tv-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.tv-card {
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border-left: 3px solid #822433;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.tv-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(32, 47, 94, 0.27) !important;
+  border-left-width: 4px;
+}
+
+.tv-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.tv-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.tv-play-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.tv-card:hover .tv-play-overlay {
+  background: rgba(130, 36, 52, 0.338);
+}
+
+.play-icon {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
+}
+
+.tv-card:hover .play-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.7));
+}
+
+.tv-card-content {
+  padding: 1rem !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+.tv-source {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #822433;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.tv-event {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+
+.tv-date {
+  font-size: 0.85rem;
+  color: #666;
+  font-weight: 500;
 }
 </style>
