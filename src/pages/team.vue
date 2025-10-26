@@ -191,15 +191,15 @@ const baseUrl = import.meta.env.BASE_URL
 
 const team_photos = [
     {
-        image: baseUrl + 'assets/team/team-mf2025.jpg',
+        image: baseUrl + 'assets/team/team-mf2025.png',
         title: 'Maker Faire 2025 - Rome, Italy'
     },
     {
-        image: baseUrl + 'assets/team/team-whrg2025.jpg',
+        image: baseUrl + 'assets/team/team-whrg2025.png',
         title: 'World Humanoid Robot Games 2025 - Beijing, China'
     },
     {
-        image: baseUrl + 'assets/team/team-rc2025.jpg',
+        image: baseUrl + 'assets/team/team-rc2025.png',
         title: 'RoboCup 2025 - Salvador, Brazil'
     },
     {
@@ -211,11 +211,11 @@ const team_photos = [
         title: 'RoboCup 2024 - Eindhoven, Netherlands'
     },
     {
-        image: baseUrl + 'assets/team/team-rc2023.jpeg',
+        image: baseUrl + 'assets/team/team-rc2023.png',
         title: 'RoboCup 2023 - Bordeaux, France'
     },
     {
-        image: baseUrl + 'assets/team/team-rc2022.jpg',
+        image: baseUrl + 'assets/team/team-rc2022.png',
         title: 'RoboCup 2022 - Bangkok, Thailand'
     },
 ]
