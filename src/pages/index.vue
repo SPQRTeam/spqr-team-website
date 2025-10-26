@@ -16,12 +16,40 @@
       "
     >
       <p style="font-size: 23px; font-weight: 500;">
-        SPQR Team is the RoboCup team of the <a href="http://www.diag.uniroma1.it/" target="_blank" style="color: #822433; text-decoration: none;">Department of Computer, Control, and Management Engineering Antonio Ruberti</a> 
+        SPQR Team is the RoboCup research group of the <a href="http://www.diag.uniroma1.it/" target="_blank" style="color: #822433; text-decoration: none;">Department of Computer, Control, and Management Engineering Antonio Ruberti</a> 
         at <a href="https://www.uniroma1.it/it/" target="_blank" style="color: #822433; text-decoration: none;">Sapienza University of Rome</a>, involved in RoboCup competitions since 1998.
       </p>
     </div>
 
+    <!-- Research Fields Section -->
+    <div class="research-fields-section">
+      <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
+        Our Research Fields
+      </h2>
+      
+      <v-row justify="center" class="research-fields-row">
+        <v-col
+          v-for="field in researchFields"
+          :key="field.title"
+          cols="12"
+          sm="6"
+          md="4"
+          class="research-field-col"
+        >
+          <v-card class="research-field-card" elevation="4">
+            <v-card-text class="research-field-content">
+              <div class="field-icon-wrapper">
+                <v-icon class="field-icon" :color="field.color">{{ field.icon }}</v-icon>
+              </div>
+              <h3 class="field-title">{{ field.title }}</h3>
+              <p class="field-description">{{ field.description }}</p>
+            </v-card-text>
+          </v-card>
+        </v-col>
+      </v-row>
+    </div>
   </v-container>
+
 
   <!-- Instagram Reels Section -->
   <div class="instagram-section">
@@ -225,6 +253,45 @@ const sponsors = [
   }
 ]
 
+const researchFields = [
+  {
+    title: 'Humanoid Robotics',
+    description: 'Advanced research in bipedal locomotion, human-robot interaction, and anthropomorphic robot design.',
+    icon: 'mdi-robot',
+    color: '#822433'
+  },
+  {
+    title: 'Multi-Agent Systems',
+    description: 'Coordination and cooperation strategies for teams of autonomous robots in dynamic environments.',
+    icon: 'mdi-network',
+    color: '#1976D2'
+  },
+  {
+    title: 'Computer Vision & Robot Perception',
+    description: 'Real-time visual perception, object detection, scene understanding, sensor fusion, 3D perception, and environmental mapping for intelligent autonomous systems.',
+    icon: 'mdi-camera-iris',
+    color: '#F57C00'
+  },
+  {
+    title: 'Edge Computing',
+    description: 'Efficient on-board computation and distributed processing for real-time robot decision making.',
+    icon: 'mdi-chip',
+    color: '#7B1FA2'
+  },
+  {
+    title: 'Deep Learning',
+    description: 'Neural network architectures for robot learning, behavior optimization, and adaptive control.',
+    icon: 'mdi-brain',
+    color: '#C62828'
+  },
+  {
+    title: 'Reinforcement Learning',
+    description: 'Agent training through trial and error, reward-based learning, and policy optimization for autonomous decision-making.',
+    icon: 'mdi-chart-line',
+    color: '#388E3C'
+  }
+]
+
 const hoveredIndex = reactive({})
 const videoRefs = ref([])
 const pressArticles = ref([])
@@ -278,6 +345,112 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.research-fields-section {
+  max-width: 90rem;
+  margin: 4rem auto 2rem auto;
+  padding: 0 1rem;
+}
+
+.research-fields-row {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.research-field-col {
+  padding: 1rem;
+}
+
+.research-field-card {
+  height: 100%;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-top: 4px solid transparent;
+}
+
+.research-field-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.research-field-card:nth-child(1):hover {
+  border-top-color: #822433;
+}
+
+.research-field-card:nth-child(2):hover {
+  border-top-color: #1976D2;
+}
+
+.research-field-card:nth-child(3):hover {
+  border-top-color: #388E3C;
+}
+
+.research-field-card:nth-child(4):hover {
+  border-top-color: #F57C00;
+}
+
+.research-field-card:nth-child(5):hover {
+  border-top-color: #7B1FA2;
+}
+
+.research-field-card:nth-child(6):hover {
+  border-top-color: #C62828;
+}
+
+.research-field-content {
+  padding: 2rem 1.5rem !important;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 280px;
+}
+
+.field-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(130, 36, 51, 0.1) 0%, rgba(130, 36, 51, 0.05) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.research-field-card:hover .field-icon-wrapper {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.field-icon {
+  font-size: 2.5rem !important;
+  transition: all 0.3s ease;
+}
+
+.research-field-card:hover .field-icon {
+  transform: rotate(2deg);
+}
+
+.field-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgb(30, 30, 30);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  min-height: 3rem;
+  display: flex;
+  align-items: center;
+}
+
+.field-description {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: center;
+  margin: 0;
+}
+
 .instagram-section {
   padding: 3rem 0;
   background: radial-gradient(ellipse at center, rgba(180, 130, 213, 0.1) 0%, rgba(189, 18, 18, 0.127) 10%, rgba(211, 176, 127, 0.111) 40%, #f1f4f3 100%);
