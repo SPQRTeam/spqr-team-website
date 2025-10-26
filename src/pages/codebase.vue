@@ -22,7 +22,10 @@
                 v-for="repo in booster_repositories"
                 :key="repo.name"
                 cols="12"
+                sm="6"
                 md="4"
+                lg="4"
+                xl="3"
             >
                 <v-card
                     :href="repo.link"
