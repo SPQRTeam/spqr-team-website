@@ -288,7 +288,7 @@ const row_4 = [
         image: baseUrl + 'assets/team/JacopoTedeschi.jpg'
     },
     {
-        name: 'Damniano Imola',
+        name: 'Damiano Imola',
         image: baseUrl + 'assets/team/DamianoImola.jpg'
     }
 ]
