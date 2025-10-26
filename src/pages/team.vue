@@ -79,13 +79,9 @@
             <v-col cols="12" md="6" class="past-members-col">
                 <h3 class="past-members-subtitle">Team Leaders</h3>
                 <ul class="past-members-list">
-                    <li>Emanuele Antonioni - 2021-2022</li>
-                    <li>Francesco Riccio - 2013-2015</li>
-                    <li>Federico Patota - 2014-2015</li>
-                    <li>Guglielmo Gemignani - 2012-2013</li>
-                    <li>Fabio Previtali - 2009-2010, 2012-2013</li>
-                    <li>Luca Marchetti - 2006-2007, 2009-2010</li>
-                    <li>Matteo Leonetti - 2007-2009</li>
+                    <li v-for="leader in pastTeamLeaders" :key="leader.name">
+                        {{ leader.name }}<span v-if="leader.years"> - {{ leader.years }}</span>
+                    </li>
                 </ul>
             </v-col>
 
@@ -94,43 +90,16 @@
                 <v-row>
                     <v-col cols="12" lg="6">
                         <ul class="past-members-list">
-                            <li>Graziano Specchi</li>
-                            <li>Emanuele Musumeci</li>
-                            <li>Amila Sikalo</li>
-                            <li>Rosanna Greco</li>
-                            <li>Elisa Foderaro</li>
-                            <li>Fabian Fonseca</li>
-                            <li>David Esteban</li>
-                            <li>Akshay Dhonthi</li>
-                            <li>Eleonora Chiarantano</li>
-                            <li>Tommaso Carlini</li>
-                            <li>Dario Albani</li>
-                            <li>Emanuele Borzi</li>
-                            <li>Francesco Bella</li>
-                            <li>Matteo Cecchini</li>
-                            <li>Daniele De Simone</li>
-                            <li>Riccardo Cardelli</li>
-                            <li>Tiziano Manoni</li>
-                            <li>Vittorio Morrone</li>
+                            <li v-for="student in pastStudentsColumn1" :key="student.name">
+                                {{ student.name }}
+                            </li>
                         </ul>
                     </v-col>
                     <v-col cols="12" lg="6">
                         <ul class="past-members-list">
-                            <li>Chiara Picardi</li>
-                            <li>Lorenzo Tognalini</li>
-                            <li>Gabriel Ulici</li>
-                            <li>Martina Deturres</li>
-                            <li>Valentina Negro Maggio</li>
-                            <li>Federica Fieno</li>
-                            <li>Mauro Giampieri</li>
-                            <li>Enrico Mingo</li>
-                            <li>Armando Nania</li>
-                            <li>Marco Paolelli</li>
-                            <li>Valerio Ortensi</li>
-                            <li>Ali Youssef</li>
-                            <li>Mirko Malacario</li>
-                            <li>Ricardo Dodds</li>
-                            <li>Leonardo Brizi</li>
+                            <li v-for="student in pastStudentsColumn2" :key="student.name">
+                                {{ student.name }}
+                            </li>
                         </ul>
                     </v-col>
                 </v-row>
@@ -145,36 +114,34 @@ import { ref, onMounted } from 'vue'
 
 const baseUrl = import.meta.env.BASE_URL
 
-const team_photos = [
-    {
-        image: baseUrl + 'assets/team/team-mf2025.png',
-        title: 'Maker Faire 2025 - Rome, Italy'
-    },
-    {
-        image: baseUrl + 'assets/team/team-whrg2025.png',
-        title: 'World Humanoid Robot Games 2025 - Beijing, China'
-    },
-    {
-        image: baseUrl + 'assets/team/team-rc2025.png',
-        title: 'RoboCup 2025 - Salvador, Brazil'
-    },
-    {
-        image: baseUrl + 'assets/team/team-go2025.png',
-        title: 'RoboCup German Open 2025 - Nuremberg, Germany'
-    },
-    {
-        image: baseUrl + 'assets/team/team-rc2024.png',
-        title: 'RoboCup 2024 - Eindhoven, Netherlands'
-    },
-    {
-        image: baseUrl + 'assets/team/team-rc2023.png',
-        title: 'RoboCup 2023 - Bordeaux, France'
-    },
-    {
-        image: baseUrl + 'assets/team/team-rc2022.png',
-        title: 'RoboCup 2022 - Bangkok, Thailand'
-    },
-]
+const team_photos = ref([])
+
+const loadTeamPhotos = async () => {
+    try {
+        const response = await fetch(baseUrl + 'assets/team/team_photos.csv')
+        const csvText = await response.text()
+        const lines = csvText.split('\n').filter(line => line.trim())
+        
+        // Skip header row
+        const dataLines = lines.slice(1)
+        
+        team_photos.value = dataLines.map(line => {
+            const [image, title] = line.split(',').map(field => field.trim())
+            
+            return {
+                image: baseUrl + 'assets/team/' + image,
+                title
+            }
+        })
+        
+        // Set initial photo
+        if (team_photos.value.length > 0) {
+            currentPhoto.value = team_photos.value[0].image
+        }
+    } catch (error) {
+        console.error('Error loading team photos:', error)
+    }
+}
 
 const teamMembers = ref([])
 
@@ -201,14 +168,52 @@ const loadTeamMembers = async () => {
     }
 }
 
-const currentPhoto = ref(team_photos[0].image)
+const pastTeamLeaders = ref([])
+const pastStudentsColumn1 = ref([])
+const pastStudentsColumn2 = ref([])
+
+const loadPastMembers = async () => {
+    try {
+        const response = await fetch(baseUrl + 'assets/team/team_old.csv')
+        const csvText = await response.text()
+        const lines = csvText.split('\n').filter(line => line.trim())
+        
+        // Skip header row
+        const dataLines = lines.slice(1)
+        
+        const allPastMembers = dataLines.map(line => {
+            const [name, role, years] = line.split(',').map(field => field.trim())
+            
+            return {
+                name,
+                role,
+                years: years || ''
+            }
+        })
+        
+        // Separate team leaders and students
+        pastTeamLeaders.value = allPastMembers.filter(member => member.role === 'Team Leader')
+        const students = allPastMembers.filter(member => member.role === 'Student')
+        
+        // Split students into two columns
+        const halfPoint = Math.ceil(students.length / 2)
+        pastStudentsColumn1.value = students.slice(0, halfPoint)
+        pastStudentsColumn2.value = students.slice(halfPoint)
+    } catch (error) {
+        console.error('Error loading past members:', error)
+    }
+}
+
+const currentPhoto = ref('')
 
 const updateBackground = (index) => {
-    currentPhoto.value = team_photos[index].image
+    currentPhoto.value = team_photos.value[index].image
 }
 
 onMounted(() => {
+    loadTeamPhotos()
     loadTeamMembers()
+    loadPastMembers()
 })
 </script>
 
