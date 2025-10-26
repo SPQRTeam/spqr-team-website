@@ -3,7 +3,6 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            :style="{ height: '350px' }"            
             src="/assets/contacts/cover.jpg"
             alt="Contacts Header Cover"
             cover

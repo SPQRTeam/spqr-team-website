@@ -2,7 +2,6 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            :style="{ height: '350px' }"            
             src="/assets/events/cover.png"
             alt="Events Header Cover"
             cover

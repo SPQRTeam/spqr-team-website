@@ -2,8 +2,7 @@
 
     <div class="cover-section">
         <v-img
-            class="cover-image"
-            :style="{ height: '350px' }"            
+            class="cover-image">
             src="/assets/publications/cover.png"
             alt="Publications Header Cover"
             cover
