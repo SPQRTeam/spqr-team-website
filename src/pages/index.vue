@@ -347,8 +347,11 @@ onMounted(() => {
 <style scoped>
 .research-fields-section {
   max-width: 90rem;
-  margin: 4rem auto 2rem auto;
-  padding: 0 1rem;
+  margin: 4rem auto 4rem auto;
+  padding: 3rem 2rem;
+  background: #f6f7f6;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .research-fields-row {
@@ -452,14 +455,25 @@ onMounted(() => {
 }
 
 .instagram-section {
-  padding: 3rem 0;
-  background: radial-gradient(ellipse at center, rgba(180, 130, 213, 0.1) 0%, rgba(189, 18, 18, 0.127) 10%, rgba(211, 176, 127, 0.111) 40%, #f1f4f3 100%);
-  margin-top: 4rem;
+  padding: 4rem 0;
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(255, 183, 77, 0.08) 5%, 
+    rgba(255, 167, 38, 0.12) 50%, 
+    rgba(255, 183, 77, 0.08) 95%, 
+    rgba(100, 150, 220, 0.05) 100%
+  );
 }
 
 .press-section {
-  padding: 3rem 0;
-  background: radial-gradient(ellipse at center, rgba(100, 150, 220, 0.12) 0%, rgba(50, 120, 200, 0.08) 30%, rgba(80, 140, 210, 0.05) 60%, transparent 100%);
+  padding: 4rem 0;
+  background: linear-gradient(180deg, 
+    rgba(255, 183, 77, 0.05) 0%, 
+    rgba(100, 150, 220, 0.08) 5%, 
+    rgba(66, 165, 245, 0.12) 50%, 
+    rgba(100, 150, 220, 0.08) 95%, 
+    rgba(76, 175, 80, 0.05) 100%
+  );
 }
 
 .instagram-icon-link {
@@ -678,8 +692,14 @@ onMounted(() => {
 }
 
 .sponsor-section {
-  padding: 3rem 0;
-  background: linear-gradient(180deg, rgba(17, 124, 62, 0.03) 0%, rgba(105, 208, 74, 0.08) 10%, rgba(130, 124, 36, 0.03) 100%);
+  padding: 4rem 0;
+  background: linear-gradient(180deg, 
+    rgba(100, 150, 220, 0.05) 0%, 
+    rgba(76, 175, 80, 0.08) 5%, 
+    rgba(102, 187, 106, 0.12) 50%, 
+    rgba(76, 175, 80, 0.08) 95%, 
+    rgba(255, 255, 255, 0) 100%
+  );
 }
 
 .sponsors-row {
