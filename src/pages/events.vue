@@ -93,40 +93,24 @@ const events = ref([])
 
 const loadEvents = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/events/events.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/events/events.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        events.value = dataLines.map(line => {
-            // Parse CSV with quoted fields
-            const regex = /("(?:[^"]|"")*"|[^,]*)/g
-            const matches = [...line.matchAll(regex)]
-            const fields = matches
-                .map(m => m[1])
-                .filter(f => f !== '')
-                .map(f => f.startsWith('"') && f.endsWith('"') ? f.slice(1, -1).replace(/""/g, '"') : f)
-            
-            const [name, year, month, days, description, cover, site, video, results] = fields
-            
-            return {
-                name,
-                year: parseInt(year),
-                month,
-                days,
-                description,
-                cover: baseUrl + 'assets/events/' + cover,
-                links: [
-                    {
-                        site: site || '',
-                        video: video || '',
-                        results: results || '',
-                    }
-                ]
-            }
-        })
+        events.value = data.map(event => ({
+            name: event.name,
+            year: event.year,
+            month: event.month,
+            days: event.days,
+            description: event.description,
+            cover: baseUrl + 'assets/events/' + event.cover,
+            links: [
+                {
+                    site: event.site || '',
+                    video: event.video || '',
+                    results: event.results || '',
+                }
+            ]
+        }))
     } catch (error) {
         console.error('Error loading events:', error)
     }
