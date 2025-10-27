@@ -367,19 +367,11 @@ const handleImageError = (event) => {
 
 const loadPressData = async () => {
   try {
-    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.csv')
-    const csvText = await response.text()
-    const lines = csvText.split('\n').slice(1) // Skip header
+    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
+    const data = await response.json()
     
-    const articles = lines
-      .filter(line => line.trim())
-      .map(line => {
-        const [date, source, link] = line.split(',')
-        return { date: date.trim(), source: source.trim(), link: link.trim() }
-      })
-      .slice(0, 6) // Get top 6
-    
-    pressArticles.value = articles
+    // Get top 6 articles
+    pressArticles.value = data.slice(0, 6)
   } catch (error) {
     console.error('Error loading press data:', error)
   }
@@ -387,24 +379,18 @@ const loadPressData = async () => {
 
 const loadTVVideos = async () => {
   try {
-    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.csv')
-    const csvText = await response.text()
-    const lines = csvText.split('\n').slice(1) // Skip header
+    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
+    const data = await response.json()
     
-    const videos = lines
-      .filter(line => line.trim())
-      .map(line => {
-        const [date, event, source, name, minute, second] = line.split(',')
-        return {
-          date: date.trim(),
-          event: event.trim(),
-          source: source.trim(),
-          name: name.trim(),
-          minute: parseInt(minute.trim()) || 0,
-          second: parseInt(second.trim()) || 0,
-          path: `${import.meta.env.BASE_URL}assets/press/${name.trim()}.mp4`
-        }
-      })
+    const videos = data.map(video => ({
+      date: video.date,
+      event: video.event,
+      source: video.source,
+      name: video.name,
+      minute: video.minute || 0,
+      second: video.second || 0,
+      path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`
+    }))
     
     // Sort by date (newest first) and get top 3
     tvVideos.value = videos.sort((a, b) => {
