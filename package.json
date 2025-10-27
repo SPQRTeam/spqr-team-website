@@ -6,9 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:seo": "vite build && node scripts/prerender.js",
     "preview": "vite preview",
     "lint": "eslint . --fix",
-    "predeploy": "npm run build",
+    "predeploy": "npm run build:seo",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {

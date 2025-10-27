@@ -1,61 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Homepage - Highest Priority -->
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  
+  <!-- Main Pages - High Priority -->
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/team</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/publications</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/events</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/press</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://spqrteam.github.io/spqr-team-website/media</loc>
-    <lastmod>2025-10-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/codebase</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Secondary Pages - Medium Priority -->
+  <url>
+    <loc>https://spqrteam.github.io/spqr-team-website/media</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/sponsors</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://spqrteam.github.io/spqr-team-website/contacts</loc>
-    <lastmod>2025-10-27</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  
   <url>
     <loc>https://spqrteam.github.io/spqr-team-website/students</loc>
+    <lastmod>2025-10-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://spqrteam.github.io/spqr-team-website/contacts</loc>
     <lastmod>2025-10-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
