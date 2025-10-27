@@ -118,21 +118,13 @@ const team_photos = ref([])
 
 const loadTeamPhotos = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/team/team_photos.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/team/team_photos.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        team_photos.value = dataLines.map(line => {
-            const [image, title] = line.split(',').map(field => field.trim())
-            
-            return {
-                image: baseUrl + 'assets/team/' + image,
-                title
-            }
-        })
+        team_photos.value = data.map(photo => ({
+            image: baseUrl + 'assets/team/' + photo.image,
+            title: photo.title
+        }))
         
         // Set initial photo
         if (team_photos.value.length > 0) {
@@ -147,22 +139,17 @@ const teamMembers = ref([])
 
 const loadTeamMembers = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/team/team.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/team/team.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        teamMembers.value = dataLines.map(line => {
-            const [name, role, image] = line.split(',').map(field => field.trim())
-            
-            return {
-                name,
-                role,
-                image: baseUrl + 'assets/team/' + image
-            }
-        })
+        // Filter current members (those with images)
+        teamMembers.value = data
+            .filter(member => member.image)
+            .map(member => ({
+                name: member.name,
+                role: member.role,
+                image: baseUrl + 'assets/team/' + member.image
+            }))
     } catch (error) {
         console.error('Error loading team members:', error)
     }
@@ -174,22 +161,17 @@ const pastStudentsColumn2 = ref([])
 
 const loadPastMembers = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/team/team_old.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/team/team.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        const allPastMembers = dataLines.map(line => {
-            const [name, role, years] = line.split(',').map(field => field.trim())
-            
-            return {
-                name,
-                role,
-                years: years || ''
-            }
-        })
+        // Filter past members (those without images)
+        const allPastMembers = data
+            .filter(member => !member.image)
+            .map(member => ({
+                name: member.name,
+                role: member.role,
+                years: member.years || ''
+            }))
         
         // Separate team leaders and students
         pastTeamLeaders.value = allPastMembers.filter(member => member.role === 'Team Leader')

@@ -1,0 +1,30 @@
+[
+  {
+    "image": "team-mf2025.png",
+    "title": "Maker Faire 2025 - Rome, Italy"
+  },
+  {
+    "image": "team-whrg2025.png",
+    "title": "World Humanoid Robot Games 2025 - Beijing, China"
+  },
+  {
+    "image": "team-rc2025.png",
+    "title": "RoboCup 2025 - Salvador, Brazil"
+  },
+  {
+    "image": "team-go2025.png",
+    "title": "RoboCup German Open 2025 - Nuremberg, Germany"
+  },
+  {
+    "image": "team-rc2024.png",
+    "title": "RoboCup 2024 - Eindhoven, Netherlands"
+  },
+  {
+    "image": "team-rc2023.png",
+    "title": "RoboCup 2023 - Bordeaux, France"
+  },
+  {
+    "image": "team-rc2022.png",
+    "title": "RoboCup 2022 - Bangkok, Thailand"
+  }
+]
