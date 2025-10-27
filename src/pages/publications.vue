@@ -97,39 +97,23 @@ const papers = ref([])
 
 const loadPublications = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/publications/publications.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/publications/publications.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        papers.value = dataLines.map(line => {
-            // Parse CSV with quoted fields
-            const regex = /("(?:[^"]|"")*"|[^,]*)/g
-            const matches = [...line.matchAll(regex)]
-            const fields = matches
-                .map(m => m[1])
-                .filter(f => f !== '')
-                .map(f => f.startsWith('"') && f.endsWith('"') ? f.slice(1, -1).replace(/""/g, '"') : f)
-            
-            const [title, year, authors, abstract, cover, extras, paperLink, siteLink] = fields
-            
-            return {
-                title,
-                year: parseInt(year),
-                authors,
-                abstract,
-                cover: baseUrl + 'assets/publications/' + cover,
-                extras: extras || '',
-                links: [
-                    {
-                        link: paperLink || '',
-                        site: siteLink || '',
-                    }
-                ]
-            }
-        })
+        papers.value = data.map(paper => ({
+            title: paper.title,
+            year: paper.year,
+            authors: paper.authors,
+            abstract: paper.abstract,
+            cover: baseUrl + 'assets/publications/' + paper.cover,
+            extras: paper.extras || '',
+            links: [
+                {
+                    link: paper.paperLink || '',
+                    site: paper.siteLink || '',
+                }
+            ]
+        }))
     } catch (error) {
         console.error('Error loading publications:', error)
     }
