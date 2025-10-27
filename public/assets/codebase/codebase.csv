@@ -1,8 +1,0 @@
-Name,Description,Link,Cover,Platform
-Circus,SPQR simulator for Booster Robotics robots.,https://github.com/DaniAffCH/circus,circus-maximus-left.jpg,Booster
-Maximus,SPQR Framework for Booster Robotics robots.,https://github.com/SPQRTeam/spqrbooster2026.git,circus-maximus-right.jpg,Booster
-Colosseum,SPQR enviroment for Reinforcement Learning.,https://github.com/neverorfrog/colosseum.git,colosseum.jpg,Booster
-spqr2025,SPQR Codebase used in RoboCup 2025 main competition.,,, Nao
-spqr2024,SPQR Codebase used in RoboCup 2024 main competition.,https://github.com/SPQRTeam/spqr2024.git,,Nao
-spqr2024@challenge,SPQR Codebase used in RoboCup 2024 Shared Autonomy Challenge.,https://github.com/SPQRTeam/spqr2024/tree/challenge,,Nao
-spqr2023,SPQR Codebase used in RoboCup 2023 main competition.,https://github.com/SPQRTeam/spqr2023,,Nao
