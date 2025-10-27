@@ -1,12 +1,56 @@
 <template>
-  <v-container>
-    <v-img
-      :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
-      src="/assets/home/cover.png"
-      alt="SPQR Team Cover"
-    ></v-img>
+  <!-- JSON-LD Structured Data for better SEO -->
+  <component :is="'script'" type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ResearchOrganization",
+      "name": "SPQR Team",
+      "alternateName": "Sapienza Piazza Quattro Romani Team",
+      "url": "https://spqrteam.github.io/spqr-team-website/",
+      "logo": "https://spqrteam.github.io/spqr-team-website/logos/spqr-logo.png",
+      "description": "RoboCup research group at Sapienza University of Rome specializing in humanoid robotics, multi-agent systems, and artificial intelligence since 1998.",
+      "foundingDate": "1998",
+      "parentOrganization": {
+        "@type": "CollegeOrUniversity",
+        "name": "Sapienza University of Rome",
+        "url": "https://www.uniroma1.it/"
+      },
+      "department": {
+        "@type": "Organization",
+        "name": "Department of Computer, Control, and Management Engineering Antonio Ruberti",
+        "url": "http://www.diag.uniroma1.it/"
+      },
+      "sameAs": [
+        "https://www.instagram.com/spqrteam/"
+      ],
+      "areaServed": "International",
+      "knowsAbout": [
+        "Humanoid Robotics",
+        "Multi-Agent Systems",
+        "Computer Vision",
+        "Robot Perception",
+        "Deep Learning",
+        "Reinforcement Learning",
+        "Edge Computing",
+        "RoboCup",
+        "Artificial Intelligence"
+      ]
+    }
+  </component>
 
-    <div 
+  <v-container>
+    <!-- Main Header Image -->
+    <header>
+      <v-img
+        :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
+        src="/assets/home/cover.png"
+        alt="SPQR Team - RoboCup Humanoid Soccer Robots at Sapienza University of Rome"
+      ></v-img>
+    </header>
+
+    <!-- Introduction Section -->
+    <section 
+      aria-label="About SPQR Team"
       style="
         max-width: 90rem;
         margin: auto; 
@@ -15,14 +59,14 @@
         text-align: center;
       "
     >
-      <p style="font-size: 23px; font-weight: 500;">
-        SPQR Team is the RoboCup research group of the <a href="http://www.diag.uniroma1.it/" target="_blank" style="color: #822433; text-decoration: none;">Department of Computer, Control, and Management Engineering Antonio Ruberti</a> 
-        at <a href="https://www.uniroma1.it/it/" target="_blank" style="color: #822433; text-decoration: none;">Sapienza University of Rome</a>, involved in RoboCup competitions since 1998.
-      </p>
-    </div>
+      <h1 style="font-size: 23px; font-weight: 500;">
+        SPQR Team is the RoboCup research group of the <a href="http://www.diag.uniroma1.it/" target="_blank" rel="noopener" style="color: #822433; text-decoration: none;">Department of Computer, Control, and Management Engineering Antonio Ruberti</a> 
+        at <a href="https://www.uniroma1.it/it/" target="_blank" rel="noopener" style="color: #822433; text-decoration: none;">Sapienza University of Rome</a>, involved in RoboCup competitions since 1998.
+      </h1>
+    </section>
 
     <!-- Research Fields Section -->
-    <div class="research-fields-section">
+    <section class="research-fields-section" aria-label="Research Fields">
       <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
         Our Research Fields
       </h2>
@@ -47,12 +91,11 @@
           </v-card>
         </v-col>
       </v-row>
-    </div>
+    </section>
   </v-container>
 
-
   <!-- Instagram Reels Section -->
-  <div class="instagram-section">
+  <section class="instagram-section" aria-label="Instagram Updates">
     <v-container>
       <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 1rem;">
         Latest from Instagram
@@ -120,10 +163,10 @@
         </v-col>
       </v-row>
     </v-container>
-  </div>
+  </section>
 
   <!-- Press Section -->
-  <div class="press-section">
+  <section class="press-section" aria-label="Media Coverage">
     <v-container>
       <!-- TV Appearances Section -->
       <div class="tv-appearances-subsection">
@@ -209,10 +252,10 @@
       </v-row>
       </div>
     </v-container>
-  </div>
+  </section>
 
   <!-- Sponsor & Partners Section -->
-  <div class="sponsor-section">
+  <section class="sponsor-section" aria-label="Sponsors and Partners">
     <v-container>
       <div>
         <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem; font-style: italic;">
@@ -243,7 +286,7 @@
         </v-row>
     </div>
     </v-container>
-  </div>
+  </section>
 
 </template>
 

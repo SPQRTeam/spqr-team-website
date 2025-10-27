@@ -1,0 +1,10 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://spqrteam.github.io/spqr-team-website/sitemap.xml
+
+# Block crawling of specific paths if needed (examples)
+# Disallow: /api/
+# Disallow: /private/
