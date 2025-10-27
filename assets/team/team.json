@@ -1,0 +1,343 @@
+[
+  {
+    "name": "Prof. Daniele Nardi",
+    "role": "Team Advisor",
+    "image": "Nardi.jpg",
+    "years": ""
+  },
+  {
+    "name": "Prof. Luca Iocchi",
+    "role": "Team Advisor",
+    "image": "Iocchi.jpg",
+    "years": ""
+  },
+  {
+    "name": "Dr. Vincenzo Suriani",
+    "role": "Team Leader",
+    "image": "Suriani.jpg",
+    "years": ""
+  },
+  {
+    "name": "Prof. Domenico Bloisi",
+    "role": "Team Manager",
+    "image": "Bloisi.jpg",
+    "years": ""
+  },
+
+
+  {
+    "name": "Daniele Affinita",
+    "role": "Ph.D. Student",
+    "image": "DanieleAffinita.jpg",
+    "years": ""
+  },
+  {
+    "name": "Flavio Maiorana",
+    "role": "Ph.D. Student",
+    "image": "FlavioMaiorana.jpg",
+    "years": ""
+  },
+  {
+    "name": "Flavio Volpi",
+    "role": "Ph.D. Student",
+    "image": "FlavioVolpi.jpg",
+    "years": ""
+  },
+  {
+    "name": "Francesco Petri",
+    "role": "Ph.D. Student",
+    "image": "FrancescoPetri.jpg",
+    "years": ""
+  },
+  {
+    "name": "Valerio Spagnoli",
+    "role": "Ph.D. Student",
+    "image": "ValerioSpagnoli.jpg",
+    "years": ""
+  },
+  {
+    "name": "Michele Brienza",
+    "role": "Ph.D. Student",
+    "image": "MicheleBrienza.jpg",
+    "years": ""
+  },
+  {
+    "name": "Eugenio Bugli",
+    "role": "M.Sc. Student",
+    "image": "EugenioBugli.jpg",
+    "years": ""
+  },
+  {
+    "name": "Filippo Ansalone",
+    "role": "M.Sc. Student",
+    "image": "FilippoAnsalone.jpg",
+    "years": ""
+  },
+  {
+    "name": "Can Lin",
+    "role": "M.Sc. Student",
+    "image": "CanLin.jpg",
+    "years": ""
+  },
+  {
+    "name": "Jacopo Tedeschi",
+    "role": "M.Sc. Student",
+    "image": "JacopoTedeschi.jpg",
+    "years": ""
+  },
+  {
+    "name": "Damiano Imola",
+    "role": "M.Sc. Student",
+    "image": "DamianoImola.jpg",
+    "years": ""
+  },
+
+
+
+
+
+  
+
+  {
+    "name": "Emanuele Antonioni",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2021-2022"
+  },
+  {
+    "name": "Francesco Riccio",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2013-2015"
+  },
+  {
+    "name": "Federico Patota",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2014-2015"
+  },
+  {
+    "name": "Guglielmo Gemignani",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2012-2013"
+  },
+  {
+    "name": "Fabio Previtali",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2009-2010 and 2012-2013"
+  },
+  {
+    "name": "Luca Marchetti",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2006-2007 and 2009-2010"
+  },
+  {
+    "name": "Matteo Leonetti",
+    "role": "Team Leader",
+    "image": "",
+    "years": "2007-2009"
+  },
+
+
+  {
+    "name": "Graziano Specchi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Emanuele Musumeci",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Amila Sikalo",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Rosanna Greco",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Elisa Foderaro",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Fabian Fonseca",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "David Esteban",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Akshay Dhonthi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Eleonora Chiarantano",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Tommaso Carlini",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Dario Albani",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Emanuele Borzi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Francesco Bella",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Matteo Cecchini",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Daniele De Simone",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Riccardo Cardelli",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Tiziano Manoni",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Vittorio Morrone",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Chiara Picardi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Lorenzo Tognalini",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Gabriel Ulici",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Martina Deturres",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Valentina Negro Maggio",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Federica Fieno",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Mauro Giampieri",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Enrico Mingo",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Armando Nania",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Marco Paolelli",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Valerio Ortensi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Ali Youssef",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Mirko Malacario",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Ricardo Dodds",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Leonardo Brizi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  }
+]

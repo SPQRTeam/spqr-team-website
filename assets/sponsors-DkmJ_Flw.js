@@ -1,0 +1,1 @@
+import{_ as r,C as s,L as e,D as t,E as n}from"./index-DX8rOCsz.js";import{V as a}from"./VContainer-KdvpeOi0.js";const c={};function f(l,o){return e(),s(a,null,{default:t(()=>[...o[0]||(o[0]=[n("h1",null,"Sponsor",-1)])]),_:1})}const i=r(c,[["render",f]]);export{i as default};

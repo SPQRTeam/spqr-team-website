@@ -1,0 +1,74 @@
+[
+  {
+    "date": "18/10/2025",
+    "event": "Maker Faire Rome",
+    "source": "Rai News",
+    "name": "RAINEWS24_18-10-2025",
+    "minute": 0,
+    "second": 0
+  },
+  {
+    "date": "18/10/2025",
+    "event": "Maker Faire Rome",
+    "source": "TG1",
+    "name": "TG1_18-10-2025",
+    "minute": 0,
+    "second": 32
+  },
+  {
+    "date": "18/10/2025",
+    "event": "Maker Faire Rome",
+    "source": "TG2",
+    "name": "TG2_18-10-2025",
+    "minute": 0,
+    "second": 32
+  },
+  {
+    "date": "16/08/2025",
+    "event": "World Humanoid Robot Games",
+    "source": "TG1",
+    "name": "TG1_16-08-2025",
+    "minute": 0,
+    "second": 0
+  },
+  {
+    "date": "16/08/2025",
+    "event": "World Humanoid Robot Games",
+    "source": "TF1",
+    "name": "TF1_16-08-2025",
+    "minute": 1,
+    "second": 34
+  },
+  {
+    "date": "15/08/2025",
+    "event": "World Humanoid Robot Games",
+    "source": "TG1 Mattina",
+    "name": "TG1MATTINA_15-08-2025",
+    "minute": 0,
+    "second": 0
+  },
+  {
+    "date": "15/08/2025",
+    "event": "World Humanoid Robot Games",
+    "source": "TGR Lazio",
+    "name": "TGRLAZIO_15-08-2025",
+    "minute": 0,
+    "second": 0
+  },
+  {
+    "date": "15/08/2025",
+    "event": "World Humanoid Robot Games",
+    "source": "TG Sport",
+    "name": "TGSPORT_15-08-2025",
+    "minute": 0,
+    "second": 0
+  },
+  {
+    "date": "11/12/2023",
+    "event": "Tibero e l'Intelligenza Artificiale",
+    "source": "XXI Secolo",
+    "name": "XXISECOLO_11-12-2023",
+    "minute": 0,
+    "second": 0
+  }
+]

@@ -1,0 +1,1 @@
+import{_ as e,C as s,L as n,D as r,E as o}from"./index-DX8rOCsz.js";import{V as a}from"./VContainer-KdvpeOi0.js";const c={};function f(l,t){return n(),s(a,null,{default:r(()=>[...t[0]||(t[0]=[o("h1",null,"Students",-1)])]),_:1})}const d=e(c,[["render",f]]);export{d as default};

@@ -1,0 +1,1 @@
+import{_ as t,C as a,L as r,D as o,E as n}from"./index-DX8rOCsz.js";import{V as s}from"./VContainer-KdvpeOi0.js";const c={};function f(i,e){return r(),a(s,null,{default:o(()=>[...e[0]||(e[0]=[n("h1",null,"Media",-1)])]),_:1})}const d=t(c,[["render",f]]);export{d as default};

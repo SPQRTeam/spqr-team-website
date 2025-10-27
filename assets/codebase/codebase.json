@@ -1,0 +1,51 @@
+[
+  {
+    "name": "Circus",
+    "description": "SPQR simulator for Booster Robotics robots.",
+    "link": "https://github.com/DaniAffCH/circus",
+    "cover": "circus-maximus-left.jpg",
+    "platform": "Booster"
+  },
+  {
+    "name": "Maximus",
+    "description": "SPQR Framework for Booster Robotics robots.",
+    "link": "https://github.com/SPQRTeam/spqrbooster2026.git",
+    "cover": "circus-maximus-right.jpg",
+    "platform": "Booster"
+  },
+  {
+    "name": "Colosseum",
+    "description": "SPQR enviroment for Reinforcement Learning.",
+    "link": "https://github.com/neverorfrog/colosseum.git",
+    "cover": "colosseum.jpg",
+    "platform": "Booster"
+  },
+  {
+    "name": "spqr2025",
+    "description": "SPQR Codebase used in RoboCup 2025 main competition.",
+    "link": "",
+    "cover": "",
+    "platform": "Nao"
+  },
+  {
+    "name": "spqr2024",
+    "description": "SPQR Codebase used in RoboCup 2024 main competition.",
+    "link": "https://github.com/SPQRTeam/spqr2024.git",
+    "cover": "",
+    "platform": "Nao"
+  },
+  {
+    "name": "spqr2024@challenge",
+    "description": "SPQR Codebase used in RoboCup 2024 Shared Autonomy Challenge.",
+    "link": "https://github.com/SPQRTeam/spqr2024/tree/challenge",
+    "cover": "",
+    "platform": "Nao"
+  },
+  {
+    "name": "spqr2023",
+    "description": "SPQR Codebase used in RoboCup 2023 main competition.",
+    "link": "https://github.com/SPQRTeam/spqr2023",
+    "cover": "",
+    "platform": "Nao"
+  }
+]
