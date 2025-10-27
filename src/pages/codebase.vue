@@ -92,24 +92,16 @@ const repositories = ref([])
 
 const loadRepositories = async () => {
     try {
-        const response = await fetch(baseUrl + 'assets/codebase/codebase.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').filter(line => line.trim())
+        const response = await fetch(baseUrl + 'assets/codebase/codebase.json')
+        const data = await response.json()
         
-        // Skip header row
-        const dataLines = lines.slice(1)
-        
-        repositories.value = dataLines.map(line => {
-            const [name, description, link, cover, platform] = line.split(',').map(field => field.trim())
-            
-            return {
-                name,
-                description,
-                link: link || '',
-                cover: cover ? baseUrl + 'assets/codebase/' + cover : '',
-                platform
-            }
-        })
+        repositories.value = data.map(repo => ({
+            name: repo.name,
+            description: repo.description,
+            link: repo.link || '',
+            cover: repo.cover ? baseUrl + 'assets/codebase/' + repo.cover : '',
+            platform: repo.platform
+        }))
     } catch (error) {
         console.error('Error loading repositories:', error)
     }
