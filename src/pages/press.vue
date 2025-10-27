@@ -127,27 +127,21 @@ const videoPlayer = ref(null)
 // Selected video state
 const selectedVideo = ref(null)
 
-// Load TV videos from CSV
+// Load TV videos from JSON
 const loadTVVideos = async () => {
     try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').slice(1) // Skip header
+        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
+        const data = await response.json()
         
-        const videos = lines
-            .filter(line => line.trim())
-            .map(line => {
-                const [date, event, source, name, minute, second] = line.split(',')
-                return {
-                    date: date.trim(),
-                    event: event.trim(),
-                    source: source.trim(),
-                    name: name.trim(),
-                    minute: parseInt(minute.trim()) || 0,
-                    second: parseInt(second.trim()) || 0,
-                    path: `${import.meta.env.BASE_URL}assets/press/${name.trim()}.mp4`
-                }
-            })
+        const videos = data.map(video => ({
+            date: video.date,
+            event: video.event,
+            source: video.source,
+            name: video.name,
+            minute: video.minute || 0,
+            second: video.second || 0,
+            path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`
+        }))
         
         // Sort by date (newest first)
         tvVideos.value = videos.sort((a, b) => {
@@ -231,24 +225,20 @@ const handleImageError = (event) => {
 
 const loadPressData = async () => {
     try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.csv')
-        const csvText = await response.text()
-        const lines = csvText.split('\n').slice(1) // Skip header
+        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
+        const data = await response.json()
         
-        const articles = lines
-            .filter(line => line.trim())
-            .map(line => {
-                const [date, source, link] = line.split(',')
-                const dateStr = date.trim()
-                // Extract year from date format DD/MM/YYYY
-                const year = dateStr.split('/')[2]
-                return { 
-                    date: dateStr, 
-                    source: source.trim(), 
-                    link: link.trim(),
-                    year: year
-                }
-            })
+        const articles = data.map(article => {
+            const dateStr = article.date
+            // Extract year from date format DD/MM/YYYY
+            const year = dateStr.split('/')[2]
+            return { 
+                date: dateStr, 
+                source: article.source, 
+                link: article.link,
+                year: year
+            }
+        })
         
         pressArticles.value = articles
     } catch (error) {
