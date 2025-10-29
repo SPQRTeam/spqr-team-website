@@ -48,5 +48,115 @@
     "paperLink": "https://arxiv.org/abs/2209.09987",
     "siteLink": "https://sites.google.com/unibas.it/wolves/robocup/robocup-2022/mario",
     "abstract": "This technical report describes a modular and extensible architecture for computing visual statistics in RoboCup SPL (MARIO), presented dur- ing the SPL Open publications Challenge at RoboCup 2022, held in Bangkok (Thailand). MARIO is an open-source, ready-to-use software application whose final goal is to contribute to the growth of the RoboCup SPL com- munity. MARIO comes with a GUI that integrates multiple machine learning and computer vision based functions, including automatic cam- era calibration, background subtraction, homography computation, player + ball tracking and localization, NAO robot pose estimation and fall de- tection. MARIO has been ranked no. 1 in the Open publications Challenge."
+  },
+  {
+    "title": "Learning from the Crowd: Improving the Decision Making Process in Robot Soccer using the Audience Noise",
+    "year": 2021,
+    "authors": "E. Antonioni, V. Suriani, F. Solimando, D. Nardi, D. D. Bloisi",
+    "cover": "LearningFromTheCrowd.png",
+    "extras": "RoboCup Symposium Best Paper Award 2021",
+    "paperLink": "https://www.researchgate.net/publication/353045088_Learning_from_the_Crowd_Improving_the_Decision_Making_Process_in_Robot_Soccer_using_the_Audience_Noise",
+    "siteLink": "",
+    "abstract": "Fan input and support is an important component in many individual and team sports, ranging from athletics to basketball. Audience interaction provides a consistent impact on the athletes' performance. The analysis of the crowd noise can provide a global indication on the ongoing game situation, less conditioned by subjective factors that can influence a single fan. In this work, we exploit the collective intelligence of the audience of a robot soccer match to improve the performance of the robot players. In particular, audio features extracted from the crowd noise are used in a Reinforcement Learning process to possibly modify the game strategy. The effectiveness of the proposed approach is demonstrated by experiments on registered crowd noise samples from several past RoboCup SPL matches."
+  },
+  {
+    "title": "Cooperative Multi-agent Deep Reinforcement Learning in a 2 Versus 2 Free-Kick Task",
+    "year": 2019,
+    "authors": "J. Ocana, F. Riccio, R. Capobianco, D. Nardi",
+    "cover": "CooperativeMultiAgentDRL.png",
+    "extras": "",
+    "paperLink": "https://www.researchgate.net/publication/337717021_Cooperative_Multi-agent_Deep_Reinforcement_Learning_in_a_2_Versus_2_Free-Kick_Task",
+    "siteLink": "",
+    "abstract": "In multi-robot reinforcement learning the goal is to enable a team of robots to learn a coordinated behavior from direct interaction with the environment. Here, we provide a comparison of the two main approaches to tackle this challenge, namely independent learners (IL) and joint-action learners (JAL). IL is suitable for highly scalable domains, but it faces non-stationarity issues. Whereas, JAL overcomes non-stationarity and can generate highly coordinated behaviors, but it presents scalability issues due to the increased size of the search space. We implement and evaluate these methods in a new multi-robot cooperative and adversarial soccer scenario, called 2 versus 2 free-kick task, where scalability issues affecting JAL are less relevant given the small number of learners. In this work, we implement and deploy these methodologies on a team of simulated NAO humanoid robots. We describe the implementation details of our scenario and show that both approaches are able to achieve satisfying solutions. Notably, we observe joint-action learners to have a better performance than independent learners in terms of success rate and quality of the learned policies. Finally, we discuss the results and provide conclusions based on our findings."
+  },
+  {
+    "title": "On Field Gesture-Based Robot-to-Robot Communication with NAO Soccer Players",
+    "year": 2019,
+    "authors": "V. Di Giambattista, M. Fawakherji, V. Suriani, D. D. Bloisi, D. Nardi",
+    "cover": "OnFieldGestureBased.png",
+    "extras": "",
+    "paperLink": "https://www.researchgate.net/publication/337695984_On_Field_Gesture-Based_Robot-to-Robot_Communication_with_NAO_Soccer_Players",
+    "siteLink": "",
+    "abstract": "Gesture-based communication is commonly used by soccer players during matches to exchange information with teammates. Among the possible forms of gesture-based interaction, hand signals are the most used. In this paper, we present a deep learning method for recognizing robot-to-robot hand signals exchanged during a soccer game. A neural network for estimating human body, face, hands, and foot position has been adapted for the application in the robot soccer scenario. Quantitative experiments carried out on NAO V6 robots demonstrate the effectiveness of the proposed approach. Source code and data used in this work are made publicly available for the community."
+  },
+  {
+    "title": "On Field Gesture-Based Robot-to-Robot Communication with NAO Soccer Players",
+    "year": 2019,
+    "authors": "J. Ocana, F. Riccio, R. Capobianco, D. Nardi",
+    "cover": "CooperativeMultiAgentDRLInSoccerDomains.png",
+    "extras": "",
+    "paperLink": "https://dl.acm.org/doi/10.5555/3306127.3331945",
+    "siteLink": "",
+    "abstract": "In multi-robot reinforcement learning the goal is to enable a group of robots to learn coordinated behaviors from direct interaction with the environment. Here, we provide a comparison of two main approaches designed for tackling this challenge; namely, independent learners (IL) and joint-action learners (JAL). We evaluate these methods in a multi-robot cooperative and adversarial soccer scenario, called 2 versus 2 free-kick task, with simulated NAO humanoid robots as players. Our findings show that both approaches can achieve satisfying solutions, with JAL outperforming IL."
+  },
+  {
+    "title": "A Deep Learning Approach for Object Recognition with NAO Soccer Robots",
+    "year": 2017,
+    "authors": "D. Albani, A. Youssef, V. Suriani, D. Nardi, D. D. Bloisi",
+    "cover": "ADeepLearningApproachForObjectRecognition.png",
+    "extras": "",
+    "paperLink": "https://www.researchgate.net/publication/320733432_A_Deep_Learning_Approach_for_Object_Recognition_with_NAO_Soccer_Robots",
+    "siteLink": "",
+    "abstract": "The use of identical robots in the RoboCup Standard Platform League (SPL) made software development the key aspect to achieve good results in competitions. In particular, the visual detection process is crucial for extracting information about the environment. In this paper, we present a novel approach for object detection and classification based on Convolutional Neural Networks (CNN). The approach is designed to be used by NAO robots and is made of two stages: image region segmentation, for reducing the search space, and Deep Learning, for validation. The proposed method can be easily extended to deal with different objects and adapted to be used in other RoboCup leagues. Quantitative experiments have been conducted on a data set of annotated images captured in real conditions from NAO robots in action. The used data set is made available for the community."
+  },
+  {
+    "title": "Multi-Robot Search for a Moving Target: Integrating World Modeling, Task Assignment and Context",
+    "year": 2016,
+    "authors": "F. Riccio, E. Borzi, G. Gemignani, D. Nardi",
+    "cover": "MultiRobotSearchForAMovingTarget.png",
+    "extras": "",
+    "paperLink": "https://ieeexplore.ieee.org/document/7759298",
+    "siteLink": "",
+    "abstract": "In this paper, we address coordination within a team of cooperative autonomous robots that need to accomplish a common goal. Our survey of the vast literature on the subject highlights two directions to further improve the performance of a multi-robot team. In particular, in a dynamic environment, coordination needs to be adapted to the different situations at hand (for example, when there is a dramatic loss of performance due to unreliable communication network). To this end, we contribute a novel approach for coordinating robots. Such an approach allows a robotic team to exploit environmental knowledge to adapt to various circumstances encountered, enhancing its overall performance. This result is achieved by dynamically adapting the underlying task assignment and distributed world representation, based on the current state of the environment. We demonstrate the effectiveness of our coordination system by applying it to the problem of locating a moving, non-adversarial target. In particular, we report on experiments carried out with a team of humanoid robots in a soccer scenario and a team of mobile bases in an office environment."
+  },
+  {
+    "title": "Using Monte Carlo Search With Data Aggregation to Improve Robot Soccer Policies",
+    "year": 2016,
+    "authors": "F. Riccio, R. Capobianco, D. Nardi",
+    "cover": "UsingMonteCarloSearch.png",
+    "extras": "",
+    "paperLink": "https://www.researchgate.net/publication/303750013_Using_Monte_Carlo_Search_With_Data_Aggregation_to_Improve_Robot_Soccer_Policies",
+    "siteLink": "",
+    "abstract": "RoboCup soccer competitions are considered among the most challenging multi-robot adversarial environments, due to their high dynamism and the partial observability of the environment. In this paper we introduce a method based on a combination of Monte Carlo search and data aggregation (MCSDA) to adapt discrete-action soccer policies for a defender robot to the strategy of the opponent team. By exploiting a simple representation of the domain, a supervised learning algorithm is trained over an initial collection of data consisting of several simulations of human expert policies. Monte Carlo policy rollouts are then generated and aggregated to previous data to improve the learned policy over multiple epochs and games. The proposed approach has been extensively tested both on a soccer-dedicated simulator and on real robots. Using this method, our learning robot soccer team achieves an improvement in ball interceptions, as well as a reduction in the number of opponents' goals. Together with a better performance, an overall more efficient positioning of the whole team within the field is achieved."
+  },
+  {
+    "title": "Context-Based Coordination for a Multi-Robot Soccer Team",
+    "year": 2015,
+    "authors": "F. Riccio, E. Borzi, G. Gemignani, D. Nardi",
+    "cover": "",
+    "extras": "",
+    "paperLink": "https://dl.acm.org/doi/abs/10.1007/978-3-319-29339-4_23",
+    "siteLink": "",
+    "abstract": "The key issue investigated in the field of Multi-Robot Systems (MRS) is the problem of coordinating multiple robots in a common environment. In tackling this issue, problems concerning the capabilities of multiple heterogeneous robots and their environmental constraints need to be faced. In this paper, we introduce a novel approach for coordinating a team of robots. The key contribution of the proposed method consists in exploiting the rules governing the scenario by identifying and using “contexts”. The robots actions and perceptions are specialized to the current context to enhance both single and collective behaviors. The presented approach has been largely validated in a RoboCup scenario. In particular, we adopt a soccer environment as a testing ground for our algorithm. We evaluate our method in several testing sessions on a simulator representing a virtual model of a soccer field. The obtained results show a substantial improvement of the team adopting our algorithm."
+  },
+  {
+    "title": "Multi-Robot Perception and Action: World Modeling and Task Allocation",
+    "year": 2015,
+    "authors": "F. Riccio, L. Granon, G. Gemignani, D. Nardi",
+    "cover": "",
+    "extras": "",
+    "paperLink": "https://iris.uniroma1.it/handle/11573/854549?mode=simple",
+    "siteLink": "",
+    "abstract": "Multi-Robot Systems (MRS) is one research area where Artificial Intelligence and robotic techniques can be efficiently integrated. In this paper, we attempt to highlight some common aspects of the robotic and AI literature on multi-robot systems by surveying the most recent works in such an area. In particular, we focus on works that deal with the problem of coordinating a team of autonomous robots perceiving the world and acting in it to carry out a common task. By surveying these works, we attempt to give a new perspective on the problem of multi-robot world modeling and distributed multi-robot coordination."
+  },
+  {
+    "title": "Disambiguating Localization Symmetry through a Multi-Clustered Particle Filtering",
+    "year": 2015,
+    "authors": "F. Previtali, L. Gemignani, L. Iocchi, D. Nardi",
+    "cover": "DisambiguatingLocalizationSymmetry.png",
+    "extras": "",
+    "paperLink": "https://ieeexplore.ieee.org/document/7295822",
+    "siteLink": "",
+    "abstract": "Distributed Particle filter-based algorithms have been proven effective tools to model non-linear and dynamic processes in Multi Robot Systems. In complex scenarios, where mobile agents are involved, it is crucial to disseminate reliable beliefs among agents to avoid the degradation of the global estimations.We present a cluster-based data association to boost the performance of a Distributed Particle Filter. Exploiting such data association, we propose a disambiguation method for the RoboCup scenario robust to noise and false perceptions. The results obtained using both a simulated and a real environment demonstrate the effectiveness of the proposed approach."
+  },
+  {
+    "title": "Policy Gradient Learning for a Humanoid Soccer Robot",
+    "year": 2009,
+    "authors": "A. Cherubini, F. Giannone, L. Iocchi, M. Lombardo, G. Oriolo",
+    "cover": "PolicyGradientLearning.png",
+    "extras": "",
+    "paperLink": "https://www.sciencedirect.com/science/article/abs/pii/S0921889009000578",
+    "siteLink": "",
+    "abstract": "In humanoid robotic soccer, many factors, both at low-level (e.g., vision and motion control) and at high-level (e.g., behaviors and game strategies), determine the quality of the robot performance. In particular, the speed of individual robots, the precision of the trajectory, and the stability of the walking gaits, have a high impact on the success of a team. Consequently, humanoid soccer robots require fine tuning, especially for the basic behaviors. In recent years, machine learning techniques have been used to find optimal parameter sets for various humanoid robot behaviors. However, a drawback of learning techniques is time consumption: a practical learning method for robotic applications must be effective with a small amount of data. In this article, we compare two learning methods for humanoid walking gaits based on the Policy Gradient algorithm. We demonstrate that an extension of the classic Policy Gradient algorithm that takes into account parameter relevance allows for better solutions when only a few experiments are available. The results of our experimental work show the effectiveness of the policy gradient learning method, as well as its higher convergence rate, when the relevance of parameters is taken into account during learning."
   }
 ]
