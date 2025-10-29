@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: Build with SEO pre-rendering
+        run: npm run build:seo
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
