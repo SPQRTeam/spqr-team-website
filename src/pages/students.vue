@@ -1,5 +1,18 @@
 <template>
 
+    <!-- Work in Progress Banner -->
+    <v-banner
+        lines="one"
+        class="wip-banner"
+        color="warning"
+        icon="mdi-alert-circle"
+        sticky
+    >
+        <template v-slot:text>
+            <span class="wip-text">🚧 Work in Progress - This page is currently under construction 🚧</span>
+        </template>
+    </v-banner>
+
     <div class="cover-section">
         <v-img
             class="cover-image"
@@ -160,8 +173,25 @@ const projects = computed(() => {
 </script>
 
 <style scoped>
+.wip-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.wip-banner :deep(.v-banner__content) {
+    justify-content: center;
+}
+
+.wip-text {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
 .cover-image :deep(img) {
-    object-position: center 30% !important;
+    object-position: center 40% !important;
 }
 
 .cover-section {
