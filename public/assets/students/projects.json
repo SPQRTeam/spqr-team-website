@@ -1,0 +1,121 @@
+[
+
+    {
+        "title": "Project Title 1",
+        "description": "Description project 1",
+        "target": "Thesis",
+        "resources": [
+            {
+                "Paper": "https://example.com/link1",
+                "GitHub": "https://example.com/link1"
+            },
+            {
+                "Paper 1": "https://example.com/link1",
+                "Paper 2": "https://example.com/link2"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Contact Name 1",
+                "email": "Email contact 1"
+            },
+            {
+                "name": "Contact Name 2",
+                "email": "Email contact 2"
+            }
+        ]
+    },
+
+    {
+        "title": "Project Title 2",
+        "description": "Description project 2",
+        "target": "Thesis",
+        "resources": [
+            {
+                "Paper": "https://example.com/link1",
+                "GitHub": "https://example.com/link1"
+            },
+            {
+                "Paper 1": "https://example.com/link1",
+                "Paper 2": "https://example.com/link2"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Contact Name 1",
+                "email": "Email contact 1"
+            },
+            {
+                "name": "Contact Name 2",
+                "email": "Email contact 2"
+            }
+        ]
+    },
+
+    {
+        "title": "Project Title 2",
+        "description": "Description project 2",
+        "target": "Project",
+        "resources": [
+            {
+                "Paper": "https://example.com/link1",
+                "GitHub": "https://example.com/link1"
+            },
+            {
+                "Paper 1": "https://example.com/link1",
+                "GitHub": "https://example.com/link2"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Contact Name 1",
+                "email": "Email contact 1"
+            }
+        ]
+    },
+
+    {
+        "title": "Project Title 2",
+        "description": "Description project 2",
+        "target": "Project",
+        "resources": [
+            {
+                "Paper": "https://example.com/link1",
+                "GitHub": "https://example.com/link1"
+            },
+            {
+                "Paper 1": "https://example.com/link1",
+                "GitHub": "https://example.com/link2"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Contact Name 1",
+                "email": "Email contact 1"
+            }
+        ]
+    },
+
+    {
+        "title": "Project Title 2",
+        "description": "Description project 2",
+        "target": "Project",
+        "resources": [
+            {
+                "Paper": "https://example.com/link1",
+                "GitHub": "https://example.com/link1"
+            },
+            {
+                "Paper 1": "https://example.com/link1",
+                "GitHub": "https://example.com/link2"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Contact Name 1",
+                "email": "Email contact 1"
+            }
+        ]
+    }
+
+]
