@@ -35,8 +35,6 @@
                     v-for="(project, index) in theses"
                     :key="`thesis-${index}`"
                     cols="12"
-                    md="6"
-                    lg="4"
                 >
                     <div class="project-card">
                         <div class="card-title">
@@ -49,8 +47,8 @@
                             <!-- Resources -->
                             <div v-if="project.resources && project.resources.length > 0" class="mb-4">
                                 <h4 class="section-subtitle">Resources:</h4>
-                                <div class="resource-links">
-                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`thesis-res-${index}-${idx}`">
+                                <div class="resource-links-vertical">
+                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`thesis-res-${index}-${idx}`" class="resource-group">
                                         <v-btn
                                             v-for="(url, label) in resourceGroup"
                                             :key="`thesis-chip-${index}-${idx}-${label}`"
@@ -58,7 +56,7 @@
                                             target="_blank"
                                             color="rgb(0, 103, 120)"
                                             variant="outlined"
-                                            class="mr-2 mb-2"
+                                            class="mr-2"
                                             size="small"
                                         >
                                             <v-icon start size="small">mdi-link</v-icon>
@@ -71,16 +69,17 @@
                             <!-- Contacts -->
                             <div v-if="project.contacts && project.contacts.length > 0">
                                 <h4 class="section-subtitle">Contacts:</h4>
-                                <div v-for="(contact, idx) in project.contacts" :key="`thesis-contact-${index}-${idx}`" class="contact-item">
-                                    <div class="contact-name">
-                                        <v-icon size="small" class="mr-2">mdi-account</v-icon>
-                                        <span>{{ contact.name }}</span>
-                                    </div>
-                                    <div class="contact-email">
-                                        <v-icon size="small" class="mr-2">mdi-email</v-icon>
-                                        <a :href="`mailto:${contact.email}`">
-                                            {{ contact.email }}
-                                        </a>
+                                <div class="contacts-horizontal">
+                                    <div v-for="(contact, idx) in project.contacts" :key="`thesis-contact-${index}-${idx}`" class="contact-item-inline">
+                                        <div class="contact-info">
+                                            <v-icon size="small" class="mr-1">mdi-account</v-icon>
+                                            <span class="contact-name-inline">{{ contact.name }}</span>
+                                            <span class="contact-separator">-</span>
+                                            <v-icon size="small" class="mr-1">mdi-email</v-icon>
+                                            <a :href="`mailto:${contact.email}`">
+                                                {{ contact.email }}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -98,8 +97,6 @@
                     v-for="(project, index) in projects"
                     :key="`project-${index}`"
                     cols="12"
-                    md="6"
-                    lg="4"
                 >
                     <div class="project-card">
                         <div class="card-title">
@@ -112,8 +109,8 @@
                             <!-- Resources -->
                             <div v-if="project.resources && project.resources.length > 0" class="mb-4">
                                 <h4 class="section-subtitle">Resources:</h4>
-                                <div class="resource-links">
-                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`project-res-${index}-${idx}`">
+                                <div class="resource-links-vertical">
+                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-group">
                                         <v-btn
                                             v-for="(url, label) in resourceGroup"
                                             :key="`project-chip-${index}-${idx}-${label}`"
@@ -121,7 +118,7 @@
                                             target="_blank"
                                             color="rgb(0, 103, 120)"
                                             variant="outlined"
-                                            class="mr-2 mb-2"
+                                            class="mr-2"
                                             size="small"
                                         >
                                             <v-icon start size="small">mdi-link</v-icon>
@@ -134,16 +131,17 @@
                             <!-- Contacts -->
                             <div v-if="project.contacts && project.contacts.length > 0">
                                 <h4 class="section-subtitle">Contacts:</h4>
-                                <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item">
-                                    <div class="contact-name">
-                                        <v-icon size="small" class="mr-2">mdi-account</v-icon>
-                                        <span>{{ contact.name }}</span>
-                                    </div>
-                                    <div class="contact-email">
-                                        <v-icon size="small" class="mr-2">mdi-email</v-icon>
-                                        <a :href="`mailto:${contact.email}`">
-                                            {{ contact.email }}
-                                        </a>
+                                <div class="contacts-horizontal">
+                                    <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
+                                        <div class="contact-info">
+                                            <v-icon size="small" class="mr-1">mdi-account</v-icon>
+                                            <span class="contact-name-inline">{{ contact.name }}</span>
+                                            <span class="contact-separator">-</span>
+                                            <v-icon size="small" class="mr-1">mdi-email</v-icon>
+                                            <a :href="`mailto:${contact.email}`">
+                                                {{ contact.email }}
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -274,6 +272,60 @@ const projects = computed(() => {
     font-weight: 600;
     color: #822433;
     margin-bottom: 0.75rem;
+}
+
+.resource-links-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resource-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contacts-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+}
+
+.contact-item-inline {
+    display: inline-flex;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 103, 120, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid rgb(0, 103, 120);
+}
+
+.contact-name-inline {
+    font-weight: 600;
+    color: #424242;
+}
+
+.contact-separator {
+    color: #888;
+    margin: 0 4px;
+}
+
+.contact-info a {
+    color: rgb(0, 103, 120);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+    color: #822433;
+    text-decoration: underline;
 }
 
 .resource-links {
