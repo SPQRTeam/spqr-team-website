@@ -254,7 +254,7 @@ onMounted(() => {
 
 <style scoped>
 .cover-image :deep(img) {
-    object-position: center 90% !important;
+    object-position: center 40% !important;
 }
 
 .year-section {

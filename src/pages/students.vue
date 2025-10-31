@@ -342,10 +342,4 @@ const projects = computed(() => {
     color: #822433;
     text-decoration: underline;
 }
-
-@media (max-width: 960px) {
-    .cover-title {
-        font-size: 2rem;
-    }
-}
 </style>
