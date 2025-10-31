@@ -171,6 +171,10 @@ const projects = computed(() => {
 </script>
 
 <style scoped>
+.cover-image :deep(img) {
+    object-position: center 40% !important;
+}
+
 .wip-banner {
     position: sticky;
     top: 0;
@@ -187,35 +191,6 @@ const projects = computed(() => {
     font-size: 1rem;
     text-align: center;
 }
-
-.cover-image :deep(img) {
-    object-position: center 40% !important;
-}
-
-.cover-section {
-    width: 100%;
-    height: 400px;
-    position: relative;
-    overflow: hidden;
-}
-
-.cover-image {
-    width: 100%;
-    height: 100%;
-}
-
-.cover-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 
 .content-wrapper {
     max-width: 1200px;

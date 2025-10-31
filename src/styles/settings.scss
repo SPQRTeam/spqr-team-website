@@ -18,10 +18,65 @@ body {
   background-color: #f1f4f3 !important;
 }
 
+// Responsive zoom system - baseline: 2560x1600 @ 0.9 zoom
+// The zoom scales proportionally to maintain consistent viewport across different resolutions
+
+// Default for very small screens (mobile)
+html {
+  zoom: 0.60;
+}
+
+// Small tablets and large phones (768px - 1023px)
+@media (min-width: 768px) {
+  html {
+    zoom: 0.60;
+  }
+}
+
+// Tablets and small laptops (1024px - 1365px)
+@media (min-width: 1024px) {
+  html {
+    zoom: 0.70;
+  }
+}
+
+// Standard laptops (1366px - 1599px)
+@media (min-width: 1366px) {
+  html {
+    zoom: 0.70;
+  }
+}
+
+// Large laptops and small desktops (1600px - 1919px)
+@media (min-width: 1600px) {
+  html {
+    zoom: 0.75;
+  }
+}
+
+// Full HD displays (1920px - 2559px)
+@media (min-width: 1920px) {
+  html {
+    zoom: 0.88;
+  }
+}
+
+// Your baseline: 2560x1600 and similar high-res displays (2560px+)
+@media (min-width: 2560px) {
+  html {
+    zoom: 1.0;
+  }
+}
+
+// 4K displays (3840px+)
+@media (min-width: 3840px) {
+  html {
+    zoom: 1.4;
+  }
+}
+
 .cover-section {
-    margin-left: calc(-50vw + 50%);
-    margin-right: calc(-50vw + 50%);
-    width: 100vw;
+    width: 100%;
     aspect-ratio: 16 / 5;
     overflow: hidden;
     max-height: 300px;
