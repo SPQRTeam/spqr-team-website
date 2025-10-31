@@ -72,10 +72,10 @@
                                 <div class="contacts-horizontal">
                                     <div v-for="(contact, idx) in project.contacts" :key="`thesis-contact-${index}-${idx}`" class="contact-item-inline">
                                         <div class="contact-info">
-                                            <v-icon size="small" class="mr-1">mdi-account</v-icon>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120);">mdi-account</v-icon>
                                             <span class="contact-name-inline">{{ contact.name }}</span>
                                             <span class="contact-separator">-</span>
-                                            <v-icon size="small" class="mr-1">mdi-email</v-icon>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
                                             <a :href="`mailto:${contact.email}`">
                                                 {{ contact.email }}
                                             </a>
@@ -134,10 +134,10 @@
                                 <div class="contacts-horizontal">
                                     <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
                                         <div class="contact-info">
-                                            <v-icon size="small" class="mr-1">mdi-account</v-icon>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-account</v-icon>
                                             <span class="contact-name-inline">{{ contact.name }}</span>
                                             <span class="contact-separator">-</span>
-                                            <v-icon size="small" class="mr-1">mdi-email</v-icon>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
                                             <a :href="`mailto:${contact.email}`">
                                                 {{ contact.email }}
                                             </a>
