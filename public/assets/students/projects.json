@@ -1,121 +1,58 @@
 [
-
     {
-        "title": "Project Title 1",
-        "description": "Description project 1",
+        "title": "Goalkeeper Motion Generation Using Optimal Control Problem Enhanced Reinforcement Learning",
+        "description": "Previous works have shown that it's possible to generate goalkeeper motion primitives by learning from humans and treating it as a pure reinforcement learning problem. However, this approach can be suboptimal because it doesn't enforce kinematic constraints, only a best-effort behavior. Moreover, a fully learning-based approach doesn't take advantage of prior information, such as the ball's dynamics and its evolution. Combining the strengths of control and reinforcement learning could improve performance, ensure feasible solutions, and enforce intrinsic stability. Finally, a physically-informed learning problem may be more efficient and more stable during the learning phase.",
         "target": "Thesis",
         "resources": [
             {
-                "Paper": "https://example.com/link1",
-                "GitHub": "https://example.com/link1"
-            },
-            {
-                "Paper 1": "https://example.com/link1",
-                "Paper 2": "https://example.com/link2"
+                "Name": "Humanoid Goalkeeper",
+                "Paper": "https://www.arxiv.org/pdf/2510.18002",
+                "GitHub": "https://github.com/InternRobotics/Humanoid-Goalkeeper/"
             }
         ],
         "contacts": [
             {
-                "name": "Contact Name 1",
-                "email": "Email contact 1"
+                "name": "Daniele Affinita",
+                "email": "daniele.affinita@epfl.ch"
             },
             {
-                "name": "Contact Name 2",
-                "email": "Email contact 2"
+                "name": "Flavio Maiorana",
+                "email": "flavio.maiorana@uniroma1.it"
             }
         ]
-    },
+    },   
 
-    {
-        "title": "Project Title 2",
-        "description": "Description project 2",
-        "target": "Thesis",
-        "resources": [
-            {
-                "Paper": "https://example.com/link1",
-                "GitHub": "https://example.com/link1"
-            },
-            {
-                "Paper 1": "https://example.com/link1",
-                "Paper 2": "https://example.com/link2"
-            }
-        ],
-        "contacts": [
-            {
-                "name": "Contact Name 1",
-                "email": "Email contact 1"
-            },
-            {
-                "name": "Contact Name 2",
-                "email": "Email contact 2"
-            }
-        ]
-    },
+    
 
+
+
+
+    
     {
-        "title": "Project Title 2",
-        "description": "Description project 2",
+        "title": "Greeting with Imitation Learning",
+        "description": "A project focused on developing a humanoid robot capable of greeting people using imitation learning techniques. The robot learns to mimic human gestures and expressions to create a more engaging interaction. The idea is to use MuJoCo Lab combined with MimicKit to train the agent starting from rgb videos of human actions.",
         "target": "Project",
         "resources": [
             {
-                "Paper": "https://example.com/link1",
-                "GitHub": "https://example.com/link1"
+                "Name": "Mujoco Lab",
+                "GitHub": "https://github.com/mujocolab/mjlab"
             },
             {
-                "Paper 1": "https://example.com/link1",
-                "GitHub": "https://example.com/link2"
+                "Name": "MimicKit",
+                "GitHub": "https://github.com/xbpeng/MimicKit"
             }
         ],
         "contacts": [
             {
-                "name": "Contact Name 1",
-                "email": "Email contact 1"
-            }
-        ]
-    },
-
-    {
-        "title": "Project Title 2",
-        "description": "Description project 2",
-        "target": "Project",
-        "resources": [
-            {
-                "Paper": "https://example.com/link1",
-                "GitHub": "https://example.com/link1"
+                "name": "Flavio Maiorana",
+                "email": "flavio.maiorana@uniroma1.it"
             },
             {
-                "Paper 1": "https://example.com/link1",
-                "GitHub": "https://example.com/link2"
-            }
-        ],
-        "contacts": [
-            {
-                "name": "Contact Name 1",
-                "email": "Email contact 1"
-            }
-        ]
-    },
-
-    {
-        "title": "Project Title 2",
-        "description": "Description project 2",
-        "target": "Project",
-        "resources": [
-            {
-                "Paper": "https://example.com/link1",
-                "GitHub": "https://example.com/link1"
-            },
-            {
-                "Paper 1": "https://example.com/link1",
-                "GitHub": "https://example.com/link2"
-            }
-        ],
-        "contacts": [
-            {
-                "name": "Contact Name 1",
-                "email": "Email contact 1"
+                "name": "Michele Brienza",
+                "email": "brienza@diag.uniroma1.it"
             }
         ]
     }
+
 
 ]

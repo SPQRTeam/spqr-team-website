@@ -47,23 +47,26 @@
                             <!-- Resources -->
                             <div v-if="project.resources && project.resources.length > 0" class="mb-4">
                                 <h4 class="section-subtitle">Resources:</h4>
-                                <div class="resource-links-vertical">
-                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`thesis-res-${index}-${idx}`" class="resource-group">
-                                        <v-btn
-                                            v-for="(url, label) in resourceGroup"
-                                            :key="`thesis-chip-${index}-${idx}-${label}`"
-                                            :href="url"
-                                            target="_blank"
-                                            color="rgb(0, 103, 120)"
-                                            variant="outlined"
-                                            class="mr-2"
-                                            size="small"
-                                        >
-                                            <v-icon start size="small">mdi-link</v-icon>
-                                            {{ label }}
-                                        </v-btn>
-                                    </div>
-                                </div>
+                                <ul class="resource-list">
+                                    <li v-for="(resource, idx) in project.resources" :key="`thesis-res-${index}-${idx}`" class="resource-item">
+                                        <span class="resource-name">{{ resource.Name }}</span>
+                                        <div class="resource-links">
+                                            <v-btn
+                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                                                :key="`thesis-chip-${index}-${idx}-${label}`"
+                                                :href="url"
+                                                target="_blank"
+                                                color="rgb(0, 103, 120)"
+                                                variant="outlined"
+                                                class="mr-2"
+                                                size="small"
+                                            >
+                                                <v-icon start size="small">mdi-link</v-icon>
+                                                {{ label }}
+                                            </v-btn>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                             
                             <!-- Contacts -->
@@ -109,23 +112,26 @@
                             <!-- Resources -->
                             <div v-if="project.resources && project.resources.length > 0" class="mb-4">
                                 <h4 class="section-subtitle">Resources:</h4>
-                                <div class="resource-links-vertical">
-                                    <div v-for="(resourceGroup, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-group">
-                                        <v-btn
-                                            v-for="(url, label) in resourceGroup"
-                                            :key="`project-chip-${index}-${idx}-${label}`"
-                                            :href="url"
-                                            target="_blank"
-                                            color="rgb(0, 103, 120)"
-                                            variant="outlined"
-                                            class="mr-2"
-                                            size="small"
-                                        >
-                                            <v-icon start size="small">mdi-link</v-icon>
-                                            {{ label }}
-                                        </v-btn>
-                                    </div>
-                                </div>
+                                <ul class="resource-list">
+                                    <li v-for="(resource, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-item">
+                                        <span class="resource-name">{{ resource.Name }}</span>
+                                        <div class="resource-links">
+                                            <v-btn
+                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                                                :key="`project-chip-${index}-${idx}-${label}`"
+                                                :href="url"
+                                                target="_blank"
+                                                color="rgb(0, 103, 120)"
+                                                variant="outlined"
+                                                class="mr-2"
+                                                size="small"
+                                            >
+                                                <v-icon start size="small">mdi-link</v-icon>
+                                                {{ label }}
+                                            </v-btn>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                             
                             <!-- Contacts -->
@@ -249,16 +255,29 @@ const projects = computed(() => {
     margin-bottom: 0.75rem;
 }
 
-.resource-links-vertical {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.resource-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
 }
 
-.resource-group {
-    display: flex;
-    align-items: center;
+.resource-item {
+    margin-bottom: 0.75rem;
+    line-height: 1.8;
+    color: black;
+}
+
+.resource-name {
+    font-weight: 600;
+    color: #424242;
+    margin-right: 8px;
+}
+
+.resource-links {
+    display: inline-flex;
+    flex-wrap: wrap;
     gap: 8px;
+    margin-top: 4px;
 }
 
 .contacts-horizontal {
