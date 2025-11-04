@@ -1,7 +1,7 @@
 <template>
 
     <!-- Work in Progress Banner -->
-    <v-banner
+    <!-- <v-banner
         lines="one"
         class="wip-banner"
         color="warning"
@@ -11,7 +11,7 @@
         <template v-slot:text>
             <span class="wip-text">🚧 Work in Progress - This page is currently under construction 🚧</span>
         </template>
-    </v-banner>
+    </v-banner> -->
 
     <div class="cover-section">
         <v-img
