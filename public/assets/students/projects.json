@@ -25,12 +25,9 @@
     
 
 
-
-
-    
     {
-        "title": "Greeting with Imitation Learning",
-        "description": "A project focused on developing a humanoid robot capable of greeting people using imitation learning techniques. The robot learns to mimic human gestures and expressions to create a more engaging interaction. The idea is to use MuJoCo Lab combined with MimicKit to train the agent starting from rgb videos of human actions.",
+        "title": "Humanoid Robot Imitation Learning from Videos",
+        "description": "A project focused on developing a humanoid robot capable of learning from people actions using imitation learning techniques. The robot learns to mimic human gestures to create more complex actions. The idea is to use MuJoCo Lab combined with MimicKit to train the agent starting from videos of human actions.",
         "target": "Project",
         "resources": [
             {
@@ -50,6 +47,32 @@
             {
                 "name": "Michele Brienza",
                 "email": "brienza@diag.uniroma1.it"
+            }
+        ]
+    },
+
+    {
+        "title": "Obstacle avoidance for humanoid robots",
+        "description": "Create an environment in MuJoCo Lab where a humanoid robot has to navigate through a field of moving obstacles. The robot should learn to avoid collisions while reaching a target location. The project will involve setting up the simulation environment, defining the robot's sensors to use for obstacle detection, and implementing a path planning algorithm that allows the robot to navigate safely.",
+        "target": "Project",
+        "resources": [
+            {
+                "Name": "Mujoco Lab",
+                "GitHub": "https://github.com/mujocolab/mjlab"
+            },
+            {
+                "Name": "Mujoco Playground",
+                "GitHub": "https://github.com/google-deepmind/mujoco_playground"
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Flavio Maiorana",
+                "email": "flavio.maiorana@uniroma1.it"
+            },
+            {
+                "name": "Valerio Spagnoli",
+                "email": "valerio.spagnoli@uniroma1.it"
             }
         ]
     }
