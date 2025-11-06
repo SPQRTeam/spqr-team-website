@@ -2,8 +2,8 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/press/cover.png"
-            alt="Press Header Cover"
+            src="/assets/media/cover.png"
+            alt="Media Header Cover"
             cover
         >
             <div class="cover-overlay">
