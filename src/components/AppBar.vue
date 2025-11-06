@@ -27,11 +27,11 @@
             <v-btn to="/team">Team</v-btn>
             <v-btn to="/events">Events</v-btn>
             <v-btn to="/press">Press</v-btn>
+            <v-btn to="/media">Media</v-btn>
             <v-btn to="/publications">publications</v-btn>
             <v-btn to="/codebase">Codebase</v-btn>
             <v-btn to="/students">Students</v-btn>  
-            <!-- <v-btn to="/media">Media</v-btn>
-            <v-btn to="/sponsors">Sponsors</v-btn> -->
+            <!-- <v-btn to="/sponsors">Sponsors</v-btn> -->
             <v-btn to="/contacts">Contacts</v-btn>
         </template>
     </template>
@@ -65,10 +65,10 @@ const menuItems = [
     { title: 'Team', path: '/team' },
     { title: 'Events', path: '/events' },
     { title: 'Press', path: '/press' },
+    { title: 'Media', path: '/media' },
     { title: 'Publications', path: '/publications' },
     { title: 'Codebase', path: '/codebase' },
     { title: 'Students', path: '/students' },
-    // { title: 'Media', path: '/media' },
     // { title: 'Sponsors', path: '/sponsors' },
     { title: 'Contacts', path: '/contacts' }
 ]
