@@ -1,6 +1,4 @@
-# Sitemap location
-Sitemap: https://spqrteam.github.io/spqr-team-website/sitemap.xml
-
-# Allow all search engines to crawl the site
 User-agent: *
-Disallow:
+Allow: /
+
+Sitemap: https://spqr.diag.uniroma1.it/sitemap.xml
