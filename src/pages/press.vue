@@ -236,7 +236,7 @@ const loadPressData = async () => {
                 date: dateStr, 
                 source: article.source, 
                 link: article.link,
-                year: year
+                year: year 
             }
         })
         
