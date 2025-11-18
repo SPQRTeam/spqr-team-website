@@ -85,6 +85,23 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+
+// SEO Configuration
+useSeo({
+  title: 'Codebase - SPQR Team | Open Source Robotics',
+  description: 'SPQR Team open source code repositories: RoboCup software, robotics frameworks, computer vision libraries, and AI tools developed at Sapienza University.',
+  path: '/codebase/',
+  canonical: 'https://spqr.diag.uniroma1.it/codebase/',
+  ogTitle: 'Codebase - SPQR Team',
+  ogDescription: 'Open source robotics software and tools.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/codebase/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Codebase - SPQR Team',
+  twitterDescription: 'Open source robotics software and tools.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/codebase/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 const baseUrl = import.meta.env.BASE_URL
 

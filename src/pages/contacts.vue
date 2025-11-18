@@ -118,6 +118,23 @@
 </template>
 
 <script setup>
+import { useSeo } from '@/composables/useSeo'
+
+// SEO Configuration
+useSeo({
+  title: 'Contacts - SPQR Team | Get in Touch',
+  description: 'Contact SPQR Team at Sapienza University of Rome. Email, address, and information to reach our RoboCup research group.',
+  path: '/contacts/',
+  canonical: 'https://spqr.diag.uniroma1.it/contacts/',
+  ogTitle: 'Contacts - SPQR Team',
+  ogDescription: 'Get in touch with SPQR Team.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/contacts/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Contacts - SPQR Team',
+  twitterDescription: 'Get in touch with SPQR Team.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/contacts/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 const spqr_team = {
     email: 'spqr@diag.uniroma1.it',

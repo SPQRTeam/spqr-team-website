@@ -160,8 +160,25 @@
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import projectsData from '/public/assets/students/projects.json';
+import { computed } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+import projectsData from '/public/assets/students/projects.json'
+
+// SEO Configuration
+useSeo({
+  title: 'Students - SPQR Team | Thesis and Projects',
+  description: 'Student opportunities at SPQR Team: bachelor and master thesis projects, research internships in robotics, AI, computer vision, and RoboCup at Sapienza University.',
+  path: '/students/',
+  canonical: 'https://spqr.diag.uniroma1.it/students/',
+  ogTitle: 'Students - SPQR Team',
+  ogDescription: 'Thesis projects and research opportunities in robotics and AI.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/students/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Students - SPQR Team',
+  twitterDescription: 'Thesis projects and research opportunities in robotics and AI.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/students/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 // Import projects data directly
 const allProjects = projectsData;

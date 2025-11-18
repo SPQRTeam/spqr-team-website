@@ -90,6 +90,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+
+// SEO Configuration
+useSeo({
+  title: 'Publications - SPQR Team | Sapienza University',
+  description: 'Research publications and scientific papers from SPQR Team on humanoid robotics, RoboCup, multi-agent systems, computer vision, and artificial intelligence.',
+  path: '/publications/',
+  canonical: 'https://spqr.diag.uniroma1.it/publications/',
+  ogTitle: 'Publications - SPQR Team',
+  ogDescription: 'Research publications on humanoid robotics, RoboCup, and AI.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/publications/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Publications - SPQR Team',
+  twitterDescription: 'Research publications on humanoid robotics, RoboCup, and AI.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/publications/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 const baseUrl = import.meta.env.BASE_URL
 

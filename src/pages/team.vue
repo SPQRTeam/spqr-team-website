@@ -111,6 +111,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+
+// SEO Configuration
+useSeo({
+  title: 'Team - SPQR Team | Sapienza University of Rome',
+  description: 'Meet the SPQR Team members: researchers, PhD students, and collaborators working on RoboCup humanoid robotics and AI research at Sapienza University of Rome.',
+  path: '/team/',
+  canonical: 'https://spqr.diag.uniroma1.it/team/',
+  ogTitle: 'Team - SPQR Team',
+  ogDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/team/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.png',
+  twitterTitle: 'Team - SPQR Team',
+  twitterDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/team/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.png'
+})
 
 const baseUrl = import.meta.env.BASE_URL
 

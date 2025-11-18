@@ -99,8 +99,25 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import { useSeo } from '@/composables/useSeo'
 
 const route = useRoute()
+
+// SEO Configuration
+useSeo({
+  title: 'Media - SPQR Team | Photos and Videos',
+  description: 'SPQR Team media gallery: videos, photos, and visual content from RoboCup competitions, robotics research, and events at Sapienza University of Rome.',
+  path: '/media/',
+  canonical: 'https://spqr.diag.uniroma1.it/media/',
+  ogTitle: 'Media - SPQR Team',
+  ogDescription: 'Photos and videos from RoboCup competitions and robotics research.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/media/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Media - SPQR Team',
+  twitterDescription: 'Photos and videos from RoboCup competitions and robotics research.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/media/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 // TV Videos from CSV
 const tvVideos = ref([])

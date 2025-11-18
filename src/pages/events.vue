@@ -82,6 +82,23 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+
+// SEO Configuration
+useSeo({
+  title: 'Events - SPQR Team | RoboCup Competitions',
+  description: 'SPQR Team events, RoboCup competitions, robotics tournaments, and public demonstrations. Follow our participation in international robotics challenges.',
+  path: '/events/',
+  canonical: 'https://spqr.diag.uniroma1.it/events/',
+  ogTitle: 'Events - SPQR Team',
+  ogDescription: 'RoboCup competitions and robotics events.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/events/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Events - SPQR Team',
+  twitterDescription: 'RoboCup competitions and robotics events.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/events/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 const baseUrl = import.meta.env.BASE_URL
 

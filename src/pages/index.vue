@@ -292,6 +292,7 @@
 
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
+import { useSeo } from '@/composables/useSeo'
 import leftreel from '/assets/home/ig/igreel-mf2025.mp4'
 import centerreel from '/assets/home/ig/igreel-whrg2025.mp4'
 import rightreel from '/assets/home/ig/igreel-ukvisit2025.mp4'
@@ -379,6 +380,22 @@ const researchFields = [
     color: '#388E3C'
   }
 ]
+
+// SEO Configuration
+useSeo({
+  title: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+  description: 'SPQR Team is the RoboCup research group at Sapienza University of Rome. Leading research in humanoid robotics, multi-agent systems, computer vision, deep learning, and reinforcement learning since 1998.',
+  path: '/',
+  canonical: 'https://spqr.diag.uniroma1.it/',
+  ogTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+  ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998. Part of Sapienza University of Rome\'s DIAG department.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+  twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
 
 const hoveredIndex = reactive({})
 const videoRefs = ref([])
