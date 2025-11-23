@@ -640,7 +640,7 @@ onMounted(() => {
 }
 
 .reel-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
   color: rgb(30, 30, 30);
   margin-bottom: 1rem;
