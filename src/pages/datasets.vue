@@ -1,0 +1,380 @@
+<template>
+
+    <!-- Work in Progress Banner -->
+    <!-- <v-banner
+        lines="one"
+        class="wip-banner"
+        color="warning"
+        icon="mdi-alert-circle"
+        sticky
+    >
+        <template v-slot:text>
+            <span class="wip-text">🚧 Work in Progress - This page is currently under construction 🚧</span>
+        </template>
+    </v-banner> -->
+
+    <div class="cover-section">
+        <v-img
+            class="cover-image"
+            src="/assets/datasets/cover.jpg"
+            alt="Datasets Header Cover"
+            cover
+        >
+            <div class="cover-overlay">
+                <h1 class="cover-title">DATASETS</h1>
+            </div>
+        </v-img>
+    </div>
+
+    <v-container class="py-8 content-wrapper">
+        <section v-if="datasets_hsl.length > 0">
+            <h2 class="section-title text-h3 font-weight-bold mb-6">Datasets for RoboCup HSL</h2>
+            <v-row>
+                <v-col
+                    v-for="(project, index) in datasets_hsl"
+                    :key="`project-${index}`"
+                    cols="12"
+                >
+                    <div class="project-card">
+                        <div class="card-title">
+                            {{ project.title }}
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="project-description">{{ project.description }}</p>
+                            
+                            <!-- Resources -->
+                            <div v-if="project.resources && project.resources.length > 0" class="mb-4">
+                                <h4 class="section-subtitle">Resources:</h4>
+                                <ul class="resource-list">
+                                    <li v-for="(resource, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-item">
+                                        <span class="resource-name">{{ resource.Name }}</span>
+                                        <div class="resource-links">
+                                            <v-btn
+                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                                                :key="`project-chip-${index}-${idx}-${label}`"
+                                                :href="url"
+                                                target="_blank"
+                                                color="rgb(0, 103, 120)"
+                                                variant="outlined"
+                                                class="mr-2"
+                                                size="small"
+                                            >
+                                                <v-icon start size="small">mdi-link</v-icon>
+                                                {{ label }}
+                                            </v-btn>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Contacts -->
+                            <div v-if="project.contacts && project.contacts.length > 0">
+                                <h4 class="section-subtitle">Contacts:</h4>
+                                <div class="contacts-horizontal">
+                                    <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
+                                        <div class="contact-info">
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-account</v-icon>
+                                            <span class="contact-name-inline">{{ contact.name }}</span>
+                                            <span class="contact-separator">-</span>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
+                                            <a :href="`mailto:${contact.email}`">
+                                                {{ contact.email }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+        </section>
+
+
+        <section v-if="datasets_spl.length > 0">
+            <h2 class="section-title text-h3 font-weight-bold mb-6">Datasets for RoboCup SPL</h2>
+            <v-row>
+                <v-col
+                    v-for="(project, index) in datasets_spl"
+                    :key="`project-${index}`"
+                    cols="12"
+                >
+                    <div class="project-card">
+                        <div class="card-title">
+                            {{ project.title }}
+                        </div>
+                        
+                        <div class="card-content">
+                            <p class="project-description">{{ project.description }}</p>
+                            
+                            <!-- Resources -->
+                            <div v-if="project.resources && project.resources.length > 0" class="mb-4">
+                                <h4 class="section-subtitle">Resources:</h4>
+                                <ul class="resource-list">
+                                    <li v-for="(resource, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-item">
+                                        <span class="resource-name">{{ resource.Name }}</span>
+                                        <div class="resource-links">
+                                            <v-btn
+                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                                                :key="`project-chip-${index}-${idx}-${label}`"
+                                                :href="url"
+                                                target="_blank"
+                                                color="rgb(0, 103, 120)"
+                                                variant="outlined"
+                                                class="mr-2"
+                                                size="small"
+                                            >
+                                                <v-icon start size="small">mdi-link</v-icon>
+                                                {{ label }}
+                                            </v-btn>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Contacts -->
+                            <div v-if="project.contacts && project.contacts.length > 0">
+                                <h4 class="section-subtitle">Contacts:</h4>
+                                <div class="contacts-horizontal">
+                                    <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
+                                        <div class="contact-info">
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-account</v-icon>
+                                            <span class="contact-name-inline">{{ contact.name }}</span>
+                                            <span class="contact-separator">-</span>
+                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
+                                            <a :href="`mailto:${contact.email}`">
+                                                {{ contact.email }}
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </v-col>
+            </v-row>
+        </section>
+    </v-container>
+</template>
+
+<script setup>
+import { computed } from 'vue'
+import { useSeo } from '@/composables/useSeo'
+import projectsData from '/public/assets/datasets/datasets.json'
+
+// SEO Configuration
+useSeo({
+  title: 'Datasets',
+  description: 'SPQR Team datasets for RoboCup SPL and HSL: open research datasets for robotics, computer vision, and RoboCup competitions at Sapienza University.',
+  path: '/datasets/',
+  canonical: 'https://spqr.diag.uniroma1.it/datasets/',
+  ogTitle: 'Datasets - SPQR Team',
+  ogDescription: 'Research datasets for RoboCup SPL and HSL competitions.',
+  ogUrl: 'https://spqr.diag.uniroma1.it/datasets/',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  twitterTitle: 'Datasets - SPQR Team',
+  twitterDescription: 'Research datasets for RoboCup SPL and HSL competitions.',
+  twitterUrl: 'https://spqr.diag.uniroma1.it/datasets/',
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+})
+
+// Import projects data directly
+const allProjects = projectsData;
+
+// Separate theses and projects based on target field
+const datasets_hsl = computed(() => {
+    return allProjects.filter(project => project.target === 'Datasets-HSL');
+});
+
+const datasets_spl = computed(() => {
+    return allProjects.filter(project => project.target === 'Datasets-SPL');
+});
+</script>
+
+<style scoped>
+.cover-image :deep(img) {
+    object-position: center 40% !important;
+}
+
+.wip-banner {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.wip-banner :deep(.v-banner__content) {
+    justify-content: center;
+}
+
+.wip-text {
+    font-weight: 600;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.content-wrapper {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section-title {
+    color: #822433;
+    border-bottom: 3px solid #822433;
+    padding-bottom: 0.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background-color: #f1f4f3;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #822433;
+    line-height: 1.4;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-content {
+    padding: 1.5rem;
+    flex-grow: 1;
+}
+
+.project-description {
+    text-align: justify;
+    line-height: 1.6;
+    color: #424242;
+    margin-bottom: 1.5rem;
+}
+
+.section-subtitle {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #822433;
+    margin-bottom: 0.75rem;
+}
+
+.resource-list {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+}
+
+.resource-item {
+    margin-bottom: 0.75rem;
+    line-height: 1.8;
+    color: black;
+}
+
+.resource-name {
+    font-weight: 600;
+    color: #424242;
+    margin-right: 8px;
+}
+
+.resource-links {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 4px;
+}
+
+.contacts-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+}
+
+.contact-item-inline {
+    display: inline-flex;
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.5rem 1rem;
+    background-color: rgba(0, 103, 120, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid rgb(0, 103, 120);
+}
+
+.contact-name-inline {
+    font-weight: 600;
+    color: #424242;
+}
+
+.contact-separator {
+    color: #888;
+    margin: 0 4px;
+}
+
+.contact-info a {
+    color: rgb(0, 103, 120);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+    color: #822433;
+    text-decoration: underline;
+}
+
+.resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.contact-item {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(0, 103, 120, 0.03);
+    border-radius: 8px;
+    border-left: 3px solid rgb(0, 103, 120);
+}
+
+.contact-name {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: #424242;
+    margin-bottom: 0.25rem;
+}
+
+.contact-email {
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+}
+
+.contact-email a {
+    color: rgb(0, 103, 120);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.contact-email a:hover {
+    color: #822433;
+    text-decoration: underline;
+}
+</style>

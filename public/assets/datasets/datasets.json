@@ -1,0 +1,21 @@
+[
+    {
+        "title": "SPQR Multi-Object Dataset",
+        "description": "In 2023, SPQR Team developed a real-time multi-class detection system for the NAO V6 using state-of-the-art structural pruning techniques applied to YOLOv7-tiny. The system detects balls, goalposts, and robots in a single forward pass, balancing speed and accuracy within the computational constraints of the NAO platform. We released the annotated SPQR Multi-Object Dataset containing over 4000 images from RoboCup SPL matches.",
+        "target": "Datasets-SPL",
+        "resources": [
+            {
+                "Name": "SPQR Multi-Object Dataset",
+                "Paper": "https://www.researchgate.net/publication/375380980_Structural_Pruning_for_Real-Time_Multi-Object_Detection_on_NAO_Robots",
+                "Dataset Download": ""
+            }
+        ],
+        "contacts": [
+            {
+                "name": "Vincenzo Suriani",
+                "email": "suriani@diag.uniroma1.it"
+            }
+        ]
+    }
+
+]
