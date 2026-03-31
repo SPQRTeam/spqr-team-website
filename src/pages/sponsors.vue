@@ -176,6 +176,7 @@ const carouselItems = [
 ]
 
 const statsCards = [
+  { title: 'Followers', value: '1466', hint: 'All time' },
   { title: 'Reach', value: '41,278', hint: 'Peak 6,429 on Oct 19' },
   { title: 'Views', value: '132,650', hint: 'Peak 29,368 on Oct 19' },
   { title: 'Content interactions', value: '1,033', hint: 'Peak 185 on Oct 19' },
