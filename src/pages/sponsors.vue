@@ -56,7 +56,7 @@
 
   <v-container class="stats-section">
     <div class="section-heading">
-      <p class="eyebrow">Instagram stats — October 2025</p>
+      <p class="eyebrow">Instagram stats</p>
       <h2 class="section-title">Performance snapshot for sponsors</h2>
       <p class="section-subtitle">
         Data exported from Meta Business Suite to highlight traction, reach, and profile intent.
@@ -79,40 +79,14 @@
       </v-col>
     </v-row>
 
-    <v-row class="mt-6" dense align="stretch">
-      <v-col cols="12" md="6">
-        <div class="stat-panel">
-          <div class="stat-panel__title">Content mix</div>
-          <div class="stat-panel__subtitle">Stories-led cadence with supplemental posts</div>
-          <div class="format-bars">
-            <div
-              v-for="format in formatBreakdown"
-              :key="format.label"
-              class="format-row"
-            >
-              <div class="format-row__label">{{ format.label }}</div>
-              <div class="format-row__bar">
-                <div
-                  class="format-row__bar-fill"
-                  :style="{ width: `${format.share}%` }"
-                ></div>
-              </div>
-              <div class="format-row__value">{{ format.value }} ({{ format.share }}%)</div>
-            </div>
-          </div>
-          <p class="stat-panel__note">
-            Stories carry most of the volume, driving daily touchpoints and reach spikes.
-          </p>
-        </div>
-      </v-col>
-
-      <v-col cols="12" md="6">
+    <v-row class="mt-6" dense>
+      <v-col cols="12">
         <div class="stat-panel image-panel">
-          <div class="stat-panel__title">Meta Business export</div>
-          <div class="stat-panel__subtitle">Latest snapshot used for sponsor reporting</div>
+          <div class="stat-panel__title">Posts performance</div>
+          <div class="stat-panel__subtitle">Latest screenshot from Meta Business Suite</div>
           <v-img
-            src="/assets/sponsor/stats/general.png"
-            alt="Meta Business performance screenshot"
+            src="/assets/sponsor/stats/posts.png"
+            alt="Meta Business posts performance screenshot"
             class="stat-screenshot"
             cover
           />
@@ -127,6 +101,9 @@
       <h2 class="plans-title">Pick the coverage that fits your goals</h2>
       <p class="plans-subtitle">
         Instagram presence plus branding on the robot jersey and team t-shirts, scaled from competition-only to year-round visibility.
+      </p>
+      <p class="plans-subtitle">
+      Each plan can be customized with additional benefits like event booths, exclusive content, or co-branded campaigns. Contact us to discuss the best fit for you.
       </p>
     </div>
 
@@ -195,6 +172,7 @@ const carouselItems = [
   { src: '/assets/sponsor/images/sponsor_5.jpg', alt: 'Sponsor 5' },
   { src: '/assets/sponsor/images/sponsor_6.jpg', alt: 'Sponsor 6' },
   { src: '/assets/sponsor/images/sponsor_7.jpg', alt: 'Sponsor 7' },
+  { src: '/assets/sponsor/images/sponsor_8.jpg', alt: 'Sponsor 8' },
 ]
 
 const statsCards = [
@@ -203,11 +181,6 @@ const statsCards = [
   { title: 'Content interactions', value: '1,033', hint: 'Peak 185 on Oct 19' },
   { title: 'Profile visits', value: '594', hint: 'Peak 125 on Oct 19' },
   { title: 'New follows', value: '77', hint: 'Peak 21 on Oct 18' },
-]
-
-const formatBreakdown = [
-  { label: 'Stories', value: 54, share: 93 },
-  { label: 'Posts', value: 4, share: 7 },
 ]
 
 </script>
@@ -446,48 +419,6 @@ const formatBreakdown = [
 
 .stat-panel__subtitle {
   margin: 0 0 1rem;
-  color: #4b4f55;
-}
-
-.format-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 0.65rem;
-}
-
-.format-row {
-  display: grid;
-  grid-template-columns: 90px 1fr 90px;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.format-row__label {
-  font-weight: 750;
-  color: #0b0b0f;
-}
-
-.format-row__bar {
-  background: #eef2f4;
-  border-radius: 999px;
-  overflow: hidden;
-  height: 10px;
-}
-
-.format-row__bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00a6b0, #006778);
-}
-
-.format-row__value {
-  text-align: right;
-  font-weight: 750;
-  color: #0b0b0f;
-}
-
-.stat-panel__note {
-  margin-top: 0.75rem;
-  margin-bottom: 0;
   color: #4b4f55;
 }
 
