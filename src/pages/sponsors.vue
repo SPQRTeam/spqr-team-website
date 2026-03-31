@@ -130,9 +130,9 @@
       </p>
     </div>
 
-    <v-row class="sponsor-row">
+    <v-row class="sponsor-row" dense align="stretch">
       <v-col
-        v-for="(sponsor, index) in sponsors"
+        v-for="(sponsor, index) in sponsorsFormatted"
         :key="`sponsor-${index}`"
         cols="12"
         md="6"
@@ -142,7 +142,9 @@
             {{ sponsor.title }}
           </div>
           <div class="card-content">
-            <p class="sponsor-description">{{ sponsor.description }}</p>
+            <ul class="sponsor-points">
+              <li v-for="(point, idx) in sponsor.bullets" :key="idx">{{ point }}</li>
+            </ul>
             <div class="price-chip">
               <v-icon start size="small">mdi-currency-eur</v-icon>
               <span class="price-text">{{ sponsor.price }}</span>
@@ -155,6 +157,7 @@
 </template>
 
 <script setup>
+import { computed } from 'vue'
 import { useSeo } from '@/composables/useSeo'
 import sponsorsData from '/public/assets/sponsor/sponsors.json'
 
@@ -175,6 +178,15 @@ useSeo({
 })
 
 const sponsors = sponsorsData
+const sponsorsFormatted = computed(() =>
+  sponsors.map((sponsor) => ({
+    ...sponsor,
+    bullets: sponsor.description
+      .split(';')
+      .map((item) => item.trim())
+      .filter(Boolean)
+  }))
+)
 const carouselItems = [
   { src: '/assets/sponsor/images/sponsor_1.jpg', alt: 'Sponsor 1' },
   { src: '/assets/sponsor/images/sponsor_2.jpg', alt: 'Sponsor 2' },
@@ -525,11 +537,14 @@ const formatBreakdown = [
   gap: 1rem;
 }
 
-.sponsor-description {
-  text-align: left;
-  line-height: 1.6;
-  color: #303437;
+.sponsor-points {
+  list-style: disc;
+  padding-left: 1.25rem;
   margin: 0;
+  display: grid;
+  gap: 0.35rem;
+  color: #303437;
+  line-height: 1.55;
 }
 
 .price-chip {
@@ -543,6 +558,7 @@ const formatBreakdown = [
   font-weight: 700;
   color: #004f5a;
   align-self: flex-start;
+  margin-top: auto;
 }
 
 .price-text {
