@@ -22,7 +22,8 @@ declare module 'vue-router/auto-routes' {
     '/codebase': RouteRecordInfo<'/codebase', '/codebase', Record<never, never>, Record<never, never>>,
     '/contacts': RouteRecordInfo<'/contacts', '/contacts', Record<never, never>, Record<never, never>>,
     '/datasets': RouteRecordInfo<'/datasets', '/datasets', Record<never, never>, Record<never, never>>,
-    '/events': RouteRecordInfo<'/events', '/events', Record<never, never>, Record<never, never>>,
+    '/events/': RouteRecordInfo<'/events/', '/events', Record<never, never>, Record<never, never>>,
+    '/events/italianopen2026': RouteRecordInfo<'/events/italianopen2026', '/events/italianopen2026', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
     '/press': RouteRecordInfo<'/press', '/press', Record<never, never>, Record<never, never>>,
     '/publications': RouteRecordInfo<'/publications', '/publications', Record<never, never>, Record<never, never>>,
@@ -58,8 +59,12 @@ declare module 'vue-router/auto-routes' {
       routes: '/datasets'
       views: never
     }
-    'src/pages/events.vue': {
-      routes: '/events'
+    'src/pages/events/index.vue': {
+      routes: '/events/'
+      views: never
+    }
+    'src/pages/events/italianopen2026.vue': {
+      routes: '/events/italianopen2026'
       views: never
     }
     'src/pages/media.vue': {
