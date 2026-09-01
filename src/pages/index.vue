@@ -38,57 +38,149 @@
     }
   </component>
 
-  <v-container>
-    <!-- Main Header Image -->
-    <header>
-      <v-img
-        :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
-        src="/assets/home/cover.webp"
-        alt="SPQR Team - RoboCup Humanoid Soccer Robots at Sapienza University of Rome"
-      ></v-img>
-    </header>
-
-    <!-- Introduction Section -->
-    <section 
-      aria-label="About SPQR Team"
-      style="
-        max-width: 90rem;
-        margin: auto; 
-        margin-top: 4rem;
-        color: rgb(30, 30, 30);
-        text-align: center;
-      "
+  <!-- Full screen video hero -->
+  <section class="hero" aria-label="SPQR Team">
+    <video
+      class="hero-video"
+      :poster="heroPoster"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      aria-hidden="true"
     >
-      <h1 style="font-size: 23px; font-weight: 500;">
-        SPQR Team is the RoboCup research group of the <a href="http://www.diag.uniroma1.it/" target="_blank" rel="noopener" style="color: #822433; text-decoration: none;">Department of Computer, Control, and Management Engineering Antonio Ruberti</a> 
-        at <a href="https://www.uniroma1.it/it/" target="_blank" rel="noopener" style="color: #822433; text-decoration: none;">Sapienza University of Rome</a>, involved in RoboCup competitions since 1998.
+      <source :src="heroVideo" type="video/mp4" />
+    </video>
+    <div class="hero-overlay"></div>
+    <img
+      class="hero-sapienza"
+      :src="sapienzaLogo"
+      alt="Sapienza Università di Roma"
+    />
+    <div class="hero-content">
+      <h1 class="hero-title">
+        <!-- the wordmark is the Sapienza typeface, which the site has no webfont for -->
+        <img class="hero-logo" :src="spqrLogo" alt="SPQR Team" />
       </h1>
+      <p class="hero-subtitle">RoboCup research at Sapienza University of Rome</p>
+      <p class="hero-since">
+        <span class="hero-rule" aria-hidden="true"></span>
+        Since MCMXCVIII
+        <span class="hero-rule" aria-hidden="true"></span>
+      </p>
+    </div>
+    <a href="#about" class="hero-scroll" aria-label="Scroll to content">
+      <v-icon size="40">mdi-chevron-down</v-icon>
+    </a>
+  </section>
+
+  <v-container>
+    <!-- Who we are -->
+    <section id="about" class="home-section" aria-label="Who we are">
+      <h2 class="home-section-title">Who we are</h2>
+      <v-row justify="center">
+        <v-col cols="12" md="10" lg="9">
+          <p class="lead-text">
+            SPQR Team is the RoboCup research group of the
+            <a href="http://www.diag.uniroma1.it/" target="_blank" rel="noopener">Department of Computer,
+            Control, and Management Engineering Antonio Ruberti</a> at
+            <a href="https://www.uniroma1.it/it/" target="_blank" rel="noopener">Sapienza University of
+            Rome</a>. Since 1998 we have brought together professors and students around
+            one question: how can a team of fully autonomous humanoid robots play soccer together, with no
+            human in the loop? 
+          </p>
+        </v-col>
+      </v-row>
+      <v-row justify="center" class="stats-row">
+        <v-col
+          v-for="stat in stats"
+          :key="stat.label"
+          cols="6"
+          md="3"
+          class="stat-col"
+        >
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </v-col>
+      </v-row>
     </section>
 
-    <!-- Research Fields Section -->
-    <section class="research-fields-section" aria-label="Research Fields">
-      <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
-        Our Research Fields
-      </h2>
-      
-      <v-row justify="center" class="research-fields-row">
+    <!-- What we do -->
+    <section class="home-section" aria-label="What we do">
+      <h2 class="home-section-title">What we do</h2>
+      <v-row justify="center">
+        <v-col cols="12" md="10" lg="9">
+          <p class="lead-text">
+            We write the software that turns a humanoid robot into a soccer player. Every match is a
+            deadline: the robot has to see the ball, know where it stands on the pitch, keep its balance,
+            decide what to do and agree on it with its teammates; all in real time, on board, with
+            no external control.
+          </p>
+        </v-col>
+      </v-row>
+      <v-row justify="center" class="pillars-row">
         <v-col
-          v-for="field in researchFields"
-          :key="field.title"
+          v-for="pillar in pillars"
+          :key="pillar.title"
           cols="12"
           sm="6"
-          md="4"
-          class="research-field-col"
+          lg="3"
+          class="pillar-col"
         >
-          <v-card class="research-field-card" elevation="4">
-            <v-card-text class="research-field-content">
-              <div class="field-icon-wrapper">
-                <v-icon class="field-icon" :color="field.color">{{ field.icon }}</v-icon>
+          <div class="pillar-card">
+            <v-icon class="pillar-icon" :color="pillar.color" size="34">{{ pillar.icon }}</v-icon>
+            <h3 class="pillar-title">{{ pillar.title }}</h3>
+            <p class="pillar-text">{{ pillar.text }}</p>
+          </div>
+        </v-col>
+      </v-row>
+    </section>
+
+    <!-- Results -->
+    <section class="home-section" aria-label="Results">
+      <h2 class="home-section-title">Results</h2>
+
+      <v-row justify="center" class="featured-row">
+        <v-col
+          v-for="result in featuredResults"
+          :key="result.event"
+          cols="12"
+          md="6"
+          class="featured-col"
+        >
+          <article class="featured-card">
+            <div class="featured-photo">
+              <img :src="result.photo" :alt="result.event" loading="lazy" />
+            </div>
+            <div class="featured-body">
+              <div class="featured-medal">{{ result.medal }}</div>
+              <div>
+                <div class="featured-placement">{{ result.placement }}</div>
+                <div class="featured-event">{{ result.event }}</div>
+                <div class="featured-where">{{ result.where }}</div>
               </div>
-              <h3 class="field-title">{{ field.title }}</h3>
-              <p class="field-description">{{ field.description }}</p>
-            </v-card-text>
-          </v-card>
+            </div>
+          </article>
+        </v-col>
+      </v-row>
+
+      <v-row justify="center" class="results-row">
+        <v-col
+          v-for="result in results"
+          :key="result.event"
+          cols="12"
+          md="6"
+          class="result-col"
+        >
+          <div class="result-card">
+            <div class="result-medal">{{ result.medal }}</div>
+            <div class="result-body">
+              <div class="result-placement">{{ result.placement }}</div>
+              <div class="result-event">{{ result.event }}</div>
+              <div class="result-where">{{ result.where }}</div>
+            </div>
+          </div>
         </v-col>
       </v-row>
     </section>
@@ -294,6 +386,13 @@
 import { ref, reactive, onMounted } from 'vue'
 import { useSeo } from '@/composables/useSeo'
 
+import heroVideo from '/assets/home/hero.mp4'
+import spqrLogo from '/logos/logo-text-white.webp'
+import whrg2026Results from '/assets/home/whrg2026-results.webp'
+import go2025Results from '/assets/home/go2025-results.webp'
+import sapienzaLogo from '/assets/sapienza_logos/logo_sapienza_white.png'
+import heroPoster from '/assets/home/hero-poster.webp'
+
 import leftreel from '/assets/home/ig/igreel-whrg2026.mp4'
 import leftcover from '/assets/home/ig/igreel-whrg2026-cover.webp'
 import centercover from '/assets/home/ig/igreel-whrg2025-cover.webp'
@@ -304,6 +403,73 @@ import rightcover from '/assets/home/ig/igreel-ukvisit2025-cover.webp'
 import boosterLogo from '/assets/sponsor/current/booster.webp'
 import prismaLogo from '/assets/sponsor/current/prisma.webp'
 import seewebLogo from '/assets/sponsor/current/seeweb.webp'
+
+const stats = [
+  { value: '1998', label: 'Competing since' },
+  { value: '30', label: 'International competitions' },
+  { value: '16', label: 'Team members' },
+  // { value: '16', label: 'Publications' }
+]
+
+const pillars = [
+  {
+    title: 'Perception',
+    text: 'Finding the ball, the lines and the other players from the robot\u2019s own cameras, frame after frame.',
+    icon: 'mdi-eye-outline',
+    color: '#F57C00'
+  },
+  {
+    title: 'Localization',
+    text: 'Knowing where the robot stands on a symmetric pitch, using only what it can see and feel.',
+    icon: 'mdi-crosshairs-gps',
+    color: '#1976D2'
+  },
+  {
+    title: 'Motion',
+    text: 'Walking, kicking and getting back up on two legs without losing balance.',
+    icon: 'mdi-run-fast',
+    color: '#822433'
+  },
+  {
+    title: 'Team play',
+    text: 'Deciding who goes for the ball and who covers, over an unreliable wireless link.',
+    icon: 'mdi-account-group-outline',
+    color: '#7B1FA2'
+  }
+]
+
+// Taken from the event descriptions in assets/events/events.json
+const featuredResults = [
+  {
+    medal: '\ud83e\udd48',
+    placement: 'Second place',
+    event: 'World Humanoid Robot Games 2026',
+    where: 'Beijing, China',
+    photo: whrg2026Results
+  },
+  {
+    medal: '\ud83e\udd49',
+    placement: 'Third place',
+    event: 'RoboCup German Open 2025',
+    where: 'Nuremberg, Germany',
+    photo: go2025Results
+  }
+]
+
+const results = [
+  {
+    medal: '\ud83c\udfc6',
+    placement: 'Best Paper Award',
+    event: 'RoboCup Symposium 2025',
+    where: 'Self-supervised Feature Extraction for Enhanced Ball Detection on Soccer Robots'
+  },
+  {
+    medal: '\ud83c\udfc6',
+    placement: 'Best Paper Award',
+    event: 'RoboCup Symposium 2023',
+    where: 'Play Everywhere: A Temporal Logic based Game Environment Independent Approach for Playing'
+  }
+]
 
 const instagramPosts = [
   {
@@ -472,6 +638,349 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* ---- Full screen video hero ---- */
+.hero {
+  position: relative;
+  width: 100%;
+  /* Fill exactly the space the app bar and the fixed footer leave free.
+     settings.scss zooms the whole site per breakpoint, and viewport units are
+     not scaled by zoom, so 100svh has to be divided by that factor to land on
+     the real screen height. svh follows the mobile browser chrome, and
+     flex-shrink keeps the page layout from squashing the hero. */
+  height: calc(100svh / var(--site-zoom, 1) - var(--v-layout-top, 0px) - var(--v-layout-bottom, 0px));
+  flex-shrink: 0;
+  min-height: 460px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  /* 16:9 source: it fills a desktop screen as it is, and gets cropped to a
+     central slice on a phone held upright */
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.3) 35%,
+    rgba(0, 0, 0, 0.55) 75%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 0 1.5rem;
+}
+
+.hero-sapienza {
+  /* pinned near the top of the hero, right below the app bar, instead of
+     travelling with the centred block */
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  /* vw units are not scaled by the site zoom either, so the width is divided by
+     it to keep the mark the same share of the real screen at every breakpoint */
+  width: calc(clamp(130px, 17vw, 225px) / var(--site-zoom, 1));
+  height: auto;
+  filter: drop-shadow(0 2px 14px rgba(0, 0, 0, 0.55));
+}
+
+.hero-title {
+  margin: 0;
+  line-height: 0;
+}
+
+.hero-logo {
+  display: block;
+  width: calc(clamp(240px, 42vw, 560px) / var(--site-zoom, 1));
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 22px rgba(0, 0, 0, 0.55));
+}
+
+.hero-subtitle {
+  margin-top: 1.25rem;
+  /* same treatment as .hero-since, one step larger */
+  font-size: clamp(0.9rem, 1.9vw, 1.25rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.hero-since {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  /* the flanking rules sit on the text's own centre line */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9em;
+}
+
+.hero-rule {
+  width: 4.5em;
+  height: 1px;
+  background: currentColor;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 1.5rem;
+  color: #fff;
+  opacity: 0.8;
+  text-decoration: none;
+  animation: hero-bounce 2.4s ease-in-out infinite;
+}
+
+.hero-scroll:hover {
+  opacity: 1;
+}
+
+@keyframes hero-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+/* Someone who asked for less motion gets a still frame and no bouncing arrow */
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll { animation: none; }
+}
+
+/* ---- Shared section rhythm ---- */
+.home-section {
+  max-width: 90rem;
+  margin: 6rem auto;
+  color: rgb(30, 30, 30);
+}
+
+.home-section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgb(30, 30, 30);
+  margin-bottom: 2rem;
+}
+
+.lead-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  text-align: center;
+}
+
+.lead-text a {
+  color: #822433;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.lead-text a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Numbers ---- */
+.stats-row {
+  margin-top: 3rem;
+}
+
+.stat-col {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: #822433;
+  line-height: 1.1;
+}
+
+.stat-label {
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+/* ---- What we do ---- */
+.pillars-row {
+  margin-top: 2.5rem;
+}
+
+.pillar-col {
+  padding: 0.75rem;
+}
+
+.pillar-card {
+  height: 100%;
+  padding: 1.75rem 1.5rem;
+  background: #f6f7f6;
+  border-radius: 14px;
+  border-top: 3px solid #822433;
+}
+
+.pillar-icon {
+  margin-bottom: 0.75rem;
+}
+
+.pillar-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pillar-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.85;
+}
+
+/* ---- Results ---- */
+.featured-row {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  /* narrower than the row below, so the two cards read as a highlight rather
+     than as a banner */
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.featured-col {
+  padding: 0.75rem;
+}
+
+.featured-card {
+  height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  border-top: 4px solid #822433;
+  background: linear-gradient(135deg, #ffffff 0%, #f6f7f6 100%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.16);
+}
+
+.featured-photo {
+  /* the two photos come in different shapes, this settles them on one. 3:2 is
+     as short as they go before the trophy caption and the medals get clipped */
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+}
+
+.featured-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.featured-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.1rem 1.3rem;
+}
+
+.featured-medal {
+  font-size: 2.2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.featured-placement {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #822433;
+  line-height: 1.2;
+}
+
+.featured-event {
+  margin-top: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.featured-where {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.results-row {
+  margin-top: 1rem;
+  /* same width as .featured-row so the two pairs of cards line up */
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.result-col {
+  padding: 0.75rem;
+}
+
+.result-card {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f6f7f6 100%);
+  border-left: 4px solid #822433;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.result-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.result-medal {
+  font-size: 2rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.result-placement {
+  font-weight: 600;
+  color: #822433;
+  line-height: 1.35;
+}
+
+.result-event {
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+.result-where {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
 .research-fields-section {
   max-width: 90rem;
   margin: 4rem auto 4rem auto;

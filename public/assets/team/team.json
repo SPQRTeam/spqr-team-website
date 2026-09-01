@@ -44,12 +44,6 @@
     "years": ""
   },
   {
-    "name": "Francesco Petri",
-    "role": "Ph.D. Student",
-    "image": "FrancescoPetri.webp",
-    "years": ""
-  },
-  {
     "name": "Valerio Spagnoli",
     "role": "Ph.D. Student",
     "image": "ValerioSpagnoli.webp",
@@ -62,15 +56,15 @@
     "years": ""
   },
   {
-    "name": "Eugenio Bugli",
-    "role": "M.Sc. Student",
-    "image": "EugenioBugli.webp",
+    "name": "Francesco Petri",
+    "role": "Ph.D. Student",
+    "image": "FrancescoPetri.webp",
     "years": ""
   },
   {
-    "name": "Filippo Ansalone",
-    "role": "M.Sc. Student",
-    "image": "FilippoAnsalone.webp",
+    "name": "Eugenio Bugli",
+    "role": "Ph.D. Student",
+    "image": "EugenioBugli.webp",
     "years": ""
   },
   {
@@ -83,18 +77,6 @@
     "name": "Can Lin",
     "role": "M.Sc. Student",
     "image": "CanLin.webp",
-    "years": ""
-  },
-  {
-    "name": "Jacopo Tedeschi",
-    "role": "M.Sc. Student",
-    "image": "JacopoTedeschi.webp",
-    "years": ""
-  },
-  {
-    "name": "Damiano Imola",
-    "role": "M.Sc. Student",
-    "image": "DamianoImola.webp",
     "years": ""
   },
 
@@ -147,7 +129,24 @@
     "years": "2007-2009"
   },
 
-
+  {
+    "name": "Damiano Imola",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Jacopo Tedeschi",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
+  {
+    "name": "Filippo Ansalone",
+    "role": "Student",
+    "image": "",
+    "years": ""
+  },
   {
     "name": "Josè-Maria Salas Herreros",
     "role": "Student",

@@ -44,6 +44,7 @@ RULES = [
     ("assets/*/cover.jpg", 1600, 78),
     ("assets/team/*", 700, 82),                  # member portraits (~300px on screen)
     ("assets/home/ig/*", 800, 80),
+    ("assets/home/*", 1200, 82),                 # home page photos
     ("assets/publications/*", 1000, 82),
     ("assets/sponsor/stats/*", 1600, 92),        # charts, text must stay readable
     ("assets/sponsor/images/*", 1200, 82),

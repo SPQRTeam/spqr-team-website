@@ -9,7 +9,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // Routes to pre-render
 const routes = [
-  { path: '/', name: 'Home', hero: '/assets/home/cover.webp' },
+  { path: '/', name: 'Home', hero: '/assets/home/hero-poster.webp' },
   { path: '/team', name: 'Team', hero: '/assets/team/cover.webp' },
   { path: '/publications', name: 'Publications', hero: '/assets/publications/cover.webp' },
   { path: '/events', name: 'Events', hero: '/assets/events/cover.webp' },

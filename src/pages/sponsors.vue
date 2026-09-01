@@ -59,7 +59,8 @@
       <p class="eyebrow">Instagram stats</p>
       <h2 class="section-title">Performance snapshot for sponsors</h2>
       <p class="section-subtitle">
-        Data exported from Meta Business Suite to highlight traction, reach, and profile intent.
+        Instagram insights for the last 30 days, showing how far the content travels beyond
+        our own audience.
       </p>
     </div>
 
@@ -78,24 +79,9 @@
         </div>
       </v-col>
     </v-row>
-
-    <v-row class="mt-6" dense>
-      <v-col cols="12">
-        <div class="stat-panel image-panel">
-          <div class="stat-panel__title">Posts performance</div>
-          <div class="stat-panel__subtitle">Latest screenshot from Meta Business Suite</div>
-          <v-img
-            src="/assets/sponsor/stats/posts.webp"
-            alt="Meta Business posts performance screenshot"
-            class="stat-screenshot"
-            cover
-          />
-        </div>
-      </v-col>
-    </v-row>
   </v-container>
 
-  <v-container class="py-8 content-wrapper">
+  <!-- <v-container class="py-8 content-wrapper">
     <div class="plans-heading">
       <p class="eyebrow plans-eyebrow">Sponsorship plans</p>
       <h2 class="plans-title">Pick the coverage that fits your goals</h2>
@@ -130,7 +116,7 @@
         </div>
       </v-col>
     </v-row>
-  </v-container>
+  </v-container> -->
 </template>
 
 <script setup>
@@ -176,12 +162,12 @@ const carouselItems = [
 ]
 
 const statsCards = [
-  { title: 'Followers', value: '1466', hint: 'All time' },
-  { title: 'Reach', value: '41,278', hint: 'Peak 6,429 on Oct 19' },
-  { title: 'Views', value: '132,650', hint: 'Peak 29,368 on Oct 19' },
-  { title: 'Content interactions', value: '1,033', hint: 'Peak 185 on Oct 19' },
-  { title: 'Profile visits', value: '594', hint: 'Peak 125 on Oct 19' },
-  { title: 'New follows', value: '77', hint: 'Peak 21 on Oct 18' },
+  { title: 'Views', value: '269,778', hint: '87.3% from non-followers' },
+  { title: 'Top reel', value: '75,700', hint: 'Views on a single reel, 26 Aug' },
+  { title: 'Content interactions', value: '5,793', hint: 'Reels 44.3%, posts 38.6%' },
+  { title: 'Accounts engaged', value: '2,124', hint: 'Unique accounts' },
+  { title: 'Profile visits', value: '3,781', hint: '62 taps on the external link' },
+  { title: 'Followers', value: '1,803', hint: 'Total' },
 ]
 
 </script>
@@ -400,39 +386,6 @@ const statsCards = [
 .stat-card__hint {
   color: #3f4a52;
   font-size: 0.95rem;
-}
-
-.stat-panel {
-  background: #ffffff;
-  border: 1px solid #e5e8eb;
-  border-radius: 14px;
-  padding: 1.2rem 1.2rem 1.4rem;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  height: 100%;
-}
-
-.stat-panel__title {
-  font-size: 1.2rem;
-  font-weight: 780;
-  margin-bottom: 0.25rem;
-  color: #0b0b0f;
-}
-
-.stat-panel__subtitle {
-  margin: 0 0 1rem;
-  color: #4b4f55;
-}
-
-.image-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-}
-
-.stat-screenshot {
-  border-radius: 12px;
-  border: 1px solid #e5e8eb;
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.1);
 }
 
 .sponsor-card {
