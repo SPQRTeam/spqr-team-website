@@ -77,6 +77,28 @@
                 </div>
             </v-col>
         </v-row>
+
+        <!-- RoboCup editions before the ones documented above -->
+        <section class="past-events" aria-label="Past events">
+            <h2 class="past-title">Past events</h2>
+
+            <v-row class="past-grid" justify="center">
+                <v-col
+                    v-for="edition in pastEvents"
+                    :key="edition.year"
+                    cols="6"
+                    sm="4"
+                    md="3"
+                    class="past-col"
+                >
+                    <div class="past-card">
+                        <div class="past-year">{{ edition.year }}</div>
+                        <div class="past-place">{{ edition.place }}</div>
+                        <div v-if="edition.note" class="past-note">{{ edition.note }}</div>
+                    </div>
+                </v-col>
+            </v-row>
+        </section>
     </v-container>
 </template>
 
@@ -105,6 +127,29 @@ const baseUrl = import.meta.env.BASE_URL
 const getImageUrl = (path) => {
     return new URL(path.replace('@/', '../'), import.meta.url).href
 }
+
+const pastEvents = [
+    { year: 2015, place: 'Hefei, China' },
+    { year: 2014, place: 'João Pessoa, Brazil' },
+    { year: 2013, place: 'Eindhoven, Netherlands' },
+    { year: 2012, place: 'Mexico City, Mexico' },
+    { year: 2011, place: 'Istanbul, Turkey' },
+    { year: 2010, place: 'Singapore' },
+    { year: 2009, place: 'Graz, Austria' },
+    { year: 2008, place: 'Suzhou, China' },
+    { year: 2007, place: 'Atlanta, USA' },
+    { year: 2006, place: 'Bremen, Germany' },
+    { year: 2005, place: 'Osaka, Japan' },
+    { year: 2004, place: 'Lisbon, Portugal' },
+    { year: 2003, place: 'Padova, Italy' },
+    { year: 2002, place: 'Fukuoka, Japan' },
+    { year: 2001, place: 'Seattle, USA' },
+    { year: 2000, place: 'Melbourne, Australia' },
+    { year: 1999, place: 'Stockholm, Sweden' },
+    { year: 1998, place: 'Paris, France' },
+    { year: 1997, place: 'Nagoya, Japan', note: 'First official World Championship' },
+    { year: 1996, place: 'Nagoya, Japan', note: 'Pre-RoboCup / IJCAI simulation event' }
+]
 
 const events = ref([])
 
@@ -149,6 +194,69 @@ onMounted(() => {
     max-width: 1400px;
     margin: 2rem auto;
     padding: 2rem 0;
+}
+
+/* ---- Past events ---- */
+.past-events {
+    max-width: 1400px;
+    margin: 2rem auto 5rem;
+    color: rgb(30, 30, 30);
+}
+
+.past-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.past-lead {
+    max-width: 620px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.8;
+}
+
+.past-col {
+    padding: 0.5rem;
+}
+
+.past-card {
+    height: 100%;
+    padding: 1.1rem 1.25rem;
+    border-radius: 12px;
+    border-left: 3px solid #822433;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f7f6 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.past-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+}
+
+.past-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #822433;
+    line-height: 1.1;
+}
+
+.past-place {
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.past-note {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    font-style: italic;
+    opacity: 0.65;
+    line-height: 1.35;
 }
 
 .event-col {
