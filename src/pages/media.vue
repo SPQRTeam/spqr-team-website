@@ -12,6 +12,34 @@
         </v-img>
     </div>
 
+    <!-- Instagram Section -->
+    <v-container v-if="instagramPosts.length > 0" class="instagram-section">
+        <h2 class="section-title">Instagram</h2>
+        <div class="instagram-grid">
+            <a 
+                v-for="(post, index) in instagramPosts.slice(0, 9)" 
+                :key="index"
+                :href="post.link"
+                target="_blank"
+                class="instagram-item"
+            >
+                <div class="instagram-embed-wrapper">
+                    <iframe 
+                        :src="getInstagramEmbedUrl(post)"
+                        class="instagram-embed"
+                        frameborder="0"
+                        scrolling="no"
+                        allowtransparency="true"
+                    >
+                    </iframe>
+                </div>
+                <div class="instagram-overlay">
+                    <v-icon class="instagram-icon">mdi-instagram</v-icon>
+                </div>
+            </a>
+        </div>
+    </v-container>
+
     <!-- Video Player Section -->
     <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
         <h2 class="section-title">YouTube</h2>
@@ -64,34 +92,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </v-container>
-
-    <!-- Instagram Section -->
-    <v-container v-if="instagramPosts.length > 0" class="instagram-section">
-        <h2 class="section-title">Instagram</h2>
-        <div class="instagram-grid">
-            <a 
-                v-for="(post, index) in instagramPosts.slice(0, 9)" 
-                :key="index"
-                :href="post.link"
-                target="_blank"
-                class="instagram-item"
-            >
-                <div class="instagram-embed-wrapper">
-                    <iframe 
-                        :src="getInstagramEmbedUrl(post)"
-                        class="instagram-embed"
-                        frameborder="0"
-                        scrolling="no"
-                        allowtransparency="true"
-                    >
-                    </iframe>
-                </div>
-                <div class="instagram-overlay">
-                    <v-icon class="instagram-icon">mdi-instagram</v-icon>
-                </div>
-            </a>
         </div>
     </v-container>
 </template>

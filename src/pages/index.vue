@@ -293,32 +293,34 @@
 <script setup>
 import { ref, reactive, onMounted } from 'vue'
 import { useSeo } from '@/composables/useSeo'
-import leftreel from '/assets/home/ig/igreel-mf2025.mp4'
+
+import leftreel from '/assets/home/ig/igreel-whrg2026.mp4'
+import leftcover from '/assets/home/ig/igreel-whrg2026-cover.webp'
+import centercover from '/assets/home/ig/igreel-whrg2025-cover.webp'
 import centerreel from '/assets/home/ig/igreel-whrg2025.mp4'
 import rightreel from '/assets/home/ig/igreel-ukvisit2025.mp4'
-import leftcover from '/assets/home/ig/igreel-mf2025-cover.webp'
-import centercover from '/assets/home/ig/igreel-whrg2025-cover.webp'
 import rightcover from '/assets/home/ig/igreel-ukvisit2025-cover.webp'
+
 import boosterLogo from '/assets/sponsor/current/booster.webp'
 import prismaLogo from '/assets/sponsor/current/prisma.webp'
 import seewebLogo from '/assets/sponsor/current/seeweb.webp'
 
 const instagramPosts = [
   {
-    name: 'Maker Faire 2025',
-    link: 'https://www.instagram.com/reel/DQJm6d4igGw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+    name: 'WHRG 2026',
+    link: 'https://www.instagram.com/reel/Dcq7YCSsx1w/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
     videoSrc: leftreel,
     coverSrc: leftcover
   },
   {
-    name: 'World Humanoid Robot Games 2025',
-    link: 'https://www.instagram.com/reel/DNilL0cCyBG/?utm_source=ig_web_copy_link',
+    name: 'Maker Faire 2025',
+    link: 'https://www.instagram.com/reel/DQJm6d4igGw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
     videoSrc: centerreel,
     coverSrc: centercover
   },
   {
-    name: 'UK Foreign Secretary Visit',
-    link: 'https://www.instagram.com/reel/DIRNGR5twDn/?utm_source=ig_web_copy_link',
+    name: 'WHRG 2025',
+    link: 'https://www.instagram.com/reel/DNilL0cCyBG/?utm_source=ig_web_copy_link',
     videoSrc: rightreel,
     coverSrc: rightcover
   },
