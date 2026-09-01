@@ -18,7 +18,11 @@
             :style="{ backgroundImage: `url(${currentPhoto})` }"
         ></div>
         <div class="carousel-background-gradient"></div>
-        
+
+        <!-- The title sits outside the carousel: v-carousel-item wraps its slot
+             in a v-img, whose overflow would clip a title wider than the photo -->
+        <div class="photo-title">{{ currentTitle }}</div>
+
         <v-container>
 
             <v-carousel
@@ -36,7 +40,6 @@
                     class="carousel-item-wrapper"
                 >
                     <div class="carousel-content">
-                        <div class="photo-title">{{ photo.title }}</div>
                         <v-img
                             :src="photo.image"
                             :alt="photo.title"
@@ -147,6 +150,7 @@ const loadTeamPhotos = async () => {
         // Set initial photo
         if (team_photos.value.length > 0) {
             currentPhoto.value = team_photos.value[0].image
+            currentTitle.value = team_photos.value[0].title
         }
     } catch (error) {
         console.error('Error loading team photos:', error)
@@ -205,9 +209,11 @@ const loadPastMembers = async () => {
 }
 
 const currentPhoto = ref('')
+const currentTitle = ref('')
 
 const updateBackground = (index) => {
     currentPhoto.value = team_photos.value[index].image
+    currentTitle.value = team_photos.value[index].title
 }
 
 onMounted(() => {
@@ -227,11 +233,6 @@ onMounted(() => {
     width: 100%;
     margin-bottom: 2rem;
     overflow: hidden;
-    /* Hold the carousel's height before team_photos.json arrives. Without it the
-       section is flat at first render, the members grid below starts inside the
-       viewport, and all the member photos download at once, competing with the
-       header image for bandwidth. */
-    min-height: calc(min(100vw - 3rem, 1500px) / 1.7778 + 8rem);
 }
 
 .carousel-background-blur {
@@ -277,6 +278,12 @@ onMounted(() => {
     margin: 0 auto 2rem;
     border-radius: 10px;
     overflow: hidden;
+    /* Hold the height the photos will need before team_photos.json arrives.
+       Without it the section is flat at first render, the members grid below
+       starts inside the viewport, and all the member photos download at once,
+       competing with the header image for bandwidth. Tied to the carousel's own
+       width, so the reserved box matches what actually gets rendered. */
+    aspect-ratio: 16 / 9;
 }
 
 .team-carousel :deep(.v-carousel-item) {
@@ -311,12 +318,20 @@ onMounted(() => {
 .photo-title {
     text-align: center;
     font-weight: 500;
-    font-size: clamp(1.7rem, 4vw, 2.5rem);
     color: rgb(255, 255, 255);
-    width: 100%;
     flex-shrink: 0;
     margin-top: 2rem;
     padding: 0 1rem;
+    /* The title spans the whole section, not just the photo column, so that long
+       event names keep fitting. */
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    /* Always a single line. The longest title measures 17.5em, so dividing the
+       available width by 19 leaves it room to fit whatever the viewport is,
+       while 2.5rem keeps it from growing past its intended size on desktop. */
+    white-space: nowrap;
+    font-size: min(2.5rem, calc((100vw - 2rem) / 19));
 }
 
 .members-grid {
