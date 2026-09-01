@@ -1,5 +1,38 @@
 [
   {
+    "name": "World Humanoid Robot Games 2026 - Beijing, China",
+    "year": 2026,
+    "month": "August",
+    "days": "22-26",
+    "description": "The SPQR team competed in the second edition of the World Humanoid Robot Games held in Beijing in August 2026, achieving the second place!",
+    "cover": "cover-whrg2026.jpg",
+    "site": "",
+    "video": "",
+    "results": ""
+  },
+  {
+    "name": "RoboCup 2026 - Incheon, South Korea",
+    "year": 2026,
+    "month": "July",
+    "days": "1-6",
+    "description": "The SPQR team competed in the RoboCup 2026 in Incheon!",
+    "cover": "cover-rc2026.jpg",
+    "site": "https://2026.robocup.org/",
+    "video": "",
+    "results": "https://hsl.robocup.org/results-2026/"
+  },
+  {
+    "name": "RoboCup German Open 2026 - Cologne, Germany",
+    "year": 2026,
+    "month": "March",
+    "days": "10-14",
+    "description": "The SPQR team competed in the RoboCup German Open 2026, the first official competition with the new Booster T1 robots!",
+    "cover": "cover-go2026.jpg",
+    "site": "",
+    "video": "",
+    "results": "https://hsl.robocup.org/2026-robocup-german-open/"
+  },
+  {
     "name": "Maker Faire 2025 - Rome, Italy",
     "year": 2025,
     "month": "October",
@@ -11,7 +44,7 @@
     "results": ""
   },
   {
-    "name": "World Humanoid Robot Games - Beijing, China",
+    "name": "World Humanoid Robot Games 2025 - Beijing, China",
     "year": 2025,
     "month": "August",
     "days": "13-17",
@@ -39,9 +72,9 @@
     "days": "10-14",
     "description": "The SPQR Team competed in the RoboCup German Open 2025, achieving third place!",
     "cover": "cover-go2025.png",
-    "site": "https://2025.robocup.org/",
+    "site": "",
     "video": "",
-    "results": "https://spl.robocup.org/results-2025/"
+    "results": "https://spl.robocup.org/german-open-results-2025/"
   },
   {
     "name": "Maker Faire 2024 - Rome, Italy",

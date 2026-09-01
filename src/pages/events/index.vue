@@ -198,7 +198,7 @@ onMounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1.5rem;
 }
 
 /* Front card styling */
@@ -239,32 +239,32 @@ onMounted(() => {
 }
 
 .event-back-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     line-height: 1.2;
 }
 
 .event-date {
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
     opacity: 0.9;
 }
 
 .event-description {
-    font-size: 1.1rem;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
+    font-size: 0.85rem;
+    line-height: 1.45;
+    margin-bottom: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
 }
 
 .event-links {
     display: flex;
-    gap: 1rem;
+    gap: 0.75rem;
     justify-content: center;
     flex-wrap: wrap;
 }
@@ -272,9 +272,10 @@ onMounted(() => {
 .event-link {
     color: white;
     text-decoration: none;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.9rem;
     border: 2px solid white;
     border-radius: 5px;
+    font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.3s;
 }
@@ -290,12 +291,21 @@ onMounted(() => {
     }
     
     .event-back-title {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
+    }
+    
+    .event-date {
+        font-size: 0.75rem;
     }
     
     .event-description {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 5;
+        font-size: 0.75rem;
+        -webkit-line-clamp: 7;
+    }
+    
+    .event-link {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
     }
 }
 </style>
