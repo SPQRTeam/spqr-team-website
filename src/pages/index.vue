@@ -406,9 +406,9 @@ import seewebLogo from '/assets/sponsor/current/seeweb.webp'
 
 const stats = [
   { value: '1998', label: 'Competing since' },
-  { value: '30', label: 'International competitions' },
-  { value: '16', label: 'Team members' },
-  // { value: '16', label: 'Publications' }
+  { value: '38', label: 'International competitions' },
+  { value: '14', label: 'Team members' },
+  { value: '17', label: 'Publications' }
 ]
 
 const pillars = [
