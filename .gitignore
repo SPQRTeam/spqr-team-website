@@ -22,3 +22,5 @@ pnpm-debug.log*
 *.sw?
 
 node_modules/
+# video master, troppo grandi per git e non serve pubblicarli
+/media-src
