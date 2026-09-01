@@ -5,7 +5,7 @@
     "month": "August",
     "days": "22-26",
     "description": "The SPQR team competed in the second edition of the World Humanoid Robot Games held in Beijing in August 2026, achieving the second place!",
-    "cover": "cover-whrg2026.jpg",
+    "cover": "cover-whrg2026.webp",
     "site": "",
     "video": "",
     "results": ""
@@ -16,7 +16,7 @@
     "month": "July",
     "days": "1-6",
     "description": "The SPQR team competed in the RoboCup 2026 in Incheon!",
-    "cover": "cover-rc2026.jpg",
+    "cover": "cover-rc2026.webp",
     "site": "https://2026.robocup.org/",
     "video": "",
     "results": "https://hsl.robocup.org/results-2026/"
@@ -27,7 +27,7 @@
     "month": "March",
     "days": "10-14",
     "description": "The SPQR team competed in the RoboCup German Open 2026, the first official competition with the new Booster T1 robots!",
-    "cover": "cover-go2026.jpg",
+    "cover": "cover-go2026.webp",
     "site": "",
     "video": "",
     "results": "https://hsl.robocup.org/2026-robocup-german-open/"
@@ -38,7 +38,7 @@
     "month": "October",
     "days": "17-19",
     "description": "The SPQR team hosted a friendly tournament during the Maker Faire in Rome (Italy), with HTWK (Leipzig University), and Tech United (Eindhoven University). The first eurpean tournament with Booster Robotics robots!",
-    "cover": "cover-mf2025.png",
+    "cover": "cover-mf2025.webp",
     "site": "https://makerfairerome.eu/it/",
     "video": "",
     "results": ""
@@ -49,7 +49,7 @@
     "month": "August",
     "days": "13-17",
     "description": "The SPQR Team competed in the first World Humanoid Robot Games held in Beijing in August 2025.",
-    "cover": "cover-whrg2025.jpg",
+    "cover": "cover-whrg2025.webp",
     "site": "",
     "video": "",
     "results": ""
@@ -60,7 +60,7 @@
     "month": "July",
     "days": "15-21",
     "description": "The SPQR Team competed in the Champions Cup, achieving third place in the seeding round and finishing fourth overall. Additionally, the team earned third place in the KICKin Rollin Technical Challenge!",
-    "cover": "cover-rc2025.jpg",
+    "cover": "cover-rc2025.webp",
     "site": "https://2025.robocup.org/",
     "video": "",
     "results": "https://spl.robocup.org/results-2025/"
@@ -71,7 +71,7 @@
     "month": "March",
     "days": "10-14",
     "description": "The SPQR Team competed in the RoboCup German Open 2025, achieving third place!",
-    "cover": "cover-go2025.png",
+    "cover": "cover-go2025.webp",
     "site": "",
     "video": "",
     "results": "https://spl.robocup.org/german-open-results-2025/"
@@ -82,7 +82,7 @@
     "month": "October",
     "days": "25-27",
     "description": "The SPQR team hosted a friendly tournament during the Maker Faire in Rome (Italy), 25-27 October 2024, with HTWK (Leipzig University).",
-    "cover": "cover-mf2024.png",
+    "cover": "cover-mf2024.webp",
     "site": "https://makerfairerome.eu/it/",
     "video": "",
     "results": ""
@@ -93,7 +93,7 @@
     "month": "July",
     "days": "17-21",
     "description": "The SPQR Team competed in the Champions Cup, achieving third place in the seeding round and finishing fifth overall. Additionally, the team earned third place in the Shared Autonomy Challenge!",
-    "cover": "cover-rc2024.png",
+    "cover": "cover-rc2024.webp",
     "site": "https://2024.robocup.org/",
     "video": "https://www.youtube.com/watch?v=lAl1qg1B2WM",
     "results": "https://spl.robocup.org/results-2024/"
@@ -104,7 +104,7 @@
     "month": "October",
     "days": "20-22",
     "description": "The SPQR team hosted in a triangular friendly tournament during the Maker Faire in Rome (Italy), 20-22 October 2023, with NaoDevis (Dortmunt Univesity) and Hulks (Hamburg Univesity).",
-    "cover": "cover-mf2024.png",
+    "cover": "cover-mf2024.webp",
     "site": "https://makerfairerome.eu/it/",
     "video": "",
     "results": ""
@@ -115,7 +115,7 @@
     "month": "July",
     "days": "4-10",
     "description": "The RoboCup 2023 took place in Bourdeax (France). The SPQR team competed in the Champions Cup winning the seventh place and the quarter-finals. We also won the Best Paper Award!",
-    "cover": "cover-rc2023.png",
+    "cover": "cover-rc2023.webp",
     "site": "https://2023.robocup.org/en/home/",
     "video": "https://www.youtube.com/watch?v=DXEUjxQSiG0",
     "results": "https://spl.robocup.org/results-2023/"
@@ -126,7 +126,7 @@
     "month": "October",
     "days": "7-9",
     "description": "The SPQR team hosted in a friendly series of matches against Nao Devils team during the Maker Faire in Rome (Italy).",
-    "cover": "cover-mf2022.png",
+    "cover": "cover-mf2022.webp",
     "site": "https://makerfairerome.eu/it/",
     "video": "https://www.youtube.com/watch?v=HJP8uQ0UoJ8",
     "results": ""
@@ -137,7 +137,7 @@
     "month": "July",
     "days": "13-17",
     "description": "The RoboCup 2022 took place in Bangkok (Thailand) from 13 to 17 July 2022. The SPQR team competed in the Standard Platform League achieving  the eleventh place.",
-    "cover": "cover-rc2022.png",
+    "cover": "cover-rc2022.webp",
     "site": "https://2022.robocup.org/",
     "video": "https://www.youtube.com/watch?v=s92LMa1njy4",
     "results": "https://spl.robocup.org/results-2022/"
@@ -148,7 +148,7 @@
     "month": "October",
     "days": "18-20",
     "description": "The SPQR team hosted a triangular friendly tournament during the Maker Faire in Rome (Italy)",
-    "cover": "cover-mf2019.png",
+    "cover": "cover-mf2019.webp",
     "site": "https://makerfairerome.eu/it/",
     "video": "",
     "results": ""
@@ -159,7 +159,7 @@
     "month": "July",
     "days": "2-8",
     "description": "The RoboCup 2019 was held in Sydney (Australia), 2-8 July 2019. SPQR Team reconfirmed itself in the Champions Cup including the best 12 teams in the world.",
-    "cover": "cover-rc2019.png",
+    "cover": "cover-rc2019.webp",
     "site": "https://2019.robocup.org/",
     "video": "",
     "results": "https://spl.robocup.org/results-2019/"
@@ -170,7 +170,7 @@
     "month": "June",
     "days": "18-22",
     "description": "The RoboCup 2018 was held in Montreal (Canada), 18-22 June 2018. SPQR Team achieved the semifinals in the penalty kick competition and entered the Champions Cup including the best 12 teams in the world.",
-    "cover": "cover-rc2018.png",
+    "cover": "cover-rc2018.webp",
     "site": "https://2018.robocup.org/",
     "video": "",
     "results": "https://spl.robocup.org/results-2018/"
@@ -181,7 +181,7 @@
     "month": "March",
     "days": "5-7",
     "description": "The RoboCup German Open 2017 was held in Magdeburg (Germany), 5-7 May 2017. SPQR Team achieved the 2nd Place in the Challenge Shield.",
-    "cover": "cover-go2017.png",
+    "cover": "cover-go2017.webp",
     "site": "https://robocup.de/",
     "video": "",
     "results": "https://spl.robocup.org/results-2017/"
@@ -192,7 +192,7 @@
     "month": "July",
     "days": "1-5",
     "description": "The RoboCup 2016 was held in Leipzig (Germany), 1-5 July 2016.",
-    "cover": "cover-rc2016.png",
+    "cover": "cover-rc2016.webp",
     "site": "https://2016.robocup.org/web/index-2.html",
     "video": "",
     "results": "https://spl.robocup.org/history/results-2016/"

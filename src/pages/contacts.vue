@@ -3,7 +3,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/contacts/cover.jpg"
+            src="/assets/contacts/cover.webp"
             alt="Contacts Header Cover"
             cover
         >
@@ -129,11 +129,11 @@ useSeo({
   ogTitle: 'Contacts - SPQR Team',
   ogDescription: 'Get in touch with SPQR Team.',
   ogUrl: 'https://spqr.diag.uniroma1.it/contacts/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Contacts - SPQR Team',
   twitterDescription: 'Get in touch with SPQR Team.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/contacts/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const spqr_team = {

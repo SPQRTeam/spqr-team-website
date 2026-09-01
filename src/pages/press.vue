@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/press/cover.png"
+            src="/assets/press/cover.webp"
             alt="Press Header Cover"
             cover
         >
@@ -128,11 +128,11 @@ useSeo({
   ogTitle: 'Press & Media - SPQR Team',
   ogDescription: 'Media coverage and news about SPQR Team robotics research.',
   ogUrl: 'https://spqr.diag.uniroma1.it/press/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Press & Media - SPQR Team',
   twitterDescription: 'Media coverage and news about SPQR Team robotics research.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/press/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 // TV Videos from CSV

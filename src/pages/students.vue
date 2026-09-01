@@ -16,7 +16,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/students/cover.jpg"
+            src="/assets/students/cover.webp"
             alt="Students Header Cover"
             cover
         >
@@ -173,11 +173,11 @@ useSeo({
   ogTitle: 'Students - SPQR Team',
   ogDescription: 'Thesis projects and research opportunities in robotics and AI.',
   ogUrl: 'https://spqr.diag.uniroma1.it/students/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Students - SPQR Team',
   twitterDescription: 'Thesis projects and research opportunities in robotics and AI.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/students/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 // Import projects data directly

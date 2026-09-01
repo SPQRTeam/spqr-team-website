@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/events/cover.png"
+            src="/assets/events/cover.webp"
             alt="Events Header Cover"
             cover
         >
@@ -93,11 +93,11 @@ useSeo({
   ogTitle: 'Events - SPQR Team',
   ogDescription: 'RoboCup competitions and robotics events.',
   ogUrl: 'https://spqr.diag.uniroma1.it/events/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Events - SPQR Team',
   twitterDescription: 'RoboCup competitions and robotics events.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/events/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const baseUrl = import.meta.env.BASE_URL

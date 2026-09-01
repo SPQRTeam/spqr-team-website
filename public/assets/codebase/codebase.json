@@ -3,21 +3,21 @@
     "name": "Circus",
     "description": "SPQR simulator for Booster Robotics robots.",
     "link": "https://github.com/DaniAffCH/circus",
-    "cover": "circus-maximus-left.jpg",
+    "cover": "circus-maximus-left.webp",
     "platform": "Booster"
   },
   {
     "name": "Maximus",
     "description": "SPQR Framework for Booster Robotics robots.",
     "link": "https://github.com/SPQRTeam/spqrbooster2026.git",
-    "cover": "circus-maximus-right.jpg",
+    "cover": "circus-maximus-right.webp",
     "platform": "Booster"
   },
   {
     "name": "Colosseum",
     "description": "SPQR enviroment for Reinforcement Learning.",
     "link": "https://github.com/neverorfrog/colosseum.git",
-    "cover": "colosseum.jpg",
+    "cover": "colosseum.webp",
     "platform": "Booster"
   },
   {

@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/media/cover.png"
+            src="/assets/media/cover.webp"
             alt="Media Header Cover"
             cover
         >
@@ -112,11 +112,11 @@ useSeo({
   ogTitle: 'Media - SPQR Team',
   ogDescription: 'Photos and videos from RoboCup competitions and robotics research.',
   ogUrl: 'https://spqr.diag.uniroma1.it/media/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Media - SPQR Team',
   twitterDescription: 'Photos and videos from RoboCup competitions and robotics research.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/media/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 // TV Videos from CSV

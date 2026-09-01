@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/events/cover.png"
+            src="/assets/events/cover.webp"
             alt="Italian Open 2026 Header Cover"
             cover
         >
@@ -48,11 +48,11 @@ useSeo({
   ogTitle: 'Italian Open 2026 - SPQR Team',
   ogDescription: 'RoboCup Italian Open 2026 - Humanoid Soccer Workshop and Games, 23-25 October 2026 at Maker Faire Rome.',
   ogUrl: 'https://spqr.diag.uniroma1.it/events/italianopen2026/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Italian Open 2026 - SPQR Team',
   twitterDescription: 'RoboCup Italian Open 2026 - Humanoid Soccer Workshop and Games, 23-25 October 2026 at Maker Faire Rome.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/events/italianopen2026/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 </script>
 

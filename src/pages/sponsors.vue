@@ -2,7 +2,7 @@
   <div class="cover-section">
     <v-img
       class="cover-image"
-      src="/assets/home/cover.png"
+      src="/assets/home/cover.webp"
       alt="Sponsors Header Cover"
       cover
     >
@@ -85,7 +85,7 @@
           <div class="stat-panel__title">Posts performance</div>
           <div class="stat-panel__subtitle">Latest screenshot from Meta Business Suite</div>
           <v-img
-            src="/assets/sponsor/stats/posts.png"
+            src="/assets/sponsor/stats/posts.webp"
             alt="Meta Business posts performance screenshot"
             class="stat-screenshot"
             cover
@@ -147,11 +147,11 @@ useSeo({
   ogTitle: 'Sponsors - SPQR Team',
   ogDescription: 'Our sponsors and partners supporting robotics research.',
   ogUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Sponsors - SPQR Team',
   twitterDescription: 'Our sponsors and partners supporting robotics research.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const sponsors = sponsorsData
@@ -165,14 +165,14 @@ const sponsorsFormatted = computed(() =>
   }))
 )
 const carouselItems = [
-  { src: '/assets/sponsor/images/sponsor_1.jpg', alt: 'Sponsor 1' },
-  { src: '/assets/sponsor/images/sponsor_2.jpg', alt: 'Sponsor 2' },
-  { src: '/assets/sponsor/images/sponsor_3.jpg', alt: 'Sponsor 3' },
-  { src: '/assets/sponsor/images/sponsor_4.jpg', alt: 'Sponsor 4' },
-  { src: '/assets/sponsor/images/sponsor_5.jpg', alt: 'Sponsor 5' },
-  { src: '/assets/sponsor/images/sponsor_6.jpg', alt: 'Sponsor 6' },
-  { src: '/assets/sponsor/images/sponsor_7.jpg', alt: 'Sponsor 7' },
-  { src: '/assets/sponsor/images/sponsor_8.jpg', alt: 'Sponsor 8' },
+  { src: '/assets/sponsor/images/sponsor_1.webp', alt: 'Sponsor 1' },
+  { src: '/assets/sponsor/images/sponsor_2.webp', alt: 'Sponsor 2' },
+  { src: '/assets/sponsor/images/sponsor_3.webp', alt: 'Sponsor 3' },
+  { src: '/assets/sponsor/images/sponsor_4.webp', alt: 'Sponsor 4' },
+  { src: '/assets/sponsor/images/sponsor_5.webp', alt: 'Sponsor 5' },
+  { src: '/assets/sponsor/images/sponsor_6.webp', alt: 'Sponsor 6' },
+  { src: '/assets/sponsor/images/sponsor_7.webp', alt: 'Sponsor 7' },
+  { src: '/assets/sponsor/images/sponsor_8.webp', alt: 'Sponsor 8' },
 ]
 
 const statsCards = [

@@ -3,7 +3,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/publications/cover.png"
+            src="/assets/publications/cover.webp"
             alt="Publications Header Cover"
             cover
         >
@@ -101,11 +101,11 @@ useSeo({
   ogTitle: 'Publications - SPQR Team',
   ogDescription: 'Research publications on humanoid robotics, RoboCup, and AI.',
   ogUrl: 'https://spqr.diag.uniroma1.it/publications/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Publications - SPQR Team',
   twitterDescription: 'Research publications on humanoid robotics, RoboCup, and AI.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/publications/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const baseUrl = import.meta.env.BASE_URL

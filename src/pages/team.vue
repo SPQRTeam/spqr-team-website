@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/team/cover.png"
+            src="/assets/team/cover.webp"
             alt="Team Header Cover"
             cover
         >
@@ -63,6 +63,7 @@
                         :src="member.image"
                         :alt="member.name"
                         class="member-photo"
+                        aspect-ratio="2/3"
                         cover
                     ></v-img>
                     <div class="member-name">{{ member.name }}</div>
@@ -122,11 +123,11 @@ useSeo({
   ogTitle: 'Team - SPQR Team',
   ogDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
   ogUrl: 'https://spqr.diag.uniroma1.it/team/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg',
   twitterTitle: 'Team - SPQR Team',
   twitterDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/team/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg'
 })
 
 const baseUrl = import.meta.env.BASE_URL
@@ -226,6 +227,11 @@ onMounted(() => {
     width: 100%;
     margin-bottom: 2rem;
     overflow: hidden;
+    /* Hold the carousel's height before team_photos.json arrives. Without it the
+       section is flat at first render, the members grid below starts inside the
+       viewport, and all the member photos download at once, competing with the
+       header image for bandwidth. */
+    min-height: calc(min(100vw - 3rem, 1500px) / 1.7778 + 8rem);
 }
 
 .carousel-background-blur {

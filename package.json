@@ -9,6 +9,7 @@
     "build:seo": "vite build && node scripts/prerender.js",
     "preview": "vite preview",
     "lint": "eslint . --fix",
+    "optimize:images": "python3 scripts/optimize-images.py",
     "predeploy": "npm run build:seo",
     "deploy": "gh-pages -d dist"
   },

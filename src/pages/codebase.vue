@@ -2,7 +2,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/codebase/cover.jpg"
+            src="/assets/codebase/cover.webp"
             alt="Codebase Header Cover"
             cover
         >
@@ -96,11 +96,11 @@ useSeo({
   ogTitle: 'Codebase - SPQR Team',
   ogDescription: 'Open source robotics software and tools.',
   ogUrl: 'https://spqr.diag.uniroma1.it/codebase/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Codebase - SPQR Team',
   twitterDescription: 'Open source robotics software and tools.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/codebase/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const baseUrl = import.meta.env.BASE_URL

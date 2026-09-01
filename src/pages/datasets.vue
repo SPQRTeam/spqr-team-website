@@ -16,7 +16,7 @@
     <div class="cover-section">
         <v-img
             class="cover-image"
-            src="/assets/datasets/cover.jpg"
+            src="/assets/datasets/cover.webp"
             alt="Datasets Header Cover"
             cover
         >
@@ -172,11 +172,11 @@ useSeo({
   ogTitle: 'Datasets - SPQR Team',
   ogDescription: 'Research datasets for RoboCup SPL and HSL competitions.',
   ogUrl: 'https://spqr.diag.uniroma1.it/datasets/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'Datasets - SPQR Team',
   twitterDescription: 'Research datasets for RoboCup SPL and HSL competitions.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/datasets/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 // Import projects data directly

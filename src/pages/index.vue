@@ -43,7 +43,7 @@
     <header>
       <v-img
         :style="{ 'max-height': '250px', 'margin-top': '2rem' }"
-        src="/assets/home/cover.png"
+        src="/assets/home/cover.webp"
         alt="SPQR Team - RoboCup Humanoid Soccer Robots at Sapienza University of Rome"
       ></v-img>
     </header>
@@ -296,12 +296,12 @@ import { useSeo } from '@/composables/useSeo'
 import leftreel from '/assets/home/ig/igreel-mf2025.mp4'
 import centerreel from '/assets/home/ig/igreel-whrg2025.mp4'
 import rightreel from '/assets/home/ig/igreel-ukvisit2025.mp4'
-import leftcover from '/assets/home/ig/igreel-mf2025-cover.png'
-import centercover from '/assets/home/ig/igreel-whrg2025-cover.png'
-import rightcover from '/assets/home/ig/igreel-ukvisit2025-cover.png'
-import boosterLogo from '/assets/sponsor/current/booster.png'
-import prismaLogo from '/assets/sponsor/current/prisma.png'
-import seewebLogo from '/assets/sponsor/current/seeweb.png'
+import leftcover from '/assets/home/ig/igreel-mf2025-cover.webp'
+import centercover from '/assets/home/ig/igreel-whrg2025-cover.webp'
+import rightcover from '/assets/home/ig/igreel-ukvisit2025-cover.webp'
+import boosterLogo from '/assets/sponsor/current/booster.webp'
+import prismaLogo from '/assets/sponsor/current/prisma.webp'
+import seewebLogo from '/assets/sponsor/current/seeweb.webp'
 
 const instagramPosts = [
   {
@@ -390,11 +390,11 @@ useSeo({
   ogTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
   ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998. Part of Sapienza University of Rome\'s DIAG department.',
   ogUrl: 'https://spqr.diag.uniroma1.it/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png',
+  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   twitterTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
   twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998.',
   twitterUrl: 'https://spqr.diag.uniroma1.it/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.png'
+  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
 })
 
 const hoveredIndex = reactive({})
