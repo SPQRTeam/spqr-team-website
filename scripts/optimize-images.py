@@ -38,6 +38,8 @@ SOURCE_EXTENSIONS = (".png", ".jpg", ".jpeg")
 # The first matching rule wins, so specific patterns come before generic ones.
 RULES = [
     ("assets/events/cover-*", 900, 80),          # event card covers (~435px on screen)
+    ("assets/events/*/cover.*", 1600, 80),       # header of an event story page
+    ("assets/events/*/*", 1400, 82),             # photos inside an event story page
     ("assets/team/team-*", 1400, 80),            # team group photos in the carousel
     ("assets/team/team_*", 1400, 80),
     ("assets/*/cover.png", 1600, 78),            # full width page headers

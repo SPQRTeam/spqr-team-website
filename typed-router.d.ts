@@ -24,6 +24,7 @@ declare module 'vue-router/auto-routes' {
     '/datasets': RouteRecordInfo<'/datasets', '/datasets', Record<never, never>, Record<never, never>>,
     '/events/': RouteRecordInfo<'/events/', '/events', Record<never, never>, Record<never, never>>,
     '/events/italianopen2026': RouteRecordInfo<'/events/italianopen2026', '/events/italianopen2026', Record<never, never>, Record<never, never>>,
+    '/events/whrg2026': RouteRecordInfo<'/events/whrg2026', '/events/whrg2026', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
     '/press': RouteRecordInfo<'/press', '/press', Record<never, never>, Record<never, never>>,
     '/publications': RouteRecordInfo<'/publications', '/publications', Record<never, never>, Record<never, never>>,
@@ -65,6 +66,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/events/italianopen2026.vue': {
       routes: '/events/italianopen2026'
+      views: never
+    }
+    'src/pages/events/whrg2026.vue': {
+      routes: '/events/whrg2026'
       views: never
     }
     'src/pages/media.vue': {

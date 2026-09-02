@@ -46,6 +46,13 @@
                                 <p class="event-date">{{ event.month }} {{ event.days }}, {{ event.year }}</p>
                                 <p class="event-description">{{ event.description }}</p>
                                 <div class="event-links">
+                                    <router-link
+                                        v-if="event.page"
+                                        :to="event.page"
+                                        class="event-link event-link--story"
+                                    >
+                                        Read the story
+                                    </router-link>
                                     <a 
                                         v-if="event.links[0].site" 
                                         :href="event.links[0].site" 
@@ -164,6 +171,7 @@ const loadEvents = async () => {
             month: event.month,
             days: event.days,
             description: event.description,
+            page: event.page || '',
             cover: baseUrl + 'assets/events/' + event.cover,
             links: [
                 {
@@ -391,6 +399,17 @@ onMounted(() => {
 .event-link:hover {
     background-color: white;
     color: #822433;
+}
+
+/* the story of an event outranks its external links */
+.event-link--story {
+    background-color: white;
+    color: #822433;
+    font-weight: 600;
+}
+
+.event-link--story:hover {
+    background-color: rgba(255, 255, 255, 0.85);
 }
 
 @media (max-width: 600px) {
