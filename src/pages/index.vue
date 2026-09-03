@@ -66,7 +66,7 @@
       <p class="hero-subtitle">RoboCup research at Sapienza University of Rome</p>
       <p class="hero-since">
         <span aria-hidden="true" class="hero-rule" />
-        Since MCMXCVII
+        Since MCMXCVIII
         <span aria-hidden="true" class="hero-rule" />
       </p>
     </div>
