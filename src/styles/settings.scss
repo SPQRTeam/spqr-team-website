@@ -5,13 +5,15 @@
  */
 
 // https://vuetifyjs.com/features/sass-variables/`
-// @use 'vuetify/settings' with (
-//   $color-pack: false
-// );
+@use 'vuetify/settings' with (
+  $font-size-root: 1.2rem,
+  $body-font-family: ('EB Garamond', serif)
+);
 
 // Global styles
 body {
   background-color: #f1f4f3;
+  font-weight: 500;
 }
 
 h1, h2, h3, h4, h5, h6 {

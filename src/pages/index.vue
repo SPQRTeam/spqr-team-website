@@ -8,8 +8,8 @@
     "alternateName": "Sapienza Piazza Quattro Romani Team",
     "url": "https://spqrteam.github.io/spqr-team-website/",
     "logo": "https://spqrteam.github.io/spqr-team-website/logos/spqr-logo.png",
-    "description": "RoboCup research group at Sapienza University of Rome specializing in humanoid robotics, multi-agent systems, and artificial intelligence since 1997.",
-    "foundingDate": "1997",
+    "description": "RoboCup research group at Sapienza University of Rome specializing in humanoid robotics, multi-agent systems, and artificial intelligence since 1998.",
+    "foundingDate": "1998",
     "parentOrganization": {
     "@type": "CollegeOrUniversity",
     "name": "Sapienza University of Rome",
@@ -86,7 +86,7 @@
             <a href="http://www.diag.uniroma1.it/" rel="noopener" target="_blank">Department of Computer,
               Control, and Management Engineering Antonio Ruberti</a> at
             <a href="https://www.uniroma1.it/it/" rel="noopener" target="_blank">Sapienza University of
-              Rome</a>. Since 1997 we have brought together professors and students around
+              Rome</a>. Since 1998 we have brought together professors and students around
             one question: how can a team of fully autonomous humanoid robots play soccer together, with no
             human in the loop?
           </p>
@@ -405,7 +405,7 @@
   import spqrLogo from '/logos/logo-text-white.webp'
 
   const stats = [
-    { value: '1997', label: 'Competing since' },
+    { value: '1998', label: 'Competing since' },
     { value: '38', label: 'International competitions' },
     { value: '14', label: 'Team members' },
     { value: '17', label: 'Publications' },
@@ -552,15 +552,15 @@
   // SEO Configuration
   useSeo({
     title: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-    description: 'SPQR Team is the RoboCup research group at Sapienza University of Rome. Leading research in humanoid robotics, multi-agent systems, computer vision, deep learning, and reinforcement learning since 1997.',
+    description: 'SPQR Team is the RoboCup research group at Sapienza University of Rome. Leading research in humanoid robotics, multi-agent systems, computer vision, deep learning, and reinforcement learning since 1998.',
     path: '/',
     canonical: 'https://spqr.diag.uniroma1.it/',
     ogTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-    ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997. Part of Sapienza University of Rome\'s DIAG department.',
+    ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998. Part of Sapienza University of Rome\'s DIAG department.',
     ogUrl: 'https://spqr.diag.uniroma1.it/',
     ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
     twitterTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-    twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997.',
+    twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1998.',
     twitterUrl: 'https://spqr.diag.uniroma1.it/',
     twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
   })

@@ -1,50 +1,35 @@
 <template>
-  <div class="page-header">
-    <h1 class="page-title">Team</h1>
-    <p class="page-subtitle">The people behind SPQR</p>
-    <div class="roman-divider" />
-  </div>
-
-  <div class="carousel-background-section">
-    <div
-      class="carousel-background-blur"
-      :style="{ backgroundImage: `url(${currentPhoto})` }"
-    />
-    <div class="carousel-background-gradient" />
+  <section class="team-hero">
+    <div class="page-header">
+      <h1 class="page-title">Team</h1>
+      <p class="page-subtitle">The people behind SPQR</p>
+      <div class="roman-divider" />
+    </div>
 
     <!-- The title sits outside the carousel: v-carousel-item wraps its slot
-             in a v-img, whose overflow would clip a title wider than the photo -->
+         in a v-img, whose overflow would clip a title wider than the photo -->
     <h2 class="photo-title">{{ currentTitle }}</h2>
 
-    <v-container>
-
+    <div class="carousel-frame">
       <v-carousel
         class="team-carousel"
         cycle
-        height="auto"
+        height="100%"
         hide-delimiters
         :interval="5000"
         show-arrows="hover"
-        @update:model-value="updateBackground"
+        @update:model-value="updateTitle"
       >
         <v-carousel-item
           v-for="(photo, i) in team_photos"
           :key="i"
-          class="carousel-item-wrapper"
-        >
-          <div class="carousel-content">
-            <v-img
-              :alt="photo.title"
-              aspect-ratio="16/9"
-              class="team-photo"
-              contain
-              :src="photo.image"
-            />
-          </div>
-        </v-carousel-item>
+          :alt="photo.title"
+          contain
+          :src="photo.image"
+        />
       </v-carousel>
-    </v-container>
-  </div>
+    </div>
+  </section>
 
   <v-container>
 
@@ -150,7 +135,6 @@
 
       // Set initial photo
       if (team_photos.value.length > 0) {
-        currentPhoto.value = team_photos.value[0].image
         currentTitle.value = team_photos.value[0].title
       }
     } catch (error) {
@@ -209,11 +193,9 @@
     }
   }
 
-  const currentPhoto = ref('')
   const currentTitle = ref('')
 
-  function updateBackground (index) {
-    currentPhoto.value = team_photos.value[index].image
+  function updateTitle (index) {
     currentTitle.value = team_photos.value[index].title
   }
 
@@ -225,40 +207,65 @@
 </script>
 
 <style scoped>
-.carousel-background-section {
-    position: relative;
+/* Header, photo title and photo together fill exactly the space the app bar and
+   the fixed footer leave free, so the whole carousel is on screen without
+   scrolling. settings.scss zooms the site per breakpoint and viewport units are
+   not scaled by that zoom, hence the division. */
+.team-hero {
+    display: flex;
+    flex-direction: column;
     width: 100%;
+    height: calc(100svh / var(--site-zoom, 1) - var(--v-layout-top, 0px) - var(--v-layout-bottom, 0px));
+    flex-shrink: 0;
     margin-bottom: 2rem;
+}
+
+.team-hero .page-header {
+    flex-shrink: 0;
+}
+
+.carousel-frame {
+    /* Whatever height the header and the title leave over */
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1.5rem 1rem;
+}
+
+.team-carousel {
+    /* The largest 16:9 box that fits both the free height and the frame width.
+       Every team photo is 16:9, so it holds them edge to edge with no bars: the
+       height comes from the frame, the width follows the ratio, and the
+       max-height caps the box on screens where the width runs out first (vw
+       ignores the site zoom the same way svh does, and the extra rem of slack
+       covers the scrollbar). */
+    flex: 0 0 auto;
+    max-height: calc(min(1500px, 100vw / var(--site-zoom, 1) - 4rem) * 9 / 16);
+    aspect-ratio: 16 / 9;
+    width: auto;
+    max-width: 100%;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-.carousel-background-blur {
-    position: absolute;
-    top: -50px;
-    left: -50px;
-    right: -50px;
-    bottom: -50px;
-    background-size: cover;
-    background-position: center;
-    filter: blur(25px);
-    transform: scale(1.2);
-    z-index: 0;
-    transition: background-image 0.8s ease-in-out;
-}
-
-.carousel-background-gradient {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(ellipse at center, transparent 0%, rgba(241, 244, 243, 0.2) 60%, rgba(241, 244, 243, 0.7) 90%, #f1f4f3 100%);
-    z-index: 1;
-}
-
-.carousel-background-section .v-container {
-    position: relative;
-    z-index: 2;
+.photo-title {
+    text-align: center;
+    font-weight: 500;
+    color: rgb(30, 30, 30);
+    flex-shrink: 0;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    padding: 0 1rem;
+    /* The title spans the whole section, not just the photo column, so that long
+       event names keep fitting. */
+    width: 100%;
+    /* Always a single line. The longest title measures 17.5em, so dividing the
+       available width by 19 leaves it room to fit whatever the viewport is,
+       while 2.5rem keeps it from growing past its intended size on desktop. */
+    white-space: nowrap;
+    font-size: min(2.5rem, calc((100vw - 2rem) / 19));
 }
 
 .section-title {
@@ -268,68 +275,6 @@
     font-weight: 500;
     font-size: 4rem;
     color: rgb(30, 30, 30);
-}
-
-.team-carousel {
-    max-width: 1500px;
-    margin: 0 auto 2rem;
-    border-radius: 10px;
-    overflow: hidden;
-    /* Hold the height the photos will need before team_photos.json arrives.
-       Without it the section is flat at first render, the members grid below
-       starts inside the viewport, and all the member photos download at once,
-       competing with the header image for bandwidth. Tied to the carousel's own
-       width, so the reserved box matches what actually gets rendered. */
-    aspect-ratio: 16 / 9;
-}
-
-.team-carousel :deep(.v-carousel-item) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.carousel-item-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100;
-}
-
-.carousel-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    max-width: 1500px;
-    gap: 2rem;
-}
-
-.team-photo {
-    border-radius: 10px;
-    width: 100%;
-}
-
-.photo-title {
-    text-align: center;
-    font-weight: 500;
-    color: rgb(255, 255, 255);
-    flex-shrink: 0;
-    margin-top: 2rem;
-    padding: 0 1rem;
-    /* The title spans the whole section, not just the photo column, so that long
-       event names keep fitting. */
-    position: relative;
-    z-index: 2;
-    width: 100%;
-    /* Always a single line. The longest title measures 17.5em, so dividing the
-       available width by 19 leaves it room to fit whatever the viewport is,
-       while 2.5rem keeps it from growing past its intended size on desktop. */
-    white-space: nowrap;
-    font-size: min(2.5rem, calc((100vw - 2rem) / 19));
-    margin-bottom: 0;
 }
 
 .members-grid {

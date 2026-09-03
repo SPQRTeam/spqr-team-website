@@ -32,11 +32,11 @@ export default defineConfig({
     Fonts({
       google: {
         families: [{
-          name: 'Roboto',
-          styles: 'wght@100;300;400;500;700;900',
-        }, {
           name: 'Cormorant Garamond',
           styles: 'ital,wght@0,400;0,500;0,600;0,700;1,400;1,500',
+        }, {
+          name: 'EB Garamond',
+          styles: 'ital,wght@0,400;0,500;0,600;0,700;1,400',
         }],
       },
     }),
