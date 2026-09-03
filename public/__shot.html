@@ -1,0 +1,9 @@
+<!doctype html><meta charset="utf-8"><body style="margin:0">
+<iframe id="f" src="/" style="width:1920px;height:1080px;border:0"></iframe>
+<script>
+  const f = document.getElementById('f')
+  f.addEventListener('load', () => setTimeout(() => {
+    const el = f.contentDocument.querySelector('.sponsor-section')
+    if (el) el.scrollIntoView({ block: 'center' })
+  }, 2500))
+</script>

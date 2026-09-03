@@ -266,7 +266,7 @@
           Latest TV Appearances
         </h2>
 
-        <v-row justify="center" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem;">
+        <v-row justify="center" style="max-width: 1000px; margin: 0 auto;">
           <v-col
             v-for="(video, index) in tvVideos"
             :key="index"
@@ -350,7 +350,7 @@
   <section aria-label="Sponsors and Partners" class="sponsor-section">
     <v-container>
       <div>
-        <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem; font-style: italic;">
+        <h2 class="home-section-title">
           Our Sponsors & Partners
         </h2>
 
@@ -766,10 +766,37 @@
   .hero-scroll { animation: none; }
 }
 
-/* ---- Shared section rhythm ---- */
+/* ---- Shared section rhythm ----
+   Every top-level section carries half of the gap above and below itself, so
+   the space between any two neighbouring sections is always --section-gap,
+   whether they sit inside the same v-container or not. */
+.home-section,
+.instagram-section,
+.press-section,
+.sponsor-section {
+  --section-gap: 6rem;
+  padding-top: calc(var(--section-gap) / 2);
+  padding-bottom: calc(var(--section-gap) / 2);
+}
+
+/* the containers only handle the horizontal gutter; the sections own the rhythm */
+.v-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* full gap after the hero and before the fixed footer */
+#about {
+  padding-top: var(--section-gap);
+}
+
+.sponsor-section {
+  padding-bottom: var(--section-gap);
+}
+
 .home-section {
   max-width: 90rem;
-  margin: 6rem auto;
+  margin: 0 auto;
   color: rgb(30, 30, 30);
 }
 
@@ -1091,7 +1118,6 @@
 }
 
 .instagram-section {
-  padding: 4rem 0;
   background: linear-gradient(180deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(255, 183, 77, 0.01) 5%,
@@ -1102,7 +1128,6 @@
 }
 
 .press-section {
-  padding: 4rem 0;
   background: linear-gradient(180deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(100, 150, 220, 0.01) 5%,
@@ -1328,7 +1353,6 @@
 }
 
 .sponsor-section {
-  padding: 4rem 0;
   background: linear-gradient(180deg,
     rgba(255, 255, 255, 0) 0%,
     rgba(76, 175, 80, 0.01) 5%,
@@ -1374,7 +1398,7 @@
 
 /* TV Appearances Cards */
 .tv-appearances-subsection {
-  margin-bottom: 4rem;
+  margin-bottom: var(--section-gap);
 }
 
 .tv-card-link {
