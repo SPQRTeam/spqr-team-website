@@ -1,57 +1,48 @@
 <template>
-  <div class="cover-section">
-    <v-img
-      class="cover-image"
-      src="/assets/home/cover.webp"
-      alt="Sponsors Header Cover"
-      cover
-    >
-      <div class="cover-overlay">
-        <h1 class="cover-title">SPONSORS</h1>
-      </div>
-    </v-img>
+  <div class="page-header">
+    <h1 class="page-title">Sponsors</h1>
+    <p class="page-subtitle">The partners supporting our research</p>
+    <div class="roman-divider" />
   </div>
 
-  <v-banner
-    lines="one"
-    class="contact-banner"
-    color="rgb(0, 103, 120)"
-    icon="mdi-email-outline"
-    sticky
-  >
-    <template #text>
-      <div class="banner-text">
-        <span>Want to support the team? Reach out at</span>
-        <a class="banner-link" href="mailto:spqr@diag.uniroma1.it">spqr@diag.uniroma1.it</a>
-      </div>
-    </template>
-  </v-banner>
+  <v-container class="support-section">
+    <div class="support-card">
+      <v-icon class="support-icon" size="42">mdi-email-heart-outline</v-icon>
+      <h2 class="support-title">Want to support the team?</h2>
+      <p class="support-text">
+        Sponsorships keep our robots on the pitch: write to this email and we will get back to
+        you with the plan that fits your goals best.
+      </p>
+      <a class="support-email" href="mailto:spqr@diag.uniroma1.it">
+        <v-icon size="22">mdi-email-outline</v-icon>
+        <span class="support-email-address">spqr@diag.uniroma1.it</span>
+      </a>
 
-  <v-container class="carousel-container">
-    <v-carousel
-      class="sponsor-carousel"
-      cycle
-      height="auto"
-      :interval="5000"
-      hide-delimiters
-      show-arrows="hover"
-    >
-      <v-carousel-item
-        v-for="item in carouselItems"
-        :key="item.src"
-        class="carousel-item-wrapper"
+      <v-carousel
+        class="sponsor-carousel"
+        cycle
+        height="auto"
+        hide-delimiters
+        :interval="5000"
+        show-arrows="hover"
       >
-        <div class="carousel-content">
-          <v-img
-            :src="item.src"
-            :alt="item.alt"
-            class="sponsor-photo"
-            aspect-ratio="1"
-            cover
-          />
-        </div>
-      </v-carousel-item>
-    </v-carousel>
+        <v-carousel-item
+          v-for="item in carouselItems"
+          :key="item.src"
+          class="carousel-item-wrapper"
+        >
+          <div class="carousel-content">
+            <v-img
+              :alt="item.alt"
+              aspect-ratio="1"
+              class="sponsor-photo"
+              cover
+              :src="item.src"
+            />
+          </div>
+        </v-carousel-item>
+      </v-carousel>
+    </div>
   </v-container>
 
   <v-container class="stats-section">
@@ -69,11 +60,11 @@
         v-for="card in statsCards"
         :key="card.title"
         cols="12"
-        sm="6"
         md="4"
+        sm="6"
       >
         <div class="stat-card">
-          <div class="stat-card__title">{{ card.title }}</div>
+          <h3 class="stat-card__title">{{ card.title }}</h3>
           <div class="stat-card__value">{{ card.value }}</div>
           <div class="stat-card__hint">{{ card.hint }}</div>
         </div>
@@ -120,121 +111,118 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useSeo } from '@/composables/useSeo'
-import sponsorsData from '/public/assets/sponsor/sponsors.json'
+  import { useSeo } from '@/composables/useSeo'
 
-// SEO Configuration
-useSeo({
-  title: 'Sponsors - SPQR Team | Partners and Support',
-  description: 'SPQR Team sponsors and partners supporting our RoboCup research and robotics development at Sapienza University of Rome.',
-  path: '/sponsors/',
-  canonical: 'https://spqr.diag.uniroma1.it/sponsors/',
-  ogTitle: 'Sponsors - SPQR Team',
-  ogDescription: 'Our sponsors and partners supporting robotics research.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Sponsors - SPQR Team',
-  twitterDescription: 'Our sponsors and partners supporting robotics research.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Sponsors - SPQR Team | Partners and Support',
+    description: 'SPQR Team sponsors and partners supporting our RoboCup research and robotics development at Sapienza University of Rome.',
+    path: '/sponsors/',
+    canonical: 'https://spqr.diag.uniroma1.it/sponsors/',
+    ogTitle: 'Sponsors - SPQR Team',
+    ogDescription: 'Our sponsors and partners supporting robotics research.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Sponsors - SPQR Team',
+    twitterDescription: 'Our sponsors and partners supporting robotics research.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/sponsors/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-const sponsors = sponsorsData
-const sponsorsFormatted = computed(() =>
-  sponsors.map((sponsor) => ({
-    ...sponsor,
-    bullets: sponsor.description
-      .split(';')
-      .map((item) => item.trim())
-      .filter(Boolean)
-  }))
-)
-const carouselItems = [
-  { src: '/assets/sponsor/images/sponsor_1.webp', alt: 'Sponsor 1' },
-  { src: '/assets/sponsor/images/sponsor_2.webp', alt: 'Sponsor 2' },
-  { src: '/assets/sponsor/images/sponsor_3.webp', alt: 'Sponsor 3' },
-  { src: '/assets/sponsor/images/sponsor_4.webp', alt: 'Sponsor 4' },
-  { src: '/assets/sponsor/images/sponsor_5.webp', alt: 'Sponsor 5' },
-  { src: '/assets/sponsor/images/sponsor_6.webp', alt: 'Sponsor 6' },
-  { src: '/assets/sponsor/images/sponsor_7.webp', alt: 'Sponsor 7' },
-  { src: '/assets/sponsor/images/sponsor_8.webp', alt: 'Sponsor 8' },
-]
+  const carouselItems = [
+    { src: '/assets/sponsor/images/sponsor_1.webp', alt: 'Sponsor 1' },
+    { src: '/assets/sponsor/images/sponsor_2.webp', alt: 'Sponsor 2' },
+    { src: '/assets/sponsor/images/sponsor_3.webp', alt: 'Sponsor 3' },
+    { src: '/assets/sponsor/images/sponsor_4.webp', alt: 'Sponsor 4' },
+    { src: '/assets/sponsor/images/sponsor_5.webp', alt: 'Sponsor 5' },
+    { src: '/assets/sponsor/images/sponsor_6.webp', alt: 'Sponsor 6' },
+    { src: '/assets/sponsor/images/sponsor_7.webp', alt: 'Sponsor 7' },
+    { src: '/assets/sponsor/images/sponsor_8.webp', alt: 'Sponsor 8' },
+  ]
 
-const statsCards = [
-  { title: 'Views', value: '269,778', hint: '87.3% from non-followers' },
-  { title: 'Top reel', value: '75,700', hint: 'Views on a single reel, 26 Aug' },
-  { title: 'Content interactions', value: '5,793', hint: 'Reels 44.3%, posts 38.6%' },
-  { title: 'Accounts engaged', value: '2,124', hint: 'Unique accounts' },
-  { title: 'Profile visits', value: '3,781', hint: '62 taps on the external link' },
-  { title: 'Followers', value: '1,803', hint: 'Total' },
-]
+  const statsCards = [
+    { title: 'Views', value: '269,778', hint: '87.3% from non-followers' },
+    { title: 'Top reel', value: '75,700', hint: 'Views on a single reel, 26 Aug' },
+    { title: 'Content interactions', value: '5,793', hint: 'Reels 44.3%, posts 38.6%' },
+    { title: 'Accounts engaged', value: '2,124', hint: 'Unique accounts' },
+    { title: 'Profile visits', value: '3,781', hint: '62 taps on the external link' },
+    { title: 'Followers', value: '1,803', hint: 'Total' },
+  ]
 
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-  object-position: center 40% !important;
+.support-section {
+  max-width: 1200px;
+  margin: 2.5rem auto 2rem;
+  padding: 0 1rem;
 }
 
-.cover-section {
-  position: relative;
-}
-
-.cover-overlay {
-  position: absolute;
-  inset: 0;
+.support-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.6));
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  border-top: 4px solid #822433;
+  background: linear-gradient(135deg, #ffffff 0%, #f6f7f6 100%);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
 }
 
-.cover-title {
-  color: #ffffff;
-  letter-spacing: 0.2rem;
+.support-icon {
+  color: #822433;
+  margin-bottom: 0.9rem;
+}
+
+.support-title {
+  font-size: 1.9rem;
   font-weight: 800;
+  color: #0b0b0f;
+  margin: 0 0 0.5rem;
 }
 
-.contact-banner {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.support-text {
+  max-width: 640px;
+  margin: 0 0 1.5rem;
+  color: #4b4b4b;
+  line-height: 1.6;
 }
 
-.contact-banner :deep(.v-banner__content) {
-  justify-content: center;
-}
-
-.banner-text {
-  display: flex;
+.support-email {
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
   flex-wrap: wrap;
-  font-weight: 600;
-}
-
-.banner-link {
+  gap: 0.6rem;
+  padding: 0.9rem 1.9rem;
+  border-radius: 999px;
+  background: #822433;
   color: #ffffff;
-  text-decoration: underline;
+  font-size: clamp(1.1rem, 3vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(130, 36, 51, 0.35);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.banner-link:hover {
-  color: #ffd166;
+.support-email:hover {
+  background: #9a2b3d;
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(130, 36, 51, 0.45);
 }
 
-.carousel-container {
-  margin-bottom: 2rem;
+.support-email-address {
+  word-break: break-word;
 }
 
 .sponsor-carousel {
-  max-width: 1200px;
-  margin: 0 auto 2rem;
+  width: 100%;
+  margin: 2rem auto 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .sponsor-carousel :deep(.v-carousel-item) {
@@ -373,7 +361,7 @@ const statsCards = [
   font-size: 0.95rem;
   color: #0b0b0f;
   font-weight: 750;
-  margin-bottom: 0.3rem;
+  margin: 0 0 0.3rem;
 }
 
 .stat-card__value {

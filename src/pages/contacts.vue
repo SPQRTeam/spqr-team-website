@@ -1,189 +1,178 @@
 <template>
 
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/contacts/cover.webp"
-            alt="Contacts Header Cover"
-            cover
-        >
-            <div class="cover-overlay">
-                <h1 class="cover-title">CONTACTS</h1>
+  <div class="page-header">
+    <h1 class="page-title">Contacts</h1>
+    <p class="page-subtitle">Get in touch with us</p>
+    <div class="roman-divider" />
+  </div>
+
+  <v-container>
+    <!-- Email and address -->
+    <section aria-label="Get in touch" class="contact-section">
+      <h2 class="section-title">Get in touch</h2>
+      <p class="section-lead">
+        Write to us about joining the team, collaborating on research, sponsoring the robots
+        or simply coming to see them play.
+      </p>
+
+      <v-row class="reach-row" justify="center">
+        <v-col class="reach-col" cols="12" md="6">
+          <a class="reach-card" :href="`mailto:${spqr_team.email}`">
+            <v-icon class="reach-icon" size="34">mdi-email-outline</v-icon>
+            <div class="reach-label">Email</div>
+            <div class="reach-value">{{ spqr_team.email }}</div>
+            <div class="reach-action">Write to us<v-icon size="16">mdi-arrow-right</v-icon></div>
+          </a>
+        </v-col>
+
+        <v-col class="reach-col" cols="12" md="6">
+          <a
+            class="reach-card"
+            :href="spqr_team.mapLink"
+            rel="noopener"
+            target="_blank"
+          >
+            <v-icon class="reach-icon" size="34">mdi-map-marker-outline</v-icon>
+            <div class="reach-label">Where to find us</div>
+            <div class="reach-value">
+              {{ spqr_team.department }}<br>
+              {{ spqr_team.university }}<br>
+              {{ spqr_team.street }}
             </div>
-        </v-img>
-    </div>
+            <div class="reach-action">Open in Maps<v-icon size="16">mdi-arrow-right</v-icon></div>
+          </a>
+        </v-col>
+      </v-row>
+    </section>
 
-    <v-container>
-        <!-- Email and address -->
-        <section class="contact-section" aria-label="Get in touch">
-            <h2 class="section-title">Get in touch</h2>
-            <p class="section-lead">
-                Write to us about joining the team, collaborating on research, sponsoring the robots
-                or simply coming to see them play.
-            </p>
+    <!-- Social -->
+    <section aria-label="Follow us" class="contact-section">
+      <h2 class="section-title">Follow us</h2>
 
-            <v-row justify="center" class="reach-row">
-                <v-col cols="12" md="6" class="reach-col">
-                    <a class="reach-card" :href="`mailto:${spqr_team.email}`">
-                        <v-icon class="reach-icon" size="34">mdi-email-outline</v-icon>
-                        <div class="reach-label">Email</div>
-                        <div class="reach-value">{{ spqr_team.email }}</div>
-                        <div class="reach-action">Write to us<v-icon size="16">mdi-arrow-right</v-icon></div>
-                    </a>
-                </v-col>
+      <v-row class="social-row" justify="center">
+        <v-col
+          v-for="channel in socials"
+          :key="channel.name"
+          class="social-col"
+          cols="12"
+          sm="4"
+        >
+          <a
+            class="social-card"
+            :href="channel.href"
+            rel="noopener"
+            target="_blank"
+          >
+            <v-icon class="social-icon" size="40">{{ channel.icon }}</v-icon>
+            <div class="social-name">{{ channel.name }}</div>
+            <div class="social-handle">{{ channel.handle }}</div>
+          </a>
+        </v-col>
+      </v-row>
+    </section>
 
-                <v-col cols="12" md="6" class="reach-col">
-                    <a
-                        class="reach-card"
-                        :href="spqr_team.mapLink"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <v-icon class="reach-icon" size="34">mdi-map-marker-outline</v-icon>
-                        <div class="reach-label">Where to find us</div>
-                        <div class="reach-value">
-                            {{ spqr_team.department }}<br />
-                            {{ spqr_team.university }}<br />
-                            {{ spqr_team.street }}
-                        </div>
-                        <div class="reach-action">Open in Maps<v-icon size="16">mdi-arrow-right</v-icon></div>
-                    </a>
-                </v-col>
-            </v-row>
-        </section>
+    <!-- People -->
+    <section aria-label="Team contacts" class="contact-section">
+      <h2 class="section-title">Team contacts</h2>
 
-        <!-- Social -->
-        <section class="contact-section" aria-label="Follow us">
-            <h2 class="section-title">Follow us</h2>
-
-            <v-row justify="center" class="social-row">
-                <v-col
-                    v-for="channel in socials"
-                    :key="channel.name"
-                    cols="12"
-                    sm="4"
-                    class="social-col"
-                >
-                    <a
-                        class="social-card"
-                        :href="channel.href"
-                        target="_blank"
-                        rel="noopener"
-                    >
-                        <v-icon class="social-icon" size="40">{{ channel.icon }}</v-icon>
-                        <div class="social-name">{{ channel.name }}</div>
-                        <div class="social-handle">{{ channel.handle }}</div>
-                    </a>
-                </v-col>
-            </v-row>
-        </section>
-
-        <!-- People -->
-        <section class="contact-section" aria-label="Team contacts">
-            <h2 class="section-title">Team contacts</h2>
-
-            <v-row justify="center" class="people-row">
-                <v-col
-                    v-for="person in people"
-                    :key="person.email"
-                    cols="12"
-                    sm="6"
-                    md="4"
-                    class="person-col"
-                >
-                    <div class="person-card">
-                        <img class="person-photo" :src="person.photo" :alt="person.name" loading="lazy" />
-                        <div class="person-name">{{ person.name }}</div>
-                        <div class="person-role">{{ person.role }}</div>
-                        <a class="person-email" :href="`mailto:${person.email}`">
-                            <v-icon size="16">mdi-email-outline</v-icon>
-                            {{ person.email }}
-                        </a>
-                    </div>
-                </v-col>
-            </v-row>
-        </section>
-    </v-container>
+      <v-row class="people-row" justify="center">
+        <v-col
+          v-for="person in people"
+          :key="person.email"
+          class="person-col"
+          cols="12"
+          md="4"
+          sm="6"
+        >
+          <div class="person-card">
+            <img :alt="person.name" class="person-photo" loading="lazy" :src="person.photo">
+            <div class="person-name">{{ person.name }}</div>
+            <div class="person-role">{{ person.role }}</div>
+            <a class="person-email" :href="`mailto:${person.email}`">
+              <v-icon size="16">mdi-email-outline</v-icon>
+              {{ person.email }}
+            </a>
+          </div>
+        </v-col>
+      </v-row>
+    </section>
+  </v-container>
 </template>
 <script setup>
-import { useSeo } from '@/composables/useSeo'
+  import { useSeo } from '@/composables/useSeo'
 
-import nardiPhoto from '/assets/team/Nardi.webp'
-import iocchiPhoto from '/assets/team/Iocchi.webp'
-import surianiPhoto from '/assets/team/Suriani.webp'
+  import iocchiPhoto from '/assets/team/Iocchi.webp'
+  import nardiPhoto from '/assets/team/Nardi.webp'
+  import surianiPhoto from '/assets/team/Suriani.webp'
 
-// SEO Configuration
-useSeo({
-  title: 'Contacts - SPQR Team | Get in Touch',
-  description: 'Contact SPQR Team at Sapienza University of Rome. Email, address, and information to reach our RoboCup research group.',
-  path: '/contacts/',
-  canonical: 'https://spqr.diag.uniroma1.it/contacts/',
-  ogTitle: 'Contacts - SPQR Team',
-  ogDescription: 'Get in touch with SPQR Team.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/contacts/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Contacts - SPQR Team',
-  twitterDescription: 'Get in touch with SPQR Team.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/contacts/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Contacts - SPQR Team | Get in Touch',
+    description: 'Contact SPQR Team at Sapienza University of Rome. Email, address, and information to reach our RoboCup research group.',
+    path: '/contacts/',
+    canonical: 'https://spqr.diag.uniroma1.it/contacts/',
+    ogTitle: 'Contacts - SPQR Team',
+    ogDescription: 'Get in touch with SPQR Team.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/contacts/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Contacts - SPQR Team',
+    twitterDescription: 'Get in touch with SPQR Team.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/contacts/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-const spqr_team = {
+  const spqr_team = {
     email: 'spqr@diag.uniroma1.it',
     department: 'Dipartimento di Ingegneria Informatica, Automatica e Gestionale "A. Ruberti"',
     university: 'Sapienza Università di Roma',
     street: 'Via Ariosto 25, 00185 Roma RM, Italy',
-    mapLink: 'https://www.google.com/maps/search/?api=1&query=Via%20Ariosto%2025%2C%2000185%20Roma%20RM'
-}
+    mapLink: 'https://www.google.com/maps/search/?api=1&query=Via%20Ariosto%2025%2C%2000185%20Roma%20RM',
+  }
 
-const socials = [
+  const socials = [
     {
-        name: 'Instagram',
-        handle: '@spqrteam',
-        href: 'https://www.instagram.com/spqrteam/',
-        icon: 'mdi-instagram'
+      name: 'Instagram',
+      handle: '@spqrteam',
+      href: 'https://www.instagram.com/spqrteam/',
+      icon: 'mdi-instagram',
     },
     {
-        name: 'YouTube',
-        handle: 'SPQRTeamItaly',
-        href: 'https://www.youtube.com/user/SPQRTeamItaly',
-        icon: 'mdi-youtube'
+      name: 'YouTube',
+      handle: 'SPQRTeamItaly',
+      href: 'https://www.youtube.com/user/SPQRTeamItaly',
+      icon: 'mdi-youtube',
     },
     {
-        name: 'LinkedIn',
-        handle: 'SPQR Team',
-        href: 'https://www.linkedin.com/company/spqr-team',
-        icon: 'mdi-linkedin'
-    }
-]
+      name: 'LinkedIn',
+      handle: 'SPQR Team',
+      href: 'https://www.linkedin.com/company/spqr-team',
+      icon: 'mdi-linkedin',
+    },
+  ]
 
-const people = [
+  const people = [
     {
-        name: 'Prof. Daniele Nardi',
-        email: 'nardi@diag.uniroma1.it',
-        role: 'Team Advisor',
-        photo: nardiPhoto
+      name: 'Prof. Daniele Nardi',
+      email: 'nardi@diag.uniroma1.it',
+      role: 'Team Advisor',
+      photo: nardiPhoto,
     },
     {
-        name: 'Prof. Luca Iocchi',
-        email: 'iocchi@diag.uniroma1.it',
-        role: 'Team Advisor',
-        photo: iocchiPhoto
+      name: 'Prof. Luca Iocchi',
+      email: 'iocchi@diag.uniroma1.it',
+      role: 'Team Advisor',
+      photo: iocchiPhoto,
     },
     {
-        name: 'Dr. Vincenzo Suriani',
-        email: 'suriani@diag.uniroma1.it',
-        role: 'Team Leader',
-        photo: surianiPhoto
-    }
-]
+      name: 'Dr. Vincenzo Suriani',
+      email: 'suriani@diag.uniroma1.it',
+      role: 'Team Leader',
+      photo: surianiPhoto,
+    },
+  ]
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 55% !important;
-}
-
 .contact-section {
     max-width: 1100px;
     margin: 5rem auto;

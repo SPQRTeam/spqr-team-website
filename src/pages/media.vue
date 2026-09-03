@@ -1,283 +1,270 @@
 <template>
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/media/cover.webp"
-            alt="Media Header Cover"
-            cover
-        >
-            <div class="cover-overlay">
-                <h1 class="cover-title">MEDIA</h1>
-            </div>
-        </v-img>
+  <div class="page-header">
+    <h1 class="page-title">Media</h1>
+    <p class="page-subtitle">Instagram, YouTube and more</p>
+    <div class="roman-divider" />
+  </div>
+
+  <!-- Instagram Section -->
+  <v-container v-if="instagramPosts.length > 0" class="instagram-section">
+    <h2 class="section-title">Instagram</h2>
+    <div class="instagram-grid">
+      <a
+        v-for="(post, index) in instagramPosts.slice(0, 9)"
+        :key="index"
+        class="instagram-item"
+        :href="post.link"
+        target="_blank"
+      >
+        <div class="instagram-embed-wrapper">
+          <iframe
+            allowtransparency="true"
+            class="instagram-embed"
+            frameborder="0"
+            scrolling="no"
+            :src="getInstagramEmbedUrl(post)"
+          />
+        </div>
+        <div class="instagram-overlay">
+          <v-icon class="instagram-icon">mdi-instagram</v-icon>
+        </div>
+      </a>
     </div>
+  </v-container>
 
-    <!-- Instagram Section -->
-    <v-container v-if="instagramPosts.length > 0" class="instagram-section">
-        <h2 class="section-title">Instagram</h2>
-        <div class="instagram-grid">
-            <a 
-                v-for="(post, index) in instagramPosts.slice(0, 9)" 
-                :key="index"
-                :href="post.link"
-                target="_blank"
-                class="instagram-item"
+  <!-- Video Player Section -->
+  <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
+    <h2 class="section-title">YouTube</h2>
+    <div class="video-player-container">
+      <div class="video-main">
+        <div class="video-player-wrapper">
+          <iframe
+            :key="selectedVideo.videoId"
+            ref="videoPlayer"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+            class="video-player"
+            frameborder="0"
+            :src="getYouTubeEmbedUrl(selectedVideo)"
+          />
+        </div>
+        <div class="video-info">
+          <div class="video-info-header">
+            <div>
+              <h3 class="video-title">{{ selectedVideo.title }}</h3>
+            </div>
+            <v-btn
+              class="skip-button"
+              color="#822433"
+              :href="getYouTubeWatchUrl(selectedVideo)"
+              target="_blank"
+              variant="elevated"
             >
-                <div class="instagram-embed-wrapper">
-                    <iframe 
-                        :src="getInstagramEmbedUrl(post)"
-                        class="instagram-embed"
-                        frameborder="0"
-                        scrolling="no"
-                        allowtransparency="true"
-                    >
-                    </iframe>
-                </div>
-                <div class="instagram-overlay">
-                    <v-icon class="instagram-icon">mdi-instagram</v-icon>
-                </div>
-            </a>
+              <v-icon left>mdi-youtube</v-icon>
+              Watch on YouTube
+            </v-btn>
+          </div>
         </div>
-    </v-container>
-
-    <!-- Video Player Section -->
-    <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
-        <h2 class="section-title">YouTube</h2>
-        <div class="video-player-container">
-            <div class="video-main">
-                <div class="video-player-wrapper">
-                    <iframe 
-                        ref="videoPlayer"
-                        :key="selectedVideo.videoId"
-                        :src="getYouTubeEmbedUrl(selectedVideo)"
-                        class="video-player"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
-                    >
-                    </iframe>
-                </div>
-                <div class="video-info">
-                    <div class="video-info-header">
-                        <div>
-                            <h3 class="video-title">{{ selectedVideo.title }}</h3>
-                        </div>
-                        <v-btn
-                            color="#822433"
-                            variant="elevated"
-                            :href="getYouTubeWatchUrl(selectedVideo)"
-                            target="_blank"
-                            class="skip-button"
-                        >
-                            <v-icon left>mdi-youtube</v-icon>
-                            Watch on YouTube
-                        </v-btn>
-                    </div>
-                </div>
+      </div>
+      <div class="video-list-sidebar">
+        <h3 class="sidebar-title">All Videos</h3>
+        <div class="video-list-scroll">
+          <div
+            v-for="(video, index) in tvVideos"
+            :key="index"
+            class="video-list-item"
+            :class="{ active: selectedVideo && selectedVideo.videoId === video.videoId }"
+            @click="selectVideo(video)"
+          >
+            <div class="video-list-item-content">
+              <h4 class="video-list-title">{{ video.title }}</h4>
             </div>
-            <div class="video-list-sidebar">
-                <h3 class="sidebar-title">All Videos</h3>
-                <div class="video-list-scroll">
-                    <div 
-                        v-for="(video, index) in tvVideos" 
-                        :key="index"
-                        class="video-list-item"
-                        :class="{ active: selectedVideo && selectedVideo.videoId === video.videoId }"
-                        @click="selectVideo(video)"
-                    >
-                        <div class="video-list-item-content">
-                            <div class="video-list-title">{{ video.title }}</div>
-                        </div>
-                        <v-icon class="video-list-icon">mdi-play-circle</v-icon>
-                    </div>
-                </div>
-            </div>
+            <v-icon class="video-list-icon">mdi-play-circle</v-icon>
+          </div>
         </div>
-    </v-container>
+      </div>
+    </div>
+  </v-container>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { useSeo } from '@/composables/useSeo'
+  import { computed, onMounted, ref } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { useSeo } from '@/composables/useSeo'
 
-const route = useRoute()
+  const route = useRoute()
 
-// SEO Configuration
-useSeo({
-  title: 'Media - SPQR Team | Photos and Videos',
-  description: 'SPQR Team media gallery: videos, photos, and visual content from RoboCup competitions, robotics research, and events at Sapienza University of Rome.',
-  path: '/media/',
-  canonical: 'https://spqr.diag.uniroma1.it/media/',
-  ogTitle: 'Media - SPQR Team',
-  ogDescription: 'Photos and videos from RoboCup competitions and robotics research.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/media/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Media - SPQR Team',
-  twitterDescription: 'Photos and videos from RoboCup competitions and robotics research.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/media/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Media - SPQR Team | Photos and Videos',
+    description: 'SPQR Team media gallery: videos, photos, and visual content from RoboCup competitions, robotics research, and events at Sapienza University of Rome.',
+    path: '/media/',
+    canonical: 'https://spqr.diag.uniroma1.it/media/',
+    ogTitle: 'Media - SPQR Team',
+    ogDescription: 'Photos and videos from RoboCup competitions and robotics research.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/media/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Media - SPQR Team',
+    twitterDescription: 'Photos and videos from RoboCup competitions and robotics research.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/media/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-// TV Videos from CSV
-const tvVideos = ref([])
+  // TV Videos from CSV
+  const tvVideos = ref([])
 
-// Video player reference
-const videoPlayer = ref(null)
+  // Video player reference
+  const videoPlayer = ref(null)
 
-// Selected video state
-const selectedVideo = ref(null)
+  // Selected video state
+  const selectedVideo = ref(null)
 
-// Instagram posts
-const instagramPosts = ref([])
+  // Instagram posts
+  const instagramPosts = ref([])
 
-// Load TV videos from JSON
-const loadTVVideos = async () => {
+  // Load TV videos from JSON
+  async function loadTVVideos () {
     try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/media/youtube.json')
-        const data = await response.json()
-        
-        const videos = data.map(video => ({
-            title: video.title,
-            videoId: video.videoId
-        }))
-        
-        tvVideos.value = videos
-        
-        // Check if there's a video query parameter
-        const videoId = route.query.video
-        if (videoId) {
-            const foundVideo = tvVideos.value.find(v => v.videoId === videoId)
-            if (foundVideo) {
-                selectedVideo.value = foundVideo
-                // Scroll to video section after a short delay
-                setTimeout(() => {
-                    const videoSection = document.querySelector('.video-section')
-                    if (videoSection) {
-                        videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    }
-                }, 300)
-            } else if (tvVideos.value.length > 0) {
-                selectedVideo.value = tvVideos.value[0]
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/media/youtube.json')
+      const data = await response.json()
+
+      const videos = data.map(video => ({
+        title: video.title,
+        videoId: video.videoId,
+      }))
+
+      tvVideos.value = videos
+
+      // Check if there's a video query parameter
+      const videoId = route.query.video
+      if (videoId) {
+        const foundVideo = tvVideos.value.find(v => v.videoId === videoId)
+        if (foundVideo) {
+          selectedVideo.value = foundVideo
+          // Scroll to video section after a short delay
+          setTimeout(() => {
+            const videoSection = document.querySelector('.video-section')
+            if (videoSection) {
+              videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
             }
+          }, 300)
         } else if (tvVideos.value.length > 0) {
-            // Initialize selected video with the first one if no query param
-            selectedVideo.value = tvVideos.value[0]
+          selectedVideo.value = tvVideos.value[0]
         }
+      } else if (tvVideos.value.length > 0) {
+        // Initialize selected video with the first one if no query param
+        selectedVideo.value = tvVideos.value[0]
+      }
     } catch (error) {
-        console.error('Error loading TV videos:', error)
+      console.error('Error loading TV videos:', error)
     }
-}
+  }
 
-// Select a video
-const selectVideo = (video) => {
+  // Select a video
+  function selectVideo (video) {
     selectedVideo.value = video
-}
+  }
 
-// Get YouTube embed URL
-const getYouTubeEmbedUrl = (video) => {
+  // Get YouTube embed URL
+  function getYouTubeEmbedUrl (video) {
     const baseUrl = `https://www.youtube.com/embed/${video.videoId}`
     const params = new URLSearchParams({
-        autoplay: '0',
-        rel: '0',
-        modestbranding: '1'
+      autoplay: '0',
+      rel: '0',
+      modestbranding: '1',
     })
     return `${baseUrl}?${params.toString()}`
-}
+  }
 
-// Get YouTube watch URL
-const getYouTubeWatchUrl = (video) => {
+  // Get YouTube watch URL
+  function getYouTubeWatchUrl (video) {
     return `https://www.youtube.com/watch?v=${video.videoId}`
-}
+  }
 
-// Load Instagram posts from JSON
-const loadInstagramPosts = async () => {
+  // Load Instagram posts from JSON
+  async function loadInstagramPosts () {
     try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/media/instagram.json')
-        const data = await response.json()
-        
-        const posts = data.map(post => ({
-            link: post.link,
-            postId: extractPostId(post.link)
-        }))
-        
-        instagramPosts.value = posts
-    } catch (error) {
-        console.error('Error loading Instagram posts:', error)
-    }
-}
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/media/instagram.json')
+      const data = await response.json()
 
-// Extract post ID from Instagram URL
-const extractPostId = (url) => {
+      const posts = data.map(post => ({
+        link: post.link,
+        postId: extractPostId(post.link),
+      }))
+
+      instagramPosts.value = posts
+    } catch (error) {
+      console.error('Error loading Instagram posts:', error)
+    }
+  }
+
+  // Extract post ID from Instagram URL
+  function extractPostId (url) {
     // Extract post ID from URLs like:
     // https://www.instagram.com/p/ABC123xyz/
     // https://www.instagram.com/reel/ABC123xyz/
     const match = url.match(/\/(p|reel)\/([^\/]+)/)
     return match ? match[2] : ''
-}
+  }
 
-// Get Instagram embed URL
-const getInstagramEmbedUrl = (post) => {
+  // Get Instagram embed URL
+  function getInstagramEmbedUrl (post) {
     return `https://www.instagram.com/p/${post.postId}/embed/captioned/`
-}
+  }
 
-const pressArticles = ref([])
+  const pressArticles = ref([])
 
-const articlesByYear = computed(() => {
+  const articlesByYear = computed(() => {
     const grouped = {}
-    pressArticles.value.forEach(article => {
-        const year = article.year
-        if (!grouped[year]) {
-            grouped[year] = []
-        }
-        grouped[year].push(article)
-    })
-    return grouped
-})
-
-const sortedYears = computed(() => {
-    return Object.keys(articlesByYear.value).sort((a, b) => b - a)
-})
-
-const handleImageError = (event) => {
-    event.target.style.display = 'none'
-}
-
-const loadPressData = async () => {
-    try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
-        const data = await response.json()
-        
-        const articles = data.map(article => {
-            const dateStr = article.date
-            // Extract year from date format DD/MM/YYYY
-            const year = dateStr.split('/')[2]
-            return { 
-                date: dateStr, 
-                source: article.source, 
-                link: article.link,
-                year: year
-            }
-        })
-        
-        pressArticles.value = articles
-    } catch (error) {
-        console.error('Error loading press data:', error)
+    for (const article of pressArticles.value) {
+      const year = article.year
+      if (!grouped[year]) {
+        grouped[year] = []
+      }
+      grouped[year].push(article)
     }
-}
+    return grouped
+  })
 
-onMounted(() => {
+  const sortedYears = computed(() => {
+    return Object.keys(articlesByYear.value).sort((a, b) => b - a)
+  })
+
+  function handleImageError (event) {
+    event.target.style.display = 'none'
+  }
+
+  async function loadPressData () {
+    try {
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
+      const data = await response.json()
+
+      const articles = data.map(article => {
+        const dateStr = article.date
+        // Extract year from date format DD/MM/YYYY
+        const year = dateStr.split('/')[2]
+        return {
+          date: dateStr,
+          source: article.source,
+          link: article.link,
+          year: year,
+        }
+      })
+
+      pressArticles.value = articles
+    } catch (error) {
+      console.error('Error loading press data:', error)
+    }
+  }
+
+  onMounted(() => {
     loadTVVideos()
     loadInstagramPosts()
     loadPressData()
-})
+  })
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 40% !important;
-}
-
 .year-section {
     margin-bottom: 4rem;
 }
@@ -565,6 +552,7 @@ onMounted(() => {
     font-size: 1rem;
     font-weight: 700;
     color: #333;
+    margin-top: 0;
     margin-bottom: 0.3rem;
     line-height: 1.3;
 }
@@ -605,11 +593,11 @@ onMounted(() => {
     .video-player-container {
         flex-direction: column;
     }
-    
+
     .video-list-sidebar {
         width: 100%;
     }
-    
+
     .video-list-scroll {
         max-height: 300px;
     }
@@ -620,7 +608,7 @@ onMounted(() => {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .skip-button {
         width: 100%;
         margin-top: 0.75rem;

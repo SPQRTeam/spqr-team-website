@@ -1,149 +1,137 @@
 <template>
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/codebase/cover.webp"
-            alt="Codebase Header Cover"
-            cover
+  <div class="page-header">
+    <h1 class="page-title">Codebase</h1>
+    <p class="page-subtitle">The software behind our robots</p>
+    <div class="roman-divider" />
+  </div>
+
+  <v-container class="py-8">
+
+    <h2 class="section-title">Codebase @ Booster Robots</h2>
+
+    <v-row class="mb-8" justify="center">
+      <v-col
+        v-for="repo in booster_repositories"
+        :key="repo.name"
+        cols="12"
+        lg="4"
+        md="4"
+        sm="6"
+        xl="3"
+      >
+        <v-card
+          class="repo-card booster-card"
+          elevation="3"
+          hover
+          :href="repo.link"
+          :style="{
+            backgroundImage: `linear-gradient(to bottom, #f1f4f3 0%, #fafafa 40%, transparent 75%), url(${repo.cover})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center'
+          }"
+          target="_blank"
         >
-            <div class="cover-overlay">
-                <h1 class="cover-title">CODEBASE</h1>
-            </div>
-        </v-img>
-    </div>
+          <v-card-text class="d-flex flex-column align-center justify-center text-center pa-6">
+            <v-icon class="mb-4" color="#822433" size="60">mdi-github</v-icon>
+            <h3 class="repo-name">{{ repo.name }}</h3>
+            <p class="repo-description">{{ repo.description }}</p>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
 
-    <v-container class="py-8">
-        
-        <div class="section-title">Codebase @ Booster Robots</div>
+    <v-divider color="black" opacity="0.5" style="margin-top: 2rem" thickness="5" />
 
-        <v-row justify="center" class="mb-8">
-            <v-col
-                v-for="repo in booster_repositories"
-                :key="repo.name"
-                cols="12"
-                sm="6"
-                md="4"
-                lg="4"
-                xl="3"
-            >
-                <v-card
-                    :href="repo.link"
-                    target="_blank"
-                    class="repo-card booster-card"
-                    elevation="3"
-                    hover
-                    :style="{
-                        backgroundImage: `linear-gradient(to bottom, #f1f4f3 0%, #fafafa 40%, transparent 75%), url(${repo.cover})`,
-                        backgroundSize: 'cover',
-                        backgroundPosition: 'center'
-                    }"
-                >
-                    <v-card-text class="d-flex flex-column align-center justify-center text-center pa-6">
-                        <v-icon size="60" color="#822433" class="mb-4">mdi-github</v-icon>
-                        <h3 class="repo-name">{{ repo.name }}</h3>
-                        <p class="repo-description">{{ repo.description }}</p>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
+    <!-- NAO Repositories Section -->
+    <h2 class="section-title">Codebase @ Nao Robots</h2>
 
-        <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider>
-
-        <!-- NAO Repositories Section -->
-        <div class="section-title">Codebase @ Nao Robots</div>
-        
-        <v-row justify="center" class="nao-grid">
-            <v-col
-                v-for="repo in nao_repositories"
-                :key="repo.name"
-                cols="12"
-                sm="6"
-                md="5"
-                class="d-flex justify-center"
-            >
-                <v-card
-                    :href="repo.link"
-                    target="_blank"
-                    class="repo-card nao-card"
-                    elevation="3"
-                    hover
-                    :disabled="!repo.link"
-                >
-                    <v-card-text class="d-flex flex-column align-center justify-center text-center pa-4">
-                        <v-icon size="60" color="#822433" class="mb-4">mdi-github</v-icon>
-                        <h3 class="repo-name">{{ repo.name }}</h3>
-                        <p class="repo-description">{{ repo.description }}</p>
-                        <v-chip v-if="!repo.link" color="warning" size="small" class="mt-2">
-                            Coming Soon
-                        </v-chip>
-                    </v-card-text>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
+    <v-row class="nao-grid" justify="center">
+      <v-col
+        v-for="repo in nao_repositories"
+        :key="repo.name"
+        class="d-flex justify-center"
+        cols="12"
+        md="5"
+        sm="6"
+      >
+        <v-card
+          class="repo-card nao-card"
+          :disabled="!repo.link"
+          elevation="3"
+          hover
+          :href="repo.link"
+          target="_blank"
+        >
+          <v-card-text class="d-flex flex-column align-center justify-center text-center pa-4">
+            <v-icon class="mb-4" color="#822433" size="60">mdi-github</v-icon>
+            <h3 class="repo-name">{{ repo.name }}</h3>
+            <p class="repo-description">{{ repo.description }}</p>
+            <v-chip v-if="!repo.link" class="mt-2" color="warning" size="small">
+              Coming Soon
+            </v-chip>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useSeo } from '@/composables/useSeo'
+  import { computed, onMounted, ref } from 'vue'
+  import { useSeo } from '@/composables/useSeo'
 
-// SEO Configuration
-useSeo({
-  title: 'Codebase - SPQR Team | Open Source Robotics',
-  description: 'SPQR Team open source code repositories: RoboCup software, robotics frameworks, computer vision libraries, and AI tools developed at Sapienza University.',
-  path: '/codebase/',
-  canonical: 'https://spqr.diag.uniroma1.it/codebase/',
-  ogTitle: 'Codebase - SPQR Team',
-  ogDescription: 'Open source robotics software and tools.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/codebase/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Codebase - SPQR Team',
-  twitterDescription: 'Open source robotics software and tools.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/codebase/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Codebase - SPQR Team | Open Source Robotics',
+    description: 'SPQR Team open source code repositories: RoboCup software, robotics frameworks, computer vision libraries, and AI tools developed at Sapienza University.',
+    path: '/codebase/',
+    canonical: 'https://spqr.diag.uniroma1.it/codebase/',
+    ogTitle: 'Codebase - SPQR Team',
+    ogDescription: 'Open source robotics software and tools.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/codebase/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Codebase - SPQR Team',
+    twitterDescription: 'Open source robotics software and tools.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/codebase/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = import.meta.env.BASE_URL
 
-const repositories = ref([])
+  const repositories = ref([])
 
-const loadRepositories = async () => {
+  async function loadRepositories () {
     try {
-        const response = await fetch(baseUrl + 'assets/codebase/codebase.json')
-        const data = await response.json()
-        
-        repositories.value = data.map(repo => ({
-            name: repo.name,
-            description: repo.description,
-            link: repo.link || '',
-            cover: repo.cover ? baseUrl + 'assets/codebase/' + repo.cover : '',
-            platform: repo.platform
-        }))
+      const response = await fetch(baseUrl + 'assets/codebase/codebase.json')
+      const data = await response.json()
+
+      repositories.value = data.map(repo => ({
+        name: repo.name,
+        description: repo.description,
+        link: repo.link || '',
+        cover: repo.cover ? baseUrl + 'assets/codebase/' + repo.cover : '',
+        platform: repo.platform,
+      }))
     } catch (error) {
-        console.error('Error loading repositories:', error)
+      console.error('Error loading repositories:', error)
     }
-}
+  }
 
-const booster_repositories = computed(() => {
+  const booster_repositories = computed(() => {
     return repositories.value.filter(repo => repo.platform === 'Booster')
-})
+  })
 
-const nao_repositories = computed(() => {
+  const nao_repositories = computed(() => {
     return repositories.value.filter(repo => repo.platform === 'Nao')
-})
+  })
 
-onMounted(() => {
+  onMounted(() => {
     loadRepositories()
-})
-
+  })
 
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 60% !important;
-}
-
 .section-title {
     text-align: center;
     margin-top: 2rem;

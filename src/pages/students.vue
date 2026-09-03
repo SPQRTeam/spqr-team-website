@@ -1,7 +1,7 @@
 <template>
 
-    <!-- Work in Progress Banner -->
-    <!-- <v-banner
+  <!-- Work in Progress Banner -->
+  <!-- <v-banner
         lines="one"
         class="wip-banner"
         color="warning"
@@ -13,191 +13,180 @@
         </template>
     </v-banner> -->
 
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/students/cover.webp"
-            alt="Students Header Cover"
-            cover
+  <div class="page-header">
+    <h1 class="page-title">Students</h1>
+    <p class="page-subtitle">Thesis and project opportunities</p>
+    <div class="roman-divider" />
+  </div>
+
+  <v-container class="py-8 content-wrapper">
+    <!-- Theses Section -->
+    <section v-if="theses.length > 0" class="mb-12">
+      <h2 class="section-title">Theses</h2>
+      <v-row>
+        <v-col
+          v-for="(project, index) in theses"
+          :key="`thesis-${index}`"
+          cols="12"
         >
-            <div class="cover-overlay">
-                <h1 class="cover-title">STUDENTS</h1>
+          <div class="project-card">
+            <h3 class="card-title">
+              {{ project.title }}
+            </h3>
+
+            <div class="card-content">
+              <p class="project-description">{{ project.description }}</p>
+
+              <!-- Resources -->
+              <div v-if="project.resources && project.resources.length > 0" class="mb-4">
+                <h4 class="section-subtitle">Resources:</h4>
+                <ul class="resource-list">
+                  <li v-for="(resource, idx) in project.resources" :key="`thesis-res-${index}-${idx}`" class="resource-item">
+                    <span class="resource-name">{{ resource.Name }}</span>
+                    <div class="resource-links">
+                      <v-btn
+                        v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                        :key="`thesis-chip-${index}-${idx}-${label}`"
+                        class="mr-2"
+                        color="rgb(0, 103, 120)"
+                        :href="url"
+                        size="small"
+                        target="_blank"
+                        variant="outlined"
+                      >
+                        <v-icon size="small" start>mdi-link</v-icon>
+                        {{ label }}
+                      </v-btn>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Contacts -->
+              <div v-if="project.contacts && project.contacts.length > 0">
+                <h4 class="section-subtitle">Contacts:</h4>
+                <div class="contacts-horizontal">
+                  <div v-for="(contact, idx) in project.contacts" :key="`thesis-contact-${index}-${idx}`" class="contact-item-inline">
+                    <div class="contact-info">
+                      <v-icon class="mr-1" size="small" style="color: rgb(0, 103, 120);">mdi-account</v-icon>
+                      <span class="contact-name-inline">{{ contact.name }}</span>
+                      <span class="contact-separator">-</span>
+                      <v-icon class="mr-1" size="small" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
+                      <a :href="`mailto:${contact.email}`">
+                        {{ contact.email }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </v-img>
-    </div>
+          </div>
+        </v-col>
+      </v-row>
+    </section>
 
-    <v-container class="py-8 content-wrapper">
-        <!-- Theses Section -->
-        <section v-if="theses.length > 0" class="mb-12">
-            <h2 class="section-title text-h3 font-weight-bold mb-6">Theses</h2>
-            <v-row>
-                <v-col
-                    v-for="(project, index) in theses"
-                    :key="`thesis-${index}`"
-                    cols="12"
-                >
-                    <div class="project-card">
-                        <div class="card-title">
-                            {{ project.title }}
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="project-description">{{ project.description }}</p>
-                            
-                            <!-- Resources -->
-                            <div v-if="project.resources && project.resources.length > 0" class="mb-4">
-                                <h4 class="section-subtitle">Resources:</h4>
-                                <ul class="resource-list">
-                                    <li v-for="(resource, idx) in project.resources" :key="`thesis-res-${index}-${idx}`" class="resource-item">
-                                        <span class="resource-name">{{ resource.Name }}</span>
-                                        <div class="resource-links">
-                                            <v-btn
-                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
-                                                :key="`thesis-chip-${index}-${idx}-${label}`"
-                                                :href="url"
-                                                target="_blank"
-                                                color="rgb(0, 103, 120)"
-                                                variant="outlined"
-                                                class="mr-2"
-                                                size="small"
-                                            >
-                                                <v-icon start size="small">mdi-link</v-icon>
-                                                {{ label }}
-                                            </v-btn>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Contacts -->
-                            <div v-if="project.contacts && project.contacts.length > 0">
-                                <h4 class="section-subtitle">Contacts:</h4>
-                                <div class="contacts-horizontal">
-                                    <div v-for="(contact, idx) in project.contacts" :key="`thesis-contact-${index}-${idx}`" class="contact-item-inline">
-                                        <div class="contact-info">
-                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120);">mdi-account</v-icon>
-                                            <span class="contact-name-inline">{{ contact.name }}</span>
-                                            <span class="contact-separator">-</span>
-                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
-                                            <a :href="`mailto:${contact.email}`">
-                                                {{ contact.email }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </v-col>
-            </v-row>
-        </section>
+    <!-- Projects Section -->
+    <section v-if="projects.length > 0">
+      <h2 class="section-title">Projects</h2>
+      <v-row>
+        <v-col
+          v-for="(project, index) in projects"
+          :key="`project-${index}`"
+          cols="12"
+        >
+          <div class="project-card">
+            <h3 class="card-title">
+              {{ project.title }}
+            </h3>
 
-        <!-- Projects Section -->
-        <section v-if="projects.length > 0">
-            <h2 class="section-title text-h3 font-weight-bold mb-6">Projects</h2>
-            <v-row>
-                <v-col
-                    v-for="(project, index) in projects"
-                    :key="`project-${index}`"
-                    cols="12"
-                >
-                    <div class="project-card">
-                        <div class="card-title">
-                            {{ project.title }}
-                        </div>
-                        
-                        <div class="card-content">
-                            <p class="project-description">{{ project.description }}</p>
-                            
-                            <!-- Resources -->
-                            <div v-if="project.resources && project.resources.length > 0" class="mb-4">
-                                <h4 class="section-subtitle">Resources:</h4>
-                                <ul class="resource-list">
-                                    <li v-for="(resource, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-item">
-                                        <span class="resource-name">{{ resource.Name }}</span>
-                                        <div class="resource-links">
-                                            <v-btn
-                                                v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
-                                                :key="`project-chip-${index}-${idx}-${label}`"
-                                                :href="url"
-                                                target="_blank"
-                                                color="rgb(0, 103, 120)"
-                                                variant="outlined"
-                                                class="mr-2"
-                                                size="small"
-                                            >
-                                                <v-icon start size="small">mdi-link</v-icon>
-                                                {{ label }}
-                                            </v-btn>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            
-                            <!-- Contacts -->
-                            <div v-if="project.contacts && project.contacts.length > 0">
-                                <h4 class="section-subtitle">Contacts:</h4>
-                                <div class="contacts-horizontal">
-                                    <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
-                                        <div class="contact-info">
-                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-account</v-icon>
-                                            <span class="contact-name-inline">{{ contact.name }}</span>
-                                            <span class="contact-separator">-</span>
-                                            <v-icon size="small" class="mr-1" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
-                                            <a :href="`mailto:${contact.email}`">
-                                                {{ contact.email }}
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div class="card-content">
+              <p class="project-description">{{ project.description }}</p>
+
+              <!-- Resources -->
+              <div v-if="project.resources && project.resources.length > 0" class="mb-4">
+                <h4 class="section-subtitle">Resources:</h4>
+                <ul class="resource-list">
+                  <li v-for="(resource, idx) in project.resources" :key="`project-res-${index}-${idx}`" class="resource-item">
+                    <span class="resource-name">{{ resource.Name }}</span>
+                    <div class="resource-links">
+                      <v-btn
+                        v-for="(url, label) in Object.fromEntries(Object.entries(resource).filter(([key]) => key !== 'Name'))"
+                        :key="`project-chip-${index}-${idx}-${label}`"
+                        class="mr-2"
+                        color="rgb(0, 103, 120)"
+                        :href="url"
+                        size="small"
+                        target="_blank"
+                        variant="outlined"
+                      >
+                        <v-icon size="small" start>mdi-link</v-icon>
+                        {{ label }}
+                      </v-btn>
                     </div>
-                </v-col>
-            </v-row>
-        </section>
-    </v-container>
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Contacts -->
+              <div v-if="project.contacts && project.contacts.length > 0">
+                <h4 class="section-subtitle">Contacts:</h4>
+                <div class="contacts-horizontal">
+                  <div v-for="(contact, idx) in project.contacts" :key="`project-contact-${index}-${idx}`" class="contact-item-inline">
+                    <div class="contact-info">
+                      <v-icon class="mr-1" size="small" style="color: rgb(0, 103, 120)">mdi-account</v-icon>
+                      <span class="contact-name-inline">{{ contact.name }}</span>
+                      <span class="contact-separator">-</span>
+                      <v-icon class="mr-1" size="small" style="color: rgb(0, 103, 120)">mdi-email</v-icon>
+                      <a :href="`mailto:${contact.email}`">
+                        {{ contact.email }}
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </v-col>
+      </v-row>
+    </section>
+  </v-container>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { useSeo } from '@/composables/useSeo'
-import projectsData from '/public/assets/students/projects.json'
+  import { computed } from 'vue'
+  import { useSeo } from '@/composables/useSeo'
+  import projectsData from '/public/assets/students/projects.json'
 
-// SEO Configuration
-useSeo({
-  title: 'Students - SPQR Team | Thesis and Projects',
-  description: 'Student opportunities at SPQR Team: bachelor and master thesis projects, research internships in robotics, AI, computer vision, and RoboCup at Sapienza University.',
-  path: '/students/',
-  canonical: 'https://spqr.diag.uniroma1.it/students/',
-  ogTitle: 'Students - SPQR Team',
-  ogDescription: 'Thesis projects and research opportunities in robotics and AI.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/students/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Students - SPQR Team',
-  twitterDescription: 'Thesis projects and research opportunities in robotics and AI.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/students/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Students - SPQR Team | Thesis and Projects',
+    description: 'Student opportunities at SPQR Team: bachelor and master thesis projects, research internships in robotics, AI, computer vision, and RoboCup at Sapienza University.',
+    path: '/students/',
+    canonical: 'https://spqr.diag.uniroma1.it/students/',
+    ogTitle: 'Students - SPQR Team',
+    ogDescription: 'Thesis projects and research opportunities in robotics and AI.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/students/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Students - SPQR Team',
+    twitterDescription: 'Thesis projects and research opportunities in robotics and AI.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/students/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-// Import projects data directly
-const allProjects = projectsData;
+  // Import projects data directly
+  const allProjects = projectsData
 
-// Separate theses and projects based on target field
-const theses = computed(() => {
-    return allProjects.filter(project => project.target === 'Thesis');
-});
+  // Separate theses and projects based on target field
+  const theses = computed(() => {
+    return allProjects.filter(project => project.target === 'Thesis')
+  })
 
-const projects = computed(() => {
-    return allProjects.filter(project => project.target === 'Project');
-});
+  const projects = computed(() => {
+    return allProjects.filter(project => project.target === 'Project')
+  })
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 40% !important;
-}
-
 .wip-banner {
     position: sticky;
     top: 0;
@@ -221,10 +210,13 @@ const projects = computed(() => {
 }
 
 .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 3.125rem;
     color: #822433;
     border-bottom: 3px solid #822433;
     padding-bottom: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     margin-top: 2rem;
 }
 
@@ -251,6 +243,7 @@ const projects = computed(() => {
     line-height: 1.4;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
     border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 0;
 }
 
 .card-content {

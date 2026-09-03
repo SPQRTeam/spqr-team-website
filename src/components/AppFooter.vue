@@ -1,9 +1,9 @@
 <template>
   <v-footer
     app
-    height="60"
     class="d-flex justify-center align-center footer-shadow"
     elevation="2"
+    height="60"
   >
     <div class="d-flex align-center justify-space-between w-100 px-4">
       <div class="d-flex align-center">
@@ -15,15 +15,15 @@
           title="Sapienza Università di Roma"
         >
           <v-img
+            alt="Sapienza"
+            contain
             :src="currentLogo"
             :width="logoWidth"
-            contain
-            alt="Sapienza"
           />
         </a>
 
         <div :class="['text-disabled', display.xs ? 'text-caption' : 'text-body-3']">
-          {{ (new Date()).getFullYear() }} 
+          {{ (new Date()).getFullYear() }}
           <span class="d-none d-sm-inline-block">— </span>
           <span class="d-none d-md-inline-block">Università degli Studi di Roma "La Sapienza" — </span>
           <a
@@ -46,7 +46,7 @@
           target="_blank"
           :title="item.title"
         >
-          <v-icon :icon="item.icon" size="40" color="white"></v-icon>
+          <v-icon color="white" :icon="item.icon" size="40" />
         </a>
       </div>
     </div>
@@ -54,23 +54,23 @@
 </template>
 
 <script setup>
-  import { computed } from 'vue';
-  import { useDisplay } from 'vuetify';
+  import { computed } from 'vue'
+  import { useDisplay } from 'vuetify'
 
-  const display = useDisplay();
-  const baseUrl = import.meta.env.BASE_URL;
-  const logoSapienza = baseUrl + 'assets/sapienza_logos/logo_sapienza_white.png';
-  const logoSapienzaSmall = baseUrl + 'assets/sapienza_logos/logo_sapienza_white_small.png';
-  
+  const display = useDisplay()
+  const baseUrl = import.meta.env.BASE_URL
+  const logoSapienza = baseUrl + 'assets/sapienza_logos/logo_sapienza_white.png'
+  const logoSapienzaSmall = baseUrl + 'assets/sapienza_logos/logo_sapienza_white_small.png'
+
   const currentLogo = computed(() => {
-    return display.smAndDown.value ? logoSapienzaSmall : logoSapienza;
-  });
-  
-  const logoWidth = computed(() => {
-    return display.smAndDown.value ? 45 : 150;
-  });
+    return display.smAndDown.value ? logoSapienzaSmall : logoSapienza
+  })
 
-  const sapienzaLink = 'https://www.uniroma1.it/it/pagina-strutturale/home';
+  const logoWidth = computed(() => {
+    return display.smAndDown.value ? 45 : 150
+  })
+
+  const sapienzaLink = 'https://www.uniroma1.it/it/pagina-strutturale/home'
 
   const socialItems = [
     {
@@ -87,7 +87,7 @@
       title: 'LinkedIn',
       href: 'https://www.linkedin.com/company/spqr-team',
       icon: 'mdi-linkedin',
-    }
+    },
   ]
 </script>
 

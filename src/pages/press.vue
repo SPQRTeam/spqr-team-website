@@ -1,279 +1,268 @@
 <template>
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/press/cover.webp"
-            alt="Press Header Cover"
-            cover
+  <div class="page-header">
+    <h1 class="page-title">Press</h1>
+    <p class="page-subtitle">What they say about us</p>
+    <div class="roman-divider" />
+  </div>
+
+  <!-- Video Player Section -->
+  <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
+    <h2 class="section-title">TV Appearances</h2>
+    <div class="video-player-container">
+      <div class="video-main">
+        <video
+          :key="selectedVideo.path"
+          ref="videoPlayer"
+          class="video-player"
+          controls
+          controlsList="nodownload"
+          preload="metadata"
+          :src="selectedVideo.path"
+          @loadedmetadata="handleVideoLoad"
         >
-            <div class="cover-overlay">
-                <h1 class="cover-title">PRESS</h1>
+          Your browser does not support the video tag.
+        </video>
+        <div class="video-info">
+          <div class="video-info-header">
+            <div>
+              <h3 class="video-title">{{ selectedVideo.source }} - {{ selectedVideo.event }}</h3>
+              <p class="video-date">{{ selectedVideo.date }}</p>
+              <!-- <p class="video-event">{{ selectedVideo.event }}</p> -->
             </div>
-        </v-img>
+            <v-btn
+              v-if="selectedVideo.minute > 0 || selectedVideo.second > 0"
+              class="skip-button"
+              color="#822433"
+              variant="elevated"
+              @click="skipToTimestamp"
+            >
+              <v-icon left>mdi-skip-forward</v-icon>
+              Skip to {{ formatTime(selectedVideo.minute, selectedVideo.second) }}
+            </v-btn>
+          </div>
+        </div>
+      </div>
+      <div class="video-list-sidebar">
+        <h3 class="sidebar-title">All Videos</h3>
+        <div class="video-list-scroll">
+          <div
+            v-for="(video, index) in tvVideos"
+            :key="index"
+            class="video-list-item"
+            :class="{ active: selectedVideo && selectedVideo.path === video.path }"
+            @click="selectVideo(video)"
+          >
+            <div class="video-list-item-content">
+              <div class="video-list-source">{{ video.source }}</div>
+              <div class="video-list-date">{{ video.date }}</div>
+              <div class="video-list-event">{{ video.event }}</div>
+            </div>
+            <v-icon class="video-list-icon">mdi-play-circle</v-icon>
+          </div>
+        </div>
+      </div>
     </div>
+  </v-container>
 
-    <!-- Video Player Section -->
-    <v-container v-if="tvVideos.length > 0 && selectedVideo" class="video-section">
-        <h2 class="section-title">TV Appearances</h2>
-        <div class="video-player-container">
-            <div class="video-main">
-                <video 
-                    ref="videoPlayer"
-                    :key="selectedVideo.path"
-                    :src="selectedVideo.path" 
-                    controls 
-                    controlsList="nodownload"
-                    class="video-player"
-                    preload="metadata"
-                    @loadedmetadata="handleVideoLoad"
-                >
-                    Your browser does not support the video tag.
-                </video>
-                <div class="video-info">
-                    <div class="video-info-header">
-                        <div>
-                            <h3 class="video-title">{{ selectedVideo.source }} - {{ selectedVideo.event }}</h3>
-                            <p class="video-date">{{ selectedVideo.date }}</p>
-                            <!-- <p class="video-event">{{ selectedVideo.event }}</p> -->
-                        </div>
-                        <v-btn
-                            v-if="selectedVideo.minute > 0 || selectedVideo.second > 0"
-                            color="#822433"
-                            variant="elevated"
-                            @click="skipToTimestamp"
-                            class="skip-button"
-                        >
-                            <v-icon left>mdi-skip-forward</v-icon>
-                            Skip to {{ formatTime(selectedVideo.minute, selectedVideo.second) }}
-                        </v-btn>
-                    </div>
+  <v-container>
+    <div style="margin-top: 4rem; margin-bottom: 4rem;">
+      <div v-for="year in sortedYears" :key="year" class="year-section">
+        <h2 class="year-title">{{ year }}</h2>
+        <v-row justify="center" style="max-width: 1400px; margin: 0 auto;">
+          <v-col
+            v-for="(article, index) in articlesByYear[year]"
+            :key="index"
+            cols="12"
+            md="4"
+            sm="6"
+          >
+            <v-card
+              class="press-card"
+              elevation="3"
+              :href="article.link"
+              target="_blank"
+            >
+              <div class="press-card-layout">
+                <div class="press-preview">
+                  <img
+                    :alt="`${article.source} preview`"
+                    class="press-preview-img"
+                    :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
+                    @error="handleImageError"
+                  >
                 </div>
-            </div>
-            <div class="video-list-sidebar">
-                <h3 class="sidebar-title">All Videos</h3>
-                <div class="video-list-scroll">
-                    <div 
-                        v-for="(video, index) in tvVideos" 
-                        :key="index"
-                        class="video-list-item"
-                        :class="{ active: selectedVideo && selectedVideo.path === video.path }"
-                        @click="selectVideo(video)"
-                    >
-                        <div class="video-list-item-content">
-                            <div class="video-list-source">{{ video.source }}</div>
-                            <div class="video-list-date">{{ video.date }}</div>
-                            <div class="video-list-event">{{ video.event }}</div>
-                        </div>
-                        <v-icon class="video-list-icon">mdi-play-circle</v-icon>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </v-container>
-
-    <v-container>
-        <div style="margin-top: 4rem; margin-bottom: 4rem;">
-            <div v-for="year in sortedYears" :key="year" class="year-section">
-                <h2 class="year-title">{{ year }}</h2>
-                <v-row justify="center" style="max-width: 1400px; margin: 0 auto;">
-                    <v-col 
-                        v-for="(article, index) in articlesByYear[year]" 
-                        :key="index"
-                        cols="12" 
-                        sm="6" 
-                        md="4"
-                    >
-                        <v-card 
-                            :href="article.link"
-                            target="_blank"
-                            class="press-card"
-                            elevation="3"
-                        >
-                            <div class="press-card-layout">
-                                <div class="press-preview">
-                                    <img 
-                                        :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
-                                        :alt="`${article.source} preview`"
-                                        class="press-preview-img"
-                                        @error="handleImageError"
-                                    />
-                                </div>
-                                <v-card-text class="press-card-content">
-                                    <div class="press-date">{{ article.date }}</div>
-                                    <div class="press-source">{{ article.source }}</div>
-                                    <v-icon class="press-icon">mdi-open-in-new</v-icon>
-                                </v-card-text>
-                            </div>
-                        </v-card>
-                    </v-col>
-                </v-row>
-            </div>
-        </div>
-    </v-container>
+                <v-card-text class="press-card-content">
+                  <div class="press-date">{{ article.date }}</div>
+                  <div class="press-source">{{ article.source }}</div>
+                  <v-icon class="press-icon">mdi-open-in-new</v-icon>
+                </v-card-text>
+              </div>
+            </v-card>
+          </v-col>
+        </v-row>
+      </div>
+    </div>
+  </v-container>
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
-import { useSeo } from '@/composables/useSeo'
+  import { computed, onMounted, ref } from 'vue'
+  import { useRoute } from 'vue-router'
+  import { useSeo } from '@/composables/useSeo'
 
-const route = useRoute()
+  const route = useRoute()
 
-// SEO Configuration
-useSeo({
-  title: 'Press & Media - SPQR Team | News and Coverage',
-  description: 'SPQR Team in the media: TV appearances, news articles, press coverage about our RoboCup achievements and robotics research at Sapienza University.',
-  path: '/press/',
-  canonical: 'https://spqr.diag.uniroma1.it/press/',
-  ogTitle: 'Press & Media - SPQR Team',
-  ogDescription: 'Media coverage and news about SPQR Team robotics research.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/press/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Press & Media - SPQR Team',
-  twitterDescription: 'Media coverage and news about SPQR Team robotics research.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/press/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Press & Media - SPQR Team | News and Coverage',
+    description: 'SPQR Team in the media: TV appearances, news articles, press coverage about our RoboCup achievements and robotics research at Sapienza University.',
+    path: '/press/',
+    canonical: 'https://spqr.diag.uniroma1.it/press/',
+    ogTitle: 'Press & Media - SPQR Team',
+    ogDescription: 'Media coverage and news about SPQR Team robotics research.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/press/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Press & Media - SPQR Team',
+    twitterDescription: 'Media coverage and news about SPQR Team robotics research.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/press/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-// TV Videos from CSV
-const tvVideos = ref([])
+  // TV Videos from CSV
+  const tvVideos = ref([])
 
-// Video player reference
-const videoPlayer = ref(null)
+  // Video player reference
+  const videoPlayer = ref(null)
 
-// Selected video state
-const selectedVideo = ref(null)
+  // Selected video state
+  const selectedVideo = ref(null)
 
-// Load TV videos from JSON
-const loadTVVideos = async () => {
+  // Load TV videos from JSON
+  async function loadTVVideos () {
     try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
-        const data = await response.json()
-        
-        const videos = data.map(video => ({
-            date: video.date,
-            event: video.event,
-            source: video.source,
-            name: video.name,
-            minute: video.minute || 0,
-            second: video.second || 0,
-            path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`
-        }))
-        
-        // Sort by date (newest first)
-        tvVideos.value = videos.sort((a, b) => {
-            const dateA = new Date(a.date.split('/').reverse().join('-'))
-            const dateB = new Date(b.date.split('/').reverse().join('-'))
-            return dateB - dateA
-        })
-        
-        // Check if there's a video query parameter
-        const videoName = route.query.video
-        if (videoName) {
-            const foundVideo = tvVideos.value.find(v => v.name === videoName)
-            if (foundVideo) {
-                selectedVideo.value = foundVideo
-                // Scroll to video section after a short delay
-                setTimeout(() => {
-                    const videoSection = document.querySelector('.video-section')
-                    if (videoSection) {
-                        videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
-                    }
-                }, 300)
-            } else if (tvVideos.value.length > 0) {
-                selectedVideo.value = tvVideos.value[0]
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
+      const data = await response.json()
+
+      const videos = data.map(video => ({
+        date: video.date,
+        event: video.event,
+        source: video.source,
+        name: video.name,
+        minute: video.minute || 0,
+        second: video.second || 0,
+        path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`,
+      }))
+
+      // Sort by date (newest first)
+      tvVideos.value = videos.sort((a, b) => {
+        const dateA = new Date(a.date.split('/').reverse().join('-'))
+        const dateB = new Date(b.date.split('/').reverse().join('-'))
+        return dateB - dateA
+      })
+
+      // Check if there's a video query parameter
+      const videoName = route.query.video
+      if (videoName) {
+        const foundVideo = tvVideos.value.find(v => v.name === videoName)
+        if (foundVideo) {
+          selectedVideo.value = foundVideo
+          // Scroll to video section after a short delay
+          setTimeout(() => {
+            const videoSection = document.querySelector('.video-section')
+            if (videoSection) {
+              videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
             }
+          }, 300)
         } else if (tvVideos.value.length > 0) {
-            // Initialize selected video with the first one if no query param
-            selectedVideo.value = tvVideos.value[0]
+          selectedVideo.value = tvVideos.value[0]
         }
+      } else if (tvVideos.value.length > 0) {
+        // Initialize selected video with the first one if no query param
+        selectedVideo.value = tvVideos.value[0]
+      }
     } catch (error) {
-        console.error('Error loading TV videos:', error)
+      console.error('Error loading TV videos:', error)
     }
-}
+  }
 
-// Select a video
-const selectVideo = (video) => {
+  // Select a video
+  function selectVideo (video) {
     selectedVideo.value = video
-}
+  }
 
-// Skip to timestamp
-const skipToTimestamp = () => {
+  // Skip to timestamp
+  function skipToTimestamp () {
     if (videoPlayer.value && selectedVideo.value) {
-        const totalSeconds = selectedVideo.value.minute * 60 + selectedVideo.value.second
-        videoPlayer.value.currentTime = totalSeconds
-        videoPlayer.value.play()
+      const totalSeconds = selectedVideo.value.minute * 60 + selectedVideo.value.second
+      videoPlayer.value.currentTime = totalSeconds
+      videoPlayer.value.play()
     }
-}
+  }
 
-// Format time for display
-const formatTime = (minute, second) => {
+  // Format time for display
+  function formatTime (minute, second) {
     const mm = String(minute).padStart(2, '0')
     const ss = String(second).padStart(2, '0')
     return `${mm}:${ss}`
-}
+  }
 
-// Handle video load
-const handleVideoLoad = () => {
+  // Handle video load
+  function handleVideoLoad () {
     // Optional: Add any logic when video loads
-}
+  }
 
-const pressArticles = ref([])
+  const pressArticles = ref([])
 
-const articlesByYear = computed(() => {
+  const articlesByYear = computed(() => {
     const grouped = {}
-    pressArticles.value.forEach(article => {
-        const year = article.year
-        if (!grouped[year]) {
-            grouped[year] = []
-        }
-        grouped[year].push(article)
-    })
-    return grouped
-})
-
-const sortedYears = computed(() => {
-    return Object.keys(articlesByYear.value).sort((a, b) => b - a)
-})
-
-const handleImageError = (event) => {
-    event.target.style.display = 'none'
-}
-
-const loadPressData = async () => {
-    try {
-        const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
-        const data = await response.json()
-        
-        const articles = data.map(article => {
-            const dateStr = article.date
-            // Extract year from date format DD/MM/YYYY
-            const year = dateStr.split('/')[2]
-            return { 
-                date: dateStr, 
-                source: article.source, 
-                link: article.link,
-                year: year 
-            }
-        })
-        
-        pressArticles.value = articles
-    } catch (error) {
-        console.error('Error loading press data:', error)
+    for (const article of pressArticles.value) {
+      const year = article.year
+      if (!grouped[year]) {
+        grouped[year] = []
+      }
+      grouped[year].push(article)
     }
-}
+    return grouped
+  })
 
-onMounted(() => {
+  const sortedYears = computed(() => {
+    return Object.keys(articlesByYear.value).sort((a, b) => b - a)
+  })
+
+  function handleImageError (event) {
+    event.target.style.display = 'none'
+  }
+
+  async function loadPressData () {
+    try {
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
+      const data = await response.json()
+
+      const articles = data.map(article => {
+        const dateStr = article.date
+        // Extract year from date format DD/MM/YYYY
+        const year = dateStr.split('/')[2]
+        return {
+          date: dateStr,
+          source: article.source,
+          link: article.link,
+          year: year,
+        }
+      })
+
+      pressArticles.value = articles
+    } catch (error) {
+      console.error('Error loading press data:', error)
+    }
+  }
+
+  onMounted(() => {
     loadTVVideos()
     loadPressData()
-})
+  })
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 40% !important;
-}
-
 .year-section {
     margin-bottom: 4rem;
 }
@@ -575,11 +564,11 @@ onMounted(() => {
     .video-player-container {
         flex-direction: column;
     }
-    
+
     .video-list-sidebar {
         width: 100%;
     }
-    
+
     .video-list-scroll {
         max-height: 300px;
     }
@@ -590,7 +579,7 @@ onMounted(() => {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .skip-button {
         width: 100%;
         margin-top: 0.75rem;

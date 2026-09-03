@@ -1,34 +1,34 @@
 import { onMounted, onUnmounted } from 'vue'
 
-export function useSeo(config) {
+export function useSeo (config) {
   const baseUrl = 'https://spqr.diag.uniroma1.it'
-  
+
   const updateMetaTags = () => {
     // Update title
     if (config.title) {
       document.title = config.title
     }
-    
+
     // Update or create canonical link
     let canonical = document.querySelector('link[rel="canonical"]')
     if (!canonical) {
       canonical = document.createElement('link')
       canonical.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonical)
+      document.head.append(canonical)
     }
     canonical.setAttribute('href', config.canonical || `${baseUrl}${config.path || '/'}`)
-    
+
     // Update description meta tag
     if (config.description) {
       let metaDescription = document.querySelector('meta[name="description"]')
       if (!metaDescription) {
         metaDescription = document.createElement('meta')
         metaDescription.setAttribute('name', 'description')
-        document.head.appendChild(metaDescription)
+        document.head.append(metaDescription)
       }
       metaDescription.setAttribute('content', config.description)
     }
-    
+
     // Update Open Graph tags
     if (config.ogTitle) {
       updateOgTag('og:title', config.ogTitle)
@@ -42,7 +42,7 @@ export function useSeo(config) {
     if (config.ogImage) {
       updateOgTag('og:image', config.ogImage)
     }
-    
+
     // Update Twitter tags
     if (config.twitterTitle) {
       updateTwitterTag('twitter:title', config.twitterTitle)
@@ -57,36 +57,36 @@ export function useSeo(config) {
       updateTwitterTag('twitter:image', config.twitterImage)
     }
   }
-  
+
   const updateOgTag = (property, content) => {
     let tag = document.querySelector(`meta[property="${property}"]`)
     if (!tag) {
       tag = document.createElement('meta')
       tag.setAttribute('property', property)
-      document.head.appendChild(tag)
+      document.head.append(tag)
     }
     tag.setAttribute('content', content)
   }
-  
+
   const updateTwitterTag = (name, content) => {
     let tag = document.querySelector(`meta[property="${name}"]`)
     if (!tag) {
       tag = document.createElement('meta')
       tag.setAttribute('property', name)
-      document.head.appendChild(tag)
+      document.head.append(tag)
     }
     tag.setAttribute('content', content)
   }
-  
+
   onMounted(() => {
     updateMetaTags()
   })
-  
+
   onUnmounted(() => {
     // Optional: Reset to default values when component unmounts
   })
-  
+
   return {
-    updateMetaTags
+    updateMetaTags,
   }
 }

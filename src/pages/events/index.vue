@@ -1,141 +1,134 @@
 <template>
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/events/cover.webp"
-            alt="Events Header Cover"
-            cover
-        >
-            <div class="cover-overlay">
-                <h1 class="cover-title">EVENTS</h1>
-            </div>
-        </v-img>
-    </div>
+  <div class="page-header">
+    <h1 class="page-title">Events</h1>
+    <p class="page-subtitle">Competitions and events we take part in</p>
+    <div class="roman-divider" />
+  </div>
 
-    <v-container>
-        <v-row class="events-grid" justify="center">
-            <v-col 
-                cols="12" 
-                sm="6" 
-                md="4" 
-                v-for="event in events" 
-                :key="event.name"
-                class="event-col"
-            >
-                <div class="flip-card">
-                    <div class="flip-card-inner">
-                        <!-- Front of card -->
-                        <div class="flip-card-front">
-                            <v-img
-                                :src="getImageUrl(event.cover)"
-                                :alt="event.name"
-                                class="event-cover"
-                                aspect-ratio="1"
-                                cover
-                            >
-                                <div class="event-overlay">
-                                    <h3 class="event-title">{{ event.name }}</h3>
-                                </div>
-                            </v-img>
-                        </div>
-                        
-                        <!-- Back of card -->
-                        <div class="flip-card-back">
-                            <div class="event-back-content">
-                                <h3 class="event-back-title">{{ event.name }}</h3>
-                                <p class="event-date">{{ event.month }} {{ event.days }}, {{ event.year }}</p>
-                                <p class="event-description">{{ event.description }}</p>
-                                <div class="event-links">
-                                    <router-link
-                                        v-if="event.page"
-                                        :to="event.page"
-                                        class="event-link event-link--story"
-                                    >
-                                        Read the story
-                                    </router-link>
-                                    <a 
-                                        v-if="event.links[0].site" 
-                                        :href="event.links[0].site" 
-                                        target="_blank"
-                                        class="event-link"
-                                    >
-                                        Website
-                                    </a>
-                                    <a 
-                                        v-if="event.links[0].video" 
-                                        :href="event.links[0].video" 
-                                        target="_blank"
-                                        class="event-link"
-                                    >
-                                        Video
-                                    </a>
-                                    <a 
-                                        v-if="event.links[0].results" 
-                                        :href="event.links[0].results" 
-                                        target="_blank"
-                                        class="event-link"
-                                    >
-                                        Results
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  <v-container>
+    <v-row class="events-grid" justify="center">
+      <v-col
+        v-for="event in events"
+        :key="event.name"
+        class="event-col"
+        cols="12"
+        md="4"
+        sm="6"
+      >
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <!-- Front of card -->
+            <div class="flip-card-front">
+              <v-img
+                :alt="event.name"
+                aspect-ratio="1"
+                class="event-cover"
+                cover
+                :src="getImageUrl(event.cover)"
+              >
+                <div class="event-overlay">
+                  <h3 class="event-title">{{ event.name }}</h3>
                 </div>
-            </v-col>
-        </v-row>
+              </v-img>
+            </div>
 
-        <!-- RoboCup editions before the ones documented above -->
-        <section class="past-events" aria-label="Past events">
-            <h2 class="past-title">Past events</h2>
+            <!-- Back of card -->
+            <div class="flip-card-back">
+              <div class="event-back-content">
+                <h3 class="event-back-title">{{ event.name }}</h3>
+                <p class="event-date">{{ event.month }} {{ event.days }}, {{ event.year }}</p>
+                <p class="event-description">{{ event.description }}</p>
+                <div class="event-links">
+                  <router-link
+                    v-if="event.page"
+                    class="event-link event-link--story"
+                    :to="event.page"
+                  >
+                    Read the story
+                  </router-link>
+                  <a
+                    v-if="event.links[0].site"
+                    class="event-link"
+                    :href="event.links[0].site"
+                    target="_blank"
+                  >
+                    Website
+                  </a>
+                  <a
+                    v-if="event.links[0].video"
+                    class="event-link"
+                    :href="event.links[0].video"
+                    target="_blank"
+                  >
+                    Video
+                  </a>
+                  <a
+                    v-if="event.links[0].results"
+                    class="event-link"
+                    :href="event.links[0].results"
+                    target="_blank"
+                  >
+                    Results
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </v-col>
+    </v-row>
 
-            <v-row class="past-grid" justify="center">
-                <v-col
-                    v-for="edition in pastEvents"
-                    :key="edition.year"
-                    cols="6"
-                    sm="4"
-                    md="3"
-                    class="past-col"
-                >
-                    <div class="past-card">
-                        <div class="past-year">{{ edition.year }}</div>
-                        <div class="past-place">{{ edition.place }}</div>
-                        <div v-if="edition.note" class="past-note">{{ edition.note }}</div>
-                    </div>
-                </v-col>
-            </v-row>
-        </section>
-    </v-container>
+    <!-- RoboCup editions before the ones documented above -->
+    <section aria-label="Past events" class="past-events">
+      <h2 class="past-title">Past events</h2>
+
+      <v-row class="past-grid" justify="center">
+        <v-col
+          v-for="edition in pastEvents"
+          :key="edition.year"
+          class="past-col"
+          cols="6"
+          md="3"
+          sm="4"
+        >
+          <div class="past-card">
+            <div class="past-year">{{ edition.year }}</div>
+            <div class="past-place">{{ edition.place }}</div>
+            <div v-if="edition.note" class="past-note">{{ edition.note }}</div>
+          </div>
+        </v-col>
+      </v-row>
+    </section>
+  </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useSeo } from '@/composables/useSeo'
+  import { onMounted, ref } from 'vue'
+  import { useSeo } from '@/composables/useSeo'
 
-// SEO Configuration
-useSeo({
-  title: 'Events - SPQR Team | RoboCup Competitions',
-  description: 'SPQR Team events, RoboCup competitions, robotics tournaments, and public demonstrations. Follow our participation in international robotics challenges.',
-  path: '/events/',
-  canonical: 'https://spqr.diag.uniroma1.it/events/',
-  ogTitle: 'Events - SPQR Team',
-  ogDescription: 'RoboCup competitions and robotics events.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/events/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'Events - SPQR Team',
-  twitterDescription: 'RoboCup competitions and robotics events.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/events/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Events - SPQR Team | RoboCup Competitions',
+    description: 'SPQR Team events, RoboCup competitions, robotics tournaments, and public demonstrations. Follow our participation in international robotics challenges.',
+    path: '/events/',
+    canonical: 'https://spqr.diag.uniroma1.it/events/',
+    ogTitle: 'Events - SPQR Team',
+    ogDescription: 'RoboCup competitions and robotics events.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/events/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'Events - SPQR Team',
+    twitterDescription: 'RoboCup competitions and robotics events.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/events/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
 
-const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = import.meta.env.BASE_URL
 
-const getImageUrl = (path) => {
+  function getImageUrl (path) {
     return new URL(path.replace('@/', '../'), import.meta.url).href
-}
+  }
 
-const pastEvents = [
+  const pastEvents = [
     { year: 2015, place: 'Hefei, China' },
     { year: 2014, place: 'João Pessoa, Brazil' },
     { year: 2013, place: 'Eindhoven, Netherlands' },
@@ -155,49 +148,44 @@ const pastEvents = [
     { year: 1999, place: 'Stockholm, Sweden' },
     { year: 1998, place: 'Paris, France' },
     { year: 1997, place: 'Nagoya, Japan', note: 'First official World Championship' },
-    { year: 1996, place: 'Nagoya, Japan', note: 'Pre-RoboCup / IJCAI simulation event' }
-]
+    { year: 1996, place: 'Nagoya, Japan', note: 'Pre-RoboCup / IJCAI simulation event' },
+  ]
 
-const events = ref([])
+  const events = ref([])
 
-const loadEvents = async () => {
+  async function loadEvents () {
     try {
-        const response = await fetch(baseUrl + 'assets/events/events.json')
-        const data = await response.json()
-        
-        events.value = data.map(event => ({
-            name: event.name,
-            year: event.year,
-            month: event.month,
-            days: event.days,
-            description: event.description,
-            page: event.page || '',
-            cover: baseUrl + 'assets/events/' + event.cover,
-            links: [
-                {
-                    site: event.site || '',
-                    video: event.video || '',
-                    results: event.results || '',
-                }
-            ]
-        }))
+      const response = await fetch(baseUrl + 'assets/events/events.json')
+      const data = await response.json()
+
+      events.value = data.map(event => ({
+        name: event.name,
+        year: event.year,
+        month: event.month,
+        days: event.days,
+        description: event.description,
+        page: event.page || '',
+        cover: baseUrl + 'assets/events/' + event.cover,
+        links: [
+          {
+            site: event.site || '',
+            video: event.video || '',
+            results: event.results || '',
+          },
+        ],
+      }))
     } catch (error) {
-        console.error('Error loading events:', error)
+      console.error('Error loading events:', error)
     }
-}
+  }
 
-onMounted(() => {
+  onMounted(() => {
     loadEvents()
-})
-
+  })
 
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 50% !important;
-}
-
 .events-grid {
     max-width: 1400px;
     margin: 2rem auto;
@@ -416,20 +404,20 @@ onMounted(() => {
     .event-title {
         font-size: 1.2rem;
     }
-    
+
     .event-back-title {
         font-size: 1.05rem;
     }
-    
+
     .event-date {
         font-size: 0.75rem;
     }
-    
+
     .event-description {
         font-size: 0.75rem;
         -webkit-line-clamp: 7;
     }
-    
+
     .event-link {
         font-size: 0.75rem;
         padding: 0.35rem 0.75rem;

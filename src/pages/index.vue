@@ -2,103 +2,103 @@
   <!-- JSON-LD Structured Data for better SEO -->
   <component :is="'script'" type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "ResearchOrganization",
-      "name": "SPQR Team",
-      "alternateName": "Sapienza Piazza Quattro Romani Team",
-      "url": "https://spqrteam.github.io/spqr-team-website/",
-      "logo": "https://spqrteam.github.io/spqr-team-website/logos/spqr-logo.png",
-      "description": "RoboCup research group at Sapienza University of Rome specializing in humanoid robotics, multi-agent systems, and artificial intelligence since 1997.",
-      "foundingDate": "1997",
-      "parentOrganization": {
-        "@type": "CollegeOrUniversity",
-        "name": "Sapienza University of Rome",
-        "url": "https://www.uniroma1.it/"
-      },
-      "department": {
-        "@type": "Organization",
-        "name": "Department of Computer, Control, and Management Engineering Antonio Ruberti",
-        "url": "http://www.diag.uniroma1.it/"
-      },
-      "sameAs": [
-        "https://www.instagram.com/spqrteam/"
-      ],
-      "areaServed": "International",
-      "knowsAbout": [
-        "Humanoid Robotics",
-        "Multi-Agent Systems",
-        "Computer Vision",
-        "Robot Perception",
-        "Deep Learning",
-        "Reinforcement Learning",
-        "Edge Computing",
-        "RoboCup",
-        "Artificial Intelligence"
-      ]
+    "@context": "https://schema.org",
+    "@type": "ResearchOrganization",
+    "name": "SPQR Team",
+    "alternateName": "Sapienza Piazza Quattro Romani Team",
+    "url": "https://spqrteam.github.io/spqr-team-website/",
+    "logo": "https://spqrteam.github.io/spqr-team-website/logos/spqr-logo.png",
+    "description": "RoboCup research group at Sapienza University of Rome specializing in humanoid robotics, multi-agent systems, and artificial intelligence since 1997.",
+    "foundingDate": "1997",
+    "parentOrganization": {
+    "@type": "CollegeOrUniversity",
+    "name": "Sapienza University of Rome",
+    "url": "https://www.uniroma1.it/"
+    },
+    "department": {
+    "@type": "Organization",
+    "name": "Department of Computer, Control, and Management Engineering Antonio Ruberti",
+    "url": "http://www.diag.uniroma1.it/"
+    },
+    "sameAs": [
+    "https://www.instagram.com/spqrteam/"
+    ],
+    "areaServed": "International",
+    "knowsAbout": [
+    "Humanoid Robotics",
+    "Multi-Agent Systems",
+    "Computer Vision",
+    "Robot Perception",
+    "Deep Learning",
+    "Reinforcement Learning",
+    "Edge Computing",
+    "RoboCup",
+    "Artificial Intelligence"
+    ]
     }
   </component>
 
   <!-- Full screen video hero -->
-  <section class="hero" aria-label="SPQR Team">
+  <section aria-label="SPQR Team" class="hero">
     <video
-      class="hero-video"
-      :poster="heroPoster"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto"
       aria-hidden="true"
+      autoplay
+      class="hero-video"
+      loop
+      muted
+      playsinline
+      :poster="heroPoster"
+      preload="auto"
     >
-      <source :src="heroVideo" type="video/mp4" />
+      <source :src="heroVideo" type="video/mp4">
     </video>
-    <div class="hero-overlay"></div>
+    <div class="hero-overlay" />
     <img
+      alt="Sapienza Università di Roma"
       class="hero-sapienza"
       :src="sapienzaLogo"
-      alt="Sapienza Università di Roma"
-    />
+    >
     <div class="hero-content">
       <h1 class="hero-title">
         <!-- the wordmark is the Sapienza typeface, which the site has no webfont for -->
-        <img class="hero-logo" :src="spqrLogo" alt="SPQR Team" />
+        <img alt="SPQR Team" class="hero-logo" :src="spqrLogo">
       </h1>
       <p class="hero-subtitle">RoboCup research at Sapienza University of Rome</p>
       <p class="hero-since">
-        <span class="hero-rule" aria-hidden="true"></span>
+        <span aria-hidden="true" class="hero-rule" />
         Since MCMXCVII
-        <span class="hero-rule" aria-hidden="true"></span>
+        <span aria-hidden="true" class="hero-rule" />
       </p>
     </div>
-    <a href="#about" class="hero-scroll" aria-label="Scroll to content">
+    <a aria-label="Scroll to content" class="hero-scroll" href="#about">
       <v-icon size="40">mdi-chevron-down</v-icon>
     </a>
   </section>
 
   <v-container>
     <!-- Who we are -->
-    <section id="about" class="home-section" aria-label="Who we are">
+    <section id="about" aria-label="Who we are" class="home-section">
       <h2 class="home-section-title">Who we are</h2>
       <v-row justify="center">
-        <v-col cols="12" md="10" lg="9">
+        <v-col cols="12" lg="9" md="10">
           <p class="lead-text">
             SPQR Team is the RoboCup research group of the
-            <a href="http://www.diag.uniroma1.it/" target="_blank" rel="noopener">Department of Computer,
-            Control, and Management Engineering Antonio Ruberti</a> at
-            <a href="https://www.uniroma1.it/it/" target="_blank" rel="noopener">Sapienza University of
-            Rome</a>. Since 1997 we have brought together professors and students around
+            <a href="http://www.diag.uniroma1.it/" rel="noopener" target="_blank">Department of Computer,
+              Control, and Management Engineering Antonio Ruberti</a> at
+            <a href="https://www.uniroma1.it/it/" rel="noopener" target="_blank">Sapienza University of
+              Rome</a>. Since 1997 we have brought together professors and students around
             one question: how can a team of fully autonomous humanoid robots play soccer together, with no
-            human in the loop? 
+            human in the loop?
           </p>
         </v-col>
       </v-row>
-      <v-row justify="center" class="stats-row">
+      <v-row class="stats-row" justify="center">
         <v-col
           v-for="stat in stats"
           :key="stat.label"
+          class="stat-col"
           cols="6"
           md="3"
-          class="stat-col"
         >
           <div class="stat-value">{{ stat.value }}</div>
           <div class="stat-label">{{ stat.label }}</div>
@@ -107,10 +107,10 @@
     </section>
 
     <!-- What we do -->
-    <section class="home-section" aria-label="What we do">
+    <section aria-label="What we do" class="home-section">
       <h2 class="home-section-title">What we do</h2>
       <v-row justify="center">
-        <v-col cols="12" md="10" lg="9">
+        <v-col cols="12" lg="9" md="10">
           <p class="lead-text">
             We write the software that turns a humanoid robot into a soccer player. Every match is a
             deadline: the robot has to see the ball, know where it stands on the pitch, keep its balance,
@@ -119,14 +119,14 @@
           </p>
         </v-col>
       </v-row>
-      <v-row justify="center" class="pillars-row">
+      <v-row class="pillars-row" justify="center">
         <v-col
           v-for="pillar in pillars"
           :key="pillar.title"
-          cols="12"
-          sm="6"
-          lg="3"
           class="pillar-col"
+          cols="12"
+          lg="3"
+          sm="6"
         >
           <div class="pillar-card">
             <v-icon class="pillar-icon" :color="pillar.color" size="34">{{ pillar.icon }}</v-icon>
@@ -138,20 +138,20 @@
     </section>
 
     <!-- Results -->
-    <section class="home-section" aria-label="Results">
+    <section aria-label="Results" class="home-section">
       <h2 class="home-section-title">Results</h2>
 
-      <v-row justify="center" class="featured-row">
+      <v-row class="featured-row" justify="center">
         <v-col
           v-for="result in featuredResults"
           :key="result.event"
+          class="featured-col"
           cols="12"
           md="6"
-          class="featured-col"
         >
           <article class="featured-card">
             <div class="featured-photo">
-              <img :src="result.photo" :alt="result.event" loading="lazy" />
+              <img :alt="result.event" loading="lazy" :src="result.photo">
             </div>
             <div class="featured-body">
               <div class="featured-medal">{{ result.medal }}</div>
@@ -165,13 +165,13 @@
         </v-col>
       </v-row>
 
-      <v-row justify="center" class="results-row">
+      <v-row class="results-row" justify="center">
         <v-col
           v-for="result in results"
           :key="result.event"
+          class="result-col"
           cols="12"
           md="6"
-          class="result-col"
         >
           <div class="result-card">
             <div class="result-medal">{{ result.medal }}</div>
@@ -187,38 +187,38 @@
   </v-container>
 
   <!-- Instagram Reels Section -->
-  <section class="instagram-section" aria-label="Instagram Updates">
+  <section aria-label="Instagram Updates" class="instagram-section">
     <v-container>
       <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 1rem;">
         Latest from Instagram
       </h2>
 
       <div style="text-align: center; margin-bottom: 0.5rem;">
-        <a 
+        <a
+          class="instagram-icon-link"
           href="https://www.instagram.com/spqrteam/"
           target="_blank"
-          class="instagram-icon-link"
         >
-          <img 
-            src="/icons/icon-instagram.png" 
+          <img
             alt="Follow us on Instagram"
             class="instagram-icon"
-          />
+            src="/icons/icon-instagram.png"
+          >
         </a>
       </div>
-      
-      <v-row justify="center" class="instagram-reels-row">
-        <v-col 
-          v-for="(post, index) in instagramPosts" 
+
+      <v-row class="instagram-reels-row" justify="center">
+        <v-col
+          v-for="(post, index) in instagramPosts"
           :key="index"
-          cols="12" 
-          sm="6" 
-          md="4"
           class="reel-col"
+          cols="12"
+          md="4"
+          sm="6"
         >
           <div class="reel-card">
             <h3 class="reel-title">{{ post.name }}</h3>
-            <div 
+            <div
               class="reel-video-wrapper"
               @mouseenter="handleMouseEnter(index)"
               @mouseleave="handleMouseLeave(index)"
@@ -226,27 +226,27 @@
               <!-- Cover Image -->
               <img
                 v-if="post.coverSrc && !hoveredIndex[index]"
-                :src="post.coverSrc"
-                class="reel-cover"
                 alt="Instagram reel cover"
-              />
-              
+                class="reel-cover"
+                :src="post.coverSrc"
+              >
+
               <!-- Video -->
               <video
                 v-if="post.videoSrc"
                 :ref="el => videoRefs[index] = el"
-                :src="post.videoSrc"
                 class="reel-video"
                 :class="{ 'video-hidden': !hoveredIndex[index] }"
                 loop
                 playsinline
-              ></video>
-              
-              <a 
-                :href="post.link" 
-                target="_blank" 
+                :src="post.videoSrc"
+              />
+
+              <a
                 class="reel-overlay"
                 :class="{ 'overlay-visible': hoveredIndex[index] }"
+                :href="post.link"
+                target="_blank"
               >
                 <span class="view-text">View on Instagram</span>
               </a>
@@ -258,37 +258,37 @@
   </section>
 
   <!-- Press Section -->
-  <section class="press-section" aria-label="Media Coverage">
+  <section aria-label="Media Coverage" class="press-section">
     <v-container>
       <!-- TV Appearances Section -->
       <div class="tv-appearances-subsection">
         <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
           Latest TV Appearances
         </h2>
-        
+
         <v-row justify="center" style="max-width: 1000px; margin: 0 auto; margin-bottom: 4rem;">
-          <v-col 
-            v-for="(video, index) in tvVideos" 
+          <v-col
+            v-for="(video, index) in tvVideos"
             :key="index"
-            cols="12" 
-            sm="6" 
+            cols="12"
             md="4"
+            sm="6"
           >
-            <router-link 
-              :to="{ path: '/press', query: { video: video.name } }"
+            <router-link
               class="tv-card-link"
+              :to="{ path: '/press', query: { video: video.name } }"
             >
-              <v-card 
+              <v-card
                 class="tv-card"
                 elevation="3"
               >
                 <div class="tv-thumbnail-wrapper">
                   <video
-                    :src="video.path"
                     class="tv-thumbnail"
                     muted
                     preload="metadata"
-                  ></video>
+                    :src="video.path"
+                  />
                   <div class="tv-play-overlay">
                     <v-icon class="play-icon" size="60">mdi-play-circle</v-icon>
                   </div>
@@ -309,332 +309,332 @@
         <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem;">
           Latest News
         </h2>
-        
+
         <v-row justify="center" style="max-width: 1000px; margin: 0 auto;">
-        <v-col 
-          v-for="(article, index) in pressArticles" 
-          :key="index"
-          cols="12" 
-          sm="6" 
-          md="4"
-        >
-          <v-card 
-            :href="article.link"
-            target="_blank"
-            class="press-card"
-            elevation="3"
+          <v-col
+            v-for="(article, index) in pressArticles"
+            :key="index"
+            cols="12"
+            md="4"
+            sm="6"
           >
-            <div class="press-card-layout">
-              <div class="press-preview">
-                <img 
-                  :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
-                  :alt="`${article.source} preview`"
-                  class="press-preview-img"
-                  @error="handleImageError"
-                />
+            <v-card
+              class="press-card"
+              elevation="3"
+              :href="article.link"
+              target="_blank"
+            >
+              <div class="press-card-layout">
+                <div class="press-preview">
+                  <img
+                    :alt="`${article.source} preview`"
+                    class="press-preview-img"
+                    :src="`https://api.microlink.io/?url=${encodeURIComponent(article.link)}&screenshot=true&meta=false&embed=screenshot.url`"
+                    @error="handleImageError"
+                  >
+                </div>
+                <v-card-text class="press-card-content">
+                  <div class="press-date">{{ article.date }}</div>
+                  <div class="press-source">{{ article.source }}</div>
+                  <v-icon class="press-icon">mdi-open-in-new</v-icon>
+                </v-card-text>
               </div>
-              <v-card-text class="press-card-content">
-                <div class="press-date">{{ article.date }}</div>
-                <div class="press-source">{{ article.source }}</div>
-                <v-icon class="press-icon">mdi-open-in-new</v-icon>
-              </v-card-text>
-            </div>
-          </v-card>
-        </v-col>
-      </v-row>
+            </v-card>
+          </v-col>
+        </v-row>
       </div>
     </v-container>
   </section>
 
   <!-- Sponsor & Partners Section -->
-  <section class="sponsor-section" aria-label="Sponsors and Partners">
+  <section aria-label="Sponsors and Partners" class="sponsor-section">
     <v-container>
       <div>
         <h2 style="text-align: center; font-size: 2.5rem; font-weight: 600; color: rgb(30, 30, 30); margin-bottom: 2rem; font-style: italic;">
           Our Sponsors & Partners
         </h2>
-        
-        <v-row justify="center" align="center" class="sponsors-row">
+
+        <v-row align="center" class="sponsors-row" justify="center">
           <v-col
             v-for="sponsor in sponsors"
             :key="sponsor.name"
-            cols="12"
-            sm="7"
-            md="4"
             class="d-flex justify-center"
+            cols="12"
+            md="4"
+            sm="7"
           >
-            <a 
+            <a
+              class="sponsor-logo-wrapper"
               :href="sponsor.link"
               target="_blank"
-              class="sponsor-logo-wrapper"
             >
               <img
-                :src="sponsor.logo"
                 :alt="sponsor.name"
                 class="sponsor-logo"
-              />
+                :src="sponsor.logo"
+              >
             </a>
           </v-col>
         </v-row>
-    </div>
+      </div>
     </v-container>
   </section>
 
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
-import { useSeo } from '@/composables/useSeo'
+  import { onMounted, reactive, ref } from 'vue'
+  import { useSeo } from '@/composables/useSeo'
 
-import heroVideo from '/assets/home/hero.mp4'
-import spqrLogo from '/logos/logo-text-white.webp'
-import whrg2026Results from '/assets/home/whrg2026-results.webp'
-import go2025Results from '/assets/home/go2025-results.webp'
-import sapienzaLogo from '/assets/sapienza_logos/logo_sapienza_white.png'
-import heroPoster from '/assets/home/hero-poster.webp'
+  import go2025Results from '/assets/home/go2025-results.webp'
+  import heroPoster from '/assets/home/hero-poster.webp'
+  import heroVideo from '/assets/home/hero.mp4'
+  import centercover from '/assets/home/ig/igreel-mf2025-cover.webp'
+  import centerreel from '/assets/home/ig/igreel-mf2025.mp4'
+  import rightcover from '/assets/home/ig/igreel-whrg2025-cover.webp'
 
-import leftreel from '/assets/home/ig/igreel-whrg2026.mp4'
-import leftcover from '/assets/home/ig/igreel-whrg2026-cover.webp'
-import centerreel from '/assets/home/ig/igreel-mf2025.mp4'
-import centercover from '/assets/home/ig/igreel-mf2025-cover.webp'
-import rightcover from '/assets/home/ig/igreel-whrg2025-cover.webp'
-import rightreel from '/assets/home/ig/igreel-whrg2025.mp4'
+  import rightreel from '/assets/home/ig/igreel-whrg2025.mp4'
+  import leftcover from '/assets/home/ig/igreel-whrg2026-cover.webp'
+  import leftreel from '/assets/home/ig/igreel-whrg2026.mp4'
+  import whrg2026Results from '/assets/home/whrg2026-results.webp'
+  import sapienzaLogo from '/assets/sapienza_logos/logo_sapienza_white.png'
+  import boosterLogo from '/assets/sponsor/current/booster.webp'
 
-import boosterLogo from '/assets/sponsor/current/booster.webp'
-import prismaLogo from '/assets/sponsor/current/prisma.webp'
-import seewebLogo from '/assets/sponsor/current/seeweb.webp'
+  import prismaLogo from '/assets/sponsor/current/prisma.webp'
+  import seewebLogo from '/assets/sponsor/current/seeweb.webp'
+  import spqrLogo from '/logos/logo-text-white.webp'
 
-const stats = [
-  { value: '1997', label: 'Competing since' },
-  { value: '38', label: 'International competitions' },
-  { value: '14', label: 'Team members' },
-  { value: '17', label: 'Publications' }
-]
+  const stats = [
+    { value: '1997', label: 'Competing since' },
+    { value: '38', label: 'International competitions' },
+    { value: '14', label: 'Team members' },
+    { value: '17', label: 'Publications' },
+  ]
 
-const pillars = [
-  {
-    title: 'Perception',
-    text: 'Finding the ball, the lines and the other players from the robot\u2019s own cameras, frame after frame.',
-    icon: 'mdi-eye-outline',
-    color: '#F57C00'
-  },
-  {
-    title: 'Localization',
-    text: 'Knowing where the robot stands on a symmetric pitch, using only what it can see and feel.',
-    icon: 'mdi-crosshairs-gps',
-    color: '#1976D2'
-  },
-  {
-    title: 'Motion',
-    text: 'Walking, kicking and getting back up on two legs without losing balance.',
-    icon: 'mdi-run-fast',
-    color: '#822433'
-  },
-  {
-    title: 'Team play',
-    text: 'Deciding who goes for the ball and who covers, over an unreliable wireless link.',
-    icon: 'mdi-account-group-outline',
-    color: '#7B1FA2'
+  const pillars = [
+    {
+      title: 'Perception',
+      text: 'Finding the ball, the lines and the other players from the robot\u2019s own cameras, frame after frame.',
+      icon: 'mdi-eye-outline',
+      color: '#F57C00',
+    },
+    {
+      title: 'Localization',
+      text: 'Knowing where the robot stands on a symmetric pitch, using only what it can see and feel.',
+      icon: 'mdi-crosshairs-gps',
+      color: '#1976D2',
+    },
+    {
+      title: 'Motion',
+      text: 'Walking, kicking and getting back up on two legs without losing balance.',
+      icon: 'mdi-run-fast',
+      color: '#822433',
+    },
+    {
+      title: 'Team play',
+      text: 'Deciding who goes for the ball and who covers, over an unreliable wireless link.',
+      icon: 'mdi-account-group-outline',
+      color: '#7B1FA2',
+    },
+  ]
+
+  // Taken from the event descriptions in assets/events/events.json
+  const featuredResults = [
+    {
+      medal: '\uD83E\uDD48',
+      placement: 'Second place',
+      event: 'World Humanoid Robot Games 2026',
+      where: 'Beijing, China',
+      photo: whrg2026Results,
+    },
+    {
+      medal: '\uD83E\uDD49',
+      placement: 'Third place',
+      event: 'RoboCup German Open 2025',
+      where: 'Nuremberg, Germany',
+      photo: go2025Results,
+    },
+  ]
+
+  const results = [
+    {
+      medal: '\uD83C\uDFC6',
+      placement: 'Best Paper Award',
+      event: 'RoboCup Symposium 2025',
+      where: 'Self-supervised Feature Extraction for Enhanced Ball Detection on Soccer Robots',
+    },
+    {
+      medal: '\uD83C\uDFC6',
+      placement: 'Best Paper Award',
+      event: 'RoboCup Symposium 2023',
+      where: 'Play Everywhere: A Temporal Logic based Game Environment Independent Approach for Playing',
+    },
+  ]
+
+  const instagramPosts = [
+    {
+      name: 'WHRG 2026',
+      link: 'https://www.instagram.com/reel/Dcq7YCSsx1w/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
+      videoSrc: leftreel,
+      coverSrc: leftcover,
+    },
+    {
+      name: 'Maker Faire 2025',
+      link: 'https://www.instagram.com/reel/DQJm6d4igGw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
+      videoSrc: centerreel,
+      coverSrc: centercover,
+    },
+    {
+      name: 'WHRG 2025',
+      link: 'https://www.instagram.com/reel/DNilL0cCyBG/?utm_source=ig_web_copy_link',
+      videoSrc: rightreel,
+      coverSrc: rightcover,
+    },
+  ]
+
+  const sponsors = [
+    {
+      name: 'Booster',
+      logo: boosterLogo,
+      link: 'https://www.booster.tech/',
+    },
+    {
+      name: 'Prisma',
+      logo: prismaLogo,
+      link: 'https://www.prismacompany.it/',
+    },
+    {
+      name: 'Seeweb',
+      logo: seewebLogo,
+      link: 'https://www.seeweb.it/',
+    },
+  ]
+
+  const researchFields = [
+    {
+      title: 'Humanoid Robotics',
+      description: 'Advanced research in bipedal locomotion, human-robot interaction, and anthropomorphic robot design.',
+      icon: 'mdi-robot',
+      color: '#822433',
+    },
+    {
+      title: 'Multi-Agent Systems',
+      description: 'Coordination and cooperation strategies for teams of autonomous robots in dynamic environments.',
+      icon: 'mdi-network',
+      color: '#1976D2',
+    },
+    {
+      title: 'Computer Vision & Robot Perception',
+      description: 'Real-time visual perception, object detection, scene understanding, sensor fusion, 3D perception, and environmental mapping for intelligent autonomous systems.',
+      icon: 'mdi-camera-iris',
+      color: '#F57C00',
+    },
+    {
+      title: 'Edge Computing',
+      description: 'Efficient on-board computation and distributed processing for real-time robot decision making.',
+      icon: 'mdi-chip',
+      color: '#7B1FA2',
+    },
+    {
+      title: 'Deep Learning',
+      description: 'Neural network architectures for robot learning, behavior optimization, and adaptive control.',
+      icon: 'mdi-brain',
+      color: '#C62828',
+    },
+    {
+      title: 'Reinforcement Learning',
+      description: 'Agent training through trial and error, reward-based learning, and policy optimization for autonomous decision-making.',
+      icon: 'mdi-chart-line',
+      color: '#388E3C',
+    },
+  ]
+
+  // SEO Configuration
+  useSeo({
+    title: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+    description: 'SPQR Team is the RoboCup research group at Sapienza University of Rome. Leading research in humanoid robotics, multi-agent systems, computer vision, deep learning, and reinforcement learning since 1997.',
+    path: '/',
+    canonical: 'https://spqr.diag.uniroma1.it/',
+    ogTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+    ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997. Part of Sapienza University of Rome\'s DIAG department.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+    twitterTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
+    twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
+  })
+
+  const hoveredIndex = reactive({})
+  const videoRefs = ref([])
+  const pressArticles = ref([])
+  const tvVideos = ref([])
+
+  function handleMouseEnter (index) {
+    hoveredIndex[index] = true
+    const video = videoRefs.value[index]
+    if (video) {
+      video.muted = false
+      video.play()
+    }
   }
-]
 
-// Taken from the event descriptions in assets/events/events.json
-const featuredResults = [
-  {
-    medal: '\ud83e\udd48',
-    placement: 'Second place',
-    event: 'World Humanoid Robot Games 2026',
-    where: 'Beijing, China',
-    photo: whrg2026Results
-  },
-  {
-    medal: '\ud83e\udd49',
-    placement: 'Third place',
-    event: 'RoboCup German Open 2025',
-    where: 'Nuremberg, Germany',
-    photo: go2025Results
+  function handleMouseLeave (index) {
+    hoveredIndex[index] = false
+    const video = videoRefs.value[index]
+    if (video) {
+      video.pause()
+      video.currentTime = 0
+      video.muted = true
+    }
   }
-]
 
-const results = [
-  {
-    medal: '\ud83c\udfc6',
-    placement: 'Best Paper Award',
-    event: 'RoboCup Symposium 2025',
-    where: 'Self-supervised Feature Extraction for Enhanced Ball Detection on Soccer Robots'
-  },
-  {
-    medal: '\ud83c\udfc6',
-    placement: 'Best Paper Award',
-    event: 'RoboCup Symposium 2023',
-    where: 'Play Everywhere: A Temporal Logic based Game Environment Independent Approach for Playing'
+  function handleImageError (event) {
+    event.target.style.display = 'none'
   }
-]
 
-const instagramPosts = [
-  {
-    name: 'WHRG 2026',
-    link: 'https://www.instagram.com/reel/Dcq7YCSsx1w/?utm_source=ig_web_copy_link&igsi=MzRlODBiNWFlZA==',
-    videoSrc: leftreel,
-    coverSrc: leftcover
-  },
-  {
-    name: 'Maker Faire 2025',
-    link: 'https://www.instagram.com/reel/DQJm6d4igGw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==',
-    videoSrc: centerreel,
-    coverSrc: centercover
-  },
-  {
-    name: 'WHRG 2025',
-    link: 'https://www.instagram.com/reel/DNilL0cCyBG/?utm_source=ig_web_copy_link',
-    videoSrc: rightreel,
-    coverSrc: rightcover
-  },
-]
+  async function loadPressData () {
+    try {
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
+      const data = await response.json()
 
-const sponsors = [
-  {
-    name: 'Booster',
-    logo: boosterLogo,
-    link: 'https://www.booster.tech/'
-  },
-  {
-    name: 'Prisma',
-    logo: prismaLogo,
-    link: 'https://www.prismacompany.it/'
-  },
-  {
-    name: 'Seeweb',
-    logo: seewebLogo,
-    link: 'https://www.seeweb.it/'
+      // Get top 6 articles
+      pressArticles.value = data.slice(0, 6)
+    } catch (error) {
+      console.error('Error loading press data:', error)
+    }
   }
-]
 
-const researchFields = [
-  {
-    title: 'Humanoid Robotics',
-    description: 'Advanced research in bipedal locomotion, human-robot interaction, and anthropomorphic robot design.',
-    icon: 'mdi-robot',
-    color: '#822433'
-  },
-  {
-    title: 'Multi-Agent Systems',
-    description: 'Coordination and cooperation strategies for teams of autonomous robots in dynamic environments.',
-    icon: 'mdi-network',
-    color: '#1976D2'
-  },
-  {
-    title: 'Computer Vision & Robot Perception',
-    description: 'Real-time visual perception, object detection, scene understanding, sensor fusion, 3D perception, and environmental mapping for intelligent autonomous systems.',
-    icon: 'mdi-camera-iris',
-    color: '#F57C00'
-  },
-  {
-    title: 'Edge Computing',
-    description: 'Efficient on-board computation and distributed processing for real-time robot decision making.',
-    icon: 'mdi-chip',
-    color: '#7B1FA2'
-  },
-  {
-    title: 'Deep Learning',
-    description: 'Neural network architectures for robot learning, behavior optimization, and adaptive control.',
-    icon: 'mdi-brain',
-    color: '#C62828'
-  },
-  {
-    title: 'Reinforcement Learning',
-    description: 'Agent training through trial and error, reward-based learning, and policy optimization for autonomous decision-making.',
-    icon: 'mdi-chart-line',
-    color: '#388E3C'
+  async function loadTVVideos () {
+    try {
+      const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
+      const data = await response.json()
+
+      const videos = data.map(video => ({
+        date: video.date,
+        event: video.event,
+        source: video.source,
+        name: video.name,
+        minute: video.minute || 0,
+        second: video.second || 0,
+        path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`,
+      }))
+
+      // Sort by date (newest first) and get top 3
+      tvVideos.value = videos.sort((a, b) => {
+        const dateA = new Date(a.date.split('/').reverse().join('-'))
+        const dateB = new Date(b.date.split('/').reverse().join('-'))
+        return dateB - dateA
+      }).slice(0, 3)
+    } catch (error) {
+      console.error('Error loading TV videos:', error)
+    }
   }
-]
 
-// SEO Configuration
-useSeo({
-  title: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-  description: 'SPQR Team is the RoboCup research group at Sapienza University of Rome. Leading research in humanoid robotics, multi-agent systems, computer vision, deep learning, and reinforcement learning since 1997.',
-  path: '/',
-  canonical: 'https://spqr.diag.uniroma1.it/',
-  ogTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-  ogDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997. Part of Sapienza University of Rome\'s DIAG department.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-  twitterTitle: 'SPQR Team - RoboCup Research | Sapienza University of Rome',
-  twitterDescription: 'Leading research in humanoid robotics, AI, and multi-agent systems since 1997.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg'
-})
-
-const hoveredIndex = reactive({})
-const videoRefs = ref([])
-const pressArticles = ref([])
-const tvVideos = ref([])
-
-const handleMouseEnter = (index) => {
-  hoveredIndex[index] = true
-  const video = videoRefs.value[index]
-  if (video) {
-    video.muted = false
-    video.play()
-  }
-}
-
-const handleMouseLeave = (index) => {
-  hoveredIndex[index] = false
-  const video = videoRefs.value[index]
-  if (video) {
-    video.pause()
-    video.currentTime = 0
-    video.muted = true
-  }
-}
-
-const handleImageError = (event) => {
-  event.target.style.display = 'none'
-}
-
-const loadPressData = async () => {
-  try {
-    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/press.json')
-    const data = await response.json()
-    
-    // Get top 6 articles
-    pressArticles.value = data.slice(0, 6)
-  } catch (error) {
-    console.error('Error loading press data:', error)
-  }
-}
-
-const loadTVVideos = async () => {
-  try {
-    const response = await fetch(import.meta.env.BASE_URL + 'assets/press/tv.json')
-    const data = await response.json()
-    
-    const videos = data.map(video => ({
-      date: video.date,
-      event: video.event,
-      source: video.source,
-      name: video.name,
-      minute: video.minute || 0,
-      second: video.second || 0,
-      path: `${import.meta.env.BASE_URL}assets/press/${video.name}.mp4`
-    }))
-    
-    // Sort by date (newest first) and get top 3
-    tvVideos.value = videos.sort((a, b) => {
-      const dateA = new Date(a.date.split('/').reverse().join('-'))
-      const dateB = new Date(b.date.split('/').reverse().join('-'))
-      return dateB - dateA
-    }).slice(0, 3)
-  } catch (error) {
-    console.error('Error loading TV videos:', error)
-  }
-}
-
-onMounted(() => {
-  loadPressData()
-  loadTVVideos()
-})
+  onMounted(() => {
+    loadPressData()
+    loadTVVideos()
+  })
 </script>
 
 <style scoped>
@@ -1092,22 +1092,22 @@ onMounted(() => {
 
 .instagram-section {
   padding: 4rem 0;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0) 0%, 
-    rgba(255, 183, 77, 0.01) 5%, 
-    rgba(255, 167, 38, 0.12) 50%, 
-    rgba(255, 183, 77, 0.01) 95%, 
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 183, 77, 0.01) 5%,
+    rgba(255, 167, 38, 0.12) 50%,
+    rgba(255, 183, 77, 0.01) 95%,
     rgba(255, 255, 255, 0) 100%
   );
 }
 
 .press-section {
   padding: 4rem 0;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0) 0%, 
-    rgba(100, 150, 220, 0.01) 5%, 
-    rgba(66, 165, 245, 0.12) 50%, 
-    rgba(100, 150, 220, 0.01) 95%, 
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(100, 150, 220, 0.01) 5%,
+    rgba(66, 165, 245, 0.12) 50%,
+    rgba(100, 150, 220, 0.01) 95%,
     rgba(255, 255, 255, 0) 100%
   );
 }
@@ -1329,11 +1329,11 @@ onMounted(() => {
 
 .sponsor-section {
   padding: 4rem 0;
-  background: linear-gradient(180deg, 
-    rgba(255, 255, 255, 0) 0%, 
-    rgba(76, 175, 80, 0.01) 5%, 
-    rgba(102, 187, 106, 0.12) 50%, 
-    rgba(76, 175, 80, 0.06) 95%, 
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(76, 175, 80, 0.01) 5%,
+    rgba(102, 187, 106, 0.12) 50%,
+    rgba(76, 175, 80, 0.06) 95%,
     rgba(255, 255, 255, 0) 100%
   );
 }

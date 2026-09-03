@@ -1,233 +1,230 @@
 <template>
-    <div class="cover-section">
-        <v-img
-            class="cover-image"
-            src="/assets/team/cover.webp"
-            alt="Team Header Cover"
-            cover
-        >
-            <div class="cover-overlay">
-                <h1 class="cover-title">TEAM</h1>
-            </div>
-        </v-img>
-    </div>
+  <div class="page-header">
+    <h1 class="page-title">Team</h1>
+    <p class="page-subtitle">The people behind SPQR</p>
+    <div class="roman-divider" />
+  </div>
 
-    <div class="carousel-background-section">
-        <div 
-            class="carousel-background-blur"
-            :style="{ backgroundImage: `url(${currentPhoto})` }"
-        ></div>
-        <div class="carousel-background-gradient"></div>
+  <div class="carousel-background-section">
+    <div
+      class="carousel-background-blur"
+      :style="{ backgroundImage: `url(${currentPhoto})` }"
+    />
+    <div class="carousel-background-gradient" />
 
-        <!-- The title sits outside the carousel: v-carousel-item wraps its slot
+    <!-- The title sits outside the carousel: v-carousel-item wraps its slot
              in a v-img, whose overflow would clip a title wider than the photo -->
-        <div class="photo-title">{{ currentTitle }}</div>
-
-        <v-container>
-
-            <v-carousel
-                cycle
-                :interval="5000"
-                hide-delimiters
-                show-arrows="hover"
-                height="auto"
-                class="team-carousel"
-                @update:model-value="updateBackground"
-            >
-                <v-carousel-item
-                    v-for="(photo, i) in team_photos"
-                    :key="i"
-                    class="carousel-item-wrapper"
-                >
-                    <div class="carousel-content">
-                        <v-img
-                            :src="photo.image"
-                            :alt="photo.title"
-                            class="team-photo"
-                            aspect-ratio="16/9"
-                            contain
-                        ></v-img>
-                    </div>
-                </v-carousel-item>
-            </v-carousel>
-        </v-container>
-    </div>
+    <h2 class="photo-title">{{ currentTitle }}</h2>
 
     <v-container>
 
-        <!-- <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider> -->
-
-        <div class="section-title">Members</div>
-
-        <v-row class="members-grid" justify="center">
-            <v-col cols="12" sm="6" md="6" lg="3" v-for="member in teamMembers" :key="member.name" class="member-col">
-                <div class="member-card">
-                    <v-img
-                        :src="member.image"
-                        :alt="member.name"
-                        class="member-photo"
-                        aspect-ratio="2/3"
-                        cover
-                    ></v-img>
-                    <div class="member-name">{{ member.name }}</div>
-                    <div class="member-role">{{ member.role }}</div>
-                </div>
-            </v-col>
-        </v-row>
-
-        <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider>
-
-        <div class="section-title">Past Members</div>
-
-        <v-row class="past-members-section">
-            <v-col cols="12" md="6" class="past-members-col">
-                <h3 class="past-members-subtitle">Team Leaders</h3>
-                <ul class="past-members-list">
-                    <li v-for="leader in pastTeamLeaders" :key="leader.name">
-                        {{ leader.name }}<span v-if="leader.years"> - {{ leader.years }}</span>
-                    </li>
-                </ul>
-            </v-col>
-
-            <v-col cols="12" md="6" class="past-members-col">
-                <h3 class="past-members-subtitle">Students</h3>
-                <v-row>
-                    <v-col cols="12" lg="6">
-                        <ul class="past-members-list">
-                            <li v-for="student in pastStudentsColumn1" :key="student.name">
-                                {{ student.name }}
-                            </li>
-                        </ul>
-                    </v-col>
-                    <v-col cols="12" lg="6">
-                        <ul class="past-members-list">
-                            <li v-for="student in pastStudentsColumn2" :key="student.name">
-                                {{ student.name }}
-                            </li>
-                        </ul>
-                    </v-col>
-                </v-row>
-            </v-col>
-        </v-row>
-
+      <v-carousel
+        class="team-carousel"
+        cycle
+        height="auto"
+        hide-delimiters
+        :interval="5000"
+        show-arrows="hover"
+        @update:model-value="updateBackground"
+      >
+        <v-carousel-item
+          v-for="(photo, i) in team_photos"
+          :key="i"
+          class="carousel-item-wrapper"
+        >
+          <div class="carousel-content">
+            <v-img
+              :alt="photo.title"
+              aspect-ratio="16/9"
+              class="team-photo"
+              contain
+              :src="photo.image"
+            />
+          </div>
+        </v-carousel-item>
+      </v-carousel>
     </v-container>
+  </div>
+
+  <v-container>
+
+    <!-- <v-divider thickness="5" color="black" opacity="0.5" style="margin-top: 2rem"></v-divider> -->
+
+    <h2 class="section-title">Members</h2>
+
+    <v-row class="members-grid" justify="center">
+      <v-col
+        v-for="member in teamMembers"
+        :key="member.name"
+        class="member-col"
+        cols="12"
+        lg="3"
+        md="6"
+        sm="6"
+      >
+        <div class="member-card">
+          <v-img
+            :alt="member.name"
+            aspect-ratio="2/3"
+            class="member-photo"
+            cover
+            :src="member.image"
+          />
+          <div class="member-name">{{ member.name }}</div>
+          <div class="member-role">{{ member.role }}</div>
+        </div>
+      </v-col>
+    </v-row>
+
+    <v-divider color="black" opacity="0.5" style="margin-top: 2rem" thickness="5" />
+
+    <h2 class="section-title">Past Members</h2>
+
+    <v-row class="past-members-section">
+      <v-col class="past-members-col" cols="12" md="6">
+        <h3 class="past-members-subtitle">Team Leaders</h3>
+        <ul class="past-members-list">
+          <li v-for="leader in pastTeamLeaders" :key="leader.name">
+            {{ leader.name }}<span v-if="leader.years"> - {{ leader.years }}</span>
+          </li>
+        </ul>
+      </v-col>
+
+      <v-col class="past-members-col" cols="12" md="6">
+        <h3 class="past-members-subtitle">Students</h3>
+        <v-row>
+          <v-col cols="12" lg="6">
+            <ul class="past-members-list">
+              <li v-for="student in pastStudentsColumn1" :key="student.name">
+                {{ student.name }}
+              </li>
+            </ul>
+          </v-col>
+          <v-col cols="12" lg="6">
+            <ul class="past-members-list">
+              <li v-for="student in pastStudentsColumn2" :key="student.name">
+                {{ student.name }}
+              </li>
+            </ul>
+          </v-col>
+        </v-row>
+      </v-col>
+    </v-row>
+
+  </v-container>
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useSeo } from '@/composables/useSeo'
+  import { onMounted, ref } from 'vue'
+  import { useSeo } from '@/composables/useSeo'
 
-// SEO Configuration
-useSeo({
-  title: 'Team - SPQR Team | Sapienza University of Rome',
-  description: 'Meet the SPQR Team members: researchers, PhD students, and collaborators working on RoboCup humanoid robotics and AI research at Sapienza University of Rome.',
-  path: '/team/',
-  canonical: 'https://spqr.diag.uniroma1.it/team/',
-  ogTitle: 'Team - SPQR Team',
-  ogDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
-  ogUrl: 'https://spqr.diag.uniroma1.it/team/',
-  ogImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg',
-  twitterTitle: 'Team - SPQR Team',
-  twitterDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
-  twitterUrl: 'https://spqr.diag.uniroma1.it/team/',
-  twitterImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg'
-})
+  // SEO Configuration
+  useSeo({
+    title: 'Team - SPQR Team | Sapienza University of Rome',
+    description: 'Meet the SPQR Team members: researchers, PhD students, and collaborators working on RoboCup humanoid robotics and AI research at Sapienza University of Rome.',
+    path: '/team/',
+    canonical: 'https://spqr.diag.uniroma1.it/team/',
+    ogTitle: 'Team - SPQR Team',
+    ogDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
+    ogUrl: 'https://spqr.diag.uniroma1.it/team/',
+    ogImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg',
+    twitterTitle: 'Team - SPQR Team',
+    twitterDescription: 'Meet our research team working on RoboCup humanoid robotics and AI.',
+    twitterUrl: 'https://spqr.diag.uniroma1.it/team/',
+    twitterImage: 'https://spqr.diag.uniroma1.it/assets/team/cover.jpg',
+  })
 
-const baseUrl = import.meta.env.BASE_URL
+  const baseUrl = import.meta.env.BASE_URL
 
-const team_photos = ref([])
+  const team_photos = ref([])
 
-const loadTeamPhotos = async () => {
+  async function loadTeamPhotos () {
     try {
-        const response = await fetch(baseUrl + 'assets/team/team_photos.json')
-        const data = await response.json()
-        
-        team_photos.value = data.map(photo => ({
-            image: baseUrl + 'assets/team/' + photo.image,
-            title: photo.title
+      const response = await fetch(baseUrl + 'assets/team/team_photos.json')
+      const data = await response.json()
+
+      team_photos.value = data.map(photo => ({
+        image: baseUrl + 'assets/team/' + photo.image,
+        title: photo.title,
+      }))
+
+      // Set initial photo
+      if (team_photos.value.length > 0) {
+        currentPhoto.value = team_photos.value[0].image
+        currentTitle.value = team_photos.value[0].title
+      }
+    } catch (error) {
+      console.error('Error loading team photos:', error)
+    }
+  }
+
+  const teamMembers = ref([])
+
+  async function loadTeamMembers () {
+    try {
+      const response = await fetch(baseUrl + 'assets/team/team.json')
+      const data = await response.json()
+
+      // Filter current members (those with images)
+      teamMembers.value = data
+        .filter(member => member.image)
+        .map(member => ({
+          name: member.name,
+          role: member.role,
+          image: baseUrl + 'assets/team/' + member.image,
         }))
-        
-        // Set initial photo
-        if (team_photos.value.length > 0) {
-            currentPhoto.value = team_photos.value[0].image
-            currentTitle.value = team_photos.value[0].title
-        }
     } catch (error) {
-        console.error('Error loading team photos:', error)
+      console.error('Error loading team members:', error)
     }
-}
+  }
 
-const teamMembers = ref([])
+  const pastTeamLeaders = ref([])
+  const pastStudentsColumn1 = ref([])
+  const pastStudentsColumn2 = ref([])
 
-const loadTeamMembers = async () => {
+  async function loadPastMembers () {
     try {
-        const response = await fetch(baseUrl + 'assets/team/team.json')
-        const data = await response.json()
-        
-        // Filter current members (those with images)
-        teamMembers.value = data
-            .filter(member => member.image)
-            .map(member => ({
-                name: member.name,
-                role: member.role,
-                image: baseUrl + 'assets/team/' + member.image
-            }))
+      const response = await fetch(baseUrl + 'assets/team/team.json')
+      const data = await response.json()
+
+      // Filter past members (those without images)
+      const allPastMembers = data
+        .filter(member => !member.image)
+        .map(member => ({
+          name: member.name,
+          role: member.role,
+          years: member.years || '',
+        }))
+
+      // Separate team leaders and students
+      pastTeamLeaders.value = allPastMembers.filter(member => member.role === 'Team Leader')
+      const students = allPastMembers.filter(member => member.role === 'Student')
+
+      // Split students into two columns
+      const halfPoint = Math.ceil(students.length / 2)
+      pastStudentsColumn1.value = students.slice(0, halfPoint)
+      pastStudentsColumn2.value = students.slice(halfPoint)
     } catch (error) {
-        console.error('Error loading team members:', error)
+      console.error('Error loading past members:', error)
     }
-}
+  }
 
-const pastTeamLeaders = ref([])
-const pastStudentsColumn1 = ref([])
-const pastStudentsColumn2 = ref([])
+  const currentPhoto = ref('')
+  const currentTitle = ref('')
 
-const loadPastMembers = async () => {
-    try {
-        const response = await fetch(baseUrl + 'assets/team/team.json')
-        const data = await response.json()
-        
-        // Filter past members (those without images)
-        const allPastMembers = data
-            .filter(member => !member.image)
-            .map(member => ({
-                name: member.name,
-                role: member.role,
-                years: member.years || ''
-            }))
-        
-        // Separate team leaders and students
-        pastTeamLeaders.value = allPastMembers.filter(member => member.role === 'Team Leader')
-        const students = allPastMembers.filter(member => member.role === 'Student')
-        
-        // Split students into two columns
-        const halfPoint = Math.ceil(students.length / 2)
-        pastStudentsColumn1.value = students.slice(0, halfPoint)
-        pastStudentsColumn2.value = students.slice(halfPoint)
-    } catch (error) {
-        console.error('Error loading past members:', error)
-    }
-}
-
-const currentPhoto = ref('')
-const currentTitle = ref('')
-
-const updateBackground = (index) => {
+  function updateBackground (index) {
     currentPhoto.value = team_photos.value[index].image
     currentTitle.value = team_photos.value[index].title
-}
+  }
 
-onMounted(() => {
+  onMounted(() => {
     loadTeamPhotos()
     loadTeamMembers()
     loadPastMembers()
-})
+  })
 </script>
 
 <style scoped>
-.cover-image :deep(img) {
-    object-position: center 30% !important;
-}
-
 .carousel-background-section {
     position: relative;
     width: 100%;
@@ -332,6 +329,7 @@ onMounted(() => {
        while 2.5rem keeps it from growing past its intended size on desktop. */
     white-space: nowrap;
     font-size: min(2.5rem, calc((100vw - 2rem) / 19));
+    margin-bottom: 0;
 }
 
 .members-grid {
