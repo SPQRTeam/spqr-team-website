@@ -49,6 +49,7 @@
           <v-btn
             append-icon="mdi-open-in-new"
             color="#822433"
+            disabled
             href="https://makerfairerome.eu/en/call/call-for-humanoid-soccer-teams/"
             rel="noopener"
             size="large"
@@ -57,18 +58,42 @@
           >
             Register your team
           </v-btn>
-          <p class="cta-note">
-            Applications and full details are handled on the Maker Faire Rome call page. You can
-            also
-            <a
-              href="https://makerfairerome.eu/en/call/call-for-humanoid-soccer-teams/call-for-humanoid-soccer-teams-regulations/"
-              rel="noopener"
-              target="_blank"
-            >read the regulations</a>
-            or go straight to the
-            <a href="https://makers.makerfairerome.eu/eng" rel="noopener" target="_blank">application form</a>.
+          <p class="contact-highlight">
+            For any information, please contact Vincenzo Suriani at
+            <a href="mailto:suriani@diag.uniroma1.it">suriani@diag.uniroma1.it</a>
           </p>
         </div>
+
+        <v-divider class="my-8" />
+
+        <h3 class="subsection-title">Qualified Teams</h3>
+        <v-row class="teams-row">
+          <v-col v-for="division in divisions" :key="division.name" cols="12" sm="6">
+            <h4 class="division-title">{{ division.name }}</h4>
+            <ul class="team-list">
+              <li
+                v-for="team in division.teams"
+                :key="team.name"
+                :class="{ 'team-host': team.host }"
+              >
+                <span class="team-name">{{ team.name }}</span>
+                <span class="team-affiliation">{{ team.affiliation }}</span>
+              </li>
+            </ul>
+          </v-col>
+        </v-row>
+
+        <p class="cta-note bottom-note">
+          Applications and full details are handled on the Maker Faire Rome call page. You can
+          also
+          <a
+            href="https://makerfairerome.eu/en/call/call-for-humanoid-soccer-teams/call-for-humanoid-soccer-teams-regulations/"
+            rel="noopener"
+            target="_blank"
+          >read the regulations</a>
+          or go straight to the
+          <a href="https://makers.makerfairerome.eu/eng" rel="noopener" target="_blank">application form</a>.
+        </p>
       </v-col>
     </v-row>
   </v-container>
@@ -77,6 +102,30 @@
 
 <script setup>
   import { useSeo } from '@/composables/useSeo'
+
+  const divisions = [
+    {
+      name: 'Middle Division',
+      teams: [
+        { name: 'Ruhrbot Devils', affiliation: 'Technical University of Dortmund' },
+        { name: 'HULKs', affiliation: 'Hamburg University of Technology' },
+        { name: 'WhIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
+        { name: 'Maynooth University & University of Galway', affiliation: '' },
+        { name: 'NUBOTS', affiliation: 'University of Newcastle' },
+        { name: 'Berlin United', affiliation: 'Humboldt University of Berlin' },
+      ],
+    },
+    {
+      name: 'Large Division',
+      teams: [
+        { name: 'FC Isar Robotics', affiliation: 'Technische Universität München' },
+        { name: 'Tech UNITED', affiliation: 'Eindhoven University of Technology' },
+        { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University' },
+        { name: 'I-Kid', affiliation: 'Beijing Information Science and Technology University' },
+        { name: 'SPQR', affiliation: 'Sapienza University of Rome', host: true },
+      ],
+    },
+  ]
 
   useSeo({
     title: 'Italian Open 2026 - SPQR Team | RoboCup Competitions',
@@ -141,6 +190,47 @@
     margin-top: 1rem;
 }
 
+.teams-row {
+    margin-top: 0.5rem;
+}
+
+.division-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #822433;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid #822433;
+}
+
+.team-list {
+    list-style: none;
+    padding: 0;
+}
+
+.team-list li {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.team-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.team-affiliation {
+    font-size: 0.95rem;
+    opacity: 0.75;
+}
+
+.team-host .team-name {
+    color: #822433;
+}
+
 .cta-section {
     margin-top: 2.5rem;
     text-align: center;
@@ -150,6 +240,27 @@
     margin-top: 1rem;
     font-size: 0.95rem;
     opacity: 0.8;
+}
+
+.contact-highlight {
+    margin-top: 1.5rem;
+    padding: 1rem 1.5rem;
+    border-left: 4px solid #822433;
+    border-radius: 4px;
+    background: rgba(130, 36, 51, 0.08);
+    font-size: 1.15rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.contact-highlight a {
+    color: #822433;
+    font-weight: 700;
+}
+
+.bottom-note {
+    margin-top: 2.5rem;
+    text-align: center;
 }
 
 .cta-note a {
