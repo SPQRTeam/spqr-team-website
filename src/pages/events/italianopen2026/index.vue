@@ -37,6 +37,20 @@
 
         <v-divider class="my-8" />
 
+        <router-link class="workshop-teaser" to="/events/italianopen2026/roundtable">
+          <v-icon class="teaser-icon" icon="mdi-forum-outline" size="40" />
+          <div class="teaser-body">
+            <span class="teaser-eyebrow">Round Table &middot; Sunday, October 25</span>
+            <span class="teaser-title">Physical AI: What we expect next</span>
+            <span class="teaser-text">
+              Participants: Alessandra Rossi, Matteo Leonetti, Luca Iocchi, Domenico Daniele Bloisi and Gabriele Randelli
+            </span>
+          </div>
+          <v-icon class="teaser-arrow" icon="mdi-arrow-right" />
+        </router-link>
+
+        <v-divider class="my-8" />
+
         <h3 class="subsection-title">Call for Humanoid Soccer Teams</h3>
         <p class="info-text">
           Universities, laboratories, research centers, and international organizations are
@@ -256,6 +270,61 @@
 .contact-highlight a {
     color: #822433;
     font-weight: 700;
+}
+
+.workshop-teaser {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(130, 36, 51, 0.2);
+    border-radius: 12px;
+    background: rgba(130, 36, 51, 0.04);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.workshop-teaser:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(130, 36, 51, 0.15);
+}
+
+.teaser-icon,
+.teaser-arrow {
+    color: #822433;
+}
+
+.teaser-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.teaser-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.teaser-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #822433;
+}
+
+.teaser-text {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.teaser-arrow {
+    transition: transform 0.2s;
+}
+
+.workshop-teaser:hover .teaser-arrow {
+    transform: translateX(4px);
 }
 
 .bottom-note {
