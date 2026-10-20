@@ -63,15 +63,14 @@
 <script setup>
   import { useSeo } from '@/composables/useSeo'
 
-  // Add `photo` (image path) once available.
-  const moderator = { name: 'Prof. Vincenzo Suriani', affiliation: 'Sapienza University of Rome' }
+  const moderator = { name: 'Prof. Vincenzo Suriani', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Suriani.jpeg' }
 
   const panelists = [
-    { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II' },
-    { name: 'Prof. Matteo Leonetti', affiliation: 'King’s College London' },
-    { name: 'Prof. Luca Iocchi', affiliation: 'Sapienza University of Rome' },
-    { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome' },
-    { name: 'Gabriele Randelli', affiliation: 'Google Cloud' },
+    { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II', photo: '/assets/italianopen/Rossi.jpeg' },
+    { name: 'Prof. Matteo Leonetti (T.B.C.)', affiliation: 'King’s College London', photo: '/assets/italianopen/Leonetti.jpeg' },
+    { name: 'Prof. Luca Iocchi', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Iocchi.jpeg' },
+    { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome', photo: '/assets/italianopen/Bloisi.jpeg' },
+    { name: 'Dr. Gabriele Randelli (T.B.C.)', affiliation: 'Google Cloud', photo: '/assets/italianopen/Randelli.jpeg' },
   ]
 
   useSeo({
