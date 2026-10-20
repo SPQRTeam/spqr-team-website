@@ -51,6 +51,7 @@
                 <v-icon v-else color="white" icon="mdi-account" size="60" />
               </v-avatar>
               <span class="person-name">{{ person.name }}</span>
+              <span v-if="person.role" class="role-badge">{{ person.role }}</span>
               <span class="person-affiliation">{{ person.affiliation }}</span>
             </div>
           </v-col>
@@ -66,10 +67,10 @@
   const moderator = { name: 'Prof. Vincenzo Suriani', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Suriani.jpeg' }
 
   const panelists = [
-    { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II', photo: '/assets/italianopen/Rossi.jpeg' },
+    { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II', role: 'RoboCup Trustee', photo: '/assets/italianopen/Rossi.jpeg' },
     { name: 'Prof. Matteo Leonetti (T.B.C.)', affiliation: 'King’s College London', photo: '/assets/italianopen/Leonetti.jpeg' },
     { name: 'Prof. Luca Iocchi', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Iocchi.jpeg' },
-    { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome', photo: '/assets/italianopen/Bloisi.jpeg' },
+    { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome', role: 'National Coordinator RoboCup Italy', photo: '/assets/italianopen/Bloisi.jpeg' },
     { name: 'Dr. Gabriele Randelli (T.B.C.)', affiliation: 'Google Cloud', photo: '/assets/italianopen/Randelli.jpeg' },
   ]
 
@@ -179,6 +180,11 @@
 
 .panelist-card .person-photo {
     margin-bottom: 1rem;
+}
+
+.panelist-card .role-badge {
+    align-self: center;
+    margin-top: 0.4rem;
 }
 
 .person-body {
