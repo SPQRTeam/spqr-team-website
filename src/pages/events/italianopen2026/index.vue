@@ -37,7 +37,17 @@
 
         <v-divider class="my-8" />
 
-        <router-link class="workshop-teaser" to="/events/italianopen2026/roundtable">
+        <router-link class="workshop-teaser" to="/events/italianopen2026/schedule">
+          <v-icon class="teaser-icon" icon="mdi-calendar-clock" size="40" />
+          <div class="teaser-body">
+            <span class="teaser-eyebrow">October 23&ndash;25 &middot; Middle &amp; Large Divisions</span>
+            <span class="teaser-title">Schedule &amp; Results</span>
+            <span class="teaser-text">All matches, referees, live scores and standings</span>
+          </div>
+          <v-icon class="teaser-arrow" icon="mdi-arrow-right" />
+        </router-link>
+
+        <router-link class="workshop-teaser mt-4" to="/events/italianopen2026/roundtable">
           <v-icon class="teaser-icon" icon="mdi-forum-outline" size="40" />
           <div class="teaser-body">
             <span class="teaser-eyebrow">Round Table &middot; Sunday, October 25</span>
@@ -121,21 +131,19 @@
     {
       name: 'Middle Division',
       teams: [
+        { name: 'FOOMBOT', affiliation: '' },
+        { name: 'RoboÉireann', affiliation: '' },
         { name: 'Ruhrbot Devils', affiliation: 'Technical University of Dortmund' },
+        { name: 'whIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
         { name: 'HULKs', affiliation: 'Hamburg University of Technology' },
-        { name: 'WhIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
-        { name: 'Maynooth University & University of Galway', affiliation: '' },
-        { name: 'NUBOTS', affiliation: 'University of Newcastle' },
         { name: 'Berlin United', affiliation: 'Humboldt University of Berlin' },
       ],
     },
     {
       name: 'Large Division',
       teams: [
-        { name: 'FC Isar Robotics', affiliation: 'Technische Universität München' },
-        { name: 'Tech UNITED', affiliation: 'Eindhoven University of Technology' },
         { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University' },
-        { name: 'I-Kid', affiliation: 'Beijing Information Science and Technology University' },
+        { name: 'FC Isar Robotics', affiliation: 'Technische Universität München' },
         { name: 'SPQR', affiliation: 'Sapienza University of Rome', host: true },
       ],
     },
