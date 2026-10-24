@@ -25,14 +25,14 @@
       "date": "2026-10-24",
       "items": [
         { "time": "09:10", "type": "game", "division": "Middle", "stage": "Group B", "title": "Game #6", "home": "Berlin United", "away": "whIRLwind Amsterdam", "refs": "FOOMBOT & Ruhrbot Devils", "score": null },
-        { "time": "10:20", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #3", "home": "FC Isar", "away": "SPQR Team", "refs": "CAU Mountain&Sea & whIRLwind Amsterdam", "score": null },
-        { "time": "11:30", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #1", "home": "Runner-up Group A", "away": "Bottom Group B", "refs": "FC Isar (Head + GC) & Top Group A (Assistant)", "score": null },
-        { "time": "12:40", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #2", "home": "Runner-up Group B", "away": "Bottom Group A", "refs": "SPQR Team (Head + GC) & Top Group B (Assistant)", "score": null },
+        { "time": "10:20", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #2", "home": "Runner-up Group B", "away": "Ruhrbot Devils", "refs": "SPQR Team (Head + GC) & Top Group B (Assistant)", "score": null },
+        { "time": "11:30", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #3", "home": "FC Isar", "away": "SPQR Team", "refs": "CAU Mountain&Sea & whIRLwind Amsterdam", "score": null },
+        { "time": "12:40", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #1", "home": "FOOMBOT", "away": "Bottom Group B", "refs": "FC Isar (Head + GC) & RoboÉireann (Assistant)", "score": null },
         { "time": "13:30", "type": "break", "title": "Lunch Break" },
         { "time": "14:40", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #4", "home": "FC Isar", "away": "CAU Mountain&Sea", "refs": "SPQR Team & FOOMBOT", "score": null },
         { "time": "15:50", "type": "game", "division": "Middle", "stage": "Semifinal", "title": "Semifinal #1", "home": "Top Group B", "away": "Winner Relegation #1", "refs": "TBD", "format": "5v5", "score": null },
         { "time": "17:00", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #5", "home": "CAU Mountain&Sea", "away": "SPQR Team", "refs": "FC Isar & Ruhrbot Devils", "score": null },
-        { "time": "18:10", "type": "game", "division": "Middle", "stage": "Semifinal", "title": "Semifinal #2", "home": "Top Group A", "away": "Winner Relegation #2", "refs": "TBD", "format": "5v5", "score": null },
+        { "time": "18:10", "type": "game", "division": "Middle", "stage": "Semifinal", "title": "Semifinal #2", "home": "RoboÉireann", "away": "Winner Relegation #2", "refs": "TBD", "format": "5v5", "score": null },
         { "time": "19:10", "type": "meeting", "title": "Team Leader Meeting" }
       ]
     },
