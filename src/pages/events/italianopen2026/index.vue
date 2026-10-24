@@ -37,6 +37,21 @@
 
         <v-divider class="my-8" />
 
+        <h3 class="subsection-title">Highlights</h3>
+        <div class="highlight-card">
+          <video
+            class="highlight-video"
+            controls
+            playsinline
+            poster="/assets/italianopen/goal-io2026-cover.webp"
+            preload="none"
+            src="/assets/italianopen/goal-io2026.mp4"
+          />
+          <p class="highlight-caption">SPQR goal against CAU Mountain&amp;Sea at the Italian Open 2026</p>
+        </div>
+
+        <v-divider class="my-8" />
+
         <router-link class="workshop-teaser" to="/events/italianopen2026/schedule">
           <v-icon class="teaser-icon" icon="mdi-calendar-clock" size="40" />
           <div class="teaser-body">
@@ -333,6 +348,27 @@
 
 .workshop-teaser:hover .teaser-arrow {
     transform: translateX(4px);
+}
+
+.highlight-card {
+    max-width: 320px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.highlight-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 464 / 848;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 4px 16px rgba(130, 36, 51, 0.18);
+}
+
+.highlight-caption {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
 }
 
 .bottom-note {
