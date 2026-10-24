@@ -38,16 +38,49 @@
         <v-divider class="my-8" />
 
         <h3 class="subsection-title">Highlights</h3>
-        <div class="highlight-card">
-          <video
-            class="highlight-video"
-            controls
-            playsinline
-            poster="/assets/italianopen/goal-io2026-cover.webp"
-            preload="none"
-            src="/assets/italianopen/goal-io2026.mp4"
-          />
-          <p class="highlight-caption">SPQR goal against CAU Mountain&amp;Sea at the Italian Open 2026</p>
+        <div class="highlights">
+          <div class="highlight-stage">
+            <v-btn
+              aria-label="Previous video"
+              class="highlight-arrow"
+              icon="mdi-chevron-left"
+              variant="tonal"
+              @click="showHighlight(activeHighlight - 1)"
+            />
+            <v-window v-model="activeHighlight" class="highlight-window" continuous>
+              <v-window-item v-for="(video, i) in highlights" :key="video.src" :value="i">
+                <div class="highlight-frame">
+                  <video
+                    :ref="el => (highlightVideos[i] = el)"
+                    class="highlight-video"
+                    controls
+                    playsinline
+                    :poster="video.poster"
+                    preload="none"
+                    :src="video.src"
+                  />
+                </div>
+              </v-window-item>
+            </v-window>
+            <v-btn
+              aria-label="Next video"
+              class="highlight-arrow"
+              icon="mdi-chevron-right"
+              variant="tonal"
+              @click="showHighlight(activeHighlight + 1)"
+            />
+          </div>
+          <p class="highlight-caption">{{ highlights[activeHighlight].caption }}</p>
+          <div class="highlight-dots">
+            <button
+              v-for="(video, i) in highlights"
+              :key="video.src"
+              :aria-label="'Show video ' + (i + 1)"
+              :class="['highlight-dot', { active: i === activeHighlight }]"
+              type="button"
+              @click="showHighlight(i)"
+            />
+          </div>
         </div>
 
         <v-divider class="my-8" />
@@ -66,9 +99,9 @@
           <v-icon class="teaser-icon" icon="mdi-forum-outline" size="40" />
           <div class="teaser-body">
             <span class="teaser-eyebrow">Round Table &middot; Sunday, October 25</span>
-            <span class="teaser-title">Physical AI: What we expect next</span>
+            <span class="teaser-title">Humanoid Robot Soccer: What we expect next</span>
             <span class="teaser-text">
-              Participants: Alessandra Rossi, Matteo Leonetti, Luca Iocchi, Domenico Daniele Bloisi and Gabriele Randelli
+              Participants: Vincenzo Suriani, Alessandra Rossi, Luca Iocchi and Domenico Daniele Bloisi
             </span>
           </div>
           <v-icon class="teaser-arrow" icon="mdi-arrow-right" />
@@ -140,7 +173,35 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue'
   import { useSeo } from '@/composables/useSeo'
+
+  const highlights = [
+    {
+      src: '/assets/italianopen/goal-io2026.mp4',
+      poster: '/assets/italianopen/goal-io2026-cover.webp',
+      caption: 'SPQR goal against CAU Mountain&Sea at the Italian Open 2026',
+    },
+    {
+      src: '/assets/italianopen/save-cau-io2026.mp4',
+      poster: '/assets/italianopen/save-cau-io2026-cover.webp',
+      caption: 'CAU Mountain&Sea save at the Italian Open 2026',
+    },
+    {
+      src: '/assets/italianopen/action-io2026.mp4',
+      poster: '/assets/italianopen/action-io2026-cover.webp',
+      caption: 'Match action at the Italian Open 2026',
+    },
+  ]
+
+  const activeHighlight = ref(0)
+  const highlightVideos = []
+
+  function showHighlight (index) {
+    // Stop the current video so it doesn't keep playing off-screen
+    highlightVideos[activeHighlight.value]?.pause()
+    activeHighlight.value = (index + highlights.length) % highlights.length
+  }
 
   const divisions = [
     {
@@ -350,16 +411,38 @@
     transform: translateX(4px);
 }
 
-.highlight-card {
-    max-width: 320px;
-    margin: 0 auto;
+.highlights {
     text-align: center;
+}
+
+.highlight-stage {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.highlight-window {
+    flex: 1;
+    min-width: 0;
+}
+
+.highlight-arrow {
+    flex-shrink: 0;
+    color: #822433;
+}
+
+/* Fixed height so vertical and horizontal videos share the same stage */
+.highlight-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 520px;
 }
 
 .highlight-video {
     display: block;
-    width: 100%;
-    aspect-ratio: 464 / 848;
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 12px;
     background: #000;
     box-shadow: 0 4px 16px rgba(130, 36, 51, 0.18);
@@ -369,6 +452,37 @@
     margin-top: 0.75rem;
     font-size: 0.95rem;
     opacity: 0.8;
+}
+
+.highlight-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.highlight-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(130, 36, 51, 0.25);
+    cursor: pointer;
+}
+
+.highlight-dot.active {
+    background: #822433;
+}
+
+@media (max-width: 600px) {
+    .highlight-stage {
+        gap: 0.25rem;
+    }
+
+    .highlight-frame {
+        height: 420px;
+    }
 }
 
 .bottom-note {

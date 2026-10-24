@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <h1 class="page-title">Physical AI: What we expect next</h1>
+    <h1 class="page-title">Humanoid Robot Soccer: What we expect next</h1>
     <p class="page-subtitle">Round Table &middot; Italian Open 2026 &middot; Maker Faire Rome</p>
     <div class="roman-divider" />
   </div>
@@ -19,9 +19,8 @@
         </div>
 
         <p class="info-text">
-          A round table bringing together researchers from academia and industry to discuss
-          where Physical AI is heading: robots that perceive, reason and act in the real world,
-          and what we can expect from them in the coming years.
+          A meeting with the team leaders to discuss the future directions of robot soccer:
+          what has changed with the new humanoid robots, and the new perspectives they open up.
         </p>
 
         <h2 class="section-title">Moderator</h2>
@@ -68,22 +67,20 @@
 
   const panelists = [
     { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II', role: 'RoboCup Trustee', photo: '/assets/italianopen/Rossi.jpeg' },
-    { name: 'Prof. Matteo Leonetti (T.B.C.)', affiliation: 'King’s College London', photo: '/assets/italianopen/Leonetti.jpeg' },
     { name: 'Prof. Luca Iocchi', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Iocchi.jpeg' },
     { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome', role: 'National Coordinator RoboCup Italy', photo: '/assets/italianopen/Bloisi.jpeg' },
-    { name: 'Dr. Gabriele Randelli (T.B.C.)', affiliation: 'Google Cloud', photo: '/assets/italianopen/Randelli.jpeg' },
   ]
 
   useSeo({
-    title: 'Physical AI: What we expect next - Round Table - SPQR Team',
-    description: 'Round table "Physical AI: What we expect next" at the Italian Open 2026, Maker Faire Rome, Sunday October 25, 2026. Moderated by Prof. Vincenzo Suriani.',
+    title: 'Humanoid Robot Soccer: What we expect next - Round Table - SPQR Team',
+    description: 'Round table "Humanoid Robot Soccer: What we expect next" at the Italian Open 2026, Maker Faire Rome, Sunday October 25, 2026. Moderated by Prof. Vincenzo Suriani.',
     path: '/events/italianopen2026/roundtable/',
     canonical: 'https://spqr.diag.uniroma1.it/events/italianopen2026/roundtable/',
-    ogTitle: 'Physical AI: What we expect next - Round Table',
+    ogTitle: 'Humanoid Robot Soccer: What we expect next - Round Table',
     ogDescription: 'Round table at the Italian Open 2026, Maker Faire Rome, Sunday October 25, 2026.',
     ogUrl: 'https://spqr.diag.uniroma1.it/events/italianopen2026/roundtable/',
     ogImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
-    twitterTitle: 'Physical AI: What we expect next - Round Table',
+    twitterTitle: 'Humanoid Robot Soccer: What we expect next - Round Table',
     twitterDescription: 'Round table at the Italian Open 2026, Maker Faire Rome, Sunday October 25, 2026.',
     twitterUrl: 'https://spqr.diag.uniroma1.it/events/italianopen2026/roundtable/',
     twitterImage: 'https://spqr.diag.uniroma1.it/assets/home/cover.jpg',
