@@ -101,7 +101,7 @@
             <span class="teaser-eyebrow">Round Table &middot; Sunday, October 25</span>
             <span class="teaser-title">Humanoid Robot Soccer: What we expect next</span>
             <span class="teaser-text">
-              Participants: Vincenzo Suriani, Alessandra Rossi, Luca Iocchi and Domenico Daniele Bloisi
+              Participants: Vincenzo Suriani, Alessandra Rossi, Luca Iocchi, Domenico Daniele Bloisi and Raimondo Sgrò
             </span>
           </div>
           <v-icon class="teaser-arrow" icon="mdi-arrow-right" />

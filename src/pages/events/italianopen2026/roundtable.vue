@@ -69,6 +69,7 @@
     { name: 'Prof. Alessandra Rossi', affiliation: 'University of Naples Federico II', role: 'RoboCup Trustee', photo: '/assets/italianopen/Rossi.jpeg' },
     { name: 'Prof. Luca Iocchi', affiliation: 'Sapienza University of Rome', photo: '/assets/italianopen/Iocchi.jpeg' },
     { name: 'Prof. Domenico Daniele Bloisi', affiliation: 'UNINT – International University of Rome', role: 'National Coordinator RoboCup Italy', photo: '/assets/italianopen/Bloisi.jpeg' },
+    { name: 'Raimondo Sgrò', affiliation: 'RoboCup Junior' },
   ]
 
   useSeo({
