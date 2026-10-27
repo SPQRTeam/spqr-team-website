@@ -66,7 +66,7 @@
 
         <v-divider class="my-8" />
 
-        <h3 class="subsection-title">Qualified Teams</h3>
+        <h3 class="subsection-title">Participating Teams</h3>
         <v-row class="teams-row">
           <v-col v-for="division in divisions" :key="division.name" cols="12" sm="6">
             <h4 class="division-title">{{ division.name }}</h4>
@@ -108,10 +108,10 @@
       name: 'Middle Division',
       teams: [
         { name: 'Ruhrbot Devils', affiliation: 'Technical University of Dortmund' },
-        { name: 'HULKs', affiliation: 'Hamburg University of Technology' },
+        { name: 'HULKs', affiliation: 'Technical University of Hamburg (TUHH)' },
         { name: 'WhIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
         { name: 'Maynooth University & University of Galway', affiliation: '' },
-        { name: 'NUBOTS', affiliation: 'University of Newcastle' },
+        { name: 'FOOMBOT', affiliation: 'Warsaw, Poland' },
         { name: 'Berlin United', affiliation: 'Humboldt University of Berlin' },
       ],
     },
@@ -119,9 +119,7 @@
       name: 'Large Division',
       teams: [
         { name: 'FC Isar Robotics', affiliation: 'Technische Universität München' },
-        { name: 'Tech UNITED', affiliation: 'Eindhoven University of Technology' },
-        { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University' },
-        { name: 'I-Kid', affiliation: 'Beijing Information Science and Technology University' },
+        { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University, Beijing' },
         { name: 'SPQR', affiliation: 'Sapienza University of Rome', host: true },
       ],
     },

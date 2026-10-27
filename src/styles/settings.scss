@@ -7,7 +7,7 @@
 // https://vuetifyjs.com/features/sass-variables/`
 @use 'vuetify/settings' with (
   $font-size-root: 1.2rem,
-  $body-font-family: ('EB Garamond', serif)
+  $body-font-family: ('Inter', sans-serif)
 );
 
 // Global styles
