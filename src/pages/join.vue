@@ -53,11 +53,9 @@
             autocomplete="email"
             class="mb-2"
             color="#822433"
-            hint="Use your @uniroma1.it address"
-            label="University email"
-            persistent-hint
-            placeholder="name.surname@uniroma1.it"
-            :rules="[required, uniromaEmail]"
+            label="University Email"
+            placeholder="University Email"
+            :rules="[required]"
             type="email"
             variant="outlined"
           />
@@ -72,6 +70,7 @@
           >
             <v-radio label="Bachelor's" value="Bachelor's" />
             <v-radio label="Master's" value="Master's" />
+            <v-radio label="PhD" value="PhD" />
           </v-radio-group>
 
           <h2 class="section-subtitle">Your goals with the project</h2>
@@ -207,10 +206,6 @@
 
   const required = value => !!value || 'This field is required'
   const requiredList = value => (value && value.length > 0) || 'Select at least one option'
-  function uniromaEmail (value) {
-    return /^[^\s@]+@([\w-]+\.)*uniroma1\.it$/i.test(value || '')
-      || 'Enter a valid uniroma1.it email address'
-  }
   function githubLink (value) {
     return /^https?:\/\/(www\.)?github\.com\/.+/i.test(value || '')
       || 'Enter a valid GitHub link'
@@ -249,7 +244,7 @@
       'Name and surname': application.fullName,
       'Degree course': application.degree,
       'Department': application.department,
-      'University email': application.email,
+      'Email': application.email,
       'replyto': application.email,
       'Level': application.level,
       'Use of the project': application.usage.join(', '),
