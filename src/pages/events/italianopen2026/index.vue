@@ -37,6 +37,78 @@
 
         <v-divider class="my-8" />
 
+        <h3 class="subsection-title">Highlights</h3>
+        <div class="highlights">
+          <div class="highlight-stage">
+            <v-btn
+              aria-label="Previous video"
+              class="highlight-arrow"
+              icon="mdi-chevron-left"
+              variant="tonal"
+              @click="showHighlight(activeHighlight - 1)"
+            />
+            <v-window v-model="activeHighlight" class="highlight-window" continuous>
+              <v-window-item v-for="(video, i) in highlights" :key="video.src" :value="i">
+                <div class="highlight-frame">
+                  <video
+                    :ref="el => (highlightVideos[i] = el)"
+                    class="highlight-video"
+                    controls
+                    playsinline
+                    :poster="video.poster"
+                    preload="none"
+                    :src="video.src"
+                  />
+                </div>
+              </v-window-item>
+            </v-window>
+            <v-btn
+              aria-label="Next video"
+              class="highlight-arrow"
+              icon="mdi-chevron-right"
+              variant="tonal"
+              @click="showHighlight(activeHighlight + 1)"
+            />
+          </div>
+          <p class="highlight-caption">{{ highlights[activeHighlight].caption }}</p>
+          <div class="highlight-dots">
+            <button
+              v-for="(video, i) in highlights"
+              :key="video.src"
+              :aria-label="'Show video ' + (i + 1)"
+              :class="['highlight-dot', { active: i === activeHighlight }]"
+              type="button"
+              @click="showHighlight(i)"
+            />
+          </div>
+        </div>
+
+        <v-divider class="my-8" />
+
+        <router-link class="workshop-teaser" to="/events/italianopen2026/schedule">
+          <v-icon class="teaser-icon" icon="mdi-calendar-clock" size="40" />
+          <div class="teaser-body">
+            <span class="teaser-eyebrow">October 23&ndash;25 &middot; Middle &amp; Large Divisions</span>
+            <span class="teaser-title">Schedule &amp; Results</span>
+            <span class="teaser-text">All matches, referees, live scores and standings</span>
+          </div>
+          <v-icon class="teaser-arrow" icon="mdi-arrow-right" />
+        </router-link>
+
+        <router-link class="workshop-teaser mt-4" to="/events/italianopen2026/roundtable">
+          <v-icon class="teaser-icon" icon="mdi-forum-outline" size="40" />
+          <div class="teaser-body">
+            <span class="teaser-eyebrow">Round Table &middot; Sunday, October 25</span>
+            <span class="teaser-title">Humanoid Robot Soccer: What we expect next</span>
+            <span class="teaser-text">
+              Participants: Vincenzo Suriani, Alessandra Rossi, Luca Iocchi, Domenico Daniele Bloisi and Raimondo Sgrò
+            </span>
+          </div>
+          <v-icon class="teaser-arrow" icon="mdi-arrow-right" />
+        </router-link>
+
+        <v-divider class="my-8" />
+
         <h3 class="subsection-title">Call for Humanoid Soccer Teams</h3>
         <p class="info-text">
           Universities, laboratories, research centers, and international organizations are
@@ -66,7 +138,7 @@
 
         <v-divider class="my-8" />
 
-        <h3 class="subsection-title">Participating Teams</h3>
+        <h3 class="subsection-title">Qualified Teams</h3>
         <v-row class="teams-row">
           <v-col v-for="division in divisions" :key="division.name" cols="12" sm="6">
             <h4 class="division-title">{{ division.name }}</h4>
@@ -101,25 +173,53 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue'
   import { useSeo } from '@/composables/useSeo'
+
+  const highlights = [
+    {
+      src: '/assets/italianopen/goal-io2026.mp4',
+      poster: '/assets/italianopen/goal-io2026-cover.webp',
+      caption: 'SPQR goal against CAU Mountain&Sea at the Italian Open 2026',
+    },
+    {
+      src: '/assets/italianopen/save-cau-io2026.mp4',
+      poster: '/assets/italianopen/save-cau-io2026-cover.webp',
+      caption: 'CAU Mountain&Sea save at the Italian Open 2026',
+    },
+    {
+      src: '/assets/italianopen/action-io2026.mp4',
+      poster: '/assets/italianopen/action-io2026-cover.webp',
+      caption: 'Match action at the Italian Open 2026',
+    },
+  ]
+
+  const activeHighlight = ref(0)
+  const highlightVideos = []
+
+  function showHighlight (index) {
+    // Stop the current video so it doesn't keep playing off-screen
+    highlightVideos[activeHighlight.value]?.pause()
+    activeHighlight.value = (index + highlights.length) % highlights.length
+  }
 
   const divisions = [
     {
       name: 'Middle Division',
       teams: [
+        { name: 'FOOMBOT', affiliation: '' },
+        { name: 'RoboÉireann', affiliation: '' },
         { name: 'Ruhrbot Devils', affiliation: 'Technical University of Dortmund' },
-        { name: 'HULKs', affiliation: 'Technical University of Hamburg (TUHH)' },
-        { name: 'WhIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
-        { name: 'Maynooth University & University of Galway', affiliation: '' },
-        { name: 'FOOMBOT', affiliation: 'Warsaw, Poland' },
+        { name: 'whIRLwind Amsterdam', affiliation: 'University of Amsterdam' },
+        { name: 'HULKs', affiliation: 'Hamburg University of Technology' },
         { name: 'Berlin United', affiliation: 'Humboldt University of Berlin' },
       ],
     },
     {
       name: 'Large Division',
       teams: [
+        { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University' },
         { name: 'FC Isar Robotics', affiliation: 'Technische Universität München' },
-        { name: 'CAU Mountain&Sea', affiliation: 'China Agricultural University, Beijing' },
         { name: 'SPQR', affiliation: 'Sapienza University of Rome', host: true },
       ],
     },
@@ -254,6 +354,135 @@
 .contact-highlight a {
     color: #822433;
     font-weight: 700;
+}
+
+.workshop-teaser {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(130, 36, 51, 0.2);
+    border-radius: 12px;
+    background: rgba(130, 36, 51, 0.04);
+    color: inherit;
+    text-decoration: none;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.workshop-teaser:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(130, 36, 51, 0.15);
+}
+
+.teaser-icon,
+.teaser-arrow {
+    color: #822433;
+}
+
+.teaser-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.teaser-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+.teaser-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #822433;
+}
+
+.teaser-text {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.teaser-arrow {
+    transition: transform 0.2s;
+}
+
+.workshop-teaser:hover .teaser-arrow {
+    transform: translateX(4px);
+}
+
+.highlights {
+    text-align: center;
+}
+
+.highlight-stage {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.highlight-window {
+    flex: 1;
+    min-width: 0;
+}
+
+.highlight-arrow {
+    flex-shrink: 0;
+    color: #822433;
+}
+
+/* Fixed height so vertical and horizontal videos share the same stage */
+.highlight-frame {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 520px;
+}
+
+.highlight-video {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 12px;
+    background: #000;
+    box-shadow: 0 4px 16px rgba(130, 36, 51, 0.18);
+}
+
+.highlight-caption {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+.highlight-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.highlight-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: rgba(130, 36, 51, 0.25);
+    cursor: pointer;
+}
+
+.highlight-dot.active {
+    background: #822433;
+}
+
+@media (max-width: 600px) {
+    .highlight-stage {
+        gap: 0.25rem;
+    }
+
+    .highlight-frame {
+        height: 420px;
+    }
 }
 
 .bottom-note {

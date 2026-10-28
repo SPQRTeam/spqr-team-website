@@ -23,7 +23,9 @@ declare module 'vue-router/auto-routes' {
     '/contacts': RouteRecordInfo<'/contacts', '/contacts', Record<never, never>, Record<never, never>>,
     '/datasets': RouteRecordInfo<'/datasets', '/datasets', Record<never, never>, Record<never, never>>,
     '/events/': RouteRecordInfo<'/events/', '/events', Record<never, never>, Record<never, never>>,
-    '/events/italianopen2026': RouteRecordInfo<'/events/italianopen2026', '/events/italianopen2026', Record<never, never>, Record<never, never>>,
+    '/events/italianopen2026/': RouteRecordInfo<'/events/italianopen2026/', '/events/italianopen2026', Record<never, never>, Record<never, never>>,
+    '/events/italianopen2026/roundtable': RouteRecordInfo<'/events/italianopen2026/roundtable', '/events/italianopen2026/roundtable', Record<never, never>, Record<never, never>>,
+    '/events/italianopen2026/schedule': RouteRecordInfo<'/events/italianopen2026/schedule', '/events/italianopen2026/schedule', Record<never, never>, Record<never, never>>,
     '/events/whrg2026': RouteRecordInfo<'/events/whrg2026', '/events/whrg2026', Record<never, never>, Record<never, never>>,
     '/join': RouteRecordInfo<'/join', '/join', Record<never, never>, Record<never, never>>,
     '/media': RouteRecordInfo<'/media', '/media', Record<never, never>, Record<never, never>>,
@@ -65,8 +67,16 @@ declare module 'vue-router/auto-routes' {
       routes: '/events/'
       views: never
     }
-    'src/pages/events/italianopen2026.vue': {
-      routes: '/events/italianopen2026'
+    'src/pages/events/italianopen2026/index.vue': {
+      routes: '/events/italianopen2026/'
+      views: never
+    }
+    'src/pages/events/italianopen2026/roundtable.vue': {
+      routes: '/events/italianopen2026/roundtable'
+      views: never
+    }
+    'src/pages/events/italianopen2026/schedule.vue': {
+      routes: '/events/italianopen2026/schedule'
       views: never
     }
     'src/pages/events/whrg2026.vue': {

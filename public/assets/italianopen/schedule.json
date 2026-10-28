@@ -1,0 +1,54 @@
+{
+  "groups": [
+    {"name": "Group A", "division": "Middle", "teams": ["FOOMBOT", "RoboÉireann", "Ruhrbot Devils"]},
+    {"name": "Group B", "division": "Middle", "teams": ["whIRLwind Amsterdam", "HULKs", "Berlin United"]},
+    {"name": "Double Round-Robin", "division": "Large", "teams": ["CAU Mountain&Sea", "FC Isar", "SPQR Team"]}
+  ],
+  "days": [
+    {
+      "label": "Friday",
+      "date": "2026-10-23",
+      "items": [
+        { "time": "10:20", "type": "game", "division": "Middle", "stage": "Group A", "title": "Game #1", "home": "FOOMBOT", "away": "RoboÉireann", "refs": "HULKs & Berlin United", "score": [0, 1] },
+        { "time": "11:30", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #1", "home": "CAU Mountain&Sea", "away": "FC Isar", "refs": "SPQR Team & Berlin United", "score": [2, 0] },
+        { "time": "12:40", "type": "game", "division": "Middle", "stage": "Group B", "title": "Game #2", "home": "whIRLwind Amsterdam", "away": "HULKs", "refs": "FOOMBOT & RoboÉireann", "score": [4, 1] },
+        { "time": "13:30", "type": "break", "title": "Lunch Break" },
+        { "time": "14:40", "type": "game", "division": "Middle", "stage": "Group A", "title": "Game #3", "home": "RoboÉireann", "away": "Ruhrbot Devils", "refs": "Berlin United & whIRLwind Amsterdam", "score": [0, 0] },
+        { "time": "15:50", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #2", "home": "SPQR Team", "away": "CAU Mountain&Sea", "refs": "FC Isar & RoboÉireann", "score": [2, 1] },
+        { "time": "17:00", "type": "game", "division": "Middle", "stage": "Group B", "title": "Game #4", "home": "HULKs", "away": "Berlin United", "refs": "RoboÉireann & SPQR Team", "score": [7, 0] },
+        { "time": "18:10", "type": "game", "division": "Middle", "stage": "Group A", "title": "Game #5", "home": "Ruhrbot Devils", "away": "FOOMBOT", "refs": "whIRLwind Amsterdam & HULKs", "score": [0, 2] },
+        { "time": "19:10", "type": "meeting", "title": "Team Leader Meeting" }
+      ]
+    },
+    {
+      "label": "Saturday",
+      "date": "2026-10-24",
+      "items": [
+        { "time": "09:10", "type": "game", "division": "Middle", "stage": "Group B", "title": "Game #6", "home": "Berlin United", "away": "whIRLwind Amsterdam", "refs": "FOOMBOT & Ruhrbot Devils", "score": [0, 4] },
+        { "time": "10:20", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #2", "home": "HULKs", "away": "Ruhrbot Devils", "refs": "SPQR Team & whIRLwind Amsterdam", "score": [10, 0] },
+        { "time": "11:30", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #3", "home": "FC Isar", "away": "SPQR Team", "refs": "CAU Mountain&Sea & whIRLwind Amsterdam", "score": [1, 7] },
+        { "time": "12:40", "type": "game", "division": "Middle", "stage": "Relegation", "title": "Relegation #1", "home": "FOOMBOT", "away": "Berlin United", "refs": "FC Isar & RoboÉireann", "score": [3, 0] },
+        { "time": "13:30", "type": "break", "title": "Lunch Break" },
+        { "time": "14:40", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #4", "home": "FC Isar", "away": "CAU Mountain&Sea", "refs": "SPQR Team & FOOMBOT", "score": [1, 3] },
+        { "time": "15:50", "type": "game", "division": "Middle", "stage": "Semifinal", "title": "Semifinal #1", "home": "whIRLwind Amsterdam", "away": "FOOMBOT", "refs": "Berlin United & Ruhrbot Devils", "format": "5v5", "score": [6, 0] },
+        { "time": "17:00", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #5", "home": "CAU Mountain&Sea", "away": "SPQR Team", "refs": "FC Isar & Ruhrbot Devils", "format": "5v5", "score": [3, 3] },
+        { "time": "18:10", "type": "game", "division": "Middle", "stage": "Semifinal", "title": "Semifinal #2", "home": "RoboÉireann", "away": "HULKs", "refs": "SPQR Team & Berlin United", "format": "5v5", "score": [0, 10] },
+        { "time": "19:10", "type": "meeting", "title": "Team Leader Meeting" }
+      ]
+    },
+    {
+      "label": "Sunday",
+      "date": "2026-10-25",
+      "items": [
+        { "time": "10:10", "type": "ceremony", "title": "Opening Ceremony" },
+        { "time": "11:30", "type": "game", "division": "Large", "stage": "Double Round-Robin", "title": "Game #6", "home": "SPQR Team", "away": "FC Isar", "refs": "CAU Mountain&Sea & HULKs", "format": "5v5", "score": null },
+        { "time": "12:40", "type": "game", "division": "Middle", "stage": "Third Place", "title": "Third Place", "home": "FOOMBOT", "away": "RoboÉireann", "refs": "Ruhrbot Devils & SPQR Team", "format": "5v5", "score": null },
+        { "time": "13:30", "type": "break", "title": "Lunch Break" },
+        { "time": "14:40", "type": "game", "division": "Middle", "stage": "Final", "title": "Final", "home": "whIRLwind Amsterdam", "away": "HULKs", "refs": "SPQR Team & RoboÉireann", "format": "5v5", "score": null },
+        { "time": "15:50", "type": "game", "division": "Large", "stage": "Final", "title": "Final", "home": "SPQR Team", "away": "CAU Mountain&Sea", "refs": "whIRLwind Amsterdam & HULKs", "format": "5v5", "score": null },
+        { "time": "17:00", "type": "ceremony", "title": "Award Ceremony" },
+        { "time": "17:40", "type": "ceremony", "title": "Final Demo" }
+      ]
+    }
+  ]
+}
