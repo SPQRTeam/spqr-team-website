@@ -48,6 +48,20 @@
             variant="outlined"
           />
 
+          <v-text-field
+            v-model="application.email"
+            autocomplete="email"
+            class="mb-2"
+            color="#822433"
+            hint="Use your @uniroma1.it address"
+            label="University email"
+            persistent-hint
+            placeholder="name.surname@uniroma1.it"
+            :rules="[required, uniromaEmail]"
+            type="email"
+            variant="outlined"
+          />
+
           <v-radio-group
             v-model="application.level"
             class="mb-4"
@@ -183,6 +197,7 @@
     fullName: '',
     degree: '',
     department: '',
+    email: '',
     level: null,
     usage: [],
     interests: '',
@@ -192,6 +207,10 @@
 
   const required = value => !!value || 'This field is required'
   const requiredList = value => (value && value.length > 0) || 'Select at least one option'
+  function uniromaEmail (value) {
+    return /^[^\s@]+@([\w-]+\.)*uniroma1\.it$/i.test(value || '')
+      || 'Enter a valid uniroma1.it email address'
+  }
   function githubLink (value) {
     return /^https?:\/\/(www\.)?github\.com\/.+/i.test(value || '')
       || 'Enter a valid GitHub link'
@@ -202,6 +221,7 @@
       fullName: '',
       degree: '',
       department: '',
+      email: '',
       level: null,
       usage: [],
       interests: '',
@@ -229,6 +249,8 @@
       'Name and surname': application.fullName,
       'Degree course': application.degree,
       'Department': application.department,
+      'University email': application.email,
+      'replyto': application.email,
       'Level': application.level,
       'Use of the project': application.usage.join(', '),
       'Interests and motivation': application.interests,
