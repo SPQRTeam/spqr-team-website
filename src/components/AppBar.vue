@@ -49,6 +49,7 @@
         <v-btn to="/datasets">Datasets</v-btn>
         <v-btn to="/codebase">Codebase</v-btn>
         <v-btn to="/students">Students</v-btn>
+        <v-btn to="/join">Join the Team</v-btn>
         <v-btn to="/sponsors">Sponsors</v-btn>
         <v-btn to="/contacts">Contacts</v-btn>
       </template>
@@ -111,6 +112,7 @@
     { title: 'Datasets', path: '/datasets' },
     { title: 'Codebase', path: '/codebase' },
     { title: 'Students', path: '/students' },
+    { title: 'Join the Team', path: '/join' },
     { title: 'Sponsors', path: '/sponsors' },
     { title: 'Contacts', path: '/contacts' },
   ]

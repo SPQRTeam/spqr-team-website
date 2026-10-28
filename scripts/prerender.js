@@ -18,6 +18,7 @@ const routes = [
   { path: '/media', name: 'Media', hero: '/assets/media/cover.webp' },
   { path: '/sponsors', name: 'Sponsors', hero: '/assets/home/cover.webp' },
   { path: '/students', name: 'Students', hero: '/assets/students/cover.webp' },
+  { path: '/join', name: 'Join the Team', hero: '/assets/students/cover.webp' },
   { path: '/contacts', name: 'Contacts', hero: '/assets/contacts/cover.webp' },
 ]
 
