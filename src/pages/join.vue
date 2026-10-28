@@ -60,18 +60,15 @@
             variant="outlined"
           />
 
-          <v-radio-group
+          <v-select
             v-model="application.level"
-            class="mb-4"
+            class="mb-2"
             color="#822433"
-            inline
-            label="Level"
+            :items="levelOptions"
+            label="Degree level you are currently enrolled in"
             :rules="[required]"
-          >
-            <v-radio label="Bachelor's" value="Bachelor's" />
-            <v-radio label="Master's" value="Master's" />
-            <v-radio label="PhD" value="PhD" />
-          </v-radio-group>
+            variant="outlined"
+          />
 
           <h2 class="section-subtitle">Your goals with the project</h2>
 
@@ -113,21 +110,42 @@
             auto-grow
             class="mb-2"
             color="#822433"
-            hint="Optional: one project per line, with a short description"
-            label="Projects you have already completed"
-            persistent-hint
+            label="Projects you have already completed or are currently working on (optional)"
             rows="3"
             variant="outlined"
           />
 
           <v-text-field
             v-model="application.github"
-            class="mb-4"
+            class="mb-2"
             color="#822433"
             label="GitHub profile link"
             placeholder="https://github.com/your-username"
             :rules="[required, githubLink]"
             type="url"
+            variant="outlined"
+          />
+
+          <v-text-field
+            v-model="application.linkedin"
+            class="mb-4"
+            color="#822433"
+            label="LinkedIn profile link (optional)"
+            placeholder="https://www.linkedin.com/in/your-username"
+            :rules="[linkedinLink]"
+            type="url"
+            variant="outlined"
+          />
+
+          <h2 class="section-subtitle">Questions for the team</h2>
+
+          <v-textarea
+            v-model="application.questions"
+            auto-grow
+            class="mb-4"
+            color="#822433"
+            label="Your questions (optional)"
+            rows="3"
             variant="outlined"
           />
 
@@ -181,6 +199,8 @@
   const WEB3FORMS_ACCESS_KEY = '181316e5-7331-4515-8159-afab97a9a06b'
   const SUBMIT_URL = 'https://api.web3forms.com/submit'
 
+  const levelOptions = ['Bachelor\'s', 'Master\'s', 'PhD']
+
   const usageOptions = [
     'Exam Project (Master Students)',
     'Master Thesis',
@@ -202,6 +222,8 @@
     interests: '',
     completedProjects: '',
     github: '',
+    linkedin: '',
+    questions: '',
   })
 
   const required = value => !!value || 'This field is required'
@@ -209,6 +231,12 @@
   function githubLink (value) {
     return /^https?:\/\/(www\.)?github\.com\/.+/i.test(value || '')
       || 'Enter a valid GitHub link'
+  }
+
+  function linkedinLink (value) {
+    return !value
+      || /^https?:\/\/(www\.)?linkedin\.com\/.+/i.test(value)
+      || 'Enter a valid LinkedIn link'
   }
 
   async function resetForm () {
@@ -222,6 +250,8 @@
       interests: '',
       completedProjects: '',
       github: '',
+      linkedin: '',
+      questions: '',
     })
     // Clearing the fields triggers validation on every input, so wait for it to run before clearing the errors
     await nextTick()
@@ -249,8 +279,10 @@
       'Level': application.level,
       'Use of the project': application.usage.join(', '),
       'Interests and motivation': application.interests,
-      'Completed projects': application.completedProjects || '-',
+      'Completed or ongoing projects': application.completedProjects || '-',
       'GitHub link': application.github,
+      'LinkedIn link': application.linkedin || '-',
+      'Questions for the team': application.questions || '-',
     }
 
     try {
